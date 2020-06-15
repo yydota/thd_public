@@ -1,0 +1,44 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_silencer"
+	"Title"			"Recommended items for Silencer"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_cherry_leaf"
+			"item"		"item_recipe_present_box"
+			"item"		"item_card_love_man"
+			"item"		"item_courier"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{
+			"item"		"item_broom"
+			"item"		"item_present_box"
+			"item"		"item_doctor_doll"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_qijizhixing"
+			"item"		"item_moon_bow"
+			"item"		"item_horse_red"
+			"item"		"item_ward_observer"
+			"item"		"item_ward_sentry"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_hakurei_ticket"
+			"item"		"item_yukkuri_stick"
+			"item"		"item_tsundere"
+			"item"		"item_sampan"
+			"item"		"item_inaba_illusion_weapon"
+			"item"		"item_rocket"
+			"item"		"item_cyclone"
+		}
+	}
+}

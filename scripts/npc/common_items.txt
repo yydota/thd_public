@@ -1,0 +1,16 @@
+"CommonItems"
+{
+	"item_flask"		"1"
+	"item_clarity"		"1"
+	"item_tpscroll"		"1"
+	"item_jinkela"		"1"
+	"item_card_good_man"		"1"
+	"item_card_bad_man"		"1"
+	"item_card_worse_man"		"1"
+	"item_card_love_man"		"1"
+	"item_gem"		"1"
+	"item_courier"		"1"
+	"item_flying_courier"		"1"	
+	"item_ward_observer"		"1"
+	"item_ward_sentry"			"1"
+}

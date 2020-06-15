@@ -1,0 +1,45 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_juggernaut"
+	"Title"			"Recommended items for Juggernaut"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items" //出门装备
+                {
+                        "item"                "item_bra"
+                        "item"                "item_card_love_man"
+                        "item"                "item_card_good_man"
+                        "item"                "item_cucumber"
+                        "item"                "item_flask"
+                        "item"                "item_flask"
+                }
+                
+                "#DOTA_Item_Build_Early_Game" //前期装备
+                {        
+                        "item"                "item_horse_green"
+                        "item"                "item_mushroom_pie"
+                }
+                
+                "#DOTA_Item_Build_Core_Items" //核心装备
+                {
+                        "item"                "item_pad"
+                        "item"                "item_cirno_claymore"
+                        "item"                "item_pocket_watch"
+                        "item"                "item_yukkuri_stick"
+                }
+                
+                "#DOTA_Item_Build_Luxury" //可选装备
+                {
+                        "item"                "item_mr_yang"
+                        "item"                "item_tsundere"
+                        "item"                "item_fox_mask"
+                        "item"                "item_brother_sharp"
+                        "item"                "item_travel_boots"
+                        "item"                "item_camera"	
+                        "item"                "item_sampan"
+                        "item"                "item_anchor"
+                }
+	}
+}

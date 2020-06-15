@@ -1,0 +1,44 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_earthshaker"
+	"Title"			"Recommended Items for Earthshaker"
+	
+	"Items"
+	{
+		"#DOTA_Item_Build_Starting_Items" //出门装备
+                {
+                        "item"                "item_aunt_clothes"
+                        "item"                "item_clarity"
+                        "item"                "item_clarity"
+                        "item"                "item_flask"
+                        "item"                "item_courier"
+                }
+                
+                "#DOTA_Item_Build_Early_Game" //前期装备
+                {        
+                        "item"                "item_broom"
+			"item"                "item_yatagarasu"
+			"item"                "item_card_worse_man"
+                }
+                
+                "#DOTA_Item_Build_Core_Items" //核心装备
+                {
+                        "item"                "item_horse_red"
+			"item"                "item_qijizhixing"
+			"item"                "item_ward_observer"
+                }
+                
+                "#DOTA_Item_Build_Luxury" //可选装备
+                {
+                        "item"                "item_pad"
+			"item"                "item_zun_glasses"
+                        "item"                "item_hakurei_ticket"
+                        "item"                "item_loneliness"
+			"item"                "item_tentacle"
+			"item"                "item_frock"
+                        "item"                "item_kafziel"
+                        "item"                "item_dummy_doll1"
+                }
+	}
+}

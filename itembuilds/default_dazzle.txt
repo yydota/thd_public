@@ -1,0 +1,42 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_dazzle"
+	"Title"			"Recommended items for Dazzle"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_knife"
+			"item"		"item_card_love_man"
+         	"item"      "item_card_bad_man"
+         	"item"      "item_flask"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"      "item_rocket_5"
+			"item"		"item_horse_blue"
+			"item"      "item_moon_bow"
+		}
+		
+		"#DOTA_Item_Build_Mid_Items"
+		{
+			"item"		"item_morenjingjuan"
+			"item"		"item_tsundere"
+		}
+		
+		"#DOTA_Item_Build_Late_Items"
+		{
+			"item"      "item_bagua"
+			"item"      "item_yukkuri_stick"
+		}
+
+		"#DOTA_Item_Build_Luxury"//³£ÓÃ×°±¸
+		{
+			"item"		"item_brother_sharp"
+			"item"		"item_hakurei_amulet"
+		}
+	}
+}

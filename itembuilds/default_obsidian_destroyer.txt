@@ -1,0 +1,34 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_obsidian_destroyer"
+	"Title"			"Recommended items for Obsidian Destroyer"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_cherry_leaf"
+			"item"		"item_juice"
+         	"item"		"item_card_love_man"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_rocket_1"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_rocket_5"
+			"item"		"item_moon_bow"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"      "item_qijizhixing"
+			"item"      "item_tuzhushen"
+			"item"      "item_hakurei_ticket"
+		}
+	}
+}

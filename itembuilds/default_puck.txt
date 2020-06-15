@@ -1,0 +1,49 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_puck"
+	"Title"			"Recommended items for Puck"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"//³öÃÅ×°±¸
+		{
+                        "item"                "item_good_lunchbox"
+                        "item"                "item_flask"
+                        "item"                "item_clarity"
+                        "item"                "item_clarity"
+                        "item"                "item_card_love_man"
+                        "item"                "item_card_worse_man"
+     	}
+		
+		"#DOTA_Item_Build_Early_Game"//Ç°ÆÚ×°±¸
+		{				
+						"item"                "item_broom"
+                        "item"                "item_flask"
+                        "item"                "item_card_worse_man"
+		}
+
+		"#DOTA_Item_Build_Mid_Items"//ÖÐÆÚ×°±¸
+		{
+                        "item"                "item_donation_box"
+                        "item"                "item_travel_boots"
+                        "item"                "item_wanbaochui"
+
+		}
+
+		"#DOTA_Item_Build_Late_Items"//ºóÆÚ×°±¸
+		{
+						"item"                "item_nuclear_stick"
+                        "item"                "item_bagua"
+                        "item"                "item_hakurei_amulet"
+                        "item"                "item_tsundere"
+		}
+
+		"#DOTA_Item_Build_Luxury"//³£ÓÃ×°±¸
+		{
+			"item"		"item_yukkuri_stick"
+			"item"		"item_bone_flute"
+            "item"      "item_qijizhixing"
+		}
+	}
+}

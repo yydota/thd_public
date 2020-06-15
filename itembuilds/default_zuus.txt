@@ -1,0 +1,43 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_zuus"
+	"Title"			"Recommended items for Zuus"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"//³öÃÅ×°±¸
+		{
+                        "item"                "item_cherry_leaf"
+                        "item"                "item_card_love_man"
+                        "item"                "item_flask"
+                        "item"                "item_cucumber"
+                        "item"                "item_cucumber"
+     	}
+		
+		"#DOTA_Item_Build_Early_Game"//Ç°ÆÚ×°±¸
+		{				
+						"item"                "item_present_box"
+                        "item"                "item_qijizhixing"
+		}
+
+		"#DOTA_Item_Build_Mid_Items"//ÖÐÆÚ×°±¸
+		{
+                        "item"                "item_loneliness"
+                        "item"                "item_tsundere"
+		}
+
+		"#DOTA_Item_Build_Late_Items"//ºóÆÚ×°±¸
+		{
+						"item"                "item_xuenvdeweijin"
+                        "item"                "item_travel_boots"
+		}
+
+		"#DOTA_Item_Build_Luxury"//³£ÓÃ×°±¸
+		{
+			"item"		"item_inaba_illusion_weapon"
+			"item"		"item_yuemianzhinu"
+            "item"      "item_tuzhushen"
+		}
+	}
+}

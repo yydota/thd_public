@@ -1,0 +1,46 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_mirana"
+	"Title"			"Recommended items for Mirana"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_catnip"
+			"item"		"item_mushroom"
+			"item"		"item_cucumber"
+			"item"		"item_cucumber"
+			"item"		"item_flask"
+			"item"		"item_flask"
+			"item"		"item_card_love_man"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_donation_gem"
+			"item"		"item_mushroom_pie"
+			"item"		"item_broom"		
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_camera"
+			"item"		"item_horse_green"
+			"item"		"item_tsundere"
+			"item"		"item_inaba_illusion_weapon"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_sampan"
+			"item"		"item_cirno_claymore"
+			"item"		"item_travel_boots"
+			"item"		"item_frozen_frog"
+			"item"		"item_verity"
+			"item"		"item_smash_stick"
+			"item"		"item_yukkuri_stick"
+		}
+	}
+}

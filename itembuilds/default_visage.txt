@@ -1,0 +1,77 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_visage"
+	"Title"			"Recommended items for Visage"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"//出门装备
+		{
+			"item"		"item_card_worse_man"
+			"item"		"item_aunt_clothes"
+			"item"		"item_flask"
+			"item"		"item_clarity"
+			"item"		"item_clarity"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"//前期装备
+		{	
+			"item"		"item_present_box"
+			"item"		"item_yatagarasu"
+			"item"		"item_broom"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"//核心装备
+		{
+			"item"		"item_yukkuri_stick"
+			"item"		"item_9ball"
+			"item"		"item_lifu"
+			
+		}
+		
+		"#DOTA_Item_Build_Mid_Items"
+		{
+			"item"		"item_cirno_claymore"
+			"item"		"item_darkred_umbrella"
+			"item"		"item_fox_mask"
+		}
+
+		"#DOTA_Item_Build_Late_Items"
+		{
+			
+			"item"		"item_mr_yang"
+			"item"		"item_smash_stick"
+			"item"		"item_teeth"
+			"item"		"item_sampan"
+			"item"		"item_travel_boots"
+			"item"		"item_tsundere"
+			"item"		"item_yukkuri_stick"
+		}
+		
+		"#DOTA_Item_Build_Luxury"//可选装备
+		{
+			"item"		"item_tsundere"
+			"item"		"item_cyclone"
+			"item"		"item_bone_flute"
+			"item"		"item_bagua"
+			"item"		"item_pomojinlingli"
+			"item"		"item_qijizhixing"
+			"item"		"item_travel_boots"
+		}
+
+		"#DOTA_Item_Build_Other_Items"//常用装备
+		{
+
+			"item"      "item_ward_observer"
+			"item"      "item_ward_sentry"	
+			"item"		"item_card_good_man"
+			"item"		"item_card_bad_man"
+			"item"		"item_card_worse_man"
+			"item"		"item_card_love_man"
+			"item"		"item_donation_box"
+			"item"		"item_present_box"
+			"item"		"item_lifu"
+		}
+	}
+}

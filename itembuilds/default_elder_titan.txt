@@ -1,0 +1,44 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_elder_titan"
+	"Title"			"Recommended items for Elder Titan"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_cherry_leaf"
+			"item"		"item_card_good_man"
+         	"item"		"item_card_love_man"
+         	"item"      "item_flask"
+         	"item"      "item_flask"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"      "item_donation_box"
+			"item"		"item_broom"
+			"item"      "item_lifu"
+		}
+		
+		"#DOTA_Item_Build_Mid_Items"
+		{
+			"item"		"item_wanbaochui"
+			"item"		"item_fox_mask"
+		}
+		
+		"#DOTA_Item_Build_Late_Items"
+		{
+			"item"      "item_morenjingjuan"
+			"item"      "item_xuenvdeweijin"
+		}
+
+		"#DOTA_Item_Build_Luxury"//³£ÓÃ×°±¸
+		{
+			"item"		"item_phoenix_wing"
+			"item"		"item_frock"
+            "item"      "item_god_lunchbox"
+		}
+	}
+}

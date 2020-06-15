@@ -1,0 +1,50 @@
+"itembuilds/default_naga_siren.txt"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_naga_siren"
+	"Title"			"Recommended items for Naga Siren"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_card_love_man"
+			"item"		"item_cucumber"
+			"item"		"item_mushroom"
+			"item"		"item_mushroom"
+			"item"		"item_flask"
+			"item"		"item_flask"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_broom"
+			"item"		"item_card_bad_man"
+			"item"		"item_banana"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_horse_red"
+			"item"		"item_brother_sharp"
+			"item"		"item_dummy_doll1"
+			"item"		"item_tsundere"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{			
+			"item"		"item_wind_gun"
+			"item"		"item_dragon_star"
+			"item"		"item_yukkuri_stick"
+			"item"		"item_anchor"
+			"item"		"item_cirno_claymore"
+			"item"		"item_phoenix_wing"
+			"item"		"item_loneliness"
+			"item"		"item_camera"
+			"item"		"item_recipe_inaba_illusion_weapon"
+			"item"		"item_frozen_frog"
+			"item"		"item_horse_king"
+			"item"		"item_rapier"
+		}
+	}
+}

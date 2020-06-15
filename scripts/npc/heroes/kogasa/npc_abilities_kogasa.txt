@@ -1,0 +1,629 @@
+"DOTAAbilities"
+{	
+	"ability_thdots_kogasa01"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"touhoutd/thtd_kogasa_02"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityCooldown"	"15"
+		"AbilityManaCost"	"75"
+		"AbilityCastRange"	"500"
+		"precache"
+		{
+			"soundfile"	"soundevents/voscripts/game_sounds_vo_razor.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_razor.vsndevts"
+			"particle"	"particles/units/heroes/hero_razor/razor_rain_storm.vpcf"
+			"particle"	"particles/units/heroes/hero_snapfire/hero_snapfire_armor_debuff.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+				"Function"	"Kogasa01OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Razor.Storm.Cast"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ability_thdots_kogasa01"
+			{
+				"Duration"	"%duration"
+				"IsBuff"	"1"
+				"Aura"	"modifier_ability_thdots_kogasa01_debuff"
+				"Aura_Radius"	"%radius"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa01OnDeath"
+					}
+				}
+				"EffectName"	"particles/units/heroes/hero_razor/razor_rain_storm.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa01OnDeath"
+					}
+				}
+			}
+			"modifier_ability_thdots_kogasa01_debuff"
+			{
+				"IsDebuff"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_reduce"
+				}
+				"EffectName"	"particles/units/heroes/hero_snapfire/hero_snapfire_armor_debuff.vpcf"
+				"EffectAttachType"	"follow_overhead"
+			}
+			"modifier_ability_thdots_kogasa01_talent"
+			{
+				"Duration"	"%duration"
+				"Aura"	"modifier_ability_thdots_kogasa01_talent_debuff"
+				"Aura_Radius"	"%radius"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa01OnDeath"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa01OnDeath"
+					}
+				}
+			}
+			"modifier_ability_thdots_kogasa01_talent_debuff"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_reduce"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"armor_reduce"	"-3.0 -4.5 -6.0 -7.5"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"500"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"9"
+			}
+		}
+	}
+
+	"ability_thdots_kogasa02"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_thdots_kogasa01"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityCooldown"	"15 14 13 12"
+		"AbilityManaCost"	"100"
+		"AbilityCastRange"	"250"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
+			"particle"	"particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_blade_fury_disk.vpcf"
+			"particle"	"particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_blade_fury_dragon.vpcf"
+			"particle"	"particles/econ/items/juggernaut/jugg_ti8_sword/juggernaut_crimson_blade_fury_abyssal_tgt.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+				"Function"	"Kogasa02OnSpellStart"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ability_thdots_kogasa02"
+			{
+				"IsBuff"	"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa02OnThink"
+						"attack_bonus"	"%attack_bonus"
+						"damage"	"%damage"
+						"attackspeed_bonus"	"%attackspeed_bonus"
+						"creep_damage"	"%creep_damage"
+						"bulding_damge"	"%bulding_damge"
+						"radius"	"%radius"
+					}
+				}
+				"ThinkInterval"	"0.03"
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa02OnDestroy"
+					}
+				}
+				"EffectName"	"particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_blade_fury_disk.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Properties"	{}
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_DISABLED"
+					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+			"modifier_ability_thdots_kogasa02_talent"
+			{
+				"EffectAttachType"	"follow_origin"
+				"EffectName"	"particles/thd2/heroes/kogasa02talent.vpcf"
+				"IsHidden"	"1"
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa02OnDestroy"
+					}
+				}
+			}
+			"modifier_ability_thdots_kogasa02_wanbaochui"
+			{
+				"IsHidden"	"1"
+				"IsBuff"	"1"
+				"States"	{}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-999"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"+500"
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa02Wanbaochui"
+					}
+				}
+			}
+			"modifier_ability_thdots_kogasa02_wanbaochui_stun"
+			{
+				"Duration"	"2.5"
+				"IsBuff"	"1"
+				"IsHidden"	"0"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"4"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"creep_damage"	"65"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bulding_damge"	"25"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"attackspeed_bonus"	"16"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"30 35 40 45"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_bonus"	"0.1"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"250"
+			}
+		}
+	}
+
+	"ability_thdots_kogasa03"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"touhoutd/thtd_kogasa_01"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityCooldown"	"40 30 20 10"
+		"AbilityManaCost"	"10"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+				"Function"	"Kogasa03OnSpellStart"
+			}
+			"FireSound"
+			{
+				"Target"	"CASTER"
+				"EffectName"	"Hero_Antimage.ManaVoidCast"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ability_thdots_kogasa03"
+			{
+				"IsBuff"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa03End"
+					}
+				}
+			}
+			"modifier_ability_thdots_kogasa03_agi"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%agi_bonus"
+				}
+				"Passive"	"1"
+				"OnKill"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa03OnKill"
+					}
+				}
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"agi_bonus"	"0.3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_count"	"134"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"1"
+			}
+		}
+	}
+
+	"ability_thdots_kogasa04"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_thdots_kogasa04"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCooldown"	"30 21 12"
+		"AbilityManaCost"	"50"
+		"AbilityCastRange"	"600"
+		"AbilityChannelTime"	"3 2 1"
+		"precache"
+		{
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_kogasa_sounds.vsndevts"
+			"particle"  "particles/units/heroes/hero_earthshaker/earthshaker_echoslam_start.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+				"Function"	"Kogasa04OnSpellStart"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ability_thdots_kogasa04"
+			{
+				"IsBuff"	"0"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa04OnThink"
+					}
+				}
+				"ThinkInterval"	"0.05"
+				"OnTakeDamage"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa04OnDestroy"
+					}
+				}
+				"States"	{}
+				"OnUnitMoved"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa04OnDestroy"
+					}
+				}
+				"OnAbilityExecuted"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa04OnDestroy"
+					}
+				}
+				"OnAttack"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykogasa.lua"
+						"Function"	"Kogasa04OnDestroy"
+					}
+				}
+				"IsHidden"	"1"
+			}
+			"modifier_ability_thdots_kogasa04_movespeed"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"1"
+				}
+				"IsBuff"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+				"Passive"	"0"
+			}
+			"modifier_ability_thdots_kogasa04_invisble"
+			{
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"IsBuff"	"1"
+				"IsHidden"	"0"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"base_damage"	"120 200 280"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_bonus"	"2.8"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"2.5"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"max_count"	"100"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"400"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_radius"	"600"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"preparetime"	"3 2 1"
+			}
+			08
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movespeed"	"10"
+
+			}
+		}
+	}
+
+	"ability_thdots_kogasaex"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"touhoutd/star_up"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityType"	"DOTA_ABILITY_TYPE_HIDDEN"
+		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+		}
+	}
+
+	"special_bonus_unique_kogasa_1"
+	{
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		// "ID"							"40205"
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"200"
+			}
+		}
+	}
+
+	"special_bonus_unique_kogasa_2"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"-5"
+			}
+		}
+	}
+
+	"special_bonus_unique_kogasa_3"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"2"
+			}
+		}
+	}
+
+	"special_bonus_unique_kogasa_4"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"1"
+			}
+		}
+	}
+
+	"special_bonus_unique_kogasa_5"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"150"
+			}
+		}
+	}
+
+	"special_bonus_unique_kogasa_6"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"value"	"200"
+			}
+		}
+	}
+}

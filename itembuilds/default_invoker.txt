@@ -1,0 +1,48 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_invoker"
+	"Title"			"Recommended items for Invoker"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_magic_guide_book"
+			"item"		"item_card_worse_man"
+			"item"		"item_cucumber"
+			"item"		"item_cucumber"
+			"item"		"item_flask"
+			"item"		"item_courier"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_ward_observer"
+			"item"		"item_broom"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_pocket_watch"
+			"item"		"item_yatagarasu"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_tsundere"
+			"item"		"item_yukkuri_stick"
+			"item"		"item_rocket"
+			"item"		"item_moon_bow"
+			"item"		"item_cyclone"
+			"item"		"item_hakurei_ticket"
+			"item"		"item_travel_boots"
+			"item"		"item_nuclear_stick"
+			"item"		"item_three_dimension"
+		}
+		"#DOTA_Item_Build_Other_Items"
+		{
+			
+		}
+	}
+}

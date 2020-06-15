@@ -1,0 +1,2442 @@
+"Portraits"
+{
+	"Version"		"1"
+	"DefaultActivity"		"ACT_DOTA_CAPTURE"
+	"default"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"69"
+		"PortraitLightDistance"		"377"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"446.17 -88.29 -22.69"
+				"PortraitAngles"		"334.89 166.83 0.00"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/satori/satori.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"66"
+		"PortraitLightDistance"		"227"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"170.0 66.0 170.0"
+				"PortraitAngles"		"0.0 200.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/hakurei_reimu/hakurei_reimu_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"170.0 -80.0 190.0"
+				"PortraitAngles"		"0.0 155.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/marisa/marisa_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"90"
+		"PortraitLightDistance"		"66"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"170.0 -33.0 205.0"
+				"PortraitAngles"		"0.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/youmu/youmu_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"90.000000"
+		"PortraitLightDistance"		"133.000000"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"150.0 -130.0 170.0"
+				"PortraitAngles"		"0.0 140.0 -10.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/aya/aya_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"63.000000"
+		"PortraitLightDistance"		"471.000000"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"135.0 -50.0 233.0"
+				"PortraitAngles"		"5.0 160.0 -5.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/tenshi/tenshi_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"200.0 -38.0 198.0"
+				"PortraitAngles"		"0.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/hiziri_byakuren/hiziri_byakuren_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"230.0 -40.0 238.0"
+				"PortraitAngles"		"0.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/yuyuko/yuyuko_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"120.000000"
+		"PortraitLightDistance"		"254.770004"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"160.0 -137.0 210.0"
+				"PortraitAngles"		"0.0 140.0 -10.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/sakuya/sakuya_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"150.0 -21.0 225.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/sakuya_cloth01/sakuya_mmd_cloth01.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"150.0 -21.0 225.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/flandre/flandre_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"220.0 -70.0 165.0"
+				"PortraitAngles"		"0.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/mokou/mokou_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"220.0 -30.0 250.0"
+				"PortraitAngles"		"10.0 170.0 -3.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/yuugi/yuugi_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"200.0 -35.0 280.0"
+				"PortraitAngles"		"0.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/suika/suika_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"200.0 -40.0 160.0"
+				"PortraitAngles"		"0.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/rumia/rumia_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"180.0 -29.0 175.0"
+				"PortraitAngles"		"0.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/iku/iku_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"180.0 -60.0 220.0"
+				"PortraitAngles"		"0.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/utsuho/utsuho_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"220.0 -72.0 270.0"
+				"PortraitAngles"		"10.0 160.0 -5.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/eirin/eirin_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"160.0 -60.0 250.0"
+				"PortraitAngles"		"10.0 160.0 -5.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/kaguya/kaguya_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"180.0 -70.0 300.0"
+				"PortraitAngles"		"30.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/reisen/reisen.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"180.0 -60.0 205.0"
+				"PortraitAngles"		"0.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/reisen/reisen.vmdl"
+	{
+		"PortraitLightPosition"		"50.0 -100.0 350.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"180.0 -60.0 250.0"
+				"PortraitAngles"		"10.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/sanae/sanae_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"180.0 -65.0 240.0"
+				"PortraitAngles"		"10.0 160.0 -5.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/remilia/remilia_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"180.0 -32.0 150.0"
+				"PortraitAngles"		"0.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/shikieiki/shikieiki_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"160.0 -55.0 145.0"
+				"PortraitAngles"		"0.0 160.0 -5.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/momiji/momiji_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"200.0 -70.0 160.0"
+				"PortraitAngles"		"0.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/wriggle/wriggle_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"160.0 -57.0 150.0"
+				"PortraitAngles"		"0.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/koishi/koishi_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"180.0 -57.0 205.0"
+				"PortraitAngles"		"10.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/yumemi/yumemi_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"180.0 -53.0 213.0"
+				"PortraitAngles"		"10.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/chiruno/chiruno_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"160.0 -34.0 185.0"
+				"PortraitAngles"		"10.0 170.0 -5.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/kanako/kanako_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"210.0 -38.0 240.0"
+				"PortraitAngles"		"0.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/kanako/kanako_mmd_transform.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"210.0 -38.0 285.0"
+				"PortraitAngles"		"0.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/minamitsu/minamitsu_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"160.0 7.0 180.0"
+				"PortraitAngles"		"0.0 180.0 -5.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/yukari/yukari_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"160.0 -43.0 220.0"
+				"PortraitAngles"		"0.0 180.0 -5.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/ran/ran_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"150.0 30.0 200.0"
+				"PortraitAngles"		"0.0 190.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd2/yuuka/yuuka_mmd.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"150.0 7.0 227.0"
+				"PortraitAngles"		"15.0 180.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/akiminoriko/minoriko.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"190.0 -27.0 215.0"
+				"PortraitAngles"		"0.0 170.0 -5.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/houjuunue/nue.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"160.0 -25.0 230.0"
+				"PortraitAngles"		"20.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/komachi/komachi.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"160.0 -55.0 155.0"
+				"PortraitAngles"		"-10.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/patchouli/patchouli.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -55.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"66"
+		"PortraitLightDistance"		"227"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"150.0 52.0 170.0"
+				"PortraitAngles"		"-10.0 200.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/medicine/medicine.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -55.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"66"
+		"PortraitLightDistance"		"227"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"160.0 -27.0 140.0"
+				"PortraitAngles"		"0.0 170.0 0.00"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/alice/alice.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"140.0 -23.0 190.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/alice_cloth01/alice_cloth01.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"140.0 -23.0 190.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd_hero/lily_white/lily_white.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"210.0 -95.0 250.0"
+				"PortraitAngles"		"30.0 155.0 10.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/reimu/reimu.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"140.0 -63.0 187.0"
+				"PortraitAngles"		"0.0 155.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/flandre/flandre.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"150.0 -37.0 170.0"
+				"PortraitAngles"		"5.0 165.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/remilia/remilia.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"140.0 -33.0 153.0"
+				"PortraitAngles"		"5.0 165.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/marisa/marisa.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"135.0 -42.0 200.0"
+				"PortraitAngles"		"10.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	
+	"models/new_touhou_model/cirno/cirno.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"140.0 -20.0 190.0"
+				"PortraitAngles"		"8.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/cirno/ex/ex_cirno.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"140.0 -25.0 150.0"
+				"PortraitAngles"		"8.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/sakuya/sakuya.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"130.0 -55.0 190.0"
+				"PortraitAngles"		"10.0 155.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/youmu/youmu.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"130.0 -21.0 150.0"
+				"PortraitAngles"		"5.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/tenshi/tenshi.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"140.0 -15.0 165.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/patchouli/patchouli.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"130.0 -33.0 175.0"
+				"PortraitAngles"		"10.0 165.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/yuuka/yuuka.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"130.0 -29.0 180.0"
+				"PortraitAngles"		"10.0 165.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/junko/junko.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"150.0 -50.0 235.0"
+				"PortraitAngles"		"5.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/hecatia/hecatia.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"130.0 -20.0 245.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/hecatia/hecatia_moon/hecatia_moon.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"130.0 -20.0 245.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/hecatia/hecatia_earth/hecatia_earth.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"130.0 -20.0 245.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/yukari/yukari.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"130.0 5.0 188.0"
+				"PortraitAngles"		"10.0 180.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/satori/satori.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"66"
+		"PortraitLightDistance"		"227"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"170.0 66.0 170.0"
+				"PortraitAngles"		"0.0 200.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/aya/aya.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"110.0 -52.0 205.0"
+				"PortraitAngles"		"10.0 155.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+
+	"models/new_touhou_model/aya/aya_with_wing.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"110.0 -52.0 205.0"
+				"PortraitAngles"		"10.0 155.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/new_touhou_model/clownpiece/clownpiece.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"110.0 -52.0 180.0"
+				"PortraitAngles"		"10.0 155.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd_hero/lyrica_prismriver/lyrica.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"130.0 -45.0 115.0"
+				"PortraitAngles"		"15.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd_hero/lunasa_prismriver/lunasa.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"170.0 -74.0 130.0"
+				"PortraitAngles"		"0.0 155.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/new_touhou_model/meiling/zg.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"92.0 -45.0 145.0"
+				"PortraitAngles"		"10.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/new_touhou_model/koakuma/xem.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"115.0 -45.0 160.0"
+				"PortraitAngles"		"10.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd_hero/toramarushou/toramarushou.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"125.0 -45.0 125.0"
+				"PortraitAngles"		"10.0 160.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd_hero/luna/luna.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"170.0 -74.0 130.0"
+				"PortraitAngles"		"0.0 155.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd_hero/mystia/mystia.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"170.0 -74.0 130.0"
+				"PortraitAngles"		"0.0 155.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/thd_hero/hatate/hatate.vmdl"
+	{
+		"PortraitLightPosition"		"202.70 -23.15 308.17"
+		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"170.0 -74.0 150.0"
+				"PortraitAngles"		"0.0 155.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/new_thd/kogasa/kogasa.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"150.0 -21.0 120.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/tei/tei2.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"150.0 -24.0 155.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/tei_pistol/tei2_pistol.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"150.0 -24.0 155.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/nitori/nitori.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"150.0 -24.0 170.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/nitori_cast1/nitori.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"150.0 -24.0 145.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+	"models/kokoro/kokoro.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"150.0 -24.0 145.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
+}

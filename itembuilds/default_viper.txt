@@ -1,0 +1,42 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_viper"
+	"Title"			"Recommended items for Viper"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_cherry_leaf"
+			"item"		"item_card_good_man"
+         	"item"      "item_flask"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"      "item_present_box"
+			"item"		"item_better_lunchbox"
+			"item"      "item_9ball"
+		}
+		
+		"#DOTA_Item_Build_Mid_Items"
+		{
+			"item"		"item_tentacle"
+			"item"		"item_hetongtuijinzhuangzhi"
+		}
+		
+		"#DOTA_Item_Build_Late_Items"
+		{
+			"item"      "item_frock"
+			"item"      "item_qijizhixing"
+		}
+
+		"#DOTA_Item_Build_Luxury"//³£ÓÃ×°±¸
+		{
+			"item"		"item_phoenix_wing"
+			"item"		"item_wanbaochui"
+            "item"      "item_god_lunchbox"
+		}
+	}
+}

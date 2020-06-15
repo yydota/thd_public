@@ -1,0 +1,42 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_furion"
+	"Title"			"Recommended items for Furion"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_broom"
+			"item"		"item_card_love_man"
+			"item"		"item_flask"
+			"item"		"item_clarity"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_mushroom_soup"
+			"item"		"item_ward_observer"	
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_pocket_watch"
+			"item"		"item_tsundere"			
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_travel_boots"
+			"item"		"item_nuclear_stick"
+			"item"		"item_yukkuri_stick"
+			"item"		"item_rocket"
+			"item"		"item_moon_bow"
+			"item"		"item_three_dimension"
+			"item"		"item_loneliness"
+			"item"		"item_frock"
+			"item"		"item_phoenix_wing"
+		}
+	}
+}

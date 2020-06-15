@@ -1,0 +1,42 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_lich"
+	"Title"			"Recommended items for Lich"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"//³öÃÅ×°±¸
+		{
+                        "item"                "item_broom"
+                        "item"                "item_wind_lace"
+                        "item"                "item_card_love_man"
+                        "item"                "item_flask"
+     	}
+		
+		"#DOTA_Item_Build_Early_Game"//Ç°ÆÚ×°±¸
+		{				
+						"item"                "item_donation_box"
+                        "item"                "item_9ball"
+		}
+
+		"#DOTA_Item_Build_Mid_Items"//ÖÐÆÚ×°±¸
+		{
+                        "item"                "item_yukkuri_stick"
+                        "item"                "item_bagua"
+		}
+
+		"#DOTA_Item_Build_Late_Items"//ºóÆÚ×°±¸
+		{
+						"item"                "item_nuclear_stick"
+                        "item"                "item_pomojinlingli"
+		}
+
+		"#DOTA_Item_Build_Luxury"//³£ÓÃ×°±¸
+		{
+			"item"		"item_wanbaochui"
+			"item"		"item_tsundere"
+            "item"      "item_hakurei_amulet"
+		}
+	}
+}

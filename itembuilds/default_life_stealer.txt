@@ -1,0 +1,44 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_life_stealer"
+	"Title"			"Recommended items for Lifestealer"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_cake"
+			"item"		"item_mushroom"
+			"item"		"item_card_love_man"
+			"item"		"item_flask"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_broom"
+			"item"		"item_card_good_man"
+			"item"		"item_banana"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_horse_red"
+			"item"		"item_kafziel"
+			"item"		"item_anchor"
+			"item"		"item_tsundere"
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_jiao_shou"
+			"item"		"item_loneliness"
+			"item"		"item_rocket"
+			"item"		"item_zun_glasses"
+			"item"		"item_peach"
+			"item"		"item_yukkuri_stick"
+			"item"		"item_ghost_balloon"
+			"item"		"item_frock"
+		}
+	}
+}

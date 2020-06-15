@@ -1,0 +1,52 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_bounty_hunter"
+	"Title"			"Recommended items for Bounty Hunter"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_bra"
+			"item"		"item_card_worse_man"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_9ball"
+			"item"		"item_item_bird"
+		}
+
+		"#DOTA_Item_Build_Mid_Items"
+		{
+			"item"		"item_darkred_umbrella"
+			"item"		"item_yatagarasu"
+		}
+
+		"#DOTA_Item_Build_Late_Items"
+		{
+			"item"		"item_bone_flute"
+			"item"		"item_travel_boots"
+			"item"		"item_tsundere"
+			"item"		"item_yukkuri_stick"
+		}
+
+		"#DOTA_Item_Build_Other_Items"
+		{
+			"item"		"item_flask"
+			"item"		"item_clarity"
+			"item"		"item_tpscroll"
+			"item"		"item_jinkela"
+			"item"		"item_card_good_man"
+			"item"		"item_card_bad_man"
+			"item"		"item_card_worse_man"
+			"item"		"item_card_love_man"
+			"item"		"item_gem"
+			"item"		"item_courier"
+			"item"		"item_flying_courier"	
+			"item"      "item_ward_observer"
+			"item"      "item_ward_sentry"	
+		}
+	}
+}

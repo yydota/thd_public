@@ -1,0 +1,45 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_slark"
+	"Title"			"Recommended items for Slark"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items" //出门装备
+                {
+                        "item"                "item_bra"
+                        "item"                "item_card_love_man"
+                        "item"                "item_card_good_man"
+                        "item"                "item_cucumber"
+                        "item"                "item_flask"
+                        "item"                "item_flask"
+                }
+                
+                "#DOTA_Item_Build_Early_Game" //前期装备
+                {        
+                        "item"                "item_pad"
+                        "item"                "item_mushroom_pie"
+			"item"                "item_donation_gem"
+                }
+                
+                "#DOTA_Item_Build_Core_Items" //核心装备
+                {
+                        "item"                "item_camera"
+			"item"                "item_tsundere"
+                }
+                
+                "#DOTA_Item_Build_Luxury" //可选装备
+                {
+                        "item"                "item_dummy_doll1"
+			"item"                "item_frozen_frog"
+                        "item"                "item_green_dam"
+                        "item"                "item_yukkuri_stick"
+			"item"                "item_anchor"
+			"item"                "item_sampan"
+                        "item"                "item_cirno_claymore"
+                        "item"                "item_loneliness"
+                        "item"                "item_kafziel"
+                }
+	}
+}

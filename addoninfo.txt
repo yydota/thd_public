@@ -1,0 +1,18 @@
+"AddonInfo"
+{
+	"TeamCount" "4"
+	maps			"1_thdots_map dota 4_thdots_with_coach"
+	"IsPlayable"	"1"
+	"1_thdots_map"
+	{
+					"MaxPlayers"                    "10"
+	}
+	"dota"
+	{
+					"MaxPlayers"                    "10"
+	}
+	"4_thdots_with_coach"
+	{
+					"MaxPlayers"                    "12"
+	}
+}

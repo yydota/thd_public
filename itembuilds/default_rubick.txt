@@ -1,0 +1,57 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_bounty_hunter"
+	"Title"			"Recommended items for Bounty Hunter"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"//出门装备
+		{
+                        "item"                "item_clarity"
+                        "item"                "item_flask"
+                        "item"                "item_flask"
+                        "item"                "item_card_worse_man"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"//前期装备
+		{				
+						"item"                "item_item_donation_box"
+                        "item"                "item_horse_blue"
+                        "item"                "item_card_worse_man"
+		}
+
+		"#DOTA_Item_Build_Mid_Items"//中期装备
+		{
+                        "item"                "item_rocket"
+                        "item"                "item_moon_bow"
+
+		}
+
+		"#DOTA_Item_Build_Late_Items"//后期装备
+		{
+						"item"                "item_bagua"
+                        "item"                "item_yukkuri_stick"
+                        "item"                "item_tsundere"
+                        "item"                "item_morenjingjuan"
+                        "item"                "item_frozen_frog"
+		}
+
+		"#DOTA_Item_Build_Other_Items"//常用装备
+		{
+			"item"		"item_flask"
+			"item"		"item_clarity"
+			"item"		"item_tpscroll"
+			"item"		"item_jinkela"
+			"item"		"item_card_good_man"
+			"item"		"item_card_bad_man"
+			"item"		"item_card_worse_man"
+			"item"		"item_card_love_man"
+			"item"		"item_gem"
+			"item"		"item_courier"
+			"item"		"item_flying_courier"	
+			"item"      "item_ward_observer"
+			"item"      "item_ward_sentry"	
+		}
+	}
+}

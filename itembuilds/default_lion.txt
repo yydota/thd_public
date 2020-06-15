@@ -1,0 +1,45 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_lion"
+	"Title"			"Recommended items for Lion"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_cherry_leaf"
+			"item"		"item_card_love_man"
+			"item"		"item_courier"
+			"item"		"item_flask"
+			"item"		"item_ward_observer"
+			"item"		"item_ward_sentry"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_present_box"
+			"item"		"item_broom"
+			"item"		"item_ward_observer"
+			"item"		"item_ward_sentry"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_qijizhixing"
+			"item"		"item_hakurei_ticket"			
+		}
+		
+		"#DOTA_Item_Build_Luxury"
+		{
+			"item"		"item_9ball"
+			"item"		"item_darkred_umbrella"
+			"item"		"item_travel_boots"
+			"item"		"item_tsundere"
+			"item"		"item_cyclone"
+			"item"		"item_yukkuri_stick"
+			"item"		"item_rocket"
+			"item"		"item_moon_bow"
+		}
+	}
+}
