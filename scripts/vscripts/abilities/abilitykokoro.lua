@@ -753,7 +753,7 @@ function modifier_ability_thdots_kokoro04_caster_wanbaochui:OnIntervalThink()
 			if next_target[i] == nil then 
 				break
 			end
-			if next_target[i]:HasModifier("dummy_unit") then
+			if next_target[i]:HasModifier("dummy_unit") or not self.caster:CanEntityBeSeenByMyTeam(next_target[i]) or not next_target[i]:IsAlive() then
 				table.remove(next_target,i)
 			end
 		end

@@ -38,7 +38,9 @@ require ( "util/clothes")
 require ( "util/eventregister")
 require ( "util/observe")
 require ( "util/rune_fixer")
--- require ( "util/shuffle")
+require ( "util/rune_fixer")
+require ( "util/webapi")
+require ( "util/shuffle")
 
 
 if THDOTSGameMode == nil then
@@ -646,9 +648,16 @@ function THDOTSGameMode:OnPlayerSay( keys )
 		HostSay("gtmdtd")  --这个是我加的 XD
 	end
 	
-	if text == "steamid" then
-		print(PlayerResource:GetSteamID(plyid))
+	if text == "getnum" then
+		local num = GetNum()
+		HostSay("num is " .. tostring(num))
 	end
+	-- if text == "1" then
+	-- 	HostSay("-createhero leg")
+	-- end
+	-- if text == "2" then
+	-- 	HostSay("-createhero leg enemy")
+	-- end
 	--以上为所有玩家和地图可用的通用指令
 	
 	if GetMapName() ~= "dota" then return end
@@ -1310,14 +1319,8 @@ G_Player_randomed = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 function THDOTSGameMode:OnGameRulesStateChange(keys)
 	local newState = GameRules:State_Get()
 	if newState == 2 then -- CUSTOM_GAME_SETUP / shuffle
-		-- 	DeepPrintTable(keys)
-		-- for i=0, PlayerResource:GetPlayerCount() do
-		-- 	local player = PlayerResource:GetPlayer(i)
-		-- 	if player then
-		-- 		print(PlayerResource:GetSteamID(player:GetPlayerID()))
-		-- 		PlayerResource:SetCustomTeamAssignment( player:GetPlayerID() ,DOTA_TEAM_BADGUYS )
-		-- 	end
-		-- end
+		-- WebApi:SetTesting(true)
+		WebApi:BeforeMatch(THD2_Rating_Catcher)
 		if GetMapName() == "4_thdots_with_coach" then
 			GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 6 )
 			GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 6 )
@@ -1342,7 +1345,8 @@ function THDOTSGameMode:OnGameRulesStateChange(keys)
 			0.2
 		)
 		]]--
-		
+		local num = GetNum()
+		HostSay("num is " .. tostring(num))
 		GameRules:GetGameModeEntity():SetContextThink(
 			"random checker",
 			function()
@@ -1609,6 +1613,10 @@ function THDOTSGameMode:OnGameRulesStateChange(keys)
 		
 	end
 	
+	if newState == DOTA_GAMERULES_STATE_POST_GAME then
+		-- WebApi:SetTesting(true)
+		WebApi:AfterMatch()
+	end
 	--之前的信使加载
 	--[[
 	if newState == 7 then
@@ -1906,5 +1914,5 @@ RegisterCustomEventListener("Cast_xianzhezhishi", Cast_xianzhezhishi)
 
 
 
--- RegisterCustomEventListener("Shuffle_Pressed", Shuffle_Pressed)
+RegisterCustomEventListener("Shuffle_Pressed", Shuffle_Pressed)
 

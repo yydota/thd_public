@@ -1,3 +1,94 @@
+ability_thdots_koishi01 = {}
+
+modifier_ability_thdots_koishi01 = {} --被动计算
+LinkLuaModifier("modifier_ability_thdots_koishi01","scripts/vscripts/abilities/abilitykoishi.lua",LUA_MODIFIER_MOTION_NONE)
+modifier_ability_thdots_koishi01_open = {} --主动开启buff
+LinkLuaModifier("modifier_ability_thdots_koishi01_open","scripts/vscripts/abilities/abilitykoishi.lua",LUA_MODIFIER_MOTION_NONE)
+
+function modifier_ability_thdots_koishi01:IsHidden()
+	if self:GetAbility().SpellOpen == true then
+		return true
+	end
+	return false
+end
+function modifier_ability_thdots_koishi01:IsPurgable()		return false end
+function modifier_ability_thdots_koishi01:RemoveOnDeath() 	return false end
+function modifier_ability_thdots_koishi01:IsDebuff()		return false end
+
+function modifier_ability_thdots_koishi01_open:IsHidden() 		return false end
+function modifier_ability_thdots_koishi01_open:IsPurgable()		return false end
+function modifier_ability_thdots_koishi01_open:RemoveOnDeath() 	return false end
+function modifier_ability_thdots_koishi01_open:IsDebuff()		return false end
+
+function ability_thdots_koishi01:GetIntrinsicModifierName()
+	return  "modifier_ability_thdots_koishi01"
+end
+
+function ability_thdots_koishi01:OnSpellStart()
+	self.caster 		= self:GetCaster()
+	if not IsServer() then return end
+	self.caster:AddNewModifier(self.caster, self,"modifier_ability_thdots_koishi01_open",{duration = self:GetSpecialValueFor("duration")})
+	self.SpellOpen = true
+	self.caster:EmitSound("Hero_DarkWillow.Brambles.CastTarget")
+end
+
+function modifier_ability_thdots_koishi01:OnCreated()
+	self.radius 		= self:GetAbility():GetSpecialValueFor("radius")
+	self.duration 		= self:GetAbility():GetSpecialValueFor("duration")
+	self.caster 		= self:GetParent()
+	if not IsServer() then return end
+	self:StartIntervalThink(0.1)
+	self:GetAbility().SpellOpen = false
+end
+
+function modifier_ability_thdots_koishi01:OnIntervalThink()
+	if not IsServer() then return end
+	local caster = self.caster
+	local targets = FindUnitsInRadius(
+				   caster:GetTeam(),		
+				   caster:GetOrigin(),		
+				   nil,					
+				   self.radius + FindTelentValue(caster,"special_bonus_unique_drow_ranger_4"),		
+				   DOTA_UNIT_TARGET_TEAM_BOTH,
+				   DOTA_UNIT_TARGET_HERO,
+				   0, FIND_CLOSEST,
+				   false
+	)
+	local count = 0
+	for k,v in pairs(targets) do
+		if v:IsIllusion()==false then
+			count = count + 1
+		end
+	end
+	if self:GetAbility().SpellOpen == true then 
+		count = 12 - count
+	end
+	count = count * (1 + FindTelentValue(caster,"special_bonus_unique_drow_ranger_2"))
+	caster:SetModifierStackCount("modifier_ability_thdots_koishi01", self:GetAbility(), count)
+	if caster:FindModifierByName("modifier_ability_thdots_koishi01_open") ~= nil then
+		caster:SetModifierStackCount("modifier_ability_thdots_koishi01_open",self:GetAbility(),count)
+	end
+end
+
+function modifier_ability_thdots_koishi01:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE
+	}
+end
+
+function modifier_ability_thdots_koishi01:GetModifierPreAttack_BonusDamage()
+	return self:GetAbility():GetSpecialValueFor("bonus_damage") * self:GetStackCount()
+end
+function modifier_ability_thdots_koishi01_open:GetEffectName()
+	return "particles/units/heroes/hero_arc_warden/arc_warden_tempest_buff.vpcf"
+end
+
+function modifier_ability_thdots_koishi01_open:OnDestroy()
+	if not IsServer() then return end
+	self:GetAbility().SpellOpen = false
+	self:GetParent():EmitSound("Hero_DarkWillow.Bramble.Destroy")
+end
+
 function OnKoishi01Think(keys)
 	local caster = EntIndexToHScript(keys.caster_entindex)
 	local targets = FindUnitsInRadius(

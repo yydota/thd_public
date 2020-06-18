@@ -791,35 +791,30 @@ function OnSatori01SpellStart(keys)
 			i = 2
 		end
 	end
-	if TargetName == "npc_dota_hero_terrorblade" then
+	if TargetName == "npc_dota_hero_bristleback" then
 		if caster:GetLevel() >= 6 then
-			RandomNumber = RandomInt(1,100)
-		else 
-			RandomNumber = RandomInt(1,75)
+			RandomNumber = RandomInt(1,50)
+		else
+			RandomNumber = RandomInt(1,50)
 		end
 		if RandomNumber <= 25 then
-			AbilityStolenName = "terrorblade_reflection"
+			AbilityStolenName = "bristleback_viscous_nasal_goo"
 		elseif RandomNumber > 25 and RandomNumber <= 50 then
-			AbilityStolenName = "terrorblade_conjure_image"
-		elseif RandomNumber > 50 and RandomNumber <= 75 then
-			AbilityStolenName = "terrorblade_metamorphosis"
-		elseif RandomNumber > 75 and RandomNumber <= 100 then
-			AbilityStolenName = "terrorblade_sunder"
-			i = 2
+			AbilityStolenName = "bristleback_quill_spray"
 		end
 	end
-	if TargetName == "npc_dota_hero_medusa" then
+	if TargetName == "npc_dota_hero_ursa" then
 		if caster:GetLevel() >= 6 then
 			RandomNumber = RandomInt(1,75)
 		else 
 			RandomNumber = RandomInt(1,50)
 		end
 		if RandomNumber <= 25 then
-			AbilityStolenName = "medusa_mystic_snake"
+			AbilityStolenName = "ursa_earthshock"
 		elseif RandomNumber > 25 and RandomNumber <= 50 then
-			AbilityStolenName = "medusa_mana_shield"
+			AbilityStolenName = "ursa_overpower"
 		elseif RandomNumber > 50 and RandomNumber <= 75 then
-			AbilityStolenName = "medusa_stone_gaze"
+			AbilityStolenName = "ursa_enrage"
 			i = 2
 		end
 	end
