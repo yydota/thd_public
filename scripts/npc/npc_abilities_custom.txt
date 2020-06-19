@@ -22952,7 +22952,7 @@
 		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"	"0.8"
+		"AbilityCooldown"	"1.0"
 		"AOERadius"	"%radius"
 		// Precache
 		// -------------------------------------------------------------------------------------------------------------
@@ -23043,11 +23043,13 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"block_damage"	"30 60 90 120"
+				"LinkedSpecialBonus"	"special_bonus_unique_dragon_knight_2"
 			}
 			"05"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"damage"	"30 60 90 120"
+				"LinkedSpecialBonus"	"special_bonus_unique_dragon_knight"
 			}	
 		}
 	}
