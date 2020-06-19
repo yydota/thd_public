@@ -3605,7 +3605,7 @@
 				"increase_strength"	"3"
 			}
 		}
-		"Model"	"models/props_gameplay/salve.mdl"
+		
 	}
 
 	// =================================================================================================================
@@ -3705,7 +3705,6 @@
 			}
 			
 		}
-		"Model"	"models/props_gameplay/salve.mdl"
 	}
 
 	// =================================================================================================================
@@ -3805,7 +3804,6 @@
 			}
 			
 		}
-		"Model"	"models/props_gameplay/salve.mdl"
 	}
 
 	// =================================================================================================================
@@ -3893,7 +3891,6 @@
 				"movement_speed_percent_bonus"	"4"
 			}
 		}
-		"Model"	"models/props_gameplay/salve.mdl"
 	}
 
 	// =================================================================================================================
@@ -4314,14 +4311,12 @@
 		"ID"	"8057"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"110"
+		"ItemCost"	"0"
 		"ItemRecipe"	"1"
 		"ItemResult"	"item_donation_gem"
 		"ItemRequirements"
 		{
-			"01"	"item_hammer;item_mushroom_kebab"
-			"02"	"item_hammer;item_mushroom_pie"
-			"03"	"item_hammer;item_mushroom_soup"
+			"01"	"item_hammer;item_sunflower"
 		}
 		"Model"	"models/props_gameplay/recipe.mdl"
 	}
@@ -4975,7 +4970,7 @@
 	"item_rocket_2"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_rocket"
+		"AbilityTextureName"	"item_rocket_2"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -5084,7 +5079,7 @@
 	"item_rocket_3"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_rocket"
+		"AbilityTextureName"	"item_rocket_3"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -5193,7 +5188,7 @@
 	"item_rocket_4"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_rocket"
+		"AbilityTextureName"	"item_rocket_4"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -5302,7 +5297,7 @@
 	"item_rocket_5"
 	{
 		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"item_rocket"
+		"AbilityTextureName"	"item_rocket_5"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -6294,15 +6289,13 @@
 		"ID"	"8089"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"400"
+		"ItemCost"	"290"
 		"ItemRecipe"	"1"
 		"ItemResult"	"item_fox_mask"
 		"ItemRequirements"
 		{
 		
-			"01"	"item_wind_lace;item_sailor_suit;item_mushroom_kebab"
-			"02"	"item_wind_lace;item_sailor_suit;item_mushroom_pie"
-			"03"	"item_wind_lace;item_sailor_suit;item_mushroom_soup"
+			"01"	"item_wind_lace;item_sailor_suit;item_sunflower"
 		}
 		"Model"	"models/props_gameplay/recipe.mdl"
 	}
@@ -6979,7 +6972,7 @@
 		// -------------------------------------------------------------------------------------------------------------
 		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"ID"	"8101"
-		"ItemQuality"	"component"
+		"ItemQuality"	"secret_shop"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemCost"	"4300"
@@ -7079,7 +7072,6 @@
 				"bonus_armor"	"7"
 			}			
 		}
-		"Model"	"models/props_gameplay/salve.mdl"
 	}
 
 	// =================================================================================================================
@@ -10003,12 +9995,12 @@
 		// "AbilityTextureName"			"item_sample_item"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"1724"
+		"ItemCost"	"1133"
 		"ItemRecipe"	"1"
 		"ItemResult"	"item_god_lunchbox"
 		"ItemRequirements"
 		{
-			"01"	"item_best_lunchbox;item_aunt_clothes;item_knife"
+			"01"	"item_best_lunchbox;item_sunflower;item_sunflower"
 		}
 		"Model"	"models/props_gameplay/recipe.mdl"
 	}
@@ -10032,7 +10024,7 @@
 		// "AbilitySharedCooldown"			"lunchbox"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"1018"
+		"ItemCost"	"3333"
 		"ItemDroppable"	"1"
 		"ItemSellable"	"1"
 		"ItemRequiresCharges"	"1"
@@ -10107,7 +10099,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"12"
+				"bonus_all_stats"	"14"
 			}
 			"04"
 			{
@@ -14207,4 +14199,49 @@
 			}
 		}
 	}
+	"item_sunflower"
+	{
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"sunflower"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"	"8203"
+		"ItemQuality"	"component"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"650"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShopTags"	"agi;int;str"
+		"Modifiers"
+		{
+			"modifier_item_sunflower"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnCreated"	{}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
+				}
+			}
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_all_stats"	"5"
+			}
+		}
+		"Model"	"models/props_gameplay/branch.mdl"
+	}
+
 }
