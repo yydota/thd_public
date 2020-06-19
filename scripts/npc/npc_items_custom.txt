@@ -4311,12 +4311,14 @@
 		"ID"	"8057"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"0"
+		"ItemCost"	"110"
 		"ItemRecipe"	"1"
 		"ItemResult"	"item_donation_gem"
 		"ItemRequirements"
 		{
-			"01"	"item_hammer;item_sunflower"
+			"01"	"item_hammer;item_mushroom_kebab"
+			"02"	"item_hammer;item_mushroom_pie"
+			"03"	"item_hammer;item_mushroom_soup"
 		}
 		"Model"	"models/props_gameplay/recipe.mdl"
 	}
@@ -6289,13 +6291,14 @@
 		"ID"	"8089"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"290"
+		"ItemCost"	"400"
 		"ItemRecipe"	"1"
 		"ItemResult"	"item_fox_mask"
 		"ItemRequirements"
 		{
-		
-			"01"	"item_wind_lace;item_sailor_suit;item_sunflower"
+			"01"	"item_wind_lace;item_sailor_suit;item_mushroom_kebab"
+			"02"	"item_wind_lace;item_sailor_suit;item_mushroom_pie"
+			"03"	"item_wind_lace;item_sailor_suit;item_mushroom_soup"
 		}
 		"Model"	"models/props_gameplay/recipe.mdl"
 	}
@@ -9995,12 +9998,12 @@
 		// "AbilityTextureName"			"item_sample_item"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"1133"
+		"ItemCost"	"1783"
 		"ItemRecipe"	"1"
 		"ItemResult"	"item_god_lunchbox"
 		"ItemRequirements"
 		{
-			"01"	"item_best_lunchbox;item_sunflower;item_sunflower"
+			"01"	"item_best_lunchbox;item_knife;item_aunt_clothes"
 		}
 		"Model"	"models/props_gameplay/recipe.mdl"
 	}
@@ -10099,7 +10102,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"14"
+				"bonus_all_stats"	"12"
 			}
 			"04"
 			{
@@ -14199,49 +14202,4 @@
 			}
 		}
 	}
-	"item_sunflower"
-	{
-		"BaseClass"	"item_datadriven"
-		"AbilityTextureName"	"sunflower"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		// General
-		// -------------------------------------------------------------------------------------------------------------
-		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
-		"ID"	"8203"
-		"ItemQuality"	"component"
-		// Item Info
-		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"650"
-		"ItemDroppable"	"1"
-		"ItemSellable"	"1"
-		"ItemShopTags"	"agi;int;str"
-		"Modifiers"
-		{
-			"modifier_item_sunflower"
-			{
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"OnCreated"	{}
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_all_stats"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_all_stats"
-				}
-			}
-		}
-		// Special
-		// -------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"5"
-			}
-		}
-		"Model"	"models/props_gameplay/branch.mdl"
-	}
-
 }

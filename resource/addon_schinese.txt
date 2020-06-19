@@ -1254,8 +1254,6 @@
 		"DOTA_Tooltip_ability_item_cucumber_bonus_all_stats"	"+$all"
 		"DOTA_Tooltip_ability_item_mushroom"	"新月头饰"
 		"DOTA_Tooltip_ability_item_mushroom_bonus_all_stats"	"+$all"
-		"DOTA_Tooltip_ability_item_sunflower"	"向日葵"
-		"DOTA_Tooltip_ability_item_sunflower_bonus_all_stats"	"+$all"
 		"DOTA_Tooltip_ability_item_ice_block"	"冰精结晶"
 		"DOTA_Tooltip_ability_item_ice_block_bonus_all_stats"	"+$all"
 		"DOTA_Tooltip_ability_item_cherry_branch"	"练习手套"

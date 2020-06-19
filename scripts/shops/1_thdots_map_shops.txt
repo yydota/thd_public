@@ -34,7 +34,7 @@
 		"item"		"item_paper_mask"
 		"item"		"item_cat_foot"
 		"item"		"item_rocket_diagram"
-		"item"		"item_sunflower"
+		"item"		"item_ghostspoon"
 	}
 
 	"weapons_armor"
@@ -65,7 +65,6 @@
 		"item"		"item_bird"
 		"item"		"item_glue"
 		"item"		"item_gem"
-		"item"		"item_ghostspoon"
 	}	
 	
 	"secretshop"
