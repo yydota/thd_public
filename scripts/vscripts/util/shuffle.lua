@@ -10,7 +10,7 @@ function THD2_Rating_Catcher( args )
 			PlayerRatings[k] = v
 		end
 	end
-	GetTHDPlayerRank()
+	-- GetTHDPlayerRank()
 end
 
 Shuffle_Pressed = function (keys) --洗牌，GetTHDPlayerRank获取了10组排列顺序，每点击一次洗牌按钮会优先抽取分差最小的组合序号TrueList
@@ -102,10 +102,10 @@ end
 
 function GetTHDPlayerRank()
 	if not IsServer() then return end
-	if SHUFFLE_FLAG == true then
-		return
-	end
-	SHUFFLE_FLAG = true
+	-- if SHUFFLE_FLAG == true then
+	-- 	return
+	-- end
+	-- SHUFFLE_FLAG = true
 	------------------------------------------------
 	local List = {}
 	local player = {plyhd = nil, SteamID = nil,tiantifen = 0}
@@ -131,6 +131,7 @@ function GetTHDPlayerRank()
 	-- List[10].tiantifen = 1044
 	local result = zuhe(List,math.ceil(#List/2))
 		-- print_r(result)
+	PlayerList = {}
 	for i=1,TOP do
 		if result[i*2-1] ~= nil then
 			table.insert(PlayerList,result[i*2-1])

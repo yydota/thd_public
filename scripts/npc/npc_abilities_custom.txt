@@ -11315,7 +11315,7 @@
 		"ScriptFile"	"scripts/vscripts/abilities/abilitykoishi.lua"
 		"AbilityTextureName"	"custom/ability_thdots_koishi01"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityCooldown"	"15"
+		"AbilityCooldown"	"45 40 35 30"
 		"AbilityManaCost"	"80 90 100 110"
 		"precache"
 		{
@@ -22952,7 +22952,6 @@
 		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
 		// Time
 		// -------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"	"1.0"
 		"AOERadius"	"%radius"
 		// Precache
 		// -------------------------------------------------------------------------------------------------------------
