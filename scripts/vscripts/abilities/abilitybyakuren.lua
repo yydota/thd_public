@@ -147,7 +147,8 @@ function OnByakuren04SpellStart(keys)
 		ParticleManager:DestroyParticleSystem(effectIndex,false)
 		UnitDamageTarget(damage_table)
 	end
-	caster:SetHealth(caster:GetHealth()+dealdamage)
+	-- caster:SetHealth(caster:GetHealth()+dealdamage)
+	caster:Heal(dealdamage,caster)
 end
 
 function OnByakuren04SpellThinkStart(keys)

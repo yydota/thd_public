@@ -731,6 +731,17 @@ function ItemAbility_Verity_OnAttack(keys)
 	end
 end
 
+function Kafziel_OnSpellStart( keys )
+	local ItemAbility = keys.ability
+	local Caster = keys.caster
+	local Target = keys.target
+	Caster:EmitSound("DOTA_Item.SpiritVessel.Cast")
+	Target:EmitSound("DOTA_Item.SpiritVessel.Target.Enemy")
+	local particle = ParticleManager:CreateParticle("particles/items4_fx/spirit_vessel_cast.vpcf", PATTACH_ABSORIGIN_FOLLOW, Caster)
+	ParticleManager:SetParticleControl(particle, 1, Target:GetAbsOrigin())
+	ParticleManager:ReleaseParticleIndex(particle)
+end
+
 function ItemAbility_Kafziel_OnAttack(keys)
 	local ItemAbility = keys.ability
 	local Caster = keys.caster

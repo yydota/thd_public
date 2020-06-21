@@ -7351,12 +7351,17 @@
 		"OnSpellStart"
 		{
 			"RunScript"
-				{
-					"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
-					"Function"	 "ItemAbility_ModifierTarget"
-					"ModifierName"	"modifier_item_kafziel_debuff"
-					"Blockable"	"1"
-				}		
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
+				"Function"	 "ItemAbility_ModifierTarget"
+				"ModifierName"	"modifier_item_kafziel_debuff"
+				"Blockable"	"1"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
+				"Function"	 "Kafziel_OnSpellStart"
+			}		
 		}
 
 		"Modifiers"
@@ -7416,7 +7421,7 @@
 				"IsPurgable"  "0"
 				"RemoveOnDeath"			"1"
 				"Duration"		"%duration"
-				"EffectName"            "particles/units/heroes/hero_grimstroke/grimstroke_soulchain_debuff.vpcf"
+				"EffectName"            "particles/items4_fx/spirit_vessel_damage.vpcf"
 				"EffectAttachType"      "PATTACH_ABSORIGIN"
 				"Properties"
 				{
