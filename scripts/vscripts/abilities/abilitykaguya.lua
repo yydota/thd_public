@@ -205,6 +205,49 @@ function OnKaguya04SpellStart(keys)
 	ParticleManager:SetParticleControl(caster.effectIndex, 3, keys.target_points[1])
 	ParticleManager:DestroyParticleSystem(caster.effectIndex,false)
 	caster:EmitSound("Hero_Phoenix.SuperNova.Cast")
+
+	local dummy = CreateUnitByName(
+		"npc_dummy_unit"
+		,caster.ability_kaguya_04_point
+		,false
+		,caster
+		,caster
+		,caster:GetTeam()
+	)		
+	
+	caster.kaguya04dummy = dummy
+	
+	local effectIndex = ParticleManager:CreateParticle("particles/heroes/kaguya/kaguya04ring.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.kaguya04dummy)
+	caster.kaguya04aimrange = effectIndex
+	ParticleManager:SetParticleControl(caster.kaguya04aimrange, 0, Vector(100,0,0))
+	ParticleManager:SetParticleControl(caster.kaguya04aimrange, 1, Vector(100,0,0))		
+	
+	local effectIndex2 = ParticleManager:CreateParticle("particles/heroes/kaguya/kaguya04ring.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.kaguya04dummy)
+	caster.kaguya04aimrange2 = effectIndex2
+	ParticleManager:SetParticleControl(caster.kaguya04aimrange2, 0, Vector(90,0,0))
+	ParticleManager:SetParticleControl(caster.kaguya04aimrange2, 1, Vector(90,0,0))
+	
+	local effectIndex3 = ParticleManager:CreateParticle("particles/heroes/kaguya/kaguya04ring.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.kaguya04dummy)
+	caster.kaguya04aimrange3 = effectIndex3
+	ParticleManager:SetParticleControl(caster.kaguya04aimrange3, 0, Vector(80,0,0))
+	ParticleManager:SetParticleControl(caster.kaguya04aimrange3, 1, Vector(80,0,0))	
+
+	local effectIndex4 = ParticleManager:CreateParticle("particles/heroes/kaguya/kaguya04ring.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.kaguya04dummy)
+	caster.kaguya04aimrange4 = effectIndex4
+	ParticleManager:SetParticleControl(caster.kaguya04aimrange4, 0, Vector(70,0,0))
+	ParticleManager:SetParticleControl(caster.kaguya04aimrange4, 1, Vector(70,0,0))
+
+	local effectIndex5 = ParticleManager:CreateParticle("particles/heroes/kaguya/kaguya04ring.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.kaguya04dummy)
+	caster.kaguya04aimrange5 = effectIndex5
+	ParticleManager:SetParticleControl(caster.kaguya04aimrange5, 0, Vector(60,0,0))
+	ParticleManager:SetParticleControl(caster.kaguya04aimrange5, 1, Vector(60,0,0))	
+	
+
+	local effectIndex6 = ParticleManager:CreateParticle("particles/heroes/kaguya/kaguya04ring.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.kaguya04dummy)
+	caster.kaguya04aimrange6 = effectIndex6
+	ParticleManager:SetParticleControl(caster.kaguya04aimrange6, 0, Vector(50,0,0))
+	ParticleManager:SetParticleControl(caster.kaguya04aimrange6, 1, Vector(50,0,0))	
+	-- keys.ability:SetActivated(false)
 end
 
 function OnKaguya04Passive(keys)
@@ -275,7 +318,16 @@ function OnKaguya04Think(keys)
 		end
 		caster:StopSound("Hero_Phoenix.SuperNova.Cast")
 		caster:EmitSound("Hero_Abaddon.AphoticShield.Destroy")
-		caster:RemoveModifierByName("modifier_thdots_kaguya04_think")
+		if caster.kaguya04dummy:IsNull() == false and caster.kaguya04dummy ~= nil then
+			ParticleManager:DestroyParticleSystem(caster.kaguya04aimrange,true)	
+			ParticleManager:DestroyParticleSystem(caster.kaguya04aimrange2,true)
+			ParticleManager:DestroyParticleSystem(caster.kaguya04aimrange3,true)	
+			ParticleManager:DestroyParticleSystem(caster.kaguya04aimrange4,true)
+			ParticleManager:DestroyParticleSystem(caster.kaguya04aimrange5,true)	
+			ParticleManager:DestroyParticleSystem(caster.kaguya04aimrange6,true)		
+			caster.kaguya04dummy:RemoveSelf()	
+			caster:RemoveModifierByName("modifier_thdots_kaguya04_think")
+		end
 	end
 	local targets = FindUnitsInRadius(
 				   caster:GetTeam(),						--caster team
@@ -299,10 +351,26 @@ function OnKaguya04Think(keys)
 		UnitDamageTarget(damage_table)
 		UtilStun:UnitStunTarget( caster,v,keys.StunDuration)
 	end
+	if caster.kaguya04aimrange ~= nil then
+		ParticleManager:SetParticleControl(caster.kaguya04aimrange, 0, Vector(caster.ability_kaguya_04_radius,0,0))
+		ParticleManager:SetParticleControl(caster.kaguya04aimrange, 1, Vector(caster.ability_kaguya_04_radius,0,0))		
+		ParticleManager:SetParticleControl(caster.kaguya04aimrange2, 0, Vector((caster.ability_kaguya_04_radius*0.9),0,0))
+		ParticleManager:SetParticleControl(caster.kaguya04aimrange2, 1, Vector((caster.ability_kaguya_04_radius*0.9),0,0))		
+		ParticleManager:SetParticleControl(caster.kaguya04aimrange3, 0, Vector((caster.ability_kaguya_04_radius*0.8),0,0))
+		ParticleManager:SetParticleControl(caster.kaguya04aimrange3, 1, Vector((caster.ability_kaguya_04_radius*0.8),0,0))	
+		ParticleManager:SetParticleControl(caster.kaguya04aimrange4, 0, Vector((caster.ability_kaguya_04_radius*0.7),0,0))
+		ParticleManager:SetParticleControl(caster.kaguya04aimrange4, 1, Vector((caster.ability_kaguya_04_radius*0.7),0,0))
+		ParticleManager:SetParticleControl(caster.kaguya04aimrange5, 0, Vector((caster.ability_kaguya_04_radius*0.6),0,0))
+		ParticleManager:SetParticleControl(caster.kaguya04aimrange5, 1, Vector((caster.ability_kaguya_04_radius*0.6),0,0))		
+		ParticleManager:SetParticleControl(caster.kaguya04aimrange6, 0, Vector((caster.ability_kaguya_04_radius*0.5),0,0))
+		ParticleManager:SetParticleControl(caster.kaguya04aimrange6, 1, Vector((caster.ability_kaguya_04_radius*0.5),0,0))			
+	end
 	--caster:EmitSound("Hero_Phoenix.FireSpirits.Target")
 	caster:EmitSound("Hero_Abaddon.DeathCoil.Target")
 	
 end
+
+
 
 function KaguyaEx_OnIntervalThink(keys)
 	local ability=keys.ability
@@ -312,3 +380,5 @@ function KaguyaEx_OnIntervalThink(keys)
 		ability:SetLevel(ability_lvl)
 	end
 end
+
+

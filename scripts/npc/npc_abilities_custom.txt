@@ -8440,6 +8440,7 @@
 		{
 			"particle"	"particles/heroes/kaguya/ability_kaguya04_effect.vpcf"
 			"particle"	"particles/heroes/kaguya/ability_kaguya04_explosion.vpcf"
+			"particle"	"particles/heroes/kaguya/kaguya04ring.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
 			"soundfile"	"soundevents/thdots_hero_sounds/thdots_kaguya_sounds.vsndevts"

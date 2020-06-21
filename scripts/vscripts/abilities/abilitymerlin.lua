@@ -229,6 +229,8 @@ function MerlinExOnattackLanded( keys )
 		local MerlinExModifier = caster:FindModifierByName("modifier_MerlinEx_AttackBonus")
 		local count = caster:GetModifierStackCount("modifier_MerlinEx_AttackBonus", caster)
 		if count >= 3 then
+			local effectIndex = ParticleManager:CreateParticle("particles/econ/items/timbersaw/timbersaw_ti9/timbersaw_ti9_chakram_hit.vpcf", PATTACH_ABSORIGIN, target)
+			ParticleManager:DestroyParticleSystem(effectIndex,false)
 			caster:SetModifierStackCount("modifier_MerlinEx_AttackBonus", keys.ability, 0)
 			local damage_table = {
 				ability = keys.ability,
