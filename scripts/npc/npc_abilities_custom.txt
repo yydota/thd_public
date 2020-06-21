@@ -11793,7 +11793,10 @@
 		"MaxLevel"	"4"
 		"AbilityCastPoint"	"0.1"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_1"
+		// "AbilityCharges"				"2"
+		// "AbilityChargeRestoreTime"		"13 10 7 4"
 		"AbilityCooldown"	"7 6 5 4"
+		// "AbilityCooldown"	"0.1"
 		"AbilityManaCost"	"70 80 90 100"
 		// Stats
 		// ----------------------------------------------------------------
@@ -11963,7 +11966,8 @@
 			"03"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"mana_cost_percent"	"5 6 7 8"
+				// "mana_cost_percent"	"5 6 7 8"
+				"mana_cost_percent"	"2 3 4 5"
 			}
 		}
 	}

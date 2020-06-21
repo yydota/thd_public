@@ -751,10 +751,14 @@ function modifier_ability_thdots_kokoro04_caster_wanbaochui:OnIntervalThink()
 		-- print(#next_target)
 		for i = 1,#next_target do
 			if next_target[i] == nil then 
+				print("args")
 				break
 			end
-			if next_target[i]:HasModifier("dummy_unit") or not self.caster:CanEntityBeSeenByMyTeam(next_target[i]) or not next_target[i]:IsAlive() then
-				table.remove(next_target,i)
+			if next_target[i]:HasModifier("dummy_unit") or not self.caster:CanEntityBeSeenByMyTeam(next_target[i]) or not next_target[i]:IsAlive() 
+				or next_target[i]:HasModifier("modifier_item_tsundere_invulnerable") or next_target[i]:HasModifier("modifier_sanae04_invulnerable") 
+				or next_target[i]:IsUnselectable() then
+				-- table.remove(next_target,i)
+				next_target[i] = nil
 			end
 		end
 		if #next_target == 0 then 
@@ -762,8 +766,9 @@ function modifier_ability_thdots_kokoro04_caster_wanbaochui:OnIntervalThink()
 			return
 		end
 		for i = 1,#next_target do
-			if not next_target[i]:IsAlive() or not self.caster:CanEntityBeSeenByMyTeam(next_target[i]) or next_target[i]:HasModifier("dummy_unit") then
-				-- print(next_target[i]:GetName())
+			if next_target[i] ~= nil and not next_target[i]:IsAlive() or not self.caster:CanEntityBeSeenByMyTeam(next_target[i]) or next_target[i]:HasModifier("dummy_unit") 
+				or next_target[i]:HasModifier("modifier_item_tsundere_invulnerable") or next_target[i]:HasModifier("modifier_sanae04_invulnerable") 
+				or next_target[i]:IsUnselectable() then
 				-- print(next_target[i]:IsAlive())
 				-- print(next_target[i]:HasModifier("dummy_unit"))
 			else

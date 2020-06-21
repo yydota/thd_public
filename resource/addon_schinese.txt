@@ -240,8 +240,8 @@
 		"DOTA_Tooltip_modifier_thdots_kaguya_wanbaochui_debuff_7_Description"	"使目标缠绕。"
 		"DOTA_Tooltip_modifier_sanae01_slow"	"神风中凌乱"
 		"DOTA_Tooltip_modifier_sanae01_slow_Description"	"减少移动速度40%%"
-		"DOTA_Tooltip_modifier_brilliance_aura_effect_datadriven"	"Brilliance Aura Effect Datadriven"
-		"DOTA_Tooltip_modifier_brilliance_aura_effect_datadriven_Description"	""
+		"DOTA_Tooltip_modifier_brilliance_aura_effect_datadriven"	"「新星辉煌之夜」"
+		"DOTA_Tooltip_modifier_brilliance_aura_effect_datadriven_Description"	"来自早苗的奇迹，增加全地图友军的法力回复"
 		"DOTA_Tooltip_modifier_thdots_sanae04_think_interval"	"神德「五谷丰登」"
 		"DOTA_Tooltip_modifier_thdots_sanae04_think_interval_Description"	"使周围友军处于无敌状态。"
 		"DOTA_Tooltip_modifier_sanae04_invulnerable"	"无敌"
@@ -2586,7 +2586,7 @@
 		"DOTA_Tooltip_ability_ability_thdots_kokoro04"	"「假面丧心舞·暗黑能乐」"
 		"DOTA_Tooltip_ability_ability_thdots_kokoro02_Description"	"对周围%radius%码敌人造成%damage%点伤害。使用此技能后状态切为<font color=\"#5cb85c\">喜</font>。&nbsp;\n如果状态为<font color=\"#d9534f\">怒</font>时使用此技能，伤害翻倍。&nbsp;&nbsp;&nbsp;&nbsp;\n如果状态为<font color=\"#5cb85c\">喜</font>时使用此技能，每击中一个单位回复生命值%heal%点，英雄单位翻倍。&nbsp;&nbsp;&nbsp;&nbsp;\n如果状态为<font color=\"#5bc0de\">忧</font>时使用此技能，对击中的单位造成%movement_slow%%%减速，持续%slow_duration%秒。\n智力加成%intellect_bonus%"
 		"DOTA_Tooltip_ability_ability_thdots_kokoro03_Description"	"对目标单位造成%damage%伤害和%stun_duration%秒眩晕，并将目标单位击飞%knockback_distance%距离，再次释放技能瞬移到目标身边。\n使用此技能后状态切为<font color=\"#5bc0de\">忧</font>。&nbsp;\n如果状态为<font color=\"#d9534f\">怒</font>时使用此技能，击飞距离和伤害翻倍。&nbsp;\n如果状态为<font color=\"#5cb85c\">喜</font>时使用此技能，击飞后自身移速增加%movespeed%%%,攻速增加%attackspeed%，持续%movespeed_duraiton%秒。&nbsp;&nbsp;\n如果状态为<font color=\"#5bc0de\">忧</font>时使用此技能，对%radius%码范围敌人造成眩晕%you_stun_duration%秒。"
-		"DOTA_Tooltip_ability_ability_thdots_kokoro04_Description"	"对目标单位造成基于目标当前损失生命值的伤害。伤害系数为%damage%。\n如果状态为<font color=\"#d9534f\">怒</font>时，大招额外造成%nu_damage%点伤害。&nbsp;&nbsp;&nbsp;&nbsp;\n如果状态为<font color=\"#5cb85c\">喜</font>时，恢复造成伤害值同样的生命值。&nbsp;&nbsp;&nbsp;\n如果状态为<font color=\"#5bc0de\">忧</font>时，被击杀的单位%buyback_time%秒无法买活。\n万宝槌效果：\n秦心挥刀跃向敌人，随后再以更短的攻击频率斩击附近的其它敌方单位,持续%wanbaochui_duraion%秒，秦心在假面丧心舞期间无敌。如果状态为<font color=\"#d9534f\">怒</font>时，持续时间增加1.5秒。&nbsp;&nbsp;&nbsp;&nbsp;\n如果状态为<font color=\"#5cb85c\">喜</font>时，斩击吸血%life_steal%%%。&nbsp;&nbsp;&nbsp;\n如果状态为<font color=\"#5bc0de\">忧</font>时，假面丧心舞结束后倾倒众生，对周围范围内单位造成1.5秒眩晕"
+		"DOTA_Tooltip_ability_ability_thdots_kokoro04_Description"	"对目标单位造成基于目标当前损失生命值的伤害。伤害系数为%damage%。\n如果状态为<font color=\"#d9534f\">怒</font>时，大招额外造成%nu_damage%点伤害。&nbsp;&nbsp;&nbsp;&nbsp;\n如果状态为<font color=\"#5cb85c\">喜</font>时，恢复造成伤害值同样的生命值。&nbsp;&nbsp;&nbsp;\n如果状态为<font color=\"#5bc0de\">忧</font>时，被击杀的单位%buyback_time%秒无法买活。\n万宝槌效果：\n秦心挥刀跃向敌人，随后再以更短的攻击频率斩击附近的其它敌方单位,持续%wanbaochui_duraion%秒，秦心在假面丧心舞期间无敌。\n如果状态为<font color=\"#d9534f\">怒</font>时，持续时间增加1.5秒。&nbsp;&nbsp;&nbsp;&nbsp;\n如果状态为<font color=\"#5cb85c\">喜</font>时，斩击吸血%life_steal%%%。&nbsp;&nbsp;&nbsp;\n如果状态为<font color=\"#5bc0de\">忧</font>时，假面丧心舞结束后倾倒众生，对周围范围内单位造成1.5秒眩晕"
 		"DOTA_Tooltip_ability_ability_thdots_kokoroEx_2"	"表情丰富的扑克脸"
 		"DOTA_Tooltip_ability_ability_thdots_kokoroEx_2_Description"	"<h1>主动：</h1>提升%stat_bonus%%%当前主属性。\n被动：根据当前三围中最高的属性改变为相应的主属性，根据主属性增加相应的加成：\n每1点力量增加%strength_bonus%魔抗\n每1点敏捷增加%agility_bonus%移速\n每1点智力增加%intellect_bonus%技能增强。\n多个属性相同的情况会按照力量>敏捷>智力的顺序进行变化"
 		"DOTA_Tooltip_ability_ability_thdots_kokoro03_release"	"忧心的鬼婆面"

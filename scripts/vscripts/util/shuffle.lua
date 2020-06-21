@@ -36,7 +36,11 @@ Shuffle_Pressed = function (keys) --洗牌，GetTHDPlayerRank获取了10组排�
 end
 
 function GetNum()
-	return PlayerList[TrueList][1]
+	if PlayerList[TrueList] == nil then
+		return
+	else
+		return PlayerList[TrueList][1]
+	end
 end
 
 function THDSetTeam(atable)
