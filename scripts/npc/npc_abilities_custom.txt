@@ -1000,62 +1000,6 @@
 		}
 	}
 
-	"ability_dota2x_reimu01"
-	{
-		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/ability_dota2x_reimu01"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"MaxLevel"	"4"
-		"AbilityCastPoint"	"0.1"
-		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_3"
-		"AbilityCooldown"	"14 13 12 11"
-		"AbilityManaCost"	"90 105 125 140"
-		// Stats
-		// ----------------------------------------------------------------
-		"AbilityCastRange"	"650"
-		"AOERadius"	"%radius"
-		"ID"	"1999"
-		"precache"
-		{
-			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
-			"particle"	"particles/heroes/reimu/reimu_01_effect_fire.vpcf"
-			"particle"	"particles/thd2/heroes/reimu/reimu_01_effect_b.vpcf"
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"scripts/vscripts/abilities/abilityReimu.lua"
-				"Function"	"OnReimu01SpellStart"
-				"Target"	"POINT"
-				"StunDuration"	"%stun_duration"
-				"DamageDecrease"	"%damage_decrease"
-				"Radius"	"%radius"
-			}
-		}
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"stun_duration"	"0.5"
-			}
-			"02"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"damage_decrease"	"0.33"
-			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"radius"	"200"
-			}
-		}
-		"AbilityDamage"	"125 205 270 320"
-	}
-	//新的灵梦球 By Alice
 	// "ability_dota2x_reimu01"
 	// {
 	// 	"BaseClass"	"ability_datadriven"
@@ -1066,14 +1010,11 @@
 	// 	"MaxLevel"	"4"
 	// 	"AbilityCastPoint"	"0.1"
 	// 	"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_3"
-	// 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-	// 	"SpellDispellableType" "SPELL_DISPELLABLE_YES_STRONG"
-	// 	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
-	// 	"AbilityCooldown"	"12"
-	// 	"AbilityManaCost"	"100 120 140 160"
+	// 	"AbilityCooldown"	"14 13 12 11"
+	// 	"AbilityManaCost"	"90 105 125 140"
 	// 	// Stats
 	// 	// ----------------------------------------------------------------
-	// 	"AbilityCastRange"	"700"
+	// 	"AbilityCastRange"	"650"
 	// 	"AOERadius"	"%radius"
 	// 	"ID"	"1999"
 	// 	"precache"
@@ -1089,51 +1030,107 @@
 	// 			"ScriptFile"	"scripts/vscripts/abilities/abilityReimu.lua"
 	// 			"Function"	"OnReimu01SpellStart"
 	// 			"Target"	"POINT"
-	// 			"BounceTime" "%bounce_time"
-	// 			"DamageFollowPercentage"	"%damage_follow_percentage"
 	// 			"StunDuration"	"%stun_duration"
-	// 			"StunDurationFollow"	"%stun_duration_follow"
+	// 			"DamageDecrease"	"%damage_decrease"
 	// 			"Radius"	"%radius"
-	// 			"FirstDamage"	"%first_damage"
 	// 		}
 	// 	}
 	// 	"AbilitySpecial"
 	// 	{
-
 	// 		"01"
 	// 		{
-	// 			"var_type"				"FIELD_INTEGER"
-	// 			"bounce_time"			"2 2 2 3"
-	// 			"LinkedSpecialBonus"	"special_bonus_unique_lina_1"
+	// 			"var_type"	"FIELD_FLOAT"
+	// 			"stun_duration"	"0.5"
 	// 		}
 	// 		"02"
 	// 		{
-	// 			"var_type"				"FIELD_INTEGER"
-	// 			"first_damage"			"120 180 240 240"
-	// 			"LinkedSpecialBonus"	"special_bonus_unique_lina_2"
+	// 			"var_type"	"FIELD_FLOAT"
+	// 			"damage_decrease"	"0.33"
 	// 		}
 	// 		"03"
 	// 		{
-	// 			"var_type"	"FIELD_FLOAT"
-	// 			"stun_duration"	"0.6"
-	// 		}
-	// 		"04"
-	// 		{
 	// 			"var_type"	"FIELD_INTEGER"
-	// 			"damage_follow_percentage"	"50"
-	// 		}
-	// 		"05"
-	// 		{
-	// 			"var_type"	"FIELD_FLOAT"
-	// 			"stun_duration_follow"	"0.4"
-	// 		}
-	// 		"06"
-	// 		{
-	// 			"var_type"	"FIELD_FLOAT"
 	// 			"radius"	"200"
 	// 		}
 	// 	}
+	// 	"AbilityDamage"	"125 205 270 320"
 	// }
+	"ability_dota2x_reimu01"//新的灵梦球 By Alice
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_dota2x_reimu01"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"	"4"
+		"AbilityCastPoint"	"0.1"
+		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_3"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES_STRONG"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCooldown"	"12"
+		"AbilityManaCost"	"100 120 140 160"
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"	"700"
+		"AOERadius"	"%radius"
+		"ID"	"1999"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_visage.vsndevts"
+			"particle"	"particles/heroes/reimu/reimu_01_effect_fire.vpcf"
+			"particle"	"particles/thd2/heroes/reimu/reimu_01_effect_b.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilityReimu.lua"
+				"Function"	"OnReimu01SpellStart"
+				"Target"	"POINT"
+				"BounceTime" "%bounce_time"
+				"DamageFollowPercentage"	"%damage_follow_percentage"
+				"StunDuration"	"%stun_duration"
+				"StunDurationFollow"	"%stun_duration_follow"
+				"Radius"	"%radius"
+				"FirstDamage"	"%first_damage"
+			}
+		}
+		"AbilitySpecial"
+		{
+
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bounce_time"			"3"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"first_damage"			"125 205 270 320"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"0.45"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_follow_percentage"	"33"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration_follow"	"0.4"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"200"
+			}
+		}
+	}
 
 	"ability_dota2x_reimu02"
 	{
@@ -20067,12 +20064,25 @@
 		"MaxLevel"	"4"
 		// Data driven
 		// -------------------------------------------------------------------------------------------------------------
+		
+		"OnOwnerDied"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/bot_buff.lua"
+				"Function"	"DeathBuff"
+				"Target"	"CASTER"
+				"BonusOnDeath"	"%ex_death_gold"
+			}
+		}
+		
+		
 		"Modifiers"
 		{
 			"modifier_bot_buff"
 			{
 				"Passive"	"1"
-				"IsHidden"	"1"
+				"IsHidden"	"0"
 				"RemoveOnDeath"	"0"
 				"Properties"
 				{
@@ -20081,6 +20091,36 @@
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bouns_value"
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bouns_value"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bouns_value"
+				}
+			}
+			"modifier_bot_debuff"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"RemoveOnDeath"	"0"
+				
+				"OnAttackStart"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/bot_buff.lua"
+						"Function"	"Ability_Bot_SelfStun"
+						"Target"	"CASTER"
+						"SelfStunDuration"	"%self_stun_duration_atk"
+						"SelfStunChance"	"%SelfStunchanceATK"
+					}
+				}
+				
+				"OnUnitMoved"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/bot_buff.lua"
+						"Function"	"Ability_Bot_SelfStun"
+						"Target"	"CASTER"
+						"SelfStunDuration"	"%self_stun_duration_mov"
+						"SelfStunChance"	"%SelfStunchanceMOV"
+					}
 				}
 			}
 			"modifier_bot_give_gold"
@@ -20098,6 +20138,8 @@
 						"Target"	"CASTER"
 						"GiveGoldAmount"	"%give_gold_amount"
 						"GiveExpAmount"	"%give_exp_amount"
+						"GiveSpecialBonus"	"%give_exp_amount"
+						"IncreaseAllstat"	"%increaseallstat"
 					}
 				}
 			}
@@ -20119,7 +20161,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"bouns_value"	"5 5 10 15"
+				"bouns_value"	"-5 0 10 12"
 			}
 			"04"
 			{
@@ -20129,12 +20171,47 @@
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"give_gold_amount"	"10 20 40 60"
+				"give_gold_amount"	"0 20 40 60"
 			}
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"give_exp_amount"	"0 5 15 30"
+				"give_exp_amount"	"0 3 8 14"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"special_bonus_mul"	"0 0 0.3 1.0"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"SelfStunchanceATK"	"0.33 0.1 0 0"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"self_stun_duration_atk"	"0.3 0.1 0 0"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"SelfStunchanceMOV"	"0.002 0 0 0"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"self_stun_duration_mov"	"3 0 0 0"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"increaseallstat"	"0 0 0.1 0.3"
+			}
+			"13"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ex_death_gold"	"0 0 100 300"
 			}
 		}
 	}
@@ -24701,7 +24778,7 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				//"magic_resistence"	"3 5 7 9"
-				"magic_resistence"	"15 20 25 30"
+				"magic_resistence"	"20 30 40 50"
 			}
 			"02"
 			{
@@ -24894,6 +24971,16 @@
 						"Target"	"TARGET"
 						"ScriptFile"	"scripts/vscripts/abilities/abilitymystia.lua"
 						"Function"	"mystiaExOnAttackLanded"
+					}
+				}
+				"OnAttacked"
+				// "%attack_damage" is set to the damage value after mitigation
+				{
+					"RunScript"
+					{
+						"Target"	"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitymystia.lua"
+						"Function"	"mystiaExOnAttacked"
 					}
 				}
 				"Passive"	"1"

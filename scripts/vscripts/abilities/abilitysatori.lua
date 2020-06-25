@@ -801,30 +801,18 @@ function OnSatori01SpellStart(keys)
 			AbilityStolenName = "lone_druid_savage_roar"
 		end
 	end
-	if TargetName == "npc_dota_hero_meepo" then
-		if caster:GetLevel() >= 6 then
-			RandomNumber = RandomInt(1,50)
-		else
-			RandomNumber = RandomInt(1,50)
-		end
-		if RandomNumber <= 25 then
-			AbilityStolenName = "meepo_earthbind"
-		elseif RandomNumber <= 50 then
-			AbilityStolenName = "meepo_poof"
-		end
-	end
-	if TargetName == "npc_dota_hero_ursa" then
+	if TargetName == "npc_dota_hero_lycan" then
 		if caster:GetLevel() >= 6 then
 			RandomNumber = RandomInt(1,75)
 		else 
 			RandomNumber = RandomInt(1,50)
 		end
 		if RandomNumber <= 25 then
-			AbilityStolenName = "ursa_earthshock"
+			AbilityStolenName = "lycan_howl"
 		elseif RandomNumber > 25 and RandomNumber <= 50 then
-			AbilityStolenName = "ursa_overpower"
+			AbilityStolenName = "lycan_howl"
 		elseif RandomNumber > 50 and RandomNumber <= 75 then
-			AbilityStolenName = "ursa_enrage"
+			AbilityStolenName = "lycan_shapeshift"
 			i = 2
 		end
 	end

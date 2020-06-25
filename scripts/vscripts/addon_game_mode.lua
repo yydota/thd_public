@@ -4,15 +4,7 @@
 
 
 GameRules:EnableCustomGameSetupAutoLaunch(true)
-G_IsAIMode = false
-G_IsFastCDMode = false
-G_IsFastRespawnMode = false
-Bot_Mode = false
--- look at precache, if map == "dota" then enable for default
-cur_bot_dif = 1 -- easy
-fast_respawn_val = 20 -- fast respawn mode's respawn time
 
-G_Bot_Push_All_Time = {60,40,20,1}
 G_Rune_Bounty_List = {1,1,1,1,1,1}
 G_Rune_PowerUp_List = {1,1,1,1,1,1}
 G_Rune_Bounty_Spwner_List = {}
@@ -34,10 +26,10 @@ require ( "util/nodamage" )
 require ( "util/CheckItemModifies")
 
 --clothes
+require ( "util/specialmode")
 require ( "util/clothes")
 require ( "util/eventregister")
 require ( "util/observe")
-require ( "util/rune_fixer")
 require ( "util/rune_fixer")
 require ( "util/webapi")
 require ( "util/shuffle")
@@ -51,7 +43,7 @@ function Precache( context )
 
 	if GetMapName() == "dota" then 
 		--bot enable for default at dota map
-		Bot_Mode = true
+		THD2_SetBotMode(true)
 	end
 	
 	--clothes add(extra clothes,default should add first)
@@ -258,122 +250,6 @@ function THDOTSGameMode:InitGameMode()
 	
 end
 
---to ban some girls(which is not work done XD)
-G_BOT_USED = 
-{
-	false ,
-	false ,
-	false ,
-	false ,
-	false ,
-	
-	true ,
-	false ,
-	false ,
-	false ,
-	false ,
-	
-	true ,
-	false ,
-	true ,
-	true ,
-	true ,
-	
-	true ,
-	true ,
-	true ,
-	true ,
-	false ,
-	
-	true ,
-	true ,
-	true ,
-	true ,
-	true ,
-	
-	true ,
-	true ,
-	true ,
-	true ,
-	true ,
-	
-	true ,
-	true
-}
-
-G_Bot_Random_Hero = 
-{	
-	"npc_dota_hero_lina",					--红白
-	"npc_dota_hero_juggernaut",				--妖梦
-	"npc_dota_hero_slark",					--文文
-	"npc_dota_hero_earthshaker",			--天子
-	"npc_dota_hero_life_stealer",			--⑩
-	
-	"npc_dota_hero_crystal_maiden",			--黑白
-	"npc_dota_hero_drow_ranger",			--恋
-	"npc_dota_hero_mirana",					--兔子
-	"npc_dota_hero_chaos_knight",			--妹红
-	"npc_dota_hero_centaur",				--红三
-	
-	"npc_dota_hero_tidehunter",				--西瓜
-	"npc_dota_hero_clinkz",					--虫子
-	"npc_dota_hero_axe",					--⑨
-	"npc_dota_hero_naga_siren",				--二妹
-	"npc_dota_hero_storm_spirit",			--四季
-	
-	"npc_dota_hero_razor",					--衣玖
-	"npc_dota_hero_dark_seer",				--白莲
-	"npc_dota_hero_furion",					--辉夜
-	"npc_dota_hero_kunkka",					--船长
-	"npc_dota_hero_lion",					--早苗
-	
-	"npc_dota_hero_necrolyte",				--uuz
-	"npc_dota_hero_puck",					--蓝
-	"npc_dota_hero_sniper",					--空
-	"npc_dota_hero_tinker",					--教授
-	"npc_dota_hero_venomancer" ,			--花妈
-	
-	"npc_dota_hero_zuus",					--神妈
-	"npc_dota_hero_warlock",				--大妹
-	"npc_dota_hero_bounty_hunter",			--狗花
-	"npc_dota_hero_silencer",				--永琳
-	"npc_dota_hero_obsidian_destroyer",		--紫
-	
-	"npc_dota_hero_templar_assassin",		--16
-	"npc_dota_hero_visage"					--小爱
-}
-
-G_Bots_Ability_Add = {
-	{1,2,1,2,1,  6,1,2,2,11,  3,6,3,3,13, 3,0,6,0,14,  0,0,0,0,16  },
-	{2,1,2,1,2,  6,2,1,1,10,  3,6,3,3,12, 3,0,6,0,15,  0,0,0,0,17  },
-	{1,2,1,2,1,  6,1,2,2,11,  3,6,3,3,12, 3,0,6,0,15,  0,0,0,0,17  },
-	{1,2,1,2,1,  6,1,2,2,10,  3,6,3,3,13, 3,0,6,0,14,  0,0,0,0,17  },
-	{1,2,3,2,2,  6,2,3,3,11,  3,6,1,1,13, 1,0,6,0,15,  0,0,0,0,16  },
-	
-	{1,2,1,2,1,  6,1,2,2,11,  3,6,3,3,13, 3,0,6,0,14,  0,0,0,0,16  }, --marisa wait for fix
-	{2,1,3,3,3,  2,3,2,2,10,  6,6,1,1,13, 1,0,6,0,14,  0,0,0,0,16  },
-	{2,1,1,3,1,  6,1,3,3,10,  3,6,2,2,12, 2,0,6,0,14,  0,0,0,0,17  },
-	{2,1,2,3,2,  6,2,3,3,10,  3,6,1,1,13, 1,0,6,0,15,  0,0,0,0,16  },
-	{1,3,1,3,1,  6,1,3,3,10,  2,6,2,2,13, 2,0,6,0,14,  0,0,0,0,17  },
-	
-	{1,2,1,2,1,  6,1,2,2,11,  3,6,3,3,13, 3,0,6,0,14,  0,0,0,0,16  }, -- suika wait for fix
-	{2,1,2,3,2,  6,2,3,3,11,  3,6,1,1,13, 1,0,6,0,14,  0,0,0,0,17  },
-	{1,2,1,2,1,  6,1,2,2,11,  3,6,3,3,12, 3,0,6,0,15,  0,0,0,0,17  },
-	{1,2,1,2,1,  6,1,2,2,10,  3,6,3,3,13, 3,0,6,0,14,  0,0,0,0,17  },
-	{1,2,3,2,2,  6,2,3,3,11,  3,6,1,1,13, 1,0,6,0,15,  0,0,0,0,16  },
-	
-	{1,2,1,2,1,  6,1,2,2,11,  3,6,3,3,13, 3,0,6,0,14,  0,0,0,0,16  },
-	{2,1,2,3,2,  6,2,3,3,11,  3,6,1,1,13, 1,0,6,0,14,  0,0,0,0,17  },
-	{1,2,1,2,1,  6,1,2,2,11,  3,6,3,3,12, 3,0,6,0,15,  0,0,0,0,17  },
-	{1,2,1,2,1,  6,1,2,2,10,  3,6,3,3,13, 3,0,6,0,14,  0,0,0,0,17  },
-	{1,2,3,1,1,  6,1,3,3,11,  3,6,2,2,12, 2,0,6,0,15,  0,0,0,0,16  }  --sanae
-	
-}
-
-G_Bot_List = {}
-G_Bot_Buff_List = {}
-G_Bot_Diff_Text = {"easy","normal","hard","lunatic"}
-
 function Split(szFullString, szSeparator)  
 	local nFindStartIndex = 1  
 	local nSplitIndex = 1  
@@ -420,50 +296,6 @@ end
 function HostSay( text )  --由主机发送某条消息(当做日志, 提示等, 发送给所有人)
 	Say(GetHostPlayer(),text,false)
 end
-
-function THDOTSGameMode:ChangeBotDifficulty( player, dif )
-	
-	if GameRules:State_Get() >= DOTA_GAMERULES_STATE_STRATEGY_TIME then -- can't change difficulty in game
-		Say(player, "Can't change bot's difficulty after bot spawned!",false)
-		print("THDOTSGameMode:ChangeBotDifficulty: Error: Can't Change difficulty after bot spawned")
-		return
-	end
-	if dif <=0 or dif > 4 then --invalid difficulty
-		Say(player, "invalid difficulty!",false)
-		print("THDOTSGameMode:ChangeBotDifficulty: Error: invalid difficulty")
-		return
-	end
-	cur_bot_dif = dif
-	
-	local text = G_Bot_Diff_Text[dif]
-	Say(player, "Bot Difficulty set to " .. text, false)
-	print("Bot Difficulty set to " .. text)
-	
-	-- not modify at here now, see state changes
-	--[[
-	for k,v in pairs(G_Bot_List) do
-		local tHero = PlayerResource:GetPlayer(v):GetAssignedHero()
-		tHero:SetBotDifficulty(dif)
-	end
-	
-	for k,v in pairs(G_Bot_Buff_List) do
-		v:SetLevel(dif)
-	end
-	]]--
-end
-
---not working
---[[
-G_Random_Player_List = {false,false,false,false,false,false,false,false,false,false,false}
-
-function THDOTSGameMode:OnPlayerRandomChoose( keys )
-	
-	print("THDOTSGameMode:OnPlayerRandomChoose:")
-	print(keys.playerid)
-	G_Random_Player_List[keys.playerid] = true
-	
-end
-]]--
 
 boolstr = {
 	[true] = "Yes",
@@ -521,7 +353,17 @@ function THDOTSGameMode:OnPlayerSay( keys )
 	if is_host then  --主机限定的指令(所有图通用)
 	
 		
-		if text == "-print_nearby_abilities" then
+		if text == "-checkfort" then
+			local zzz=Entities:FindAllByClassname("npc_dota_fort")
+			for _,v in pairs(zzz) do
+				print('---------------')
+				print(v:GetOrigin())
+				print(v:GetClassname()..":")
+				print(v:GetTeam())
+				print(v:GetHealth())
+				print('---------------')
+			end
+		elseif text == "-print_nearby_abilities" then
 			local tmp = Entities:FindAllInSphere(PlayerResource:GetPlayer(plyid):GetAssignedHero():GetOrigin(),300)
 			for _,v in pairs(tmp) do
 				print('---------------')
@@ -578,25 +420,36 @@ function THDOTSGameMode:OnPlayerSay( keys )
 				enable_coach( plyid, true )
 				observerhd = PlayerResource:GetPlayer(plyid)
 			end
+		elseif ss[1] == "-setmaxplayer" then --设置最大玩家数
+			if GameRules:State_Get() <= 2 then 
+				local res = THD2_SetPlayerPerTeam(tonumber(ss[2]))
+				Say(plyhd,"Max player(per team) set to "..tostring(res),false)
+			end
 		elseif text == "-allowsame" then  --允许选择相同少女
-			GameRules:SetSameHeroSelectionEnabled(true)
+			THD2_SetCloneMode(true)
 			Say(plyhd, "Allowsame Mode ON...",false)
 		elseif text == "-unallowsame" then  --不再允许选择相同少女
-			GameRules:SetSameHeroSelectionEnabled(false)
+			THD2_SetCloneMode(false)
 			Say(plyhd, "Allowsame Mode OFF...",false)
+		elseif text == "-allsame" then  --(同队)全部选择相同少女
+			THD2_SetFCloneMode(true)
+			Say(plyhd, "Allsame Mode ON...",false)
+		elseif text == "-unallsame" then  --不再(同队)全部选择相同少女
+			THD2_SetFCloneMode(false)
+			Say(plyhd, "Allsame Mode OFF...",false)
 		end
 		if GameRules:State_Get() < DOTA_GAMERULES_STATE_STRATEGY_TIME then --只能在决策阶段(所有人选完人)前使用,主要是为了防止恶意使用
 			if text == "-fastrespawn" then  --快速复活
-				G_IsFastRespawnMode = true
+				THD2_SetFRSMode(true)
 				Say(plyhd, "Fast Respawn Mode ON",false)
 			elseif text == "-unfastrespawn" then
-				G_IsFastRespawnMode = false
+				THD2_SetFRSMode(false)
 				Say(plyhd, "Fast Respawn Mode OFF",false)
 			elseif text == "-fastcd" then  --快速CD(-80%冷却时间,类似wtf但蓝量非无限)
-				G_IsFastCDMode = true
+				THD2_SetFCDMode(true)
 				Say(plyhd, "Fast CoolDown Mode ON",false)
 			elseif text == "-unfastcd" then
-				G_IsFastCDMode = false
+				THD2_SetFCDMode(false)
 				Say(plyhd, "Fast CoolDown Mode OFF",false)
 			end
 		else
@@ -607,12 +460,15 @@ function THDOTSGameMode:OnPlayerSay( keys )
 	end
 	
 	--完全通用的公共指令
-	if text=="-checkmap" then
+	if text=="-checktime" then
+		HostSay("GetGameTime(): "..GameRules:GetGameTime())
+		HostSay("GetDOTATime(0, 0)"..GameRules:GetDOTATime(false, false))
+	elseif text=="-checkmap" then
 		HostSay("mapname is: "..GetMapName())
-		HostSay("FastCoolDown: "..boolstr[G_IsFastCDMode])
-		HostSay("FastRespawn: "..boolstr[G_IsFastRespawnMode])
-		if Bot_Mode then
-			HostSay("BotDiff: "..G_Bot_Diff_Text[cur_bot_dif])
+		HostSay("FastCoolDown: "..boolstr[THD2_GetFCDMode()])
+		HostSay("FastRespawn: "..boolstr[THD2_GetFRSMode()])
+		if THD2_GetBotMode() then
+			HostSay("BotDiff: ".. THD2_GetBotDiffName() )
 		end
 	elseif ss[1] == "-debugtext" then
 		DisplayChampion( PlayerResource:GetPlayer(plyid):GetAssignedHero() )
@@ -644,6 +500,8 @@ function THDOTSGameMode:OnPlayerSay( keys )
 			end
 		end
 	]]
+	elseif ss[1] == "-repick" then
+		-- THD2_MakePlayerRepick(plyid, ss[2])
 	elseif text == "ruozhitaidao" then --gtmdtd(这里是大鸽加的, 而且本来是空的)
 		HostSay("gtmdtd")  --这个是我加的 XD
 	end
@@ -665,40 +523,37 @@ function THDOTSGameMode:OnPlayerSay( keys )
 	
 	if is_host then  --这些指令仍然是主机限定的
 		if text == "-addbot" then --启用bot
-			Bot_Mode = true
+			THD2_SetBotMode(true)
 			HostSay("Bot Mode ON...")
 			--具体改动到了state变动
 			--必须在选人完成前使用才有效
 		elseif text == "-removebot" then --取消bot
-			Bot_Mode = false
+			THD2_SetBotMode(false)
 			HostSay("Bot Mode OFF...")
 			--必须在选人完成前使用才有效
 		elseif text == "-startbot" then --运行bot脚本
 			--开启sv_cheats (现在不需要了)
 			--SendToServerConsole('sv_cheats 1')
-			GameRules:GetGameModeEntity():SetBotThinkingEnabled(true)
-			GameRules:GetGameModeEntity():SetBotsMaxPushTier(cur_bot_dif + 2)
-			G_IsAIMode = true
+			THD2_SetBotThinking(true)
 			HostSay("Bot Start to Think...")
 		elseif text == "-stopbot" then --停止bot脚本
-			GameRules:GetGameModeEntity():SetBotThinkingEnabled(false)
-			G_IsAIMode = false
+			THD2_SetBotThinking(false)
 			HostSay("Bot Stop to Think...")
 		elseif text == "-easy" then --选择难度, 以下共4种
-			self:ChangeBotDifficulty(plyhd,1)
+			THD2_ChangeBotDifficulty(plyhd,1)
 			--Say(nil, "Bot Difficulty set to easy",false)
 		elseif text == "-normal" then
-			self:ChangeBotDifficulty(plyhd,2)
+			THD2_ChangeBotDifficulty(plyhd,2)
 			--Say(nil, "Bot Difficulty set to normal",false)
 		elseif text == "-hard" then 
-			self:ChangeBotDifficulty(plyhd,3)
+			THD2_ChangeBotDifficulty(plyhd,3)
 			--Say(nil, "Bot Difficulty set to hrad",false)
 		elseif text == "-lunatic" then 
-			self:ChangeBotDifficulty(plyhd,4)
+			THD2_ChangeBotDifficulty(plyhd,4)
 			--Say(nil, "Bot Difficulty set to lunatic",false)
 		end
 	end
-
+	
 end
 
 function THDOTSGameMode:CheckChoose( keys )
@@ -819,17 +674,7 @@ end
 function THDOTSGameMode:Levelup(keys)
 	print("THDOTSGameMode:Levelup")
 	 
-	
-	if G_IsAIMode == true then
-	    for k,v in pairs(G_Bot_List) do
-	    	--if v == keys.player then
-			-- just updata every bot is ok
-    			local ply = PlayerResource:GetPlayer(v)
-	    		local hero = ply:GetAssignedHero()
-				self:BotUpGradeAbility(hero)
-		 	--end
-		end
-	end
+	THD2_Special_OnLevelUp()
 end
 
 function THDOTSGameMode:BotUpGradeAbilityCommon(caster)
@@ -1002,38 +847,8 @@ function THDOTSGameMode:OnHeroSpawned( keys )
 	 	if hero.isFirstSpawn == nil or hero.isFirstSpawn == true then
 		    self:PrecacheHeroResource(hero)
 			
-			-- set bot's default ability level
-		    if G_IsAIMode == true then
-			    local plyID = hero:GetPlayerOwnerID()
-			    for k,v in pairs(G_Bot_List) do
-			    	if v == plyID then
-						local bot_buff_ability = hero:AddAbility("ability_common_bot_buff") --bot mana buff
-						if bot_buff_ability ~= nil then
-							table.insert(G_Bot_Buff_List,bot_buff_ability)
-							bot_buff_ability:SetLevel(cur_bot_dif) -- bot's default difficulty
-						end
-						hero:SetBotDifficulty(cur_bot_dif)
-						self:BotUpGradeAbility(hero) -- init abilities
-						--[[
-						for i=0,16 do
-						 	local ability = hero:GetAbilityByIndex(i)
-							if ability~=nil then
-								local level = 1 or ability:GetMaxLevel()
-								ability:SetLevel(level)
-							end
-						end
-						]]--
-				 	end
-				end
-			end
-			
-			if G_IsFastCDMode then --Fast CoolDown
-				local fastCDability = hero:AddAbility("ability_fast_cd_buff")
-				if fastCDability ~= nil then
-					fastCDability:SetLevel(1)
-				end
-			end
-			
+			THD2_FirstAddBuff(hero)
+
 		    local ability = hero:AddAbility("ability_common_power_buff")
 			if ability ~= nil then
 				ability:SetLevel(1)
@@ -1325,7 +1140,7 @@ function THDOTSGameMode:OnGameRulesStateChange(keys)
 			GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, 6 )
 			GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, 6 )
 		end
-		if Bot_Mode then
+		if THD2_GetBotMode() then
 			HostSay("You're in bot mode.")
 			HostSay("You can choose difficulty now.")
 			HostSay("Usage: -easy, -normal, -hard, -lunatic.")
@@ -1411,142 +1226,21 @@ function THDOTSGameMode:OnGameRulesStateChange(keys)
 			end
 		end
 		
-		if Bot_Mode == true then
+		if THD2_GetBotMode() == true then
 		
 			HostSay("You're in bot mode.")
 			--HostSay("You can choose difficulty now.")
 			--HostSay("Usage: -easy, -normal, -hard, -lunatic.")
 			--HostSay("Default Difficulty: easy.")
-			HostSay("Bot Difficulty: " .. G_Bot_Diff_Text[cur_bot_dif])
-		
-			print("changing to bot mod...")
-			print(GameRules:IsCheatMode()) --debug
+			HostSay("Bot Difficulty: " .. THD2_GetBotDiffName())
 			
-			--DOTA2 的bot加载机制十分弱智
-			--如果你进游戏的时候是作弊模式, 那么你就可以控制机器人了
-			--但如果不是作弊模式会创建不了机器人
-			--所以唯一的办法就是先开作弊创建机器人, 然后进游戏前关掉作弊, 进游戏以后再打开作弊并开启机器人脚本
-			--十分弱智不是嘛qwq ? 
-			--    来自zdw1999
-			
-			--[[
-			
-			local ply = nil
-			for i=0,9 do --检测机器人将要使用的位置
-				ply = PlayerResource:GetPlayer(i)
-				if ply==nil then
-					table.insert(G_Bot_List,i)
-				end
-			end
-			--用bot填充空位
-			SendToServerConsole('dota_bot_populate')
-			SendToServerConsole('dota_bot_set_difficulty 3') --难度为hard
-			--设置AI活动
-			--local GameMode = GameRules:GetGameModeEntity()
-			--GameMode:SetBotThinkingEnabled(true) --不要在这里开启脚本
-			--设置AI推塔的最高级别
-			--GameMode:SetBotsMaxPushTier(5)
-			
-			--在这里先关闭cheats, 等进游戏后执行 -startbot
-			SendToServerConsole('sv_cheats 0')
-			
-			--]]
-			
-			--old bot load style
-			--SendToServerConsole('sv_cheats 1')
-			--print(GameRules:IsCheatMode()) --debug
-			--G_IsAIMode = true
-			
-			--为了能够方便控制机器人的技能点和属性, 这里使用旧方式加载bot
-			
-			local GameMode = GameRules:GetGameModeEntity()
-			local ply = nil
-			local goodcnt = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
-			local badcnt = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)
-			
-			--清除玩家选择的英雄
-			
-			for i=0,233 do
-				ply = PlayerResource:GetPlayer(i)
-				if ply ~= nil then
-					local tHeroName = PlayerResource:GetSelectedHeroName(i)
-					print( 'Player ' .. string.format("%d",i) .. ' picked ' .. tHeroName )
-					if tHeroName ~= nil then
-						for j=0,233 do
-							if G_Bot_Random_Hero[j] == tHeroName then
-								G_BOT_USED[j] = true
-								break
-							end
-						end
-					end
-				end
-			end
-			
-			-- 创建bot
-			
-			for i=0,233 do
-				ply = PlayerResource:GetPlayer(i)
-				if ply ~= nil then
-					print(string.format("player %d is not nil",i))
-				end
-				
-				if goodcnt >= 5 and badcnt >= 5 then
-					break
-				end
-				
-				if ply == nil then
-					local int = RandomInt(1, 32)
-					while(G_BOT_USED[int])
-					do
-						int = RandomInt(1, 32)
-					end
-					bot_team = true
-					if goodcnt >= 5 then
-						bot_team = false
-					end
-					if bot_team == true then
-						goodcnt = goodcnt + 1
-					else 
-						badcnt = badcnt + 1
-					end
-					--table.insert(G_Bot_List,i)
-					Tutorial:AddBot(G_Bot_Random_Hero[int],'','',bot_team)
-					G_BOT_USED[int]=true
-					
-				end
-			end
-			
-			for i=0,233 do
-				if PlayerResource:GetPlayer(i) ~= nil and PlayerResource:GetConnectionState(i) == 1 then
-					table.insert(G_Bot_List,i)
-					print(i)
-				end
-			end
-			--如果存在机器人则启动AI
-			
-			if #G_Bot_List > 0 then
-				G_IsAIMode = true
-				--设置AI活动
-				GameRules:GetGameModeEntity():SetBotThinkingEnabled(true)
-				--设置AI推塔的最高级别
-				GameRules:GetGameModeEntity():SetBotsMaxPushTier(cur_bot_dif + 2)
-				--for i=0,9 do
-				--	if PlayerResource:GetConnectionState(i)==1 then
-				--		plyhd = PlayerResource:GetPlayer(keys.userid-1)
-				--		plyhd:
-				--	end
-				--end
-			end
-			
-			--在这里先关闭cheats, 等进游戏后执行 -startbot
-			--G_IsAIMode = false
-			--SendToServerConsole('sv_cheats 0')
-			--print(GameRules:IsCheatMode()) --debug
-			
-			--Say(nil, "Bot Spawned...",false)
-			print("Bot Spawned...") --debug
+			THD2_AddBot()
 			
         end
+		
+		THD2_ForceClone(); --will check at inside
+		
+		
     elseif newState == 5 then  --显示人物的阶段(过场)
 		--random hero for anyone which not choosed
 		for i =0,63 do
@@ -1558,31 +1252,22 @@ function THDOTSGameMode:OnGameRulesStateChange(keys)
 			end
 		end
     elseif newState == DOTA_GAMERULES_STATE_PRE_GAME then -- 地图加载好了, 所有人准备出门
-		if Bot_Mode == true and #G_Bot_List > 0 then
+		if THD2_GetBotMode() == true then
 			Tutorial:StartTutorialMode()
-			HostSay("Bot Difficulty: " .. G_Bot_Diff_Text[cur_bot_dif])
-			if G_IsFastRespawnMode then -- fast respawn mode
-				GameMode:SetFixedRespawnTime(fast_respawn_val)
-				HostSay("Fast Respawn Mode ON")
-			end
-			if G_IsFastCDMode then
-				HostSay("Fast CoolDown Mode ON")
-			end
+			HostSay("Bot Difficulty: " .. THD2_GetBotDiffName())
+		end
+		if THD2_GetFRSMode() then -- fast respawn mode
+			GameMode:SetFixedRespawnTime( THD2_GetFRSTime() )
+			HostSay("Fast Respawn Mode ON")
+		end
+		if THD2_GetFCDMode() then
+			HostSay("Fast CoolDown Mode ON")
 		end
 	elseif newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then  --游戏到达 00:00(第一次刷符)
 	
 		--开启神符修正机制
 		rune_fixer_init()
-		
-		GameRules:GetGameModeEntity():SetContextThink(
-			"Bot Push All",
-			function()
-				GameRules:GetGameModeEntity():SetBotsMaxPushTier(6)
-				return nil
-			end,
-			G_Bot_Push_All_Time[cur_bot_dif] * 60.0
-		)
-		
+		THD2_BotPushAllWithDelay()
     end
   
 	print(newState)
@@ -1608,6 +1293,8 @@ function THDOTSGameMode:OnGameRulesStateChange(keys)
 			end
 			if GameRules:State_Get() == 7 then
 				return 5.0
+			else
+				return nil
 			end
 		end , 5.0)
 		

@@ -21,10 +21,12 @@ function WebApi:Send(path, data, onSuccess, onError)
 
 	request:Send(function(response)
 		if response.StatusCode == 200 then
+			local status
 			local data = {}
+			local result = {}
 			if response.Body then
 				print("Response from " .. path .. ":")
-				local status, result = pcall(json.decode, response.Body)
+				status, result = pcall(json.decode, response.Body)
 				if isTesting then
 					if status then
 						DeepPrintTable(result)
@@ -39,7 +41,6 @@ function WebApi:Send(path, data, onSuccess, onError)
 				end
 			end
 			if onSuccess then
-				DeepPrintTable(data)
 				onSuccess(data, response.StatusCode)
 			end
 		else
@@ -62,6 +63,50 @@ function WebApi:Send(path, data, onSuccess, onError)
 	end)
 end
 
+local PlayerInfos = {}
+local IsValidTHD2Match = false
+
+function WebApi:GetPlayerInfo( playerId )
+	local steamId = tostring(PlayerResource:GetSteamID(playerId))
+	if steamId == 0 then return end --invalid player
+--[[
+	if isTesting and PlayerInfos[steamId]~=nil then
+		DeepPrintTable(PlayerInfos[steamId])
+	end
+]]--
+	PlayerInfos[steamId] = {
+		playerId = playerId,
+		steamId = steamId,
+		team = PlayerResource:GetTeam(playerId),
+
+		hero = PlayerResource:GetSelectedHeroName(playerId),
+		pickReason = PlayerResource:HasRandomed(playerId) and "random" or "pick",
+		kills = PlayerResource:GetKills(playerId),
+		deaths = PlayerResource:GetDeaths(playerId),
+		assists = PlayerResource:GetAssists(playerId),
+		level = 0,
+		items = {},
+	}
+
+	local hero = PlayerResource:GetSelectedHeroEntity(playerId)
+	if IsValidEntity(hero) then
+		PlayerInfos[steamId].level = hero:GetLevel()
+		for slot = DOTA_ITEM_SLOT_1, DOTA_STASH_SLOT_6 do
+			local item = hero:GetItemInSlot(slot)
+			if item then
+				table.insert(PlayerInfos[steamId].items, {
+					slot = slot,
+					name = item:GetAbilityName(),
+					charges = item:GetCurrentCharges()
+				})
+			end
+		end
+	end
+	
+	return PlayerInfos[steamId]
+	
+end
+
 function WebApi:BeforeMatch( onSuccess )
 	local requestBody = {}
 	if isTesting then
@@ -72,9 +117,26 @@ function WebApi:BeforeMatch( onSuccess )
 			table.insert(requestBody, tostring(PlayerResource:GetSteamID(i)))
 		end
 	end
-
+	
+	IsValidTHD2Match = isTesting or (#requestBody >= 10)
+	if IsValidTHD2Match then
+		GameRules:GetGameModeEntity():SetContextThink(
+			"player data catcher",
+			function()
+				--print(PlayerResource:GetSteamID(99))
+				if GameRules:State_Get() < DOTA_GAMERULES_STATE_PRE_GAME then return 0.1 end
+				if GameRules:State_Get() == DOTA_GAMERULES_STATE_POST_GAME then return nil end
+				for i = 0, 233 do
+					if PlayerResource:IsValidPlayerID(i) and not PlayerResource:IsFakeClient(i) then
+						WebApi:GetPlayerInfo(i)
+					end
+				end	
+				return 1.0
+			end,
+			1.0
+		)
+	end
 	WebApi:Send("beforematch", requestBody, onSuccess)
-	-- GetTHDPlayerRank()
 end
 
 function WebApi:AfterMatch()
@@ -113,42 +175,16 @@ function WebApi:AfterMatch()
 		players = {}
 	}
 
-	for playerId = 0, 233 do
-		if PlayerResource:IsValidTeamPlayerID(playerId) and not PlayerResource:IsFakeClient(playerId) then
-			local playerData = {
-				playerId = playerId,
-				steamId = tostring(PlayerResource:GetSteamID(playerId)),
-				team = PlayerResource:GetTeam(playerId),
-
-				hero = PlayerResource:GetSelectedHeroName(playerId),
-				pickReason = PlayerResource:HasRandomed(playerId) and "random" or "pick",
-				kills = PlayerResource:GetKills(playerId),
-				deaths = PlayerResource:GetDeaths(playerId),
-				assists = PlayerResource:GetAssists(playerId),
-				level = 0,
-				items = {},
-			}
-
-			local hero = PlayerResource:GetSelectedHeroEntity(playerId)
-			if IsValidEntity(hero) then
-				playerData.level = hero:GetLevel()
-				for slot = DOTA_ITEM_SLOT_1, DOTA_STASH_SLOT_6 do
-					local item = hero:GetItemInSlot(slot)
-					if item then
-						table.insert(playerData.items, {
-							slot = slot,
-							name = item:GetAbilityName(),
-							charges = item:GetCurrentCharges()
-						})
-					end
-				end
-			end
-
-			table.insert(requestBody.players, playerData)
+	for i = 0, 233 do
+		if PlayerResource:IsValidPlayerID(i) and not PlayerResource:IsFakeClient(i) then
+			WebApi:GetPlayerInfo(i)
 		end
 	end
-
-	if isTesting or #requestBody.players >= 10 then
+	for i,v in pairs(PlayerInfos) do
+		table.insert(requestBody.players, v)
+	end
+			
+	if isTesting or #PlayerInfos >= 10 then
 		WebApi:Send("aftermatch", requestBody)
 	end
 end

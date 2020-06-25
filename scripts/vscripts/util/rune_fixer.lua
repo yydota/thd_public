@@ -64,7 +64,7 @@ function rune_fixer_init()
 				
 					--recheck deviation
 					local x,y = math.modf(next_remove_time1 - rune_init_time);
-					if y < 0.2 then next_remove_time1 = next_remove_time1 + 0.01 end
+					if y < 0.2 then next_remove_time1 = next_remove_time1 + 0.1 end
 					
 				elseif next_reset_time1 + 0.2 < GameRules:GetGameTime() then--should not remove, check old rune exist?
 					--2,4,6,8...
@@ -84,12 +84,12 @@ function rune_fixer_init()
 					
 					--recheck deviation
 					local x,y = math.modf(next_reset_time1 - rune_init_time);
-					if y < 0.2 then next_resetme1 = next_reset_time1 + 0.01 end
+					if y < 0.2 then next_reset_time1 = next_reset_time1 + 0.1 end
 					
 				end
-				return 0.03
+				return 0.1
 			end,
-			0.03
+			0.1
 		)
 		
 		
@@ -116,7 +116,7 @@ function rune_fixer_init()
 					
 					--recheck deviation
 					local x,y = math.modf(next_reset_time2 - rune_init_time);
-					if y < 0.2 then next_reset_time2 = next_reset_time2 + 0.01 end
+					if y < 0.2 then next_reset_time2 = next_reset_time2 + 0.1 end
 					
 				elseif next_remove_time2 + 0.2 < GameRules:GetGameTime() then
 					-- 2,4,6,8,10...
@@ -134,12 +134,12 @@ function rune_fixer_init()
 					
 					--recheck deviation
 					local x,y = math.modf(next_remove_time2 - rune_init_time);
-					if y < 0.2 then next_remove_time2 = next_remove_time2 + 0.01 end
+					if y < 0.2 then next_remove_time2 = next_remove_time2 + 0.1 end
 					
 				end
-				return 0.03
+				return 0.1
 			end,
-			0.03
+			0.1
 		)
 		
 end

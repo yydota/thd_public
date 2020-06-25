@@ -234,7 +234,8 @@ function ShouExOnSpellStart( keys )
 	local regen = keys.regen
 	local count = caster:GetModifierStackCount("modifier_ability_thdots_shouEx", caster)
 	if count >= 1 and not keys.event_ability:IsItem() and caster:GetHealth() ~= caster:GetMaxHealth() and caster:GetMana() ~= caster:GetMaxMana() then
-		caster:SetHealth(caster:GetHealth() + (caster:GetMaxHealth()*regen))
+		-- caster:SetHealth(caster:GetHealth() + (caster:GetMaxHealth()*regen))
+		caster:Heal((caster:GetMaxHealth()*regen),caster)
 		caster:SetMana(caster:GetMana() + (caster:GetMaxMana()*regen))
 		caster:SetModifierStackCount("modifier_ability_thdots_shouEx", caster, count - 1 )
 	end

@@ -67,18 +67,17 @@ end
 --particles/econ/items/jakiro/jakiro_ti7_immortal_head/jakiro_ti7_immortal_head_ice_path_embers.vpcf
 function mystia03OnExecuted(keys)
   if keys.event_ability:IsItem() then return end
+  if IsNotLunchbox_ability(keys.event_ability) then return end
   local target = keys.unit
   local targetPoint = target:GetOrigin()
   local ability = keys.ability
   local CurrentActiveAbility = target:GetCurrentActiveAbility()
   local mana = ability:GetLevelSpecialValueFor("restoredmana", ability:GetLevel() - 1 )
   local chance = ability:GetLevelSpecialValueFor("chance", ability:GetLevel() - 1 )
-  if CurrentActiveAbility:GetCooldown(CurrentActiveAbility:GetLevel()) > 1  then
-    if RollPercentage(chance) then
+  if RollPercentage(chance) then
       target:GiveMana(mana)
       local effectIndex=  ParticleManager:CreateParticle("particles/thd2/heroes/mystia/mystia03.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, target)
-          ParticleManager:DestroyParticleSystem(effectIndex,false)
-    end
+      ParticleManager:DestroyParticleSystem(effectIndex,false)
   end
 end
 
@@ -183,8 +182,8 @@ end
 --弱肉强食天生被动
 function mystiaExOnAttackLanded(keys)
   local target = keys.target
-  local rate = keys.ability:GetSpecialValueFor("rate")
-  local base = keys.ability:GetSpecialValueFor("base")
+  local rate = keys.ability:GetSpecialValueFor("rate") --3
+  local base = keys.ability:GetSpecialValueFor("base") --30
   
   if target:IsHero() or target:IsNeutralUnitType() then
 
@@ -197,16 +196,48 @@ function mystiaExOnAttackLanded(keys)
   end
       --当小碎骨等级比敌人高的时候，造成额外的魔法伤害
       if caster_level > target_level then 
-        local damage = base + (caster_level - target_level) * rate
+        local damage = base + (caster_level - target_level + caster_level) * rate
         --10级天赋
         if FindTelentValue(caster,"special_bonus_unique_night_stalker") ~= 0 then
            damage = damage * 2
         end
-        
+        print(damage)
         local damage_table = {
              ability = keys.ability,
              victim = target, 
              attacker = caster, 
+             damage = damage, 
+             damage_type = keys.ability:GetAbilityDamageType()
+        }
+
+        UnitDamageTarget(damage_table) 
+      end
+    end
+end
+
+function mystiaExOnAttacked( keys )
+  local target = keys.attacker
+  local rate = keys.ability:GetSpecialValueFor("rate") --3
+  local base = keys.ability:GetSpecialValueFor("base") --30
+  
+  if target:IsRealHero() or target:IsNeutralUnitType() then
+
+  local caster = EntIndexToHScript(keys.caster_entindex)
+  local caster_level = caster:GetLevel()
+  local target_level = target:GetLevel()
+
+      --当小碎骨等级比敌人低的时候，被造成额外的魔法伤害
+      if caster_level < target_level then 
+        local damage = base + target_level * rate
+        --10级天赋
+        if FindTelentValue(caster,"special_bonus_unique_night_stalker") ~= 0 then
+           damage = damage * 2
+        end
+        print(damage)
+        local damage_table = {
+             ability = keys.ability,
+             victim = caster, 
+             attacker = target, 
              damage = damage, 
              damage_type = keys.ability:GetAbilityDamageType()
         }
