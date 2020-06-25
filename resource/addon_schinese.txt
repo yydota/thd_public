@@ -2525,6 +2525,7 @@
 		"DOTA_Tooltip_modifier_ability_thdots_tei03_ex_Description"	"有几率对普通攻击进行一次反击"
 		"DOTA_Tooltip_modifier_ability_thdots_tei03"	"「枪斗术」"
 		"DOTA_Tooltip_ability_ability_thdots_tei03_Description"	"被动：有%odds%%%的几率对普通攻击（对远程几率翻倍，对幻象几率为50%%）进行一次反击\n主动：拿起双枪，对%radius%码内所有英雄单位进行射击，同时提升攻击速度，受到远程攻击减少%beattacked_reduce%%%。"
+		"DOTA_Tooltip_ability_ability_thdots_tei03_Note0"	"开启枪斗术后无法触发月兔幻觉兵器多重攻击"
 		"DOTA_Tooltip_ability_ability_thdots_tei03_attackspeed_bonus"	"攻速提升："
 		"DOTA_Tooltip_ability_ability_thdots_tei03_duration"	"持续时间："
 		"DOTA_Tooltip_modifier_ability_thdots_tei03_Description"	"对附近所有英雄单位进行射击"

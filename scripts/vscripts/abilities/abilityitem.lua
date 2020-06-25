@@ -1583,6 +1583,7 @@ function ItemAbility_InabaIllusionWeapon_Ranged_OnAttack(keys)
 	local ItemAbility = keys.ability
 	local Caster = keys.caster
 	local Target = keys.target
+	if Caster:HasModifier("modifier_ability_thdots_tei03") then return end --黑兔子开启枪斗术禁用兔炮效果
 	local RangedSplitNum=keys.RangedSplitNum
 	local RangedSplitRadius=keys.RangedSplitRadius
 	local ItemCount=0

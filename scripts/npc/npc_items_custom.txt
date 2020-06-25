@@ -12339,7 +12339,6 @@
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
 		"ItemResult"	"item_inaba_illusion_weapon"
-		"InvalidHeroes"	"npc_dota_hero_gyrocopter"
 		"InvalidHeroes"	"npc_dota_hero_medusa"
 		"ItemRequirements"
 		{

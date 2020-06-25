@@ -275,7 +275,9 @@ function Tei03OnSpellStart(keys )
 	--  for i=0,5 do --禁用月兔幻觉兵器
 	-- 	local item = caster:GetItemInSlot(i)
 	-- 	if item ~= nil and item:GetName() == "item_inaba_illusion_weapon" then
-	-- 	end
+	-- 		print(item:GetName())
+	-- 		item:SetContainedItem(item)
+	-- 	end SetStickyItemDisabled(bDisabled)
 	-- end
 end
 

@@ -293,7 +293,7 @@ end
 ability_thdots_kokoro03 = class({})
 
 function ability_thdots_kokoro03:CastFilterResultTarget(hTarget)
-	if hTarget == self:GetCaster() then
+	if hTarget == self:GetCaster() or hTarget:IsMagicImmune() then
 		return UF_FAIL_CUSTOM
 	end
 end
@@ -327,6 +327,9 @@ function ability_thdots_kokoro03:OnSpellStart()
 		duration = knockback_duration
 	end
 	if target:HasModifier("modifier_thdots_yugi04_think_interval") then
+		duration = 0.1
+	end
+	if target:HasModifier("modifier_thdots_Suika_04") and target:HasModifier("modifier_thdots_Suika_04_telent") then
 		duration = 0.1
 	end
 	self:GetCaster().target = target
