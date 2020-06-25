@@ -1096,6 +1096,24 @@
 				"FirstDamage"	"%first_damage"
 			}
 		}
+		"Modifiers"
+		{
+			"modifier_thdots_reimu01_ball"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"0"
+				"IsPurgable"		"0"
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilityReimu.lua"
+						"Function"		"OnReimu01Destory"
+					}
+				}
+			}
+		}
 		"AbilitySpecial"
 		{
 

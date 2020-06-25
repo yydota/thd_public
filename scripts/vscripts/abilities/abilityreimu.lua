@@ -45,6 +45,7 @@ function AbilityReimu:OnReimu01Start(keys)
         Target = nil,
         OriginZ = 0
     }
+    keys.ability:ApplyDataDrivenModifier(caster, ballunit, "modifier_thdots_reimu01_ball", {Duration = 2.4}) --增加modifier去掉阴阳玉的残留特效
     if FindTelentValue( caster, "special_bonus_unique_lina_3") == 1 then
 		radius =  radius + 150
 	end
@@ -138,6 +139,12 @@ function AbilityReimu:OnReimu01Start(keys)
     end, 0.1)
 end
 
+
+function OnReimu01Destory( keys )
+	print(keys.target.LightIndex)
+	ParticleManager:DestroyParticleSystem(keys.target.LightIndex,true)
+	keys.target:RemoveSelf()
+end
 -- Reimu02
 function AbilityReimu:initLightData(level)
     self.tReimu02Light = self.tReimu02Light or {}
