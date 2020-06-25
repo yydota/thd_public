@@ -184,7 +184,7 @@ function WebApi:AfterMatch()
 		table.insert(requestBody.players, v)
 	end
 			
-	if isTesting or #PlayerInfos >= 10 then
+	if isTesting or #requestBody.players >= 10 then
 		WebApi:Send("aftermatch", requestBody)
 	end
 end
