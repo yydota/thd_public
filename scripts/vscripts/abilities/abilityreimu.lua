@@ -121,6 +121,9 @@ function AbilityReimu:OnReimu01Start(keys)
                     damage = damageFinal,
                     damage_type = keys.ability:GetAbilityDamageType(),
                 }
+            	if v:HasModifier("modifier_reimu03_flag") then
+            		DamageTable.damage_type = DAMAGE_TYPE_PURE
+            	end
                 UnitDamageTarget(DamageTable)
                 UtilStun:UnitStunTarget(caster, v, stunDurationReal)
             end
@@ -223,6 +226,9 @@ function AbilityReimu:OnReimu02OnLight(keys)
                         damage = keys.ability:GetAbilityDamage(),
                         damage_type = keys.ability:GetAbilityDamageType(),
                     }
+                	if v:HasModifier("modifier_reimu03_flag") then
+            			DamageTable.damage_type = DAMAGE_TYPE_PURE
+            		end
                     v:EmitSound("Hero_Wisp.Spirits.Target")
                     UnitDamageTarget(DamageTable)
                     self.tReimu02Light[i].Ball.unit:RemoveSelf()
@@ -301,6 +307,7 @@ function AbilityReimu:OnReimu03Start(keys)
 			keys.ability:ApplyDataDrivenModifier(caster, keys.target, "modifier_reimu03_slow", {Duration = keys.Duration})
 		end
 	    UtilSilence:UnitSilenceTarget(caster,keys.target,keys.Duration)
+	    keys.ability:ApplyDataDrivenModifier(caster, keys.target,"modifier_reimu03_flag",{Duration = keys.Duration})
 		GameRules:GetGameModeEntity():SetContextThink(DoUniqueString('Release Effect'),
     	function ()
     		if GameRules:IsGamePaused() then return 0.03 end
@@ -399,6 +406,9 @@ function AbilityReimu:OnReimu04Think(keys)
                     damage = keys.ability:GetAbilityDamage() / keys.Damage_Count,
                     damage_type = keys.ability:GetAbilityDamageType(),
                 }
+            	if v:HasModifier("modifier_reimu03_flag") then
+            		DamageTable.damage_type = DAMAGE_TYPE_PURE
+            	end
                 UnitDamageTarget(DamageTable)
                 UtilStun:UnitStunTarget(caster, v, keys.Stun_Duration)
                 Timer.Loop 'ability_reimu04_damage'(0.4, keys.Damage_Count - 1,
@@ -411,6 +421,9 @@ function AbilityReimu:OnReimu04Think(keys)
                             keys.Damage_Count,
                         damage_type = keys.ability:GetAbilityDamageType(),
                     }
+                    if v:HasModifier("modifier_reimu03_flag") then
+            			DamageTable.damage_type = DAMAGE_TYPE_PURE
+            		end
                     UnitDamageTarget(DamageTable)
                     UtilStun:UnitStunTarget(caster, v, keys.Stun_Duration)
                     local count = v:GetContext("Reimu04_Effect_Damage_Count")

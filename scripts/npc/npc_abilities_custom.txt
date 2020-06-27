@@ -1292,6 +1292,13 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-40"
 				}
 			}
+			"modifier_reimu03_flag"
+			{
+				"Duration"	"%ability_duration"
+				"IsHidden"	"0"
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"
+			}
 		}
 		"AbilitySpecial"
 		{
@@ -6419,7 +6426,7 @@
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0.1"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_2"
-		"AbilityCooldown"	"25"
+		"AbilityCooldown"	"40"
 		"AbilityManaCost"	"70"
 		// Stats
 		// ----------------------------------------------------------------

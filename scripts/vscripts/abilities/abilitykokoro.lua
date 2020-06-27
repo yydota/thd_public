@@ -787,6 +787,37 @@ function modifier_ability_thdots_kokoro04_caster_wanbaochui:OnIntervalThink()
 	end
 end
 
+function modifier_ability_thdots_kokoro04_caster_wanbaochui:DeclareFunctions()
+	return {
+		MODIFIER_EVENT_ON_DEATH
+	}
+end
+
+function modifier_ability_thdots_kokoro04_caster_wanbaochui:OnDeath(keys)
+	if not keys.unit:IsRealHero() then return end
+	if keys.attacker == self:GetCaster() then
+		local caster = keys.attacker
+		if FindTelentValue(self:GetCaster(),"special_bonus_unique_kokoro_6") ~= 0 then --刷新所有技能
+			self:GetAbility():EndCooldown()
+			if caster:FindAbilityByName("ability_thdots_kokoro01") then
+				caster:FindAbilityByName("ability_thdots_kokoro01"):EndCooldown()
+			end
+			if caster:FindAbilityByName("ability_thdots_kokoro02") then
+				caster:FindAbilityByName("ability_thdots_kokoro02"):EndCooldown()
+			end
+			if caster:FindAbilityByName("ability_thdots_kokoro03") then
+				caster:FindAbilityByName("ability_thdots_kokoro03"):EndCooldown()
+			end
+			if caster:FindAbilityByName("ability_thdots_kokoroEx") then
+				caster:FindAbilityByName("ability_thdots_kokoroEx"):EndCooldown()
+			end
+			if caster:FindAbilityByName("ability_thdots_kokoroEx_2") then
+				caster:FindAbilityByName("ability_thdots_kokoroEx_2"):EndCooldown()
+			end
+		end
+	end
+end
+
 function modifier_ability_thdots_kokoro04_caster_wanbaochui:OnDestroy()
 	if not IsServer() then return end
 	if self:GetParent():HasModifier("modifier_ability_thdots_kokoroEx_2") then

@@ -33,6 +33,7 @@ require ( "util/observe")
 require ( "util/rune_fixer")
 require ( "util/webapi")
 require ( "util/shuffle")
+require ( "util/urd")
 
 
 if THDOTSGameMode == nil then
@@ -502,6 +503,8 @@ function THDOTSGameMode:OnPlayerSay( keys )
 	]]
 	elseif ss[1] == "-repick" then
 		-- THD2_MakePlayerRepick(plyid, ss[2])
+	elseif ss[1] == "-urd" then
+		-- THD_URD(plyid)
 	elseif text == "ruozhitaidao" then --gtmdtd(这里是大鸽加的, 而且本来是空的)
 		HostSay("gtmdtd")  --这个是我加的 XD
 	end

@@ -472,7 +472,7 @@
 		// ReiMu
 		// --------------------
 		"DOTA_Tooltip_ability_ability_dota2x_reimu01"	"宝符「阴阳宝玉」"
-		"DOTA_Tooltip_ability_ability_dota2x_reimu01_Description"	"丢出一枚阴阳玉，在目标位置弹弹碾碾，每次落地都会对范围内敌人造成伤害和0.45秒晕眩，每次弹跳降低百分之33 的伤害。\n施法距离：600"
+		"DOTA_Tooltip_ability_ability_dota2x_reimu01_Description"	"丢出一枚阴阳玉，在目标位置弹弹碾碾，每次落地都会对范围内敌人造成伤害和%stun_duration%秒晕眩，每次弹跳降低百分之%damage_follow_percentage%%%的伤害。\n施法距离：600"
 		"DOTA_Tooltip_ability_ability_dota2x_reimu01_first_damage"	"初次伤害:"
 		"DOTA_Tooltip_ability_ability_dota2x_reimu01_stun_duration"	"晕眩时间:"
 		"DOTA_Tooltip_ability_ability_dota2x_reimu01_radius"	"伤害范围："
@@ -481,7 +481,7 @@
 		"DOTA_Tooltip_ability_ability_dota2x_reimu02_Description"	"瞬间连射数个具有追尾性能的五彩灵弹，能在周围650的范围内随机寻找目标追击。\n灵弹数量：3/4/5/6\n每个灵弹伤害：70/80/90/100"
 		"DOTA_Tooltip_ability_ability_dota2x_reimu02_Lore"	"梦想系基础的最终形态之一。以大量带有追尾性能的弹幕来封杀敌人。"
 		"DOTA_Tooltip_ability_ability_dota2x_reimu03"	"梦符「二重结界」"
-		"DOTA_Tooltip_ability_ability_dota2x_reimu03_Description"	"为一个目标罩上二重结界。如果这个目标是友方单位，则结界将以防御结界的形式来帮助其抵挡一切物理伤害。如果这个目标是敌方单位，则结界将会以封魔结界的形式来封锁其施法能力。\n万宝槌效果：对敌降低40%%移动速度，对友方驱散异常状态。"
+		"DOTA_Tooltip_ability_ability_dota2x_reimu03_Description"	"为一个目标罩上二重结界。如果这个目标是友方单位，则结界将以防御结界的形式来帮助其抵挡一切物理伤害。如果这个目标是敌方单位，则结界将会以封魔结界的形式来封锁其施法能力。\n灵梦的技能对附带[二重结界]的目标伤害类型变成纯粹伤害\n万宝槌效果：对敌降低40%%移动速度，对友方驱散异常状态。"
 		"DOTA_Tooltip_ability_ability_dota2x_reimu03_ability_duration"	"持续时间："
 		"DOTA_Tooltip_ability_ability_dota2x_reimu03_Lore"	"据说结界似乎就是事物的境界线的样子，而其变成二重的意思据灵梦说就和没有境界的世界一样了。好像是如果能发现潜藏于各处的空间的缝隙的话，就能张开二重结界了。"
 		"DOTA_Tooltip_ability_ability_dota2x_reimu04"	"神技「八方鬼缚阵」"
@@ -3100,7 +3100,7 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_lifestealer"	"3倍 「是~这样~吗~」获取力量"
 		"DOTA_Tooltip_ability_special_bonus_unique_lifestealer_2"	"-12秒 「是~这样~吗~」冷却时间"
 		"DOTA_Tooltip_ability_special_bonus_unique_lifestealer_3"	"暗符「月的暗面」驱散异常状态"
-		"DOTA_Tooltip_ability_special_bonus_unique_razor" 		"+75 电击伤害"
+		"DOTA_Tooltip_ability_special_bonus_unique_razor" 		"+35 电击伤害"
 		"DOTA_Tooltip_ability_special_bonus_unique_ustuho_1" 	"「千兆耀斑」-1s冷却"
 		"DOTA_Tooltip_ability_special_bonus_unique_sniper_2" 	"「千兆耀斑」额外目标"
 		"DOTA_Tooltip_ability_special_bonus_unique_sniper_2_Description" 	"目标500范围内优先选取少女"
