@@ -504,7 +504,7 @@ function THDOTSGameMode:OnPlayerSay( keys )
 	elseif ss[1] == "-repick" then
 		-- THD2_MakePlayerRepick(plyid, ss[2])
 	elseif ss[1] == "-urd" then
-		-- THD_URD(plyid)
+		THD_URD(plyid,plyhd)
 	elseif text == "ruozhitaidao" then --gtmdtd(这里是大鸽加的, 而且本来是空的)
 		HostSay("gtmdtd")  --这个是我加的 XD
 	end
@@ -1163,8 +1163,8 @@ function THDOTSGameMode:OnGameRulesStateChange(keys)
 			0.2
 		)
 		]]--
-		local num = GetNum()
-		HostSay("num is " .. tostring(num))
+		-- local num = GetNum()
+		-- HostSay("num is " .. tostring(num))
 		GameRules:GetGameModeEntity():SetContextThink(
 			"random checker",
 			function()
@@ -1300,7 +1300,8 @@ function THDOTSGameMode:OnGameRulesStateChange(keys)
 				return nil
 			end
 		end , 5.0)
-		
+		--投降系统初始化
+		URD_initialize()
 	end
 	
 	if newState == DOTA_GAMERULES_STATE_POST_GAME then

@@ -1993,6 +1993,8 @@ function ShowWearables( event )
 	end]]
 end
 
+three_dimension_projectile = nil
+
 function ItemAbility_three_dimension_OnSpellStart(keys)
 	local ItemAbility = keys.ability
 	local caster = keys.Caster or keys.caster
@@ -2018,11 +2020,12 @@ function ItemAbility_three_dimension_OnSpellStart(keys)
 				flExpireTime 		= GameRules:GetGameTime() + 20,
 				bProvidesVision 	= false,
 			}
-			
+	three_dimension_projectile = projectile
 		ProjectileManager:CreateTrackingProjectile(projectile)
 end
 
 function ItemAbility_three_dimension_OnProjectileHitUnit(keys)
+	print_r(three_dimension_projectile)
 	local caster = keys.Caster or keys.caster
 	local target = keys.Target or keys.target
 	if target and not target:IsMagicImmune() then

@@ -816,6 +816,40 @@ function OnSatori01SpellStart(keys)
 			i = 2
 		end
 	end
+	if TargetName == "npc_dota_hero_undying" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,100)
+		else 
+			RandomNumber = RandomInt(1,75)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "undying_decay"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "undying_soul_rip"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "undying_tombstone"
+		elseif RandomNumber > 75 and RandomNumber <= 100 then
+			AbilityStolenName = "undying_flesh_golem"
+			i = 2
+		end
+	end
+	if TargetName == "npc_dota_hero_wisp" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,100)
+		else 
+			RandomNumber = RandomInt(1,75)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "wisp_tether"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "wisp_spirits"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "wisp_overcharge"
+		elseif RandomNumber > 75 and RandomNumber <= 100 then
+			AbilityStolenName = "wisp_relocate"
+			i = 2
+		end
+	end
 
 
 	abilityname[a] = AbilityStolenName

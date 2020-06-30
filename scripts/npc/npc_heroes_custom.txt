@@ -4031,7 +4031,7 @@
 		"Ability15"	"special_bonus_attack_range_150"
 		"Ability16"	"special_bonus_attack_speed_140"
 		"Ability17"	"special_bonus_unique_luna_4"
-		"Model"	"models/thd_hero/luna/luna.vmdl"
+		"Model"	"models/luna/luna.vmdl"
 		"ModelScale"	"1.2"
 		"override_hero"	"npc_dota_hero_luna"
 		"AbilityLayout"	"6"
