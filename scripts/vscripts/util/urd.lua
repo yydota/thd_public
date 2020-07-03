@@ -5,9 +5,16 @@ Team1_count = 0
 Team2_count = 0
 FLAG1 = true
 FLAG2 = true
+TIME_DURATION = 60  --投票的持续时间
+TIME_FLAG = 120		--投票的CD
+WINER_TEAM = nil
 
 function THD_URD(plyid,plyhd)
-	print("urd is :",plyid)
+	if GetMapName() ~= "1_thdots_map" then return end
+	-- print_r(Team1)
+	-- print_r(Team2)
+	print(plyhd:GetAssignedHero():GetOrigin())
+	siege_print()
 	if GameRules:GetDOTATime(false, false) < 900 then
 		Say(plyhd, "15分钟后才可以投降", true)
 		return
@@ -17,20 +24,20 @@ function THD_URD(plyid,plyhd)
 		return
 	end
 	--------------------测试代码
-	-- if Team1_count == 1 then
+	-- if Team2_count == 1 then
 	-- 	print("text")
-	-- 	Team1[1] = {["ID"]=1,["TF"] = true }
-	-- 	print_r(Team1)
+	-- 	Team2[1] = {["ID"]=1,["TF"] = true }
+	-- 	print_r(Team2)
 	-- end
-	-- if Team1_count == 2 then
+	-- if Team2_count == 2 then
 	-- 	print("text")
-	-- 	Team1[2] = {["ID"]=2,["TF"] = true }
-	-- 	print_r(Team1)
+	-- 	Team2[2] = {["ID"]=2,["TF"] = true }
+	-- 	print_r(Team2)
 	-- end
-	-- if Team1_count == 3 then
+	-- if Team2_count == 3 then
 	-- 	print("text")
-	-- 	Team1[3] = {["ID"]=3,["TF"] = true }
-	-- 	print_r(Team1)
+	-- 	Team2[3] = {["ID"]=3,["TF"] = true }
+	-- 	print_r(Team2)
 	-- end
 	-- GameRules:SendCustomMessage("<font color='#00FFFF'>Welcome to Touhou Defence of the shrines Re;mixed DOTS:R.</font>", 0, 0)	
 	if Team1[plyid] ~= nil then
@@ -87,7 +94,7 @@ function Team1_Interval(plyid,plyhd)
 	GameRules:GetGameModeEntity():SetContextThink("urd_interval", 
 		function()
 			if GameRules:IsGamePaused() then return 0.03 end
-			if time < 60 then
+			if time < TIME_DURATION then
 				local count = 0
 				for _,v in pairs(Team1) do
 					if v.TF == true then
@@ -101,7 +108,8 @@ function Team1_Interval(plyid,plyhd)
 				end
 				if Team1_count >= 4 then
 					print("SS shengli")
-					GameRules:SendCustomMessage("<font color='#00FFFF'>Hakurei Shrine投降，游戏将在10秒后结束</font>", 0, 0)	
+					GameRules:SendCustomMessage("<font color='#00FFFF'>Hakurei Shrine投降，游戏将在10秒后结束</font>", 0, 0)
+					WINER_TEAM = DOTA_TEAM_BADGUYS
 					local end_time = 0
 					GameRules:GetGameModeEntity():SetContextThink("urd_hakurei", 
 						function()
@@ -141,7 +149,7 @@ function Team2_Interval(plyid,plyhd)
 	GameRules:GetGameModeEntity():SetContextThink("urd_interval", 
 		function()
 			if GameRules:IsGamePaused() then return 0.03 end
-			if time < 60 then
+			if time < TIME_DURATION then
 				local count = 0
 				for _,v in pairs(Team2) do
 					if v.TF == true then
@@ -155,6 +163,7 @@ function Team2_Interval(plyid,plyhd)
 				end
 				if Team2_count >= 4 then
 					print("BL shengli")
+					WINER_TEAM = DOTA_TEAM_GOODGUYS
 					GameRules:SendCustomMessage("<font color='#00FFFF'>Moriya Shrine投降，游戏将在10秒后结束</font>", 0, 0)	
 					local end_time = 0
 					GameRules:GetGameModeEntity():SetContextThink("urd_moriya", 
@@ -195,7 +204,7 @@ function FLAG1_interval()
 	GameRules:GetGameModeEntity():SetContextThink("urd_moriya", 
 		function()
 			if GameRules:IsGamePaused() then return 0.03 end
-			if end_time >= 120 then
+			if end_time >= TIME_FLAG then
 				FLAG1 = true
 				return nil
 			end
@@ -211,7 +220,7 @@ function FLAG2_interval()
 	GameRules:GetGameModeEntity():SetContextThink("urd_moriya", 
 		function()
 			if GameRules:IsGamePaused() then return 0.03 end
-			if end_time >= 120 then
+			if end_time >= TIME_FLAG then
 				FLAG2 = true
 				return nil
 			end
@@ -220,4 +229,22 @@ function FLAG2_interval()
 		end
 		,
 		0)
+end
+
+function ClearTeam1()
+	for _,v in pairs(Team1) do
+		v.TF = 0
+	end
+	Team1_count = 0
+end
+
+function ClearTeam2()
+	for _,v in pairs(Team2) do
+		v.TF = 0
+	end
+	Team2_count = 0
+end
+
+function GetWinerteam()
+	return WINER_TEAM
 end

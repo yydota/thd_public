@@ -2,6 +2,7 @@
 {
 	"consumables"
 	{
+		"item"		"item_specialcourier"	
 		"item"		"item_card_good_man"
 		"item"		"item_card_bad_man"
 		"item"		"item_card_worse_man"
@@ -15,6 +16,9 @@
 		"item"		"item_dust"
 		"item"		"item_smoke_of_deceit"
 		"item"		"item_tome_of_knowledge"
+		"item"		"item_blink"
+		"item"		"item_ultimate_scepter"
+
 	}
 
 	"attributes"
@@ -64,7 +68,8 @@
 	}	
 	
 	"secretshop"
-	{
+	{	
+		"item"		"item_huanyingzhifeng"
 		"item"		"item_god_hand"
 		"item"		"item_tengu_fan"
 		"item"		"item_gran_grimoire"
@@ -83,15 +88,17 @@
 		"item"		"item_best_lunchbox"
 		"item"		"item_mushroom_kebab"
 		"item"		"item_mushroom_pie"
-		"item"		"item_mushroom_soup"
+		"item"		"item_mushroom_soup"		
+		"item"		"item_touhou_banana"
+		"item"		"item_picnic_basket"
+		"item"		"item_eyunzhifu"	
 		"item"		"item_horse_red"
 		"item"		"item_horse_green"
 		"item"		"item_horse_blue"
-		"item"		"item_touhou_banana"
-		"item"		"item_picnic_basket"
-		"item"		"item_eyunzhifu"
-		"item"		"item_donation_box"
-		"item"		"item_donation_gem"
+		"item"		"item_9ball"
+		"item"		"item_travel_boots"
+		"item"		"item_horse_king"
+		"item"		"item_wanmeitiaoyuezhuangzhi"
 	}
 
 	"support"
@@ -108,7 +115,7 @@
 		"item"		"item_shizijia"
 		"item"		"item_darkred_umbrella"
 		"item"		"item_bone_flute"
-		"item"		"item_9ball"
+		"item"		"item_donation_box"
 	}
 	
 	"magics"
@@ -131,6 +138,7 @@
 	
 	"weapons"
 	{
+		"item"		"item_donation_gem"
 		"item"		"item_wind_gun"
 		"item"		"item_mr_yang"
 		"item"		"item_luna_chip"
@@ -148,9 +156,9 @@
 	}
 
 	"defense"
-	{
+	{	
 		"item"		"item_god_lunchbox"
-		"item"		"item_pad"
+		"item"		"item_pad"		
 		"item"		"item_ghost_balloon"
 		"item"		"item_xuenvdeweijin"
 		"item"		"item_guilty_mask"
@@ -168,8 +176,7 @@
 	
 	"artifacts"
 	{	
-		"item"		"item_travel_boots"
-		"item"		"item_horse_king"
+		"item"		"item_wanbaochui"
 		"item"		"item_dummy_doll1"
 		"item"		"item_brother_sharp"
 		"item"		"item_tentacle"
@@ -182,6 +189,7 @@
 		"item"		"item_zuzhoumujian"
 		"item"		"item_tingshiyice"
 		"item"		"item_feixiangjian"
+		"item"		"item_UFO"
 	}
 
 	"sideshop1"
@@ -199,7 +207,6 @@
 		"item"		"item_baozi"
 		"item"		"item_juice"
 		"item"		"item_sake"
-
 	}
 
 	"sideshop2"
@@ -216,7 +223,8 @@
 		"item"		"item_card_worse_man"
 		"item"		"item_card_love_man"
 		"item"		"item_flask"
-		"item"		"item_clarity"		
+		"item"		"item_clarity"
+		"item"		"item_tpscroll"
 		"item"		"item_courier"
 		"item"      "item_ward_observer"
 		"item"      "item_ward_sentry"
@@ -244,5 +252,6 @@
 		"item"      "item_mushroom_pie"
 		"item"      "item_mushroom_soup"
 		"item"      "item_recipe_present_box"
+		"item"		"item_blink"
 	}
 }

@@ -994,6 +994,10 @@ function OnSatori03SpellStart(keys)
 		 keys.ability:EndCooldown()
 		 keys.ability:RefundManaCost()
 		return
+	elseif target:HasModifier("modifier_ability_thdots_super_siege") then
+		 keys.ability:EndCooldown()
+		 keys.ability:RefundManaCost()
+		return
 	end
 	if target:GetOwner()==caster then 
 		target:SetHealth(target:GetMaxHealth())

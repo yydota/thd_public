@@ -39,6 +39,8 @@
 		"dota_match_history_Winner_BadGuys"	"胜方：守矢神社"
 		"npc_dota_goodguys_fort"	"博丽神社"
 		"npc_dota_badguys_fort"	"守矢神社"
+		"npc_thd_badguys_super_siege"	"超级兵"
+		"npc_thd_goodguys_super_siege"	"超级兵"
 		// ******************** ABILITY MODIFIERS ********************
 		"DOTA_Tooltip_modifier_channel_start"	"Channel Start"
 		"DOTA_Tooltip_modifier_channel_start_Description"	""
@@ -1590,7 +1592,7 @@
 		"DOTA_Tooltip_ability_item_phoenix_wing_bonus_health"	"+$health"
 		"DOTA_Tooltip_ability_item_recipe_kafziel"	"死神之大镰刀制作书"
 		"DOTA_Tooltip_ability_item_kafziel"	"死神之大镰刀"
-		"DOTA_Tooltip_ability_item_kafziel_Description"	"<h1>被动：收割</h1>每次普通攻击时有%harvest_chance_melee%%%几率触发，造成额外的魔法伤害，双方当前生命值相差越大伤害越高。<br><br>收割伤害=(自身生命值-目标生命值)x%harvest_damage_factor%。"
+		"DOTA_Tooltip_ability_item_kafziel_Description"	"<h1>主动：薄命</h1>指定一个目标，在接下来%duration%秒内无法恢复生命值(该状态不可驱散)\n<h1>被动：收割</h1>每次普通攻击时有%harvest_chance_melee%%%几率触发，造成额外的魔法伤害，双方当前生命值相差越大伤害越高。<br><br>收割伤害=(自身生命值-目标生命值)x%harvest_damage_factor%。"
 		"DOTA_Tooltip_ability_item_kafziel_bonus_damage"	"+$damage"
 		"DOTA_Tooltip_ability_item_kafziel_bonus_strength"	"+$str"
 		"DOTA_Tooltip_ability_item_kafziel_bonus_health_regen"	"+$hp_regen"

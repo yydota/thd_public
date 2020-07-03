@@ -8,10 +8,7 @@
 	{		
 		"#DOTA_Item_Build_Starting_Items"
 		{
-			"item"		"item_catnip"
-			"item"		"item_mushroom"
-			"item"		"item_cucumber"
-			"item"		"item_cucumber"
+			"item"		"item_mushroom_pie"
 			"item"		"item_flask"
 			"item"		"item_flask"
 			"item"		"item_card_love_man"
@@ -40,7 +37,6 @@
 			"item"		"item_frozen_frog"
 			"item"		"item_verity"
 			"item"		"item_smash_stick"
-			"item"		"item_yukkuri_stick"
 		}
 	}
 }

@@ -1,0 +1,43 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_riki"
+	"Title"			"Recommended items for Riki"
+	
+	"Items"	
+        {		
+		"#DOTA_Item_Build_Starting_Items"//出门装备
+		{
+                        "item"                "item_clarity"
+                        "item"                "item_mushroom_pie"
+                        "item"                "item_flask"
+                        "item"                "item_card_good_man"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"//前期装备
+		{				
+                        "item"                "item_mushroom_pie"
+                        "item"                "item_donation_gem"
+                        "item"                "item_travel_boots"
+                        "item"                "item_card_bad_man"
+                        "item"                "item_brother_sharp"
+		}
+
+		"#DOTA_Item_Build_Mid_Items"//中期装备
+		{
+                        "item"                "item_mr_yang"
+                        "item"                "item_feixiangjian"
+                        "item"                "item_fox_mask"
+                        "item"                "item_brother_sharp"
+		}
+
+		"#DOTA_Item_Build_Late_Items"//后期装备
+		{
+                        "item"                "item_camera"
+                        "item"                "item_UFO"
+                        "item"                "item_UFO"
+                        "item"                "item_smash_stick"
+
+		}
+	}
+}

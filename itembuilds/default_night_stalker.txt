@@ -1,0 +1,40 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_night_stalker"
+	"Title"			"Recommended items for Night Stalker"
+	
+	"Items"	
+        {		
+		"#DOTA_Item_Build_Starting_Items"//出门装备
+		{
+                        "item"                "item_clarity"
+                        "item"                "item_mushroom_kebab"
+                        "item"                "item_flask"
+                        "item"                "item_card_good_man"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"//前期装备
+		{				
+                        "item"                "item_best_lunchbox"
+                        "item"                "item_donation_box"
+                        "item"                "item_9ball"
+                        "item"                "item_card_worse_man"
+                        "item"                "item_phoenix_wing"
+		}
+
+		"#DOTA_Item_Build_Mid_Items"//中期装备
+		{
+                        "item"                "item_qijizhixing"
+                        "item"                "item_zun_glasses_active"
+                        "item"                "item_xuenvdeweijin"
+		}
+
+		"#DOTA_Item_Build_Late_Items"//后期装备
+		{
+                        "item"                "item_zaiezhizhurenxing"
+                        "item"                "item_tuzhushen"
+                        "item"                "item_tingshiyice"
+		}
+	}
+}

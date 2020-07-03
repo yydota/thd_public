@@ -10440,4 +10440,260 @@
 		"Ability15"	""
 		"Ability16"	""
 	}
+	"npc_thd_goodguys_super_siege"
+	{
+		// General
+		//
+		// Class of entity of link to.
+		"BaseClass"	"npc_dota_creep_siege"
+		// Model.
+		"Model"	"models/thd2/soldiers_far_red/soldiers_far_red_2.vmdl"
+		// Name of sound set.
+		"SoundSet"	"Roshan"
+		"MinimapIcon"	"minimap_siege"
+		"MinimapIconSize"	"250"
+		"ModelScale"	"2.5"
+		"Level"	"10"
+		// Abilities
+		// ----------------------------------------------------------------
+		// Ability 1.
+		"Ability1"	""
+		// Ability 2.
+		"Ability2"	""
+		// Ability 3.
+		"Ability3"	""
+		// Ability 4.
+		"Ability4"	""
+		// Ability 5.
+		"Ability5"	""
+		// Ability 6 - Extra.
+		"Ability6"	""
+		// Ability 7 - Extra.
+		"Ability7"	""
+		// Ability 8 - Extra.
+		"Ability8"	""
+		// Armor
+		// ----------------------------------------------------------------
+		// Physical protection.
+		"ArmorPhysical"	"20"
+		// Magical protection.
+		"MagicalResistance"	"50"
+		// Attack
+		// ----------------------------------------------------------------
+		"AutoAttacksByDefault"	"1"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		// Damage range min.
+		"AttackDamageMin"	"200"
+		// Damage range max.
+		"AttackDamageMax"	"200"
+		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
+		// Speed of attack.
+		"AttackRate"	"1.5"
+		// Normalized time in animation cycle to attack.
+		"AttackAnimationPoint"	"0.6"
+		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"400"
+		// Range within a target can be attacked.
+		"AttackRange"	"350"
+		// Particle system model for projectile.
+		"ProjectileModel"	"particles/base_attacks/ranged_siege_bad.vpcf"
+		// Speed of projectile.
+		"ProjectileSpeed"	"1100"
+		// Attributes
+		// ----------------------------------------------------------------
+		"AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
+		// Base strength
+		"AttributeBaseStrength"	"0"
+		// Strength bonus per level.
+		"AttributeStrengthGain"	"0"
+		// Base intelligence
+		"AttributeBaseIntelligence"	"0"
+		// Intelligence bonus per level.
+		"AttributeIntelligenceGain"	"0"
+		// Base agility
+		"AttributeBaseAgility"	"0"
+		// Agility bonus per level.
+		"AttributeAgilityGain"	"0"
+		// Bounty
+		// ----------------------------------------------------------------
+		// Experience earn.
+		"BountyXP"	"500"
+		// Gold earned min.
+		"BountyGoldMin"	"500"
+		// Gold earned max.
+		"BountyGoldMax"	"500"
+		// Bounds
+		// ----------------------------------------------------------------
+		// Hull type used for navigation/locomotion.
+		"BoundsHullName"	"DOTA_HULL_SIZE_SIEGE"
+		"RingRadius"	"80"
+		"HealthBarOffset"	"160"
+		// Movement
+		// ----------------------------------------------------------------
+		// Type of locomotion - ground, air
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		// Speed
+		"MovementSpeed"	"325"
+		// Turning rate.
+		"MovementTurnRate"	"0.5"
+		// Status
+		// ----------------------------------------------------------------
+		// Base health.
+		"StatusHealth"	"4500"
+		// Health regeneration rate.
+		"StatusHealthRegen"	"0"
+		// Base mana.
+		"StatusMana"	"0"
+		// Mana regeneration rate.
+		"StatusManaRegen"	"0"
+		// Team
+		// ----------------------------------------------------------------
+		// Team name.
+		"TeamName"	"DOTA_TEAM_GOODGUYS"
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_SIEGE"
+		// Vision
+		// ----------------------------------------------------------------
+		// Range of vision during day light.
+		"VisionDaytimeRange"	"850"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"850"
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+	}
+	"npc_thd_badguys_super_siege"
+	{
+		// General
+		//
+		// Class of entity of link to.
+		"BaseClass"	"npc_dota_creep_siege"
+		// Model.
+		"Model"	"models/thd2/soldiers_near_red/soldiers_near_red_2.vmdl"
+		// Name of sound set.
+		"SoundSet"	"Roshan"
+		"MinimapIcon"	"minimap_siege"
+		"MinimapIconSize"	"250"
+		"ModelScale"	"2.5"
+		"Level"	"10"
+		// Abilities
+		// ----------------------------------------------------------------
+		// Ability 1.
+		"Ability1"	""
+		// Ability 2.
+		"Ability2"	""
+		// Ability 3.
+		"Ability3"	""
+		// Ability 4.
+		"Ability4"	""
+		// Ability 5.
+		"Ability5"	""
+		// Ability 6 - Extra.
+		"Ability6"	""
+		// Ability 7 - Extra.
+		"Ability7"	""
+		// Ability 8 - Extra.
+		"Ability8"	""
+		// Armor
+		// ----------------------------------------------------------------
+		// Physical protection.
+		"ArmorPhysical"	"20"
+		// Magical protection.
+		"MagicalResistance"	"50"
+		// Attack
+		// ----------------------------------------------------------------
+		"AutoAttacksByDefault"	"1"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		// Damage range min.
+		"AttackDamageMin"	"200"
+		// Damage range max.
+		"AttackDamageMax"	"200"
+		"AttackDamageType"	"DAMAGE_TYPE_ArmorPhysical"
+		// Speed of attack.
+		"AttackRate"	"1.5"
+		// Normalized time in animation cycle to attack.
+		"AttackAnimationPoint"	"0.6"
+		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"400"
+		// Range within a target can be attacked.
+		"AttackRange"	"350"
+		// Particle system model for projectile.
+		"ProjectileModel"	"particles/base_attacks/ranged_siege_bad.vpcf"
+		// Speed of projectile.
+		"ProjectileSpeed"	"1100"
+		// Attributes
+		// ----------------------------------------------------------------
+		"AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
+		// Base strength
+		"AttributeBaseStrength"	"0"
+		// Strength bonus per level.
+		"AttributeStrengthGain"	"0"
+		// Base intelligence
+		"AttributeBaseIntelligence"	"0"
+		// Intelligence bonus per level.
+		"AttributeIntelligenceGain"	"0"
+		// Base agility
+		"AttributeBaseAgility"	"0"
+		// Agility bonus per level.
+		"AttributeAgilityGain"	"0"
+		// Bounty
+		// ----------------------------------------------------------------
+		// Experience earn.
+		"BountyXP"	"500"
+		// Gold earned min.
+		"BountyGoldMin"	"500"
+		// Gold earned max.
+		"BountyGoldMax"	"500"
+		// Bounds
+		// ----------------------------------------------------------------
+		// Hull type used for navigation/locomotion.
+		"BoundsHullName"	"DOTA_HULL_SIZE_SIEGE"
+		"RingRadius"	"80"
+		"HealthBarOffset"	"160"
+		// Movement
+		// ----------------------------------------------------------------
+		// Type of locomotion - ground, air
+		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_GROUND"
+		// Speed
+		"MovementSpeed"	"325"
+		// Turning rate.
+		"MovementTurnRate"	"0.5"
+		// Status
+		// ----------------------------------------------------------------
+		// Base health.
+		"StatusHealth"	"4500"
+		// Health regeneration rate.
+		"StatusHealthRegen"	"0"
+		// Base mana.
+		"StatusMana"	"0"
+		// Mana regeneration rate.
+		"StatusManaRegen"	"0"
+		// Team
+		// ----------------------------------------------------------------
+		// Team name.
+		"TeamName"	"DOTA_TEAM_GOODGUYS"
+		"CombatClassAttack"	"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+		"CombatClassDefend"	"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"UnitRelationshipClass"	"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_SIEGE"
+		// Vision
+		// ----------------------------------------------------------------
+		// Range of vision during day light.
+		"VisionDaytimeRange"	"850"
+		// Range of vision at night time.
+		"VisionNighttimeRange"	"850"
+		"Ability9"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+	}
 }

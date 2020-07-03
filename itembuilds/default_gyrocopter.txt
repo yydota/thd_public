@@ -1,0 +1,42 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_gyrocopter"
+	"Title"			"Recommended items for Gyrocopter"
+	
+	"Items"	
+        {		
+		"#DOTA_Item_Build_Starting_Items"//出门装备
+		{
+                        "item"                "item_flask"
+                        "item"                "item_mushroom_pie"
+                        "item"                "item_card_love_man"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"//前期装备
+		{				
+                        "item"                "item_mushroom_pie"
+                        "item"                "item_horse_green"
+                        "item"                "item_card_bad_man"
+                        "item"                "item_mushroom_pie"
+                        "item"                "item_donation_gem"
+		}
+
+		"#DOTA_Item_Build_Mid_Items"//中期装备
+		{
+                        "item"                "item_teeth"
+                        "item"                "item_dragon_star"
+                        "item"                "item_inaba_illusion_weapon"
+                        "item"                "item_wanbaochui"
+		}
+
+		"#DOTA_Item_Build_Late_Items"//后期装备
+		{
+                        "item"                "item_sampan"
+                        "item"                "item_camera"
+                        "item"                "item_frozen_frog"
+                        "item"                "item_rapier"
+                        "item"                "item_tsundere"
+		}
+	}
+}

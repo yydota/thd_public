@@ -122,7 +122,7 @@ function OnRumia04Start(keys)
 								damage = keys.ability:GetAbilityDamage(),
 								damage_type = DAMAGE_TYPE_PURE,
 							}
-		if target:IsHero() ==false and (target:GetClassname()~="npc_dota_roshan") then
+		if target:IsHero() ==false and (target:GetClassname()~="npc_dota_roshan") and not target:HasModifier("modifier_ability_thdots_super_siege") then
 			DamageTable.damage = 99999
 		end
 

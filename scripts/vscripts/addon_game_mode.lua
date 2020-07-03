@@ -34,6 +34,7 @@ require ( "util/rune_fixer")
 require ( "util/webapi")
 require ( "util/shuffle")
 require ( "util/urd")
+require ( "util/super_siege")
 
 
 if THDOTSGameMode == nil then
@@ -1300,12 +1301,15 @@ function THDOTSGameMode:OnGameRulesStateChange(keys)
 				return nil
 			end
 		end , 5.0)
-		--投降系统初始化
-		URD_initialize()
+		URD_initialize()		--投降系统初始化
+	end
+	if newState == 8 then
+		siege_start_interval()	--超级兵系统
 	end
 	
 	if newState == DOTA_GAMERULES_STATE_POST_GAME then
 		-- WebApi:SetTesting(true)
+		print("do it")
 		WebApi:AfterMatch()
 	end
 	--之前的信使加载

@@ -1,0 +1,43 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_spectre"
+	"Title"			"Recommended items for Spectre"
+	
+	"Items"	
+        {		
+		"#DOTA_Item_Build_Starting_Items"//出门装备
+		{
+                        "item"                "item_clarity"
+                        "item"                "item_mushroom_kebab"
+                        "item"                "item_card_worse_man"
+                        "item"                "item_flask"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"//前期装备
+		{				
+                        "item"                "item_horse_green"
+                        "item"                "item_rocket_5"
+                        "item"                "item_donation_gem"
+                        "item"                "item_travel_boots"
+                        "item"                "item_card_worse_man"
+		}
+
+		"#DOTA_Item_Build_Mid_Items"//中期装备
+		{
+                        "item"                "item_sampan"
+                        "item"                "item_cirno_claymore"
+                        "item"                "item_bagua"
+                        "item"                "item_nuclear_stick"
+                        "item"                "item_three_dimension"
+		}
+
+		"#DOTA_Item_Build_Late_Items"//后期装备
+		{
+                        "item"                "item_ganggenier"
+                        "item"                "item_hakurei_amulet"
+                        "item"                "item_tsundere"
+                        "item"                "item_rapier"
+		}
+	}
+}

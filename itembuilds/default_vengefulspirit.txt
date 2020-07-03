@@ -1,0 +1,42 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_vengefulspirit"
+	"Title"			"Recommended items for Vengefulspirit"
+	
+	"Items"	
+        {		
+		"#DOTA_Item_Build_Starting_Items"//出门装备
+		{
+                        "item"                "item_clarity"
+                        "item"                "item_mushroom_pie"
+                        "item"                "item_flask"
+                        "item"                "item_card_wores_man"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"//前期装备
+		{				
+                        "item"                "item_mushroom_pie"
+                        "item"                "item_donation_gem"
+                        "item"                "item_cirno_claymore"
+                        "item"                "item_card_bad_man"
+		}
+
+		"#DOTA_Item_Build_Mid_Items"//中期装备
+		{
+                        "item"                "item_hakurei_amulet"
+                        "item"                "item_feixiangjian"
+                        "item"                "item_teeth"
+                        "item"                "item_dragon_star"
+		}
+
+		"#DOTA_Item_Build_Late_Items"//后期装备
+		{
+                        "item"                "item_camera"
+                        "item"                "item_sampan"
+                        "item"                "item_UFO"
+                        "item"                "item_smash_stick"
+
+		}
+	}
+}

@@ -163,6 +163,9 @@ function WebApi:AfterMatch()
 			end
 		end
 	end
+	if GetWinerteam() ~= nil then
+		winnerTeam = GetWinerteam()
+	end
 	
 	if winnerTeam < 0 then return end
 	
@@ -196,3 +199,5 @@ RegisterCustomEventListener("Shuffle_Pressed", function()
 	--数据返回部分目前还没做,先收集数据
 	--WebApi:BeforeMatch()
 end)
+
+

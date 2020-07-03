@@ -8,7 +8,7 @@
 	{		
 		"#DOTA_Item_Build_Starting_Items"//出门装备
 		{
-                        "item"		"item_bra"
+                        "item"		"item_mushroom_kebab"
                         "item"		"item_clarity"
 						"item"		"item_flask"
                         "item"		"item_card_worse_man"
@@ -17,13 +17,14 @@
 		"#DOTA_Item_Build_Early_Game"//前期装备
 		{	
                         "item"		"item_horse_red"
+                        "item"		"item_best_lunchbox"
 						"item"		"item_donation_box"
 		}
 
 		"#DOTA_Item_Build_Mid_Items"//中期装备
 		{			
 						"item"		"item_anchor"
-						"item"		"item_peach"
+						"item"		"item_brother_sharp"
 		}
 
 		"#DOTA_Item_Build_Late_Items"//后期装备

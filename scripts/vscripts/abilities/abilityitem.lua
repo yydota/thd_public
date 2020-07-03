@@ -1115,6 +1115,9 @@ function ItemAbility_DonationBox_OnSpellStart(keys)
 	if Target:GetUnitName() == "ability_minamitsu_04_ship" or Target:GetUnitName() == "ability_margatroid03_doll" then
 		return
 	end
+	if Target:HasModifier("modifier_ability_thdots_super_siege") then --40分钟超级兵
+		return
+	end
 	Target:SetMaximumGoldBounty(GoldBounty+keys.BonusGold)
 	Target:SetMinimumGoldBounty(GoldBounty+keys.BonusGold)
 	Target:Kill(ItemAbility,Caster)

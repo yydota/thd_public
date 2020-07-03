@@ -8,7 +8,7 @@
 	{		
 		"#DOTA_Item_Build_Starting_Items"//³öÃÅ×°±¸
 		{
-                        "item"                "item_wind_amulet"
+                        "item"                "item_good_lunchbox"
                         "item"                "item_card_love_man"
                         "item"                "item_flask"
      	}
@@ -17,25 +17,32 @@
 		{				
 						"item"                "item_donation_box"
                         "item"                "item_horse_green"
-                        "item"                "item_dummy_doll1"
+                        "item"                "item_best_lunchbox"
+                        "item"                "item_baozi"
 		}
 
 		"#DOTA_Item_Build_Mid_Items"//ÖÐÆÚ×°±¸
 		{
-                        "item"                "item_brother_sharp"
-                        "item"                "item_camera"
+                        "item"                "item_hakurei_ticket"
+                        "item"                "item_qijizhixing"
+                        "item"                "item_jiao_shou"
 		}
 
 		"#DOTA_Item_Build_Late_Items"//ºóÆÚ×°±¸
 		{
+						"item"                "item_tuzhushen"
+						"item"                "item_zaiezhizhurenxing"
 						"item"                "item_tsundere"
                         "item"                "item_morenjingjuan"
+                        "item"                "item_brother_sharp"
 		}
 
 		"#DOTA_Item_Build_Luxury"//³£ÓÃ×°±¸
 		{
-			"item"		"item_yukkuri_stick"
-			"item"		"item_rocket_5"
+                        "item"                "item_camera"
+                        "item"                "item_dummy_doll1"
+						"item"				  "item_yukkuri_stick"
+						"item"				  "item_rocket_5"
 		}
 	}
 }
