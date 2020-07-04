@@ -17,7 +17,7 @@ function Ability_Bot_Buff_OnInterval(keys)
 		add_exp = add_exp * 2.5
 	elseif now_time >= 1200.0 then
 		add_gold = add_gold * 2.5
-		add_exp = add_exp * 2.5
+		add_exp = add_exp * 2.75
 	end
 	if now_time <= 600.0 then
 		local hcnt = FindUnitsInRadius(
@@ -32,17 +32,42 @@ function Ability_Bot_Buff_OnInterval(keys)
 		)
 		add_exp = add_exp / math.max(#hcnt,1.0)
 	else
-		local mm=1.0
-		if now_time>=1200.0 then
-			mm=2.0
+		local mm=0.15
+		if now_time>=900.0 then
+			mm=0.35
 		end
-		Caster:SetBaseStrength(Caster:GetBaseStrength() + keys.IncreaseAllstat * mm)
-		Caster:SetBaseAgility(Caster:GetBaseAgility() + keys.IncreaseAllstat * mm)
-		Caster:SetBaseIntellect(Caster:GetBaseIntellect() + keys.IncreaseAllstat * mm)
+		if now_time>=1200.0 then
+			mm=0.45
+		end
+		if now_time>=1500.0 then
+			mm=0.5
+		end
+		if now_time>=2400.0 then
+			mm=0.6
+		end
+		if now_time>=3000.0 then
+			mm=0.1
+		end
+		local tmm = {[0]=mm,[1]=mm,[2]=mm};
+		tmm[Caster:GetPrimaryAttribute()]=tmm[Caster:GetPrimaryAttribute()]*5.0;
+		if Caster:GetPrimaryAttribute() == 2 then
+			tmm[0]=tmm[0]*2.0;
+			tmm[1]=tmm[1]*2.0;
+		end
+		Caster:SetBaseStrength(Caster:GetBaseStrength() + keys.IncreaseAllstat * tmm[0])
+		Caster:SetBaseAgility(Caster:GetBaseAgility() + keys.IncreaseAllstat * tmm[1])
+		Caster:SetBaseIntellect(Caster:GetBaseIntellect() + keys.IncreaseAllstat * tmm[2])
+		--print(PlayerResource:GetSelectedHeroName(CasterPlayerID) .. keys.IncreaseAllstat * tmm[0] .." ".. keys.IncreaseAllstat * tmm[1] .." ".. keys.IncreaseAllstat * tmm[2])
 	end
 	--DebugPrint("now:"..PlayerResource:GetUnreliableGold(CasterPlayerID).."+"..keys.GiveGoldAmount)
-	PlayerResource:SetGold(CasterPlayerID,PlayerResource:GetUnreliableGold(CasterPlayerID) + add_gold,false)
-	Caster:AddExperience(add_exp,DOTA_ModifyXP_CreepKill,false,false)
+	if PlayerResource:GetUnreliableGold(CasterPlayerID) < 9000 then 
+		PlayerResource:SetGold(CasterPlayerID,PlayerResource:GetUnreliableGold(CasterPlayerID) + add_gold,false)
+	else
+		PlayerResource:SetGold(CasterPlayerID,9000,false)
+	end
+	if Caster:GetLevel() < 29 then
+		Caster:AddExperience(add_exp,DOTA_ModifyXP_CreepKill,false,false)
+	end
 	--SendOverheadEventMessage(Caster:GetOwner(),OVERHEAD_ALERT_GOLD,Caster,keys.GiveGoldAmount,nil)
 end
 
@@ -54,7 +79,7 @@ function DeathBuff(keys)
 	local CasterPlayerID = Caster:GetPlayerOwnerID()
 	if (now_time < 1200.0) then 
 		PlayerResource:SetGold(CasterPlayerID,PlayerResource:GetUnreliableGold(CasterPlayerID) + bn,false)
-		print('buff_x')
+		--print('buff_x')
 	else
 		local mm=0.01
 		if now_time>=1800.0 then
@@ -63,7 +88,7 @@ function DeathBuff(keys)
 		Caster:SetBaseStrength(Caster:GetBaseStrength() + bn * mm)
 		Caster:SetBaseAgility(Caster:GetBaseAgility() + bn * mm)
 		Caster:SetBaseIntellect(Caster:GetBaseIntellect() + bn * mm)
-		print('buff_y')
+		--print('buff_y')
 	end
 	
 end
