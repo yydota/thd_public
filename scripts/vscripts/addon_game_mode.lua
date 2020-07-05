@@ -35,6 +35,7 @@ require ( "util/webapi")
 require ( "util/shuffle")
 require ( "util/urd")
 require ( "util/super_siege")
+require ( "util/thd_wheel")
 
 
 if THDOTSGameMode == nil then
@@ -506,6 +507,8 @@ function THDOTSGameMode:OnPlayerSay( keys )
 		-- THD2_MakePlayerRepick(plyid, ss[2])
 	elseif ss[1] == "-urd" then
 		THD_URD(plyid,plyhd)
+	elseif ss[1] == "-rank" then
+		THD_RANK(plyid,plyhd)
 	elseif text == "ruozhitaidao" then --gtmdtd(这里是大鸽加的, 而且本来是空的)
 		HostSay("gtmdtd")  --这个是我加的 XD
 	end

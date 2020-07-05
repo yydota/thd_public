@@ -3,6 +3,7 @@ PlayerList = {}		--前X种排序的列表
 PlayerRatings = {}
 TrueList = 1
 SHUFFLE_FLAG = false
+RANK = {}
 
 function THD2_Rating_Catcher( args )
 	for k,v in pairs( args ) do
@@ -121,6 +122,7 @@ function GetTHDPlayerRank()
 			player = {plyhd = plyhd,SteamID = PlayerResource:GetSteamID(plyhd:GetPlayerID()),tiantifen = tiantifen}
 			PlayerResource:SetCustomTeamAssignment(plyhd:GetPlayerID(),DOTA_TEAM_NOTEAM)
 			table.insert(List,player)
+			table.insert(RANK,player)
 		end
 	end
 	-- List[1].tiantifen = 656
@@ -250,4 +252,16 @@ function zuhe(atable, n) --网上抄的排列代码
     end
     table.sort(result, function(a, b) if a[1]<b[1] then return true end end ) --根据最小分差排序
     return result
+end
+
+function THD_RANK(plyid,playerhd)
+	local player = {plyhd = nil, SteamID = nil,tiantifen = 0}
+	for i=1, PlayerResource:GetPlayerCount() do
+		local plyhd = PlayerResource:GetPlayer(i-1)
+		if plyhd == playerhd then
+			-- print("tiantifen is :",PlayerRatings[tostring(PlayerResource:GetSteamID(plyhd:GetPlayerID()))])
+			local tiantifen = math.floor(PlayerRatings[tostring(PlayerResource:GetSteamID(plyhd:GetPlayerID()))]) or 600
+			Say(plyhd,tostring(tiantifen), true)
+		end
+	end
 end
