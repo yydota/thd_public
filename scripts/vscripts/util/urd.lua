@@ -74,8 +74,8 @@ function URD_initialize()
 	for i=1, PlayerResource:GetPlayerCount() do
 		local plyhd = PlayerResource:GetPlayer(i-1)
 		if plyhd then
-			print("plyhd team is : ",plyhd:GetTeam())
-			print("plyhd ID is : ",plyhd:GetPlayerID())
+			-- print("plyhd team is : ",plyhd:GetTeam())
+			-- print("plyhd ID is : ",plyhd:GetPlayerID())
 			-- GameRules:SetGameWinner(DOTA_TEAM_BADGUYS)
 			if plyhd:GetTeam() == DOTA_TEAM_GOODGUYS then
 				Team1[plyhd:GetPlayerID()] = {["ID"]=plyhd:GetPlayerID(),["TF"] = 0 }
@@ -84,9 +84,9 @@ function URD_initialize()
 			end
 		end
 	end
-	print_r(Team1)
-	print_r(Team2)
-	print("initialize success")
+	-- print_r(Team1)
+	-- print_r(Team2)
+	-- print("initialize success")
 end
 
 function Team1_Interval(plyid,plyhd)

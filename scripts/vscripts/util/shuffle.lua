@@ -33,6 +33,8 @@ end
 
 Shuffle_Pressed = function (keys) --洗牌，GetTHDPlayerRank获取了10组排列顺序，每点击一次洗牌按钮会优先抽取分差最小的组合序号TrueList
 	if not IsServer() then return end
+	print_r(PlayerRatings)
+	print_r(PlayerRounds)
 	GetTHDPlayerRank()
 	local denominator = 1
 	local molecule = 0
@@ -66,7 +68,7 @@ function THDSetTeam(atable)
 	local Team1 = atable[2]
 	local Team2 = atable[3]
 	local TeamName
-	-- print_r(Team1)
+	print_r(Team1)
 	-- print_r(Team2)
 	-- print_r(atable[1])
 	for i=1, #Team1 do
@@ -276,6 +278,11 @@ function THD_RANK(plyid,playerhd)
 	for i=1, PlayerResource:GetPlayerCount() do
 		local plyhd = PlayerResource:GetPlayer(i-1)
 		if plyhd == playerhd then
+			local round = PlayerRounds[tostring(PlayerResource:GetSteamID(plyhd:GetPlayerID()))]
+			if round < 7 then
+				Say(plyhd,".还需要完成"..7 - round .."局游戏才能查询分数", true)
+				return
+			end
 			-- print("tiantifen is :",PlayerRatings[tostring(PlayerResource:GetSteamID(plyhd:GetPlayerID()))])
 			local tiantifen = math.floor(PlayerRatings[tostring(PlayerResource:GetSteamID(plyhd:GetPlayerID()))]) or 600
 			Say(plyhd,tostring(tiantifen), true)

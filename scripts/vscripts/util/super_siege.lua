@@ -51,7 +51,7 @@ function siege_start_interval()
 	GameRules:GetGameModeEntity():SetContextThink("siege_time", 
 		function()
 			if GameRules:IsGamePaused() then return 0.03 end
-			if GameRules:GetDOTATime(false, false) >= START_TIME then
+			if math.floor(GameRules:GetDOTATime(false, false)) >= START_TIME then
 				START_TIME = START_TIME + INTERVAL_TIME
 				CreateSiege_Hakurei()
 				CreateSiege_Moriya()
@@ -78,6 +78,7 @@ function CreateSiege_Hakurei()
 			forts[1],
 			forts[1],
 			forts[1]:GetTeam())
+	FindClearSpaceForUnit(super_siege,super_siege:GetOrigin(),true)
 	super_siege:AddNewModifier(super_siege,nil,"modifier_ability_thdots_super_siege",{})
 	super_siege.path_count = 2
 	super_siege.point = PATH[super_siege.path_count]
@@ -123,6 +124,7 @@ function CreateSiege_Moriya()
 			forts[2],
 			forts[2],
 			forts[2]:GetTeam())
+	FindClearSpaceForUnit(super_siege,super_siege:GetOrigin(),true)
 	super_siege:AddNewModifier(super_siege,nil,"modifier_ability_thdots_super_siege",{})
 	super_siege.path_count = #PATH - 1
 	super_siege.point = PATH[super_siege.path_count]
