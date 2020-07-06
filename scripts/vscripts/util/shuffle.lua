@@ -1,14 +1,31 @@
 TOP = 10			--取前X种排序
 PlayerList = {}		--前X种排序的列表
 PlayerRatings = {}
+PlayerRounds = {}
 TrueList = 1
 SHUFFLE_FLAG = false
 RANK = {}
 
 function THD2_Rating_Catcher( args )
-	for k,v in pairs( args ) do
+	--check
+	if args["Ratings"] == nil or args["Rounds"] == nil then
+		--old style load
+		for k,v in pairs( args ) do
+			if v then
+				PlayerRatings[k] = v
+				PlayerRounds[k] = 4 --default
+			end
+		end
+		return
+	end
+	for k,v in pairs( args["Ratings"] ) do
 		if v then
 			PlayerRatings[k] = v
+		end
+	end
+	for k,v in pairs( args["Rounds"] ) do
+		if v then
+			PlayerRounds[k] = v
 		end
 	end
 	-- GetTHDPlayerRank()
