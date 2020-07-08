@@ -62,6 +62,116 @@ function Mystia02OnSpellStart(keys)
 
 end
 
+ability_thdots_mystia02 = {}    --重写夜雀2技能
+
+function ability_thdots_mystia02:GetCastRange(location, target)
+  return self:GetSpecialValueFor("range")
+  -- print(self.BaseClass.GetCastRange(self, location, target))
+  -- return self.BaseClass.GetCastRange(self, location, target)
+end
+
+function ability_thdots_mystia02:OnSpellStart()
+  self.value = 2
+  if not IsServer() then return end
+  self.caster = self:GetCaster()
+  self.range  = self:GetSpecialValueFor("range")
+  local duration = self:GetSpecialValueFor("duration")
+  self.caster:AddNewModifier(self.caster, self, "modifier_ability_thdots_mystia02_caster", {duration = duration})
+  self.caster:EmitSound("Hero_Enchantress.EnchantCast")
+  if RollPercentage(80) then
+    self.caster:EmitSound("Voice_Thdots_Mystia.AbilityMystia02")
+  end
+end
+
+modifier_ability_thdots_mystia02_caster = {} --光环
+LinkLuaModifier("modifier_ability_thdots_mystia02_caster","scripts/vscripts/abilities/abilitymystia.lua",LUA_MODIFIER_MOTION_NONE)
+
+function modifier_ability_thdots_mystia02_caster:IsHidden()     return true end
+function modifier_ability_thdots_mystia02_caster:IsPurgable()   return false end
+function modifier_ability_thdots_mystia02_caster:RemoveOnDeath()  return false end
+function modifier_ability_thdots_mystia02_caster:IsDebuff()   return false end
+
+function modifier_ability_thdots_mystia02_caster:GetAuraRadius() return self.range end -- global
+function modifier_ability_thdots_mystia02_caster:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_INVULNERABLE end
+function modifier_ability_thdots_mystia02_caster:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
+function modifier_ability_thdots_mystia02_caster:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC end
+function modifier_ability_thdots_mystia02_caster:GetModifierAura() return "modifier_ability_thdots_mystia02_aura" end
+function modifier_ability_thdots_mystia02_caster:IsAura() return true end
+
+function modifier_ability_thdots_mystia02_caster:GetEffectName()
+  return "particles/thd2/heroes/mystia/mystia02.vpcf"
+end
+
+function modifier_ability_thdots_mystia02_caster:OnCreated()
+  self.caster         = self:GetParent()
+  self.ability        = self:GetAbility()
+  self.movespeedup    = self:GetAbility():GetSpecialValueFor("movespeedup")
+  self.attackspeedup  = self:GetAbility():GetSpecialValueFor("attackspeedup")
+  self.range          = self:GetAbility():GetSpecialValueFor("range")
+  if not IsServer() then return end
+  self:StartIntervalThink(0.1)
+  if FindTelentValue(self.caster,"special_bonus_unique_mystia_2") ~= 0 then
+    self.range = self.range + FindTelentValue(self.caster,"special_bonus_unique_mystia_2")
+    local effectIndex = ParticleManager:CreateParticle("particles/thd2/heroes/mystia/mystia02_2.vpcf",PATTACH_ABSORIGIN_FOLLOW, self.caster)
+    ParticleManager:DestroyParticleSystemTime(effectIndex,self.ability:GetSpecialValueFor("duration"))
+  end
+end
+
+function modifier_ability_thdots_mystia02_caster:OnIntervalThink()
+  if not IsServer() then return end
+  if not GameRules:IsDaytime() then
+    self:SetStackCount(1)
+  else
+    self:SetStackCount(0)
+  end
+end
+
+function modifier_ability_thdots_mystia02_caster:DeclareFunctions()
+  return {
+    MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
+    MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT
+  }
+end
+
+function modifier_ability_thdots_mystia02_caster:GetModifierMoveSpeedBonus_Constant()
+  return self.movespeedup * self:GetStackCount()
+end
+
+function modifier_ability_thdots_mystia02_caster:GetModifierAttackSpeedBonus_Constant() 
+  return self.attackspeedup * self:GetStackCount()
+end
+
+modifier_ability_thdots_mystia02_aura = {} --光环
+LinkLuaModifier("modifier_ability_thdots_mystia02_aura","scripts/vscripts/abilities/abilitymystia.lua",LUA_MODIFIER_MOTION_NONE)
+
+function modifier_ability_thdots_mystia02_aura:IsHidden()     return false end
+function modifier_ability_thdots_mystia02_aura:IsPurgable()   return false end
+function modifier_ability_thdots_mystia02_aura:RemoveOnDeath()  return false end
+function modifier_ability_thdots_mystia02_aura:IsDebuff()   return false end
+
+function modifier_ability_thdots_mystia02_aura:OnCreated()
+  self.parent         = self:GetParent()
+  self.ability        = self:GetAbility()
+  self.movespeedup    = self:GetAbility():GetSpecialValueFor("movespeedup")
+  self.attackspeedup  = self:GetAbility():GetSpecialValueFor("attackspeedup")
+end
+
+function modifier_ability_thdots_mystia02_aura:DeclareFunctions()
+  return {
+    MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
+    MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT
+  }
+end
+
+function modifier_ability_thdots_mystia02_aura:GetModifierMoveSpeedBonus_Constant()
+  return self.movespeedup
+end
+
+function modifier_ability_thdots_mystia02_aura:GetModifierAttackSpeedBonus_Constant() 
+  return self.attackspeedup
+end
+
+
 --particles/units/heroes/hero_void_spirit/travel_strike/void_spirit_travel_strike_path_core.vpcf
 --particles/dev/library/base_item_attachment_magic.vpcf
 --particles/econ/items/jakiro/jakiro_ti7_immortal_head/jakiro_ti7_immortal_head_ice_path_embers.vpcf

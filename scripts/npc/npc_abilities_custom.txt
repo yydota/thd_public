@@ -11137,6 +11137,20 @@
 			}
 		}
 	}
+	"special_bonus_unique_wriggle_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"-4"
+			}
+		}
+	}
 
 	"ability_thdots_wriggle04"
 	{
@@ -24609,10 +24623,10 @@
 			}
 		}
 	}
-
 	"ability_thdots_mystia02"
 	{
-		"BaseClass"	"ability_datadriven"
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitymystia.lua"
 		"AbilityTextureName"	"ability_thdots_mystia02"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -24621,106 +24635,20 @@
 		"AbilityCastPoint"	"0"
 		"AbilityCooldown"	"10 10 10 10"
 		"AbilityManaCost"	"65 65 65 65"
-		"AbilityCastRange"	"400"
+		"AbilityCastRange"	"500"
 		"precache"
 		{
 			"particle"	"particles/thd2/heroes/mystia/mystia02.vpcf"
+			"particle"	"particles/thd2/heroes/mystia/mystia02_2.vpcf"
 			"particle"	"particles/thd2/heroes/mystia/mystia_modifer_02_1.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_enchantress.vsndevts"
-		}
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"	"CASTER"
-				"ScriptFile"	"scripts/vscripts/abilities/abilitymystia.lua"
-				"Function"	"Mystia02OnSpellStart"
-				"range"	"%range"
-			}
-			"FireSound"
-			{
-				"Target"	"CASTER"
-				"EffectName"	"Hero_Enchantress.EnchantCast"
-			}
-			"FireEffect"
-			{
-				"Target"	"CASTER"
-				"EffectName"	"particles/thd2/heroes/mystia/mystia02.vpcf"
-				"EffectAttachType"	"follow_origin"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_mystia02"
-			{
-				"IsBuff"	"1"
-				"IsPurgable"	"1"
-				"States"	{}
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeedup"
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeedup"
-				}
-				"EffectName"	"particles/thd2/heroes/mystia/mystia_modifer_02_1.vpcf"
-				"EffectAttachType"	"follow_origin"
-			}
-			"modifier_mystia02_1"
-			{
-				"IsBuff"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armorup"
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%magicalup"
-				}
-				"IsPurgable"	"1"
-			}
-			"modifier_mystia02_2"
-			{
-				"IsBuff"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%magicalup"
-				}
-				"IsPurgable"	"1"
-			}
-			"modifier_mystia02_area"
-			{
-				"Duration"	"%duration"
-				"IsBuff"	"1"
-				"Aura"	"modifier_mystia02"
-				"Aura_ApplyToCaster"	"1"
-				"Aura_Radius"	"%range"
-				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-			"modifier_mystia02_area_1"
-			{
-				"Duration"	"%duration"
-				"IsBuff"	"1"
-				"Aura_Radius"	"%range"
-				"Aura"	"modifier_mystia02_1"
-				"Aura_ApplyToCaster"	"1"
-				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-			}
-			"modifier_mystia02_area_2"
-			{
-				"Duration"	"%duration"
-				"IsBuff"	"1"
-				"Aura"	"modifier_mystia02_2"
-				"Aura_ApplyToCaster"	"1"
-				"Aura_Radius"	"%range"
-				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-				"IsHidden"	"0"
-			}
 		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"movespeedup"	"7 14 21 30"
+				"movespeedup"	"20 40 60 80"
 			}
 			"02"
 			{
@@ -24730,25 +24658,169 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"range"	"400"
+				"range"	"500"
+				"LinkedSpecialBonus"		"special_bonus_unique_mystia_2"
 			}
             "04"
             {
 				"var_type"	"FIELD_INTEGER"
 				"duration"	"10"
             }
-            "05"
-            {
-				"var_type"	"FIELD_INTEGER"
-				"armorup"	"5"
-            }
-            "06"
-            {
-				"var_type"	"FIELD_INTEGER"
-				"magicalup"	"10"
-            }
 		}
 	}
+	"special_bonus_unique_mystia_2"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"500"
+			}
+		}
+	}
+	// "ability_thdots_mystia02_1"
+	// {
+	// 	"BaseClass"	"ability_datadriven"
+	// 	"AbilityTextureName"	"ability_thdots_mystia02"
+	// 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	// 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	// 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	// 	"SpellImmunityType"	"SPELL_IMMUNITY_ALLIES_NO"
+	// 	"AbilityCastPoint"	"0"
+	// 	"AbilityCooldown"	"10 10 10 10"
+	// 	"AbilityManaCost"	"65 65 65 65"
+	// 	"AbilityCastRange"	"400"
+	// 	"precache"
+	// 	{
+	// 		"particle"	"particles/thd2/heroes/mystia/mystia02.vpcf"
+	// 		"particle"	"particles/thd2/heroes/mystia/mystia_modifer_02_1.vpcf"
+	// 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_enchantress.vsndevts"
+	// 	}
+	// 	"OnSpellStart"
+	// 	{
+	// 		"RunScript"
+	// 		{
+	// 			"Target"	"CASTER"
+	// 			"ScriptFile"	"scripts/vscripts/abilities/abilitymystia.lua"
+	// 			"Function"	"Mystia02OnSpellStart"
+	// 			"range"	"%range"
+	// 		}
+	// 		"FireSound"
+	// 		{
+	// 			"Target"	"CASTER"
+	// 			"EffectName"	"Hero_Enchantress.EnchantCast"
+	// 		}
+	// 		"FireEffect"
+	// 		{
+	// 			"Target"	"CASTER"
+	// 			"EffectName"	"particles/thd2/heroes/mystia/mystia02.vpcf"
+	// 			"EffectAttachType"	"follow_origin"
+	// 		}
+	// 	}
+	// 	"Modifiers"
+	// 	{
+	// 		"modifier_mystia02"
+	// 		{
+	// 			"IsBuff"	"1"
+	// 			"IsPurgable"	"1"
+	// 			"States"	{}
+	// 			"Properties"
+	// 			{
+	// 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeedup"
+	// 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attackspeedup"
+	// 			}
+	// 			"EffectName"	"particles/thd2/heroes/mystia/mystia_modifer_02_1.vpcf"
+	// 			"EffectAttachType"	"follow_origin"
+	// 		}
+	// 		"modifier_mystia02_1"
+	// 		{
+	// 			"IsBuff"	"1"
+	// 			"Properties"
+	// 			{
+	// 				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armorup"
+	// 				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%magicalup"
+	// 			}
+	// 			"IsPurgable"	"1"
+	// 		}
+	// 		"modifier_mystia02_2"
+	// 		{
+	// 			"IsBuff"	"1"
+	// 			"Properties"
+	// 			{
+	// 				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%magicalup"
+	// 			}
+	// 			"IsPurgable"	"1"
+	// 		}
+	// 		"modifier_mystia02_area"
+	// 		{
+	// 			"Duration"	"%duration"
+	// 			"IsBuff"	"1"
+	// 			"Aura"	"modifier_mystia02"
+	// 			"Aura_ApplyToCaster"	"1"
+	// 			"Aura_Radius"	"%range"
+	// 			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	// 			"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	// 		}
+	// 		"modifier_mystia02_area_1"
+	// 		{
+	// 			"Duration"	"%duration"
+	// 			"IsBuff"	"1"
+	// 			"Aura_Radius"	"%range"
+	// 			"Aura"	"modifier_mystia02_1"
+	// 			"Aura_ApplyToCaster"	"1"
+	// 			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	// 			"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	// 		}
+	// 		"modifier_mystia02_area_2"
+	// 		{
+	// 			"Duration"	"%duration"
+	// 			"IsBuff"	"1"
+	// 			"Aura"	"modifier_mystia02_2"
+	// 			"Aura_ApplyToCaster"	"1"
+	// 			"Aura_Radius"	"%range"
+	// 			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	// 			"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	// 			"IsHidden"	"0"
+	// 		}
+	// 	}
+	// 	"AbilitySpecial"
+	// 	{
+	// 		"01"
+	// 		{
+	// 			"var_type"	"FIELD_INTEGER"
+	// 			"movespeedup"	"7 14 21 30"
+	// 		}
+	// 		"02"
+	// 		{
+	// 			"var_type"	"FIELD_INTEGER"
+	// 			"attackspeedup"	"20 30 40 50"
+	// 		}
+	// 		"03"
+	// 		{
+	// 			"var_type"	"FIELD_INTEGER"
+	// 			"range"	"400"
+	// 		}
+ //            "04"
+ //            {
+	// 			"var_type"	"FIELD_INTEGER"
+	// 			"duration"	"10"
+ //            }
+ //            "05"
+ //            {
+	// 			"var_type"	"FIELD_INTEGER"
+	// 			"armorup"	"5"
+ //            }
+ //            "06"
+ //            {
+	// 			"var_type"	"FIELD_INTEGER"
+	// 			"magicalup"	"10"
+ //            }
+	// 	}
+	// }
 
 	"ability_thdots_mystia03"
 	{
@@ -25416,7 +25488,7 @@
 			"OnMerlin04TakeDamage"
 			{
 				"IsDebuff"	"0"
-				"IsPurgable"	"1"
+				"IsPurgable"	"0"
 				"StatusEffectPriority"	"10"
 				"Properties"	{}
 				"States"	{}

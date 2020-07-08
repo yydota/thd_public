@@ -37,11 +37,11 @@ function OnWriggle03AttackLanded(keys)
 
 		local caster = EntIndexToHScript(keys.caster_entindex)
 		local target = keys.target
-
 		if target == nil then
 			return
 		end
 
+		caster:PerformAttack(target, false, true, true, true, true, false, false)
 		local projectileTable = {
 			Target = target,
 			Source = caster,
@@ -61,7 +61,7 @@ function OnWriggle03AttackLanded(keys)
 			iSourceAttachment = 1
 		} 
 		ProjectileManager:CreateTrackingProjectile(projectileTable)
-		--keys.ability:StartCooldown(keys.ability:GetCooldown(keys.ability:GetLevel()))
+		keys.ability:StartCooldown(keys.ability:GetCooldown(keys.ability:GetLevel()))
 		local cd_len = keys.ability:GetCooldown(keys.ability:GetLevel())
 		if caster:HasModifier("modifier_cooldown_reduction_15") then
 			cd_len = cd_len * 0.85;
@@ -69,6 +69,7 @@ function OnWriggle03AttackLanded(keys)
 			cd_len = cd_len * 0.75;
 		end
 		keys.ability:StartCooldown(cd_len)
+		THDReduceCooldown(keys.ability,FindTelentValue(caster,"special_bonus_unique_wriggle_1"))
 	end
 end
 
