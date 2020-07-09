@@ -1317,8 +1317,8 @@
 	"item_sobi_mask"			"REMOVE"
 	"item_boots"			"REMOVE"
 	//"item_gem"			"REMOVE"
-	//"item_keen_optic"			"REMOVE"		 //只要加了这个就会有中立装备
-	//"item_ultimate_scepter"			"REMOVE"
+	"item_keen_optic"			"REMOVE"		 //只要加了这个就会有中立装备
+	"item_ultimate_scepter"			"REMOVE"
 
 	//=================================================================================================================
 	// Raven

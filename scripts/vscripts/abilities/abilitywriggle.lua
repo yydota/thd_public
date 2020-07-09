@@ -11,6 +11,13 @@ function OnWriggle01Start(keys)
 
 	unit:SetDayTimeVisionRange(keys.Vision)
 	unit:SetNightTimeVisionRange(keys.Vision)
+	if FindTelentValue(caster,"special_bonus_unique_wriggle_3") ~= 0 then
+		local abilityGEM = unit:FindAbilityByName("ability_thdots_wriggle_talent_unit")
+		if abilityGEM ~= nil then
+			abilityGEM:SetLevel(1)
+			unit:CastAbilityImmediately(abilityGEM, 0)
+		end
+	end
 	
 	local effectIndex = ParticleManager:CreateParticle("particles/econ/items/outworld_devourer/od_shards_exile/od_shards_exile_prison_top_orb.vpcf", PATTACH_CUSTOMORIGIN, caster) 
 	ParticleManager:SetParticleControlEnt(effectIndex , 0, caster, 5, "attach_hitloc", Vector(0,0,0), true)
@@ -111,6 +118,10 @@ function OnWriggle04Order(keys)
 	local target = keys.target
 	if caster:HasModifier("modifier_wriggle04_noinvisible") == false then
 		keys.ability:ApplyDataDrivenModifier( caster, caster, "modifier_wriggle04_invisible", {} )
+	end
+	if caster:FindAbilityByName("special_bonus_unique_wriggle_2"):GetLevel() ~= 0 
+		and not caster:HasModifier("wriggle_talent_modifier_spell_amplify_40") then
+		keys.ability:ApplyDataDrivenModifier(caster, caster, "wriggle_talent_modifier_spell_amplify_40", {})
 	end
 end
 

@@ -1068,6 +1068,8 @@
 		"DOTA_Tooltip_ability_ability_thdots_wriggle04_Description"	"使莉格露永久隐身，攻击的时候显形。\n万宝槌效果：周围900范围内没有敌方少女获得40%%移速和3%%生命魔法恢复加成，存在敌方少女则获得30攻击/攻速加成"
 		"DOTA_Tooltip_ability_ability_thdots_wriggle04_invisible_interval"	"隐身间隔："
 		"DOTA_Tooltip_ability_special_bonus_unique_wriggle_1"		"-4秒「不合时令的蝶雨」冷却"
+		"DOTA_Tooltip_ability_special_bonus_unique_wriggle_2"		"+40% 技能增强"
+		"DOTA_Tooltip_ability_special_bonus_unique_wriggle_3"		"「萤光现象」1800真视范围"
 		// --------------------
 		// koishi
 		// --------------------

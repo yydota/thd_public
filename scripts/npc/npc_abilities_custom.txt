@@ -11137,20 +11137,6 @@
 			}
 		}
 	}
-	"special_bonus_unique_wriggle_1"
-	{
-		"BaseClass"	"special_bonus_undefined"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"value"	"-4"
-			}
-		}
-	}
 
 	"ability_thdots_wriggle04"
 	{
@@ -11250,6 +11236,19 @@
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"30"
 				}
 			}
+			"wriggle_talent_modifier_spell_amplify_40"
+			{
+				"IsHidden"			"1"
+				"IsPurgable"		"0"
+				"IsBuff"			"1"
+				"IsDebuff"			"0"
+				"IsStunDebuff"		"0"
+				"RemoveOnDeath"		"0"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"40"
+				}
+			}
 		}
 		"AbilitySpecial"
 		{
@@ -11260,6 +11259,72 @@
 			}
 		}
 	}
+	"ability_thdots_wriggle_talent_unit"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_TURN"
+		"MaxLevel"	"4"
+		"AbilityCooldown"	"0"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_item_gem_of_true_sight"
+				"Target"	"CASTER"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"1800"
+			}
+		}
+	}
+	"special_bonus_unique_wriggle_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"-4"
+			}
+		}
+	}
+	"special_bonus_unique_wriggle_2"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"40"
+			}
+		}
+	}
+	"special_bonus_unique_wriggle_3"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1"
+			}
+		}
+	}
+
 
 	"ability_thdots_koishiex"
 	{
