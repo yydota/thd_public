@@ -791,6 +791,7 @@ function OnSatori01SpellStart(keys)
 			i = 2
 		end
 	end
+
 	if TargetName == "npc_dota_hero_lone_druid" then
 		if caster:GetLevel() >= 6 then
 			RandomNumber = RandomInt(1,50)
@@ -801,52 +802,50 @@ function OnSatori01SpellStart(keys)
 			AbilityStolenName = "lone_druid_savage_roar"
 		end
 	end
-	if TargetName == "npc_dota_hero_lycan" then
+	if TargetName == "npc_dota_hero_abaddon" then
 		if caster:GetLevel() >= 6 then
 			RandomNumber = RandomInt(1,75)
 		else 
 			RandomNumber = RandomInt(1,50)
 		end
 		if RandomNumber <= 25 then
-			AbilityStolenName = "lycan_howl"
+			AbilityStolenName = "abaddon_death_coil"
 		elseif RandomNumber > 25 and RandomNumber <= 50 then
-			AbilityStolenName = "lycan_howl"
+			AbilityStolenName = "abaddon_aphotic_shield"
 		elseif RandomNumber > 50 and RandomNumber <= 75 then
-			AbilityStolenName = "lycan_shapeshift"
+			AbilityStolenName = "abaddon_borrowed_time"
 			i = 2
 		end
 	end
-	if TargetName == "npc_dota_hero_undying" then
+	if TargetName == "npc_dota_hero_abyssal_underlord" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,75)
+		else 
+			RandomNumber = RandomInt(1,50)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "abyssal_underlord_firestorm"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "abyssal_underlord_pit_of_malice"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "abyssal_underlord_dark_rift"
+			i = 2
+		end
+	end
+	if TargetName == "npc_dota_hero_xxx" then
 		if caster:GetLevel() >= 6 then
 			RandomNumber = RandomInt(1,100)
 		else 
 			RandomNumber = RandomInt(1,75)
 		end
 		if RandomNumber <= 25 then
-			AbilityStolenName = "undying_decay"
+			AbilityStolenName = "abyssal_underlord_firestorm"
 		elseif RandomNumber > 25 and RandomNumber <= 50 then
-			AbilityStolenName = "undying_soul_rip"
+			AbilityStolenName = "abyssal_underlord_pit_of_malice"
 		elseif RandomNumber > 50 and RandomNumber <= 75 then
-			AbilityStolenName = "undying_tombstone"
+			AbilityStolenName = "abyssal_underlord_atrophy_aura"
 		elseif RandomNumber > 75 and RandomNumber <= 100 then
-			AbilityStolenName = "undying_flesh_golem"
-			i = 2
-		end
-	end
-	if TargetName == "npc_dota_hero_wisp" then
-		if caster:GetLevel() >= 6 then
-			RandomNumber = RandomInt(1,100)
-		else 
-			RandomNumber = RandomInt(1,75)
-		end
-		if RandomNumber <= 25 then
-			AbilityStolenName = "wisp_tether"
-		elseif RandomNumber > 25 and RandomNumber <= 50 then
-			AbilityStolenName = "wisp_spirits"
-		elseif RandomNumber > 50 and RandomNumber <= 75 then
-			AbilityStolenName = "wisp_overcharge"
-		elseif RandomNumber > 75 and RandomNumber <= 100 then
-			AbilityStolenName = "wisp_relocate"
+			AbilityStolenName = "abyssal_underlord_dark_rift"
 			i = 2
 		end
 	end

@@ -1008,11 +1008,12 @@ function modifier_ability_thdots_kokoro04_caster:OnDestroy()
 	if target:GetClassname()=="npc_dota_hero_necrolyte" and target:GetContext("ability_yuyuko_Ex_deadflag") == 1 and target:IsRealHero() and yuyuko_dead_flag == true then
 		target:AddNewModifier(caster, self:GetAbility(), "modifier_ability_thdots_kokoro04_target",{duration = 11})
 	end
-	if not HasAegis and not target:IsAlive() then
+	if not HasAegis and not target:IsAlive() and target:IsRealHero() then
 		if nu == true then
 			target:SetBuybackCooldownTime(buyback_time)
 		end
 		if FindTelentValue(self:GetCaster(),"special_bonus_unique_kokoro_6") ~= 0 then --刷新所有技能
+			print("shuaxin")
 			self:GetAbility():EndCooldown()
 			if caster:FindAbilityByName("ability_thdots_kokoro01") then
 				caster:FindAbilityByName("ability_thdots_kokoro01"):EndCooldown()

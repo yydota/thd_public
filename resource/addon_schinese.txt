@@ -1061,13 +1061,17 @@
 		"DOTA_Tooltip_ability_death_prophet_exorcism"	"蠢符「夜虫龙卷」"
 		"DOTA_Tooltip_ability_death_prophet_exorcism_Description"	"召唤出虫群，对周围的敌人进行撕咬，回归的时候按照伤害量回复自身生命。"
 		"DOTA_Tooltip_ability_ability_thdots_wriggle03"	"「不合时令的蝶雨」"
-		"DOTA_Tooltip_ability_ability_thdots_wriggle03_Description"	"每隔一段时间莉格露的攻击会附带一次额外效果，对目标造成额外伤害和沉默效果。"
+		"DOTA_Tooltip_ability_ability_thdots_wriggle03_Description"	"每隔一段时间莉格露的攻击会附带一次额外攻击，对目标造成额外伤害和沉默效果。"
+		"DOTA_Tooltip_ability_ability_thdots_wriggle03_Note0"	"额外攻击附带攻击特效"
 		"DOTA_Tooltip_ability_ability_thdots_wriggle03_silence_duration"	"沉默时间："
 		"DOTA_Tooltip_ability_ability_thdots_wriggle03_base_damage"	"附加伤害"
 		"DOTA_Tooltip_ability_ability_thdots_wriggle03_attack_interval"	"间隔："
 		"DOTA_Tooltip_ability_ability_thdots_wriggle04"	"隐虫「永夜蛰居」"
 		"DOTA_Tooltip_ability_ability_thdots_wriggle04_Description"	"使莉格露永久隐身，攻击的时候显形。\n万宝槌效果：周围900范围内没有敌方少女获得40%%移速和3%%生命魔法恢复加成，存在敌方少女则获得30攻击/攻速加成"
 		"DOTA_Tooltip_ability_ability_thdots_wriggle04_invisible_interval"	"隐身间隔："
+		"DOTA_Tooltip_ability_special_bonus_unique_wriggle_1"		"-4秒「不合时令的蝶雨」冷却"
+		"DOTA_Tooltip_ability_special_bonus_unique_wriggle_2"		"+40% 技能增强"
+		"DOTA_Tooltip_ability_special_bonus_unique_wriggle_3"		"「萤光现象」1800真视范围"
 		// --------------------
 		// koishi
 		// --------------------
@@ -2687,13 +2691,13 @@
 		"DOTA_Tooltip_modifier_mystia01_Description"	"无法使用技能并减速。"
 
 		"DOTA_Tooltip_ability_ability_thdots_mystia02"	"鸟符「神秘之歌」"
-		"DOTA_Tooltip_ability_ability_thdots_mystia02_Description"	"提升自己与周围单位%attackspeedup%点攻击速度与%movespeedup%的移动速度。"
+		"DOTA_Tooltip_ability_ability_thdots_mystia02_Description"	"提升自己与周围单位点攻击速度与的移动速度。\n夜晚自己获得双倍攻击速度与移动速度"
 		"DOTA_Tooltip_ability_ability_thdots_mystia02_movespeedup"	"移速提升："
 		"DOTA_Tooltip_ability_ability_thdots_mystia02_attackspeedup"	"攻速提升："
 		"DOTA_Tooltip_ability_ability_thdots_mystia02_range"	"范围："
 		"DOTA_Tooltip_ability_ability_thdots_mystia02_duration"	"持续时间："
-		"DOTA_Tooltip_ability_ability_thdots_mystia02_armorup"	"护甲提升(天赋)："
-		"DOTA_Tooltip_ability_ability_thdots_mystia02_magicalup"	"魔抗提升(天赋)："
+		// "DOTA_Tooltip_ability_ability_thdots_mystia02_armorup"	"护甲提升(天赋)："
+		// "DOTA_Tooltip_ability_ability_thdots_mystia02_magicalup"	"魔抗提升(天赋)："
 		"DOTA_Tooltip_modifier_mystia02"	"鸟符「神秘之歌」"
 		"DOTA_Tooltip_modifier_mystia02_Description"	"提升攻击速度与移动速度。"
 		"DOTA_Tooltip_modifier_mystia02_1"	"「神秘之歌」天赋光环"
@@ -2717,6 +2721,8 @@
 		"DOTA_Tooltip_modifier_mystia03_resistence_Description"	"提升魔抗。"
 		"DOTA_Tooltip_modifier_mystia03_mana_effect"	"声符「领唱者」"
 		"DOTA_Tooltip_modifier_mystia03_mana_effect_Description"	"使用技能时有35%的概率回复魔法。"
+		"DOTA_Tooltip_modifier_ability_thdots_mystia02_aura"	"「神秘之歌」"
+		"DOTA_Tooltip_modifier_ability_thdots_mystia02_aura_Description"	"升攻击速度与移动速度"
 
 		"DOTA_Tooltip_ability_ability_thdots_mystia04"	"夜盲「夜雀之歌」"
 		"DOTA_Tooltip_ability_ability_thdots_mystia04_Description"	"对周围%range%范围内的非建筑类敌方单位造成%damage%点伤害。\n同时降低他们%movespeeddown%%的移动速度与%attackspeeddown%点攻击速度。并附加夜盲效果：\n\n对于英雄：遮挡屏幕\n如果是白天，降低他们%dayvision%点视野。\n如果是夜晚，降低他们%nightvision%点视野。\n\n对于小兵与防御塔：\n完全丧失视野，并且无法攻击。\n\n持续%duration%秒。"
@@ -2747,9 +2753,9 @@
 		"DOTA_Tooltip_ability_ability_thdots_mystiaex_Note0"	"夜雀在白天的视野要比其他少女低，但在晚上的视野要比其他少女高。"
 
 		"DOTA_Tooltip_ability_special_bonus_unique_night_stalker"	"双倍「弱肉强食」伤害"
-		"DOTA_Tooltip_ability_special_bonus_unique_night_stalker_2"	"「神秘之歌」增加护甲魔抗"
 		"DOTA_Tooltip_ability_special_bonus_unique_luna_5"	"「弱肉强食」+11秒飞行时间"
 		"DOTA_Tooltip_ability_special_bonus_unique_mystia_1"	"「枭的夜鸣声」+3秒沉默"
+		"DOTA_Tooltip_ability_special_bonus_unique_mystia_2"	"「神秘之歌」+500范围"
 
 
 

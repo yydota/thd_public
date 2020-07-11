@@ -3537,7 +3537,7 @@
 		"MovementCapabilities"	"DOTA_UNIT_CAP_MOVE_FLY"
 		"VisionDaytimeRange"	"100"
 		"VisionNighttimeRange"	"100"
-		"Ability2"	""
+		"Ability2"	"ability_thdots_wriggle_talent_unit"
 		"Ability3"	""
 		"Ability4"	""
 		"Ability5"	""
