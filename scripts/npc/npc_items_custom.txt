@@ -68,7 +68,11 @@
 			{
 
 				"IsBuff" "1"
-				"RemoveOnDeath" "0"				
+				"RemoveOnDeath" "0"	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_IS_SCEPTER" "1"
+				}			
 			}
 		}
 		// Special
@@ -133,6 +137,30 @@
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intellect"
 					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
 					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
+					"MODIFIER_PROPERTY_IS_SCEPTER" "1"
+				}
+			}
+			"modifier_item_ultimate_scepter_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes" 		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/abilities/abilityItem.lua"
+						"Function"			"modifier_item_ultimate_scepter_datadriven_on_created"
+					}
+				}
+				
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/abilities/abilityItem.lua"
+						"Function"			"modifier_item_ultimate_scepter_datadriven_on_destroy"
+					}
 				}
 			}
 		}
