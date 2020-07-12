@@ -1283,7 +1283,7 @@
 					}
 				}
 			}
-			"modifier_reimu03_slow"
+			"modifier_ability_dota2x_reimu03_slow"
 			{
 				"Duration"	"%ability_duration"
 				"IsDebuff"	"1"
@@ -1834,6 +1834,7 @@
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_4"
 		"AbilityCooldown"	"100 85 70"
 		"AbilityManaCost"	"250 360 500"
+		"HasScepterUpgrade"	"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityCastRange"	"900"
@@ -1922,7 +1923,7 @@
 			{		
 				"Passive"	"1"
 				"ThinkInterval"		"0.1"
-				"IsHidden"	"0"
+				"IsHidden"	"1"
 				"OnIntervalThink"
 				{
 					"RunScript"
@@ -1938,7 +1939,7 @@
 				"IsBuff"	"1"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"0.35"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"%wanbaochui_amplify"
 				}
 			}
 		}
@@ -1948,12 +1949,21 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"damage_width"	"400"
+				"CalculateSpellDamageTooltip"	"0"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"damage_lenth"	"1000"
+				"CalculateSpellDamageTooltip"	"0"
 			}			
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_amplify"	"0.35"
+				"CalculateSpellDamageTooltip"	"0"
+				"RequiresScepter"			"1"
+			}
 		}
 		"AbilityDamage"	"360 540 720"
 	}
@@ -2433,11 +2443,15 @@
 
 	"ability_thdots_youmu04"
 	{
-		"BaseClass"	"ability_datadriven"
+		
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityYoumu.lua"
 		"AbilityTextureName"	"touhoutd/thtd_youmu_03"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES_STRONG"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
@@ -2445,6 +2459,7 @@
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_4"
 		"AbilityCooldown"	"100 85 70"
 		"AbilityManaCost"	"100 150 200"
+		"HasScepterUpgrade"	"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityCastRange"	"900"
@@ -2457,87 +2472,29 @@
 			"soundfile"	"soundevents/thdots_hero_sounds/thdots_youmu_sounds.vsndevts"
 			"particle"	"particles/thd2/heroes/youmu/youmu_04_blossoms_effect.vpcf"
 		}
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Voice_Thdots_Youmu.AbilityYoumu04"
-				"Target"	"TARGET"
-			}
-			"ApplyModifier"
-			{
-				"Target"	"CASTER"
-				"ModifierName"	"modifier_thdots_youmu04_states"
-			}
-			"ApplyModifier"
-			{
-				"Target"
-				{
-					"Center"	"TARGET"
-					"Flags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-				}
-				"ModifierName"	"modifier_thdots_youmu04_think_interval"
-			}
-		}
-		"Modifiers"
-		{
-			"modifier_thdots_youmu04_states"
-			{
-				"Duration"	"1.1"
-				"States"
-				{
-					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
-					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"-100"
-				}
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"Target"	"TARGET"
-						"EffectName"	"particles/thd2/heroes/youmu/youmu_04_blossoms_effect.vpcf"
-						"EffectAttachType"	"follow_origin"
-					}
-				}
-			}
-			"modifier_thdots_youmu04_think_interval"
-			{
-				"Duration"	"1.0"
-				"ThinkInterval"	"0.1"
-				"RemoveOnDeath"	"0"
-				"OnCreated"
-				{
-					"RunScript"
-					{
-						"Target"	"TARGET"
-						"ScriptFile"	"scripts/vscripts/abilities/abilityYoumu.lua"
-						"Function"	"OnYoumu04SpellStart"
-					}
-				}
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"Target"	"TARGET"
-						// 敏捷加成
-						"AbilityMulti"	"%ability_multi"
-						"ScriptFile"	"scripts/vscripts/abilities/abilityYoumu.lua"
-						"Function"	"OnYoumu04SpellThink"
-					}
-				}
-			}
-		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"ability_multi"	"3.0 4.2 5.4"
+			}
+			"02"
+			{
+				"var_type" "FIELD_FLOAT"
+				"wanbaochui_stun" "2.0"
+				"RequiresScepter"			"1"
+			}
+			"03"
+			{
+				"var_type" "FIELD_FLOAT"
+				"wanbaochui_radius" "350"
+				"RequiresScepter"			"1"
+			}
+			"04"
+			{
+				"var_type" "FIELD_FLOAT"
+				"duration" "1.0"
 			}
 		}
 		"AbilityDamage"	"90 180 270"

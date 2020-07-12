@@ -49,6 +49,102 @@ function OnYoumu03SpellOrderAttack(keys)
 	AbilityYoumu:OnYoumu03OrderAttack(keys)
 end
 
+
+ability_thdots_youmu04 = class ({})  
+
+
+
+function ability_thdots_youmu04:GetAOERadius()
+	if ( self:GetCaster():HasScepter() ) then
+		return self:GetSpecialValueFor( "wanbaochui_radius" )
+	end
+	return 0
+end
+
+
+--function ability_thdots_youmu04:GetCooldown( nLevel )
+--	local ability = self:GetCaster():FindAbilityByName("special_bonus_unique_juggernaut")
+--	local telent_val = 0
+    --if ability~=nil then
+    --    telent_val = ability:GetSpecialValueFor("value")
+    --end
+--	return self.BaseClass.GetCooldown( self, nLevel ) + telent_val -- + FindTelentValue(self:GetCaster(),"special_bonus_unique_juggernaut")
+--end
+
+
+function ability_thdots_youmu04:OnSpellStart()
+  if not IsServer() then return end
+  self.caster = self:GetCaster()
+  local duration = self:GetSpecialValueFor("duration")
+  self.caster:AddNewModifier(self.caster, self, "modifier_thdots_youmu04_states", {
+  		duration = duration})
+  self.caster:EmitSound("Voice_Thdots_Youmu.AbilityYoumu04")
+end
+
+modifier_thdots_youmu04_states = {}
+LinkLuaModifier("modifier_thdots_youmu04_states","scripts/vscripts/abilities/abilitymystia.lua",LUA_MODIFIER_MOTION_NONE)
+
+
+
+
+function modifier_thdots_youmu04_states:IsHidden()     return true end
+function modifier_thdots_youmu04_states:IsPurgable()   return false end
+function modifier_thdots_youmu04_states:RemoveOnDeath()  return true end
+function modifier_thdots_youmu04_states:IsDebuff()   return false end
+function modifier_thdots_youmu04_states:CheckState()
+	local state = {
+					[MODIFIER_STATE_ATTACK_IMMUNE] = true,
+					[MODIFIER_STATE_MAGIC_IMMUNE] = true,
+					[MODIFIER_STATE_UNSELECTABLE] = true,
+					[MODIFIER_STATE_NO_UNIT_COLLISION] = true
+	}
+
+	return state
+end
+function modifier_thdots_youmu04_states:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE
+	}
+	return funcs
+end
+function modifier_thdots_youmu04_states:GetEffectName()
+	return "particles/thd2/heroes/youmu/youmu_04_blossoms_effect.vpcf"
+end
+function modifier_thdots_youmu04_states:GetEffectAttachType()
+	return PATTACH_ABSORIGIN_FOLLOW
+end
+function modifier_thdots_youmu04_states:GetModifierIncomingDamage_Percentage()   return -100 end
+
+
+function modifier_thdots_youmu04_states:OnCreated()
+  self.caster           = self:GetParent()
+  self.ability          = self:GetAbility()
+  self.target           = self.ability:GetCursorTarget()
+  self.AbilityMulti     = self:GetAbility():GetSpecialValueFor("ability_multi")
+  self.WanbaochuiStun   = self:GetAbility():GetSpecialValueFor("wanbaochui_stun")
+  self.WanbaochuiRadius = self:GetAbility():GetSpecialValueFor("wanbaochui_radius")
+  if not IsServer() then return end
+  self:StartIntervalThink(0.1)
+
+    local caster = self.caster
+	local target = self.target
+
+	THDReduceCooldown(self.ability,FindTelentValue(caster,"special_bonus_unique_juggernaut"))
+	
+	
+	local effectIndex = ParticleManager:CreateParticle("particles/heroes/youmu/youmu_04_circle.vpcf", PATTACH_CUSTOMORIGIN, caster)
+	ParticleManager:SetParticleControl(effectIndex, 0, target:GetOrigin())
+	ParticleManager:DestroyParticleSystem(effectIndex,false)
+end
+
+
+function modifier_thdots_youmu04_states:OnIntervalThink()
+  if not IsServer() then return end
+  AbilityYoumu:OnYoumu04Think(self)
+end
+
+
+
 function OnYoumu04SpellStart(keys)
 	local caster = EntIndexToHScript(keys.caster_entindex)
 	local target = keys.target
@@ -62,6 +158,7 @@ function OnYoumu04SpellStart(keys)
 end
 
 function OnYoumu04SpellThink(keys)
+	keys.caster =  EntIndexToHScript(keys.caster_entindex)
 	AbilityYoumu:OnYoumu04Think(keys)
 end
 
@@ -338,7 +435,7 @@ end
 
 
 function AbilityYoumu:OnYoumu04Think(keys)
-	local caster = EntIndexToHScript(keys.caster_entindex)
+	local caster = keys.caster
 	local target = keys.target
 	local vecCaster = caster:GetOrigin()
 	local vecTarget = target:GetOrigin()
@@ -383,7 +480,7 @@ function AbilityYoumu:OnYoumu04Think(keys)
 					damage_flags = keys.ability:GetAbilityTargetFlags()
 				}
 				UnitDamageTarget(damage_table)
-				UnitPauseTarget(caster,v,2.0)
+				UnitPauseTarget(caster,v,keys.WanbaochuiStun)
 			end
 		else
 

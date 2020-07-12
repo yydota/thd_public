@@ -304,7 +304,7 @@ function AbilityReimu:OnReimu03Start(keys)
 
 	else
 		if caster:HasModifier("modifier_item_wanbaochui") then
-			keys.ability:ApplyDataDrivenModifier(caster, keys.target, "modifier_reimu03_slow", {Duration = keys.Duration})
+			keys.ability:ApplyDataDrivenModifier(caster, keys.target, "modifier_ability_dota2x_reimu03_slow", {Duration = keys.Duration})
 		end
 	    UtilSilence:UnitSilenceTarget(caster,keys.target,keys.Duration)
 	    keys.ability:ApplyDataDrivenModifier(caster, keys.target,"modifier_reimu03_flag",{Duration = keys.Duration})
