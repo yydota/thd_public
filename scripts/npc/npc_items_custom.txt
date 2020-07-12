@@ -5625,7 +5625,9 @@
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_horse_red"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityCooldown"	"45"
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
@@ -5638,6 +5640,15 @@
 		"ItemSellable"	"1"
 		"SideShop"	"1"
 		"ItemShopTags"	"move_speed;attack_speed;str"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_item_horse_red_active"
+				"Target" 		"CASTER"
+				"Duration"		"%duration"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_horse_red"
@@ -5652,6 +5663,27 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"	"%bonus_movement_speed"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%bonus_strength"
+				}
+			}
+			"modifier_item_horse_red_active"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsPurgable"		"1"
+				"IsBuff"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
+				}
+				"OnTakeDamage"
+				// "%attack_damage" is set to the damage value after mitigation
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_item_horse_red_active"
+						"Target" 		"CASTER"
+					}
 				}
 			}
 		}
@@ -5673,6 +5705,16 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_strength"	"8"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_health_regen"	"20"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"10"
 			}
 		}
 		"Model"	"models/props_gameplay/boots_of_speed.mdl"
@@ -5712,7 +5754,9 @@
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_horse_green"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityCooldown"	"30"
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
@@ -5725,6 +5769,15 @@
 		"ItemSellable"	"1"
 		"SideShop"	"1"
 		"ItemShopTags"	"move_speed;attack_speed;agi"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_item_horse_green_active"
+				"Target" 		"CASTER"
+				"Duration"		"%duration"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_horse_green"
@@ -5739,6 +5792,19 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"	"%bonus_movement_speed"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
 					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"	"%bonus_agility"
+				}
+			}
+			"modifier_item_horse_green_active"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsPurgable"		"1"
+				"IsBuff"			"1"
+				"OnCreated"	{}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_active_attack_speed"
 				}
 			}
 		}
@@ -5760,6 +5826,16 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_agility"	"8"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_active_attack_speed"		"20"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"		"5"
 			}
 		}
 		"Model"	"models/props_gameplay/boots_of_speed.mdl"
@@ -5799,7 +5875,9 @@
 	{
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_horse_blue"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityCooldown"	"45"
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
@@ -5812,6 +5890,15 @@
 		"ItemSellable"	"1"
 		"SideShop"	"1"
 		"ItemShopTags"	"move_speed;attack_speed;agi"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_item_horse_blue_active"
+				"Target" 		"CASTER"
+				"Duration"		"%duration"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_item_horse_blue"
@@ -5826,6 +5913,28 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"	"%bonus_movement_speed"
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%bonus_attack_speed"
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"	"%bonus_intellect"
+				}
+			}
+			"modifier_item_horse_blue_active"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsPurgable"		"1"
+				"IsBuff"			"1"
+				"OnCreated"	{}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
+				}
+				"OnTakeDamage"
+				// "%attack_damage" is set to the damage value after mitigation
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_item_horse_blue_active"
+						"Target" 		"CASTER"
+					}
 				}
 			}
 		}
@@ -5847,6 +5956,16 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_intellect"	"8"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_mana_regen"	"10"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"10"
 			}
 		}
 		"Model"	"models/props_gameplay/boots_of_speed.mdl"

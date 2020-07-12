@@ -2028,11 +2028,11 @@ function ItemAbility_three_dimension_OnSpellStart(keys)
 end
 
 function ItemAbility_three_dimension_OnProjectileHitUnit(keys)
-	print_r(three_dimension_projectile)
+	-- print_r(three_dimension_projectile)
 	local caster = keys.Caster or keys.caster
 	local target = keys.Target or keys.target
+	if is_spell_blocked(target,caster) then return end
 	if target and not target:IsMagicImmune() then
-		if target:TriggerSpellAbsorb(self) then return nil end
 		target:EmitSound("DOTA_Item.EtherealBlade.Target")
 		keys.ability:ApplyDataDrivenModifier(caster, target, "modifier_item_three_dimension_debuff", {})
 		keys.ability:ApplyDataDrivenModifier(caster, target, "modifier_item_three_dimension_debuff_movement_slow", {})

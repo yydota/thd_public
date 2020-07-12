@@ -4,6 +4,7 @@
 #base heroes/tei/hero.txt
 #base heroes/nitori/hero.txt
 #base heroes/kokoro/hero.txt
+#base heroes/reisen02/hero.txt
 
 "DOTAHeroes"
 {

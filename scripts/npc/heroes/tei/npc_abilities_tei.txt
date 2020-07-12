@@ -606,7 +606,7 @@
 		"AbilityTextureName"	"custom/ability_thdots_teiex"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
-		"AbilityType"	"DOTA_ABILITY_TYPE_HIDDEN"
+		//"AbilityType"	"DOTA_ABILITY_TYPE_HIDDEN"
 		"MaxLevel"	"1"
 	}
 

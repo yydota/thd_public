@@ -1,0 +1,333 @@
+"DOTAAbilities"
+{
+	"ability_thdots_reisen_2_01"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"btnskillreisen-q"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityreisen2.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0"
+		// "AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"1.5"
+		"AbilityCooldown"	"13 11 9 7"
+		"AbilityManaCost"	"120 110 100 90"
+		"AbilityCastRange"	"750"
+		"precache"
+		{
+			"particle"	"particles/econ/items/windrunner/windrunner_cape_sparrowhawk/windrunner_windrun_sparrowhawk.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_windrunner.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"slow_amount"	"-80"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"slow_duration"	"1.5 2.0 2.5 3.0"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"speed"	"900"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"55 110 165 220"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"default_buff_duration"	"5"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"reduce_multiplier"	"0.2"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"scepter_increase"	"400"
+			}
+		}
+	}
+
+	"ability_thdots_reisen_2_02"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"btnskillreisen-w"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityreisen2.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0"
+		// "AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"1.5"
+		"AbilityCooldown"	"24  21 18 15"
+		"AbilityManaCost"	"80 90 100 110"
+		"AbilityCastRange"	"0"
+		"precache"
+		{
+			"particle"	"particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_explosion_alliance_wave.vpcf"
+			"particle"	"particles/econ/items/abaddon/abaddon_alliance/abaddon_death_coil_explosion_alliance_sparks.vpcf"
+			"particle"	"particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_alliance_explosion.vpcf"
+			"particle"	"particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_explosion_alliance_trail.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_void_spirit.vsndevts"
+			"particle"	"particles/units/heroes/hero_void_spirit/void_spirit_exitportal_beam_c.vpcf"
+			"particle"	"particles/units/heroes/hero_void_spirit/void_spirit_disruption_center.vpcf"
+			"particle"	"particles/units/heroes/hero_void_spirit/void_spirit_entryportal_beam_b.vpcf"
+			"particle"	"particles/units/heroes/hero_void_spirit/void_spirit_entryportal_beam.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"1.5 2.0 2.5 3.0"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"reduction"	"-99"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"400"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"reflect_multiplier"	"0.2"
+			}
+			"05"
+			{
+				//真实伤害为1
+				//魔法伤害为2
+				//物理伤害为3
+				//受到伤害类型为4
+				"var_type"	"FIELD_FLOAT"
+				"reflect_type" 	"1"
+			}
+		}
+	}
+
+	"ability_thdots_reisen_2_03"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"btnskillreisen-e"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityreisen2.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0"
+		// "AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"1.5"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		"AbilityCastRange"	"0"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_void_spirit/astral_step/void_spirit_astral_step_dmg_blood.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_void_spirit.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cooldown"	"12 10 8 6"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"15 30 45 60"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"agility_bonus"	"0.2 0.4 0.6 0.8"
+			}
+		}
+	}
+
+	"ability_thdots_reisen_2_ultimate"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"btnskillreisen-r"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityreisen2.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_NONE"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_NONE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"	"3"
+		"RequiredLevel"	"6"
+		"LevelsBetweenUpgrades"	"6"
+		"AbilityCastPoint"	"0"
+		// "AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"1.5"
+		"AbilityCooldown"	"90 75 60"
+		"AbilityManaCost"	"150"
+		"AbilityCastRange"	"0"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_troll_warlord/troll_warlord_battletrance_buff.vpcf"
+			"particle"	"particles/units/heroes/hero_invoker_kid/invoker_kid_forge_spirit_ambient_fire.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+			"particle"	"particles/units/heroes/hero_arc_warden/arc_warden_tempest_cast_ring.vpcf"
+			"particle"	"particles/units/heroes/hero_void_spirit/planeshift/void_spirit_planeshift.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"berserker_call_duration"	"2.8 3.2 3.6"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_speed"	"140 180 220"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"movement_speed"	"40"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"350"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"5 6 7"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"ultimate_duration_increase_by"	"2"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"ultimate_limit"	"20"
+			}
+		}
+	}
+
+	"ability_thdots_reisen_2_04"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"btnskillreisen-d"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityreisen2.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_NONE"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_NONE"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_sven/sven_spell_great_cleave.vpcf"
+			"particle"	"particles/econ/items/sven/sven_ti7_sword/sven_ti7_sword_spell_great_cleave_gods_strength.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cleave_range"	"300"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cleave_damage"	"20 35 50 65"
+			}
+		}
+	}
+
+	"special_bonus_unique_Reisen_2_ability3_multiplier"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"2.0"
+			}
+		}
+	}
+
+	"special_bonus_unique_Reisen_2_ability2_add_const"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1.0"
+			}
+		}
+	}
+
+	"special_bonus_unique_Reisen_2_ability4_cooldown_reduce"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"30.0"
+			}
+		}
+	}
+
+	"special_bonus_unique_Reisen_2_ability4_reduce_attacktime"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1.0"
+			}
+		}
+	}
+}
