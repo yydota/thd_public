@@ -30,9 +30,43 @@ function OnByakuren01SpellStart(keys)
 	ParticleManager:DestroyParticleSystem(effectIndex,false)
 end
 
+ability_thdots_byakuren02 = class ({})  
+
+
+
+function ability_thdots_byakuren02:GetAOERadius()
+	if ( self:GetCaster():HasScepter() ) then
+		return self:GetSpecialValueFor( "wanbaochui_radius" )
+	end
+	return 0
+end
+
+
+--function ability_thdots_youmu04:GetCooldown( nLevel )
+--	local ability = self:GetCaster():FindAbilityByName("special_bonus_unique_juggernaut")
+--	local telent_val = 0
+    --if ability~=nil then
+    --    telent_val = ability:GetSpecialValueFor("value")
+    --end
+--	return self.BaseClass.GetCooldown( self, nLevel ) + telent_val -- + FindTelentValue(self:GetCaster(),"special_bonus_unique_juggernaut")
+--end
+
+
+function ability_thdots_byakuren02:OnSpellStart()
+  if not IsServer() then return end
+  self.caster = self:GetCaster()
+  self.ability          = self
+  self.target           = self:GetCursorTarget()
+  self.AbilityMulti     = self:GetSpecialValueFor("ability_multi")
+  self.ManaCost   = self:GetSpecialValueFor("mana_cost")
+  self.WanbaochuiRadius = self:GetSpecialValueFor("wanbaochui_radius")
+  self.caster:EmitSound("Hero_LegionCommander.PressTheAttack")
+  OnByakuren02SpellStart(self)
+end
+
 function OnByakuren02SpellStart(keys)
 	if is_spell_blocked(keys.target) then return end
-	local caster = EntIndexToHScript(keys.caster_entindex)
+	local caster = keys.caster
 	local manaCost = keys.ManaCost * caster:GetMana()		--消耗当前法力值*蓝耗系数
 	caster:SetMana(caster:GetMana()-manaCost)
 	local vecCaster = caster:GetOrigin()
@@ -43,7 +77,7 @@ function OnByakuren02SpellStart(keys)
 						caster:GetTeam(),		
 						target:GetOrigin(),	
 						nil,					
-						350,		
+						keys.WanbaochuiRadius,		
 						DOTA_UNIT_TARGET_TEAM_ENEMY,
 						keys.ability:GetAbilityTargetType(),
 						0,
