@@ -2507,11 +2507,15 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES"
 		"MaxLevel"	"4"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_1"
 		"AbilityCooldown"	"10"
 		"AbilityManaCost"	"80 90 100 110"
+		"HasScepterUpgrade"	"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityCastRange"	"99999"
@@ -2552,7 +2556,7 @@
 
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-20"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%wanbaochui_slow"
 				}
 			}
 			"modifier_thdots_aya01_think_interval"
@@ -2599,6 +2603,7 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"damage_radius"	"200"
+				"CalculateSpellDamageTooltip"	"0"
 			}
 			"03"
 			{
@@ -2609,6 +2614,12 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"fix_distance"	"600 900 1200 1500"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"wanbaochui_slow"	"-20"
+				"RequiresScepter"			"1"
 			}
 		}
 		"AbilityDamage"	"80 130 180 230"
@@ -3103,6 +3114,7 @@
 		"AbilityCastPoint"	"0"
 		"AbilityCooldown"	"25"
 		"AbilityManaCost"	"75"
+		"HasScepterUpgrade"	"1"
 		"ID"	"2016"
 		"precache"
 		{
@@ -3339,9 +3351,10 @@
 
 	"ability_thdots_byakuren02"
 	{
-		"BaseClass"	"ability_datadriven"
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitybyakuren.lua"
 		"AbilityTextureName"	"custom/ability_thdots_byakuren02"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET "
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET  | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
@@ -3349,6 +3362,7 @@
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_2"
 		"AbilityCooldown"	"8 7 6 5"
 		"AbilityManaCost"	"0"
+		"HasScepterUpgrade"	"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityCastRange"	"125"
@@ -3358,33 +3372,24 @@
 			"particle"	"particles/heroes/byakuren/ability_byakuren_02.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
 		}
-		"OnSpellStart"
-		{
-			"FireSound"
-			{
-				"EffectName"	"Hero_LegionCommander.PressTheAttack"
-				"Target"	"TARGET"
-			}
-			"RunScript"
-			{
-				"Target"	"TARGET"
-				"AbilityMulti"	"%ability_multi"
-				"ManaCost"	"%mana_cost"
-				"ScriptFile"	"scripts/vscripts/abilities/abilityByakuren.lua"
-				"Function"	"OnByakuren02SpellStart"
-			}
-		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"ability_multi"	"0.1 0.16 0.22 0.28"
+				"CalculateSpellDamageTooltip"	"1"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
 				"mana_cost"	"0.32"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_radius"	"350"
+				"RequiresScepter"			"1"
 			}
 		}
 	}
