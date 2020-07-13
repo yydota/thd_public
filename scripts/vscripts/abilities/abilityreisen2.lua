@@ -18,8 +18,8 @@ function ability_thdots_reisen_2_01:OnSpellStart()
     local caster=self:GetCaster()
     local target=self:GetCursorTarget()
     local buff_duration=self:GetSpecialValueFor("default_buff_duration")
-    print(buff_duration)
-    print(self:GetSpecialValueFor("reduce_multiplier"))
+    --print(buff_duration)
+    --print(self:GetSpecialValueFor("reduce_multiplier"))
 
     --对自己使用判定
     self.cast_self=false
@@ -64,23 +64,23 @@ modifier_mark_target=class({})
 LinkLuaModifier("modifier_mark_target","scripts/vscripts/abilities/abilityreisen2.lua",LUA_MODIFIER_MOTION_NONE)
 
 --modifier 基础判定
-function modifier_mark_target:IsHidden() 		return false end
-function modifier_mark_target:IsPurgable()		return false end
-function modifier_mark_target:RemoveOnDeath() 	return true end
-function modifier_mark_target:IsDebuff()		return true end
+function modifier_mark_target:IsHidden()        return false end
+function modifier_mark_target:IsPurgable()      return false end
+function modifier_mark_target:RemoveOnDeath()   return true end
+function modifier_mark_target:IsDebuff()        return true end
 
 --modifier 修改列表
 function modifier_mark_target:DeclareFunctions()
-	local funcs = {
+    local funcs = {
         MODIFIER_EVENT_ON_ATTACK_LANDED,
-	}
-	return funcs
+    }
+    return funcs
 end
 --modifier 触发事件
 function modifier_mark_target:OnAttackLanded(keys)
     if not IsServer() then return end
     local caster = self:GetCaster()
-	local target = keys.target
+    local target = keys.target
     local attacker = keys.attacker
     local hability = self:GetAbility()
 
@@ -100,8 +100,8 @@ function modifier_mark_target:OnAttackLanded(keys)
             victim=target,
             attacker=caster,
             damage          = hability:GetSpecialValueFor("damage"),
-            damage_type		= hability:GetAbilityDamageType(),
-            damage_flags 	= hability:GetAbilityTargetFlags(),
+            damage_type     = hability:GetAbilityDamageType(),
+            damage_flags    = hability:GetAbilityTargetFlags(),
             ability= hability
         }
         ApplyDamage(damage_table)
@@ -114,21 +114,22 @@ modifier_ability_thdots_reisen2_01_debuff=class({})
 LinkLuaModifier("modifier_ability_thdots_reisen2_01_debuff","scripts/vscripts/abilities/abilityreisen2.lua",LUA_MODIFIER_MOTION_NONE)
 
 --modifier 基础判定
-function modifier_ability_thdots_reisen2_01_debuff:IsHidden() 		return false end
-function modifier_ability_thdots_reisen2_01_debuff:IsPurgable()		return true end
-function modifier_ability_thdots_reisen2_01_debuff:RemoveOnDeath() 	return true end
-function modifier_ability_thdots_reisen2_01_debuff:IsDebuff()		return true end
+function modifier_ability_thdots_reisen2_01_debuff:IsHidden()       return false end
+function modifier_ability_thdots_reisen2_01_debuff:IsPurgable()     return true end
+function modifier_ability_thdots_reisen2_01_debuff:RemoveOnDeath()  return true end
+function modifier_ability_thdots_reisen2_01_debuff:IsDebuff()       return true end
 
 --modifier 修改列表
 function modifier_ability_thdots_reisen2_01_debuff:DeclareFunctions()
-	local funcs = {
+    local funcs = {
         MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
-	}
-	return funcs
+    }
+    return funcs
 end
 
 --modifier 修改函数
 function modifier_ability_thdots_reisen2_01_debuff:GetModifierMoveSpeedBonus_Percentage()
+    --if not IsServer() then return end
     return self:GetAbility():GetSpecialValueFor("slow_amount")
 end
 
@@ -137,36 +138,39 @@ modifier_ability_thdots_reisen2_01_buff=class({})
 LinkLuaModifier("modifier_ability_thdots_reisen2_01_buff","scripts/vscripts/abilities/abilityreisen2.lua",LUA_MODIFIER_MOTION_NONE)
 
 --modifier 基础判定
-function modifier_ability_thdots_reisen2_01_buff:IsHidden() 		return false end
-function modifier_ability_thdots_reisen2_01_buff:IsPurgable()		return false end
-function modifier_ability_thdots_reisen2_01_buff:RemoveOnDeath() 	return true end
-function modifier_ability_thdots_reisen2_01_buff:IsDebuff()		return false end
+function modifier_ability_thdots_reisen2_01_buff:IsHidden()         return false end
+function modifier_ability_thdots_reisen2_01_buff:IsPurgable()       return false end
+function modifier_ability_thdots_reisen2_01_buff:RemoveOnDeath()    return true end
+function modifier_ability_thdots_reisen2_01_buff:IsDebuff()     return false end
 
 --modifier 修改列表
 function modifier_ability_thdots_reisen2_01_buff:DeclareFunctions()
-	local funcs = {
+    local funcs = {
         MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE,
         MODIFIER_EVENT_ON_ORDER,
-	}
-	return funcs
+    }
+    return funcs
 end
 
 --modifier 修改函数
 function modifier_ability_thdots_reisen2_01_buff:GetModifierMoveSpeed_Absolute()
+    --if not IsServer() then return end
     return self:GetAbility():GetSpecialValueFor("speed")
 end
 
 --modifier 触发事件：任何命令
-function modifier_ability_thdots_reisen2_01_buff:OnOrder()
+function modifier_ability_thdots_reisen2_01_buff:OnOrder(keys)
     if not IsServer() then return end
 
     local caster=self:GetParent()
     local ability=self:GetAbility()
-    
-    --消除加速buff
-    if caster:HasModifier("modifier_ability_thdots_reisen2_01_buff") and self:GetAbility().cast_self==false then
-        --caster:RemoveModifierByName("modifier_bloodseeker_thirst")
-        caster:RemoveModifierByName("modifier_ability_thdots_reisen2_01_buff")
+
+    if keys.unit==caster then 
+        --消除加速buff
+        if caster:HasModifier("modifier_ability_thdots_reisen2_01_buff") and self:GetAbility().cast_self==false then
+            --caster:RemoveModifierByName("modifier_bloodseeker_thirst")
+            caster:RemoveModifierByName("modifier_ability_thdots_reisen2_01_buff")
+        end
     end
     self.cast_self=nil
 end
@@ -229,26 +233,22 @@ modifier_ability_thdots_reisen2_02_buff_damageReduction=class({})
 LinkLuaModifier("modifier_ability_thdots_reisen2_02_buff_damageReduction","scripts/vscripts/abilities/abilityreisen2.lua",LUA_MODIFIER_MOTION_NONE)
 
 --modifier 基础判定
-function modifier_ability_thdots_reisen2_02_buff_damageReduction:IsHidden() 		return false end
-function modifier_ability_thdots_reisen2_02_buff_damageReduction:IsPurgable()		return false end
-function modifier_ability_thdots_reisen2_02_buff_damageReduction:RemoveOnDeath() 	return true end
-function modifier_ability_thdots_reisen2_02_buff_damageReduction:IsDebuff()		return false end
+function modifier_ability_thdots_reisen2_02_buff_damageReduction:IsHidden()         return false end
+function modifier_ability_thdots_reisen2_02_buff_damageReduction:IsPurgable()       return false end
+function modifier_ability_thdots_reisen2_02_buff_damageReduction:RemoveOnDeath()    return true end
+function modifier_ability_thdots_reisen2_02_buff_damageReduction:IsDebuff()     return false end
 
 --modifier 修改列表
 function modifier_ability_thdots_reisen2_02_buff_damageReduction:DeclareFunctions()
-	local funcs = {
+    local funcs = {
         MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
-	}
-	return funcs
+    }
+    return funcs
 end
 
 --modifier 消除事件
 function modifier_ability_thdots_reisen2_02_buff_damageReduction:OnDestroy()
     if not IsServer() then return end
-
-    --停止音效
-    --因为是无限循环必须停止
-    StopSoundOn("Hero_EmberSpirit.FlameGuard.Loop",self:GetAbility().owner)
 
     --删除特效
     for i=1, #(self:GetAbility().particles) do
@@ -267,6 +267,12 @@ function modifier_ability_thdots_reisen2_02_buff_damageReduction:GetModifierInco
     local enemy=keys.attacker
     local ReceivedDamage=keys.damage
     local radius=ability:GetSpecialValueFor("radius")
+    local ReceivedDamageType=keys.damage_type
+
+    --如果是塔直接 return
+    if enemy:IsTower() or enemy:IsBuilding() then
+        return ability:GetSpecialValueFor("reduction")
+    end
 
     --创造特效
     local names={
@@ -293,15 +299,32 @@ function modifier_ability_thdots_reisen2_02_buff_damageReduction:GetModifierInco
         FIND_ANY_ORDER,
         false
     )
+    --反射类型判定
+    -- 真实伤害为1
+    -- 魔法伤害为2
+    -- 物理伤害为3
+    -- 受到伤害类型为4
+    --print("Receive Damage Type: ",ReceivedDamageType)
+    self.returnType=DAMAGE_TYPE_PURE
+
+    if ability:GetSpecialValueFor("reflect_type")==1 then
+        self.returnType=DAMAGE_TYPE_PURE
+    elseif ability:GetSpecialValueFor("reflect_type")==2 then
+        self.returnType=DAMAGE_TYPE_MAGICAL
+    elseif ability:GetSpecialValueFor("reflect_type")==3 then    
+        self.returnType=DAMAGE_TYPE_PHYSICAL
+    elseif ability:GetSpecialValueFor("reflect_type")==4 then
+        self.returnType=ReceivedDamageType
+    end
 
     for _,unit in pairs(reflect_enemy) do
         local damage_table=
         {
             victim=unit,
             attacker=caster,
-            damage          = ReceivedDamage*0.2,
-            damage_type		= DAMAGE_TYPE_MAGICAL,
-            damage_flags 	= DOTA_DAMAGE_FLAG_NONE,
+            damage          = ReceivedDamage*(ability:GetSpecialValueFor("reflect_percent")/100),
+            damage_type     = self.returnType,
+            damage_flags    = DOTA_DAMAGE_FLAG_NONE,
             ability= self:GetAbility()
         }
         ApplyDamage(damage_table)
@@ -318,7 +341,7 @@ ability_thdots_reisen_2_03=class({})
 
 --被动技能链接modifier
 function ability_thdots_reisen_2_03:GetIntrinsicModifierName()
-	return  "modifier_ability_thdots_reisen2_03"
+    return  "modifier_ability_thdots_reisen2_03"
 end
 
 --modifier 名字: 被动技能
@@ -326,29 +349,31 @@ modifier_ability_thdots_reisen2_03=class({})
 LinkLuaModifier("modifier_ability_thdots_reisen2_03","scripts/vscripts/abilities/abilityreisen2.lua",LUA_MODIFIER_MOTION_NONE)
 
 --modifier 基础判定
-function modifier_ability_thdots_reisen2_03:IsHidden() 		return false end
-function modifier_ability_thdots_reisen2_03:IsPurgable()		return false end
-function modifier_ability_thdots_reisen2_03:RemoveOnDeath() 	return false end
-function modifier_ability_thdots_reisen2_03:IsDebuff()		return false end
+function modifier_ability_thdots_reisen2_03:IsHidden()      return false end
+function modifier_ability_thdots_reisen2_03:IsPurgable()        return false end
+function modifier_ability_thdots_reisen2_03:RemoveOnDeath()     return false end
+function modifier_ability_thdots_reisen2_03:IsDebuff()      return false end
 
 --modifier 修改列表
 function modifier_ability_thdots_reisen2_03:DeclareFunctions()
-	local funcs = {
+    local funcs = {
         MODIFIER_EVENT_ON_ATTACKED,
         MODIFIER_EVENT_ON_ATTACK_LANDED,
         MODIFIER_EVENT_ON_MODIFIER_ADDED,
-	}
-	return funcs
+    }
+    return funcs
 end
 
 --modifier 触发事件：创造
 
 function modifier_ability_thdots_reisen2_03:OnCreated()
-    if not IsServer() then return end
     --基础信息
+    if not IsServer() then return end
     self.caster=self:GetParent()
     self.ability= self:GetAbility()
     self.count= 0
+    self.max_count=0
+    self:SetStackCount(self.count)
     --计时
     self:StartIntervalThink(1)
 end
@@ -361,14 +386,15 @@ function modifier_ability_thdots_reisen2_03:OnAttacked(keys)
     local temp=1
 
     --如果目标是施法者
-    if keys.target==self:GetCaster() and not keys.target:IsIllusion() then
+    if keys.target==self:GetParent() and not keys.target:IsIllusion() then
         --天赋判定：倍数
         if self.caster:HasAbility(abilityName) and self.caster:FindAbilityByName(abilityName):GetLevel()>0 then 
             temp = temp*self.caster:FindAbilityByName(abilityName):GetSpecialValueFor("value")
         end 
         --增加cd count
-        if self.count<=self.max_count and not self.caster:HasModifier("modifier_ability_thdots_reisen2_03_attack_buff") then
+        if self.count < self.max_count and not self.caster:HasModifier("modifier_ability_thdots_reisen2_03_attack_buff") then
             self.count=self.count+temp
+            self:SetStackCount(self.count)
         end
     end
 end
@@ -388,8 +414,9 @@ function modifier_ability_thdots_reisen2_03:OnAttackLanded(keys)
             temp = temp*self.caster:FindAbilityByName(abilityName):GetSpecialValueFor("value")
         end 
         --增加cd count
-        if self.count<=self.max_count and not self.caster:HasModifier("modifier_ability_thdots_reisen2_03_attack_buff") then
+        if self.count < self.max_count and not self.caster:HasModifier("modifier_ability_thdots_reisen2_03_attack_buff") then
             self.count=self.count+temp
+            self:SetStackCount(self.count)
         end
 
     end
@@ -398,6 +425,12 @@ end
 
 function modifier_ability_thdots_reisen2_03:OnIntervalThink()
     if not IsServer() then return end
+
+    local temp=1
+    --天赋判定：倍数
+    if self.caster:HasAbility(abilityName) and self.caster:FindAbilityByName(abilityName):GetLevel()>0 then 
+        temp = temp*self.caster:FindAbilityByName(abilityName):GetSpecialValueFor("value")
+    end 
 
     --每秒思考
     --得到cd最高值
@@ -408,13 +441,16 @@ function modifier_ability_thdots_reisen2_03:OnIntervalThink()
         self.caster:AddNewModifier(self.caster,self.ability,"modifier_ability_thdots_reisen2_03_attack_buff", {})
     end
 
-    --每秒加一秒cd值
-    self.count=self.count+1
-
     --如果已经有攻击buff 重置到0
     if self.caster:HasModifier("modifier_ability_thdots_reisen2_03_attack_buff") then
         self.count=0
-    end
+        self:SetStackCount(self.count)
+    else
+        --每秒加一秒cd值
+        self.count=self.count+temp
+        self:SetStackCount(self.count)
+    end  
+
 end
 
 --modifier 名字： 被动技能 攻击buff
@@ -422,25 +458,26 @@ modifier_ability_thdots_reisen2_03_attack_buff=class({})
 LinkLuaModifier("modifier_ability_thdots_reisen2_03_attack_buff","scripts/vscripts/abilities/abilityreisen2.lua",LUA_MODIFIER_MOTION_NONE)
 
 --modifier 基础判定
-function modifier_ability_thdots_reisen2_03_attack_buff:IsHidden() 		return false end
-function modifier_ability_thdots_reisen2_03_attack_buff:IsPurgable()		return false end
-function modifier_ability_thdots_reisen2_03_attack_buff:RemoveOnDeath() 	return false end
-function modifier_ability_thdots_reisen2_03_attack_buff:IsDebuff()		return false end
+function modifier_ability_thdots_reisen2_03_attack_buff:IsHidden()      return false end
+function modifier_ability_thdots_reisen2_03_attack_buff:IsPurgable()        return false end
+function modifier_ability_thdots_reisen2_03_attack_buff:RemoveOnDeath()     return false end
+function modifier_ability_thdots_reisen2_03_attack_buff:IsDebuff()      return false end
 
 
 --modifier 修改列表
 function modifier_ability_thdots_reisen2_03_attack_buff:DeclareFunctions()
-	local funcs = {
+    local funcs = {
         MODIFIER_EVENT_ON_ATTACK_LANDED,
         MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
-	}
-	return funcs
+    }
+    return funcs
 end
 
 --增加1000攻速
 --无法突破最高攻速
 --最高攻速是攻击间隔决定的
 function modifier_ability_thdots_reisen2_03_attack_buff:GetModifierAttackSpeedBonus_Constant()
+    --if not IsServer() then return end
     return 1000
 end
 
@@ -452,7 +489,7 @@ function modifier_ability_thdots_reisen2_03_attack_buff:OnAttackLanded(keys)
     local ability= self:GetAbility()
 
     --如果攻击者是施法者
-    if keys.attacker==caster and not enemy:IsTower()then
+    if keys.attacker==caster then
 
         --创造特效
         local name="particles/units/heroes/hero_void_spirit/astral_step/void_spirit_astral_step_dmg_blood.vpcf"
@@ -470,14 +507,15 @@ function modifier_ability_thdots_reisen2_03_attack_buff:OnAttackLanded(keys)
             victim=enemy,
             attacker=caster,
             damage          = total_damage,
-            damage_type		= DAMAGE_TYPE_PURE,
-            damage_flags 	= DOTA_DAMAGE_FLAG_NONE,
+            damage_type     = DAMAGE_TYPE_PURE,
+            damage_flags    = DOTA_DAMAGE_FLAG_NONE,
             ability= self:GetAbility()
         }
         ApplyDamage(damage_table)
         --治疗
-        caster:Heal(total_damage,caster)
-        SendOverheadEventMessage(nil,OVERHEAD_ALERT_HEAL,caster,total_damage,nil)
+        local heal=total_damage*(ability:GetSpecialValueFor("heal_percent")/100)
+        caster:Heal(heal,caster)
+        SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, caster, heal, nil)
         --消除modifier
         caster:RemoveModifierByName("modifier_ability_thdots_reisen2_03_attack_buff")
     end
@@ -489,7 +527,6 @@ end
 
 --技能4
 ability_thdots_reisen_2_ultimate=class({})
-LinkLuaModifier("modifier_ability_thdots_reisen2_ultimate","scripts/vscripts/abilities/abilityreisen2.lua",LUA_MODIFIER_MOTION_NONE)
 
 --万宝槌效果：允许眩晕使用
 function ability_thdots_reisen_2_ultimate:GetBehavior(value)
@@ -497,7 +534,7 @@ function ability_thdots_reisen_2_ultimate:GetBehavior(value)
     if caster:HasModifier("modifier_item_wanbaochui") then
         return DOTA_ABILITY_BEHAVIOR_NO_TARGET + DOTA_ABILITY_BEHAVIOR_IMMEDIATE + DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE
     end
-    return DOTA_ABILITY_BEHAVIOR_NO_TARGET + DOTA_ABILITY_BEHAVIOR_IMMEDIATE
+    return DOTA_ABILITY_BEHAVIOR_NO_TARGET
 end
 
 --技能4 施法事件
@@ -558,29 +595,60 @@ function ability_thdots_reisen_2_ultimate:OnSpellStart()
         false
     )
     for _,unit in pairs(call_enemy) do
-        unit:AddNewModifier(caster,self,"modifier_axe_berserkers_call",{duration=self:GetSpecialValueFor("berserker_call_duration")})
+        unit:AddNewModifier(caster,self,"modifier_ability_thdots_reisen2_ultimate_berserkers_call",{duration=self:GetSpecialValueFor("berserker_call_duration")})
     end
     
 end
+--允许被驱散
+modifier_ability_thdots_reisen2_ultimate_berserkers_call=class({})
+LinkLuaModifier("modifier_ability_thdots_reisen2_ultimate_berserkers_call","scripts/vscripts/abilities/abilityreisen2.lua",LUA_MODIFIER_MOTION_NONE)
+--modifier 基础判定
+function modifier_ability_thdots_reisen2_ultimate_berserkers_call:IsHidden()        return false end
+function modifier_ability_thdots_reisen2_ultimate_berserkers_call:IsPurgable()      return true end
+function modifier_ability_thdots_reisen2_ultimate_berserkers_call:RemoveOnDeath()   return true end
+function modifier_ability_thdots_reisen2_ultimate_berserkers_call:IsDebuff()        return true end
+
+--modifier 修改列表
+function modifier_ability_thdots_reisen2_ultimate_berserkers_call:DeclareFunctions()
+    local funcs = {
+    }
+    
+    return funcs
+end
+
+function modifier_ability_thdots_reisen2_ultimate_berserkers_call:OnCreated()
+    if not IsServer() then return end
+    local caster=self:GetCaster()
+    local enemy=self:GetParent()
+    enemy:AddNewModifier(caster,self:GetAbility(),"modifier_axe_berserkers_call",{duration=self:GetAbility():GetSpecialValueFor("berserker_call_duration")})
+end
+
+function modifier_ability_thdots_reisen2_ultimate_berserkers_call:OnDestroy()
+    if not IsServer() then return end
+    local enemy=self:GetParent()
+    enemy:RemoveModifierByName("modifier_axe_berserkers_call")
+end
+
 
 --modifier 名字：大招攻速移速buff
 modifier_ability_thdots_reisen2_ultimate = class({})
+LinkLuaModifier("modifier_ability_thdots_reisen2_ultimate","scripts/vscripts/abilities/abilityreisen2.lua",LUA_MODIFIER_MOTION_NONE)
 
 --modifier 基础判定
-function modifier_ability_thdots_reisen2_ultimate:IsHidden() 		return false end
-function modifier_ability_thdots_reisen2_ultimate:IsPurgable()		return false end
-function modifier_ability_thdots_reisen2_ultimate:RemoveOnDeath() 	return true end
-function modifier_ability_thdots_reisen2_ultimate:IsDebuff()		return false end
+function modifier_ability_thdots_reisen2_ultimate:IsHidden()        return false end
+function modifier_ability_thdots_reisen2_ultimate:IsPurgable()      return false end
+function modifier_ability_thdots_reisen2_ultimate:RemoveOnDeath()   return true end
+function modifier_ability_thdots_reisen2_ultimate:IsDebuff()        return false end
 
 --modifier 修改列表
 function modifier_ability_thdots_reisen2_ultimate:DeclareFunctions()
-	local funcs = {
+    local funcs = {
         MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
         MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
         MODIFIER_EVENT_ON_ATTACK_LANDED
     }
     
-	return funcs
+    return funcs
 end
 
 function modifier_ability_thdots_reisen2_ultimate:OnCreated()
@@ -597,6 +665,7 @@ function modifier_ability_thdots_reisen2_ultimate:OnCreated()
 
     --持续时间信息
     self.buff_duration=self:GetAbility():GetSpecialValueFor("duration")
+    self:SetStackCount(self.buff_duration)
     self:StartIntervalThink(1)
 end
 
@@ -616,7 +685,12 @@ end
 
 function modifier_ability_thdots_reisen2_ultimate:OnIntervalThink()
     if not IsServer() then return end
-    local caster=self:GetCaster()
+
+    if self.buff_duration > self:GetAbility():GetSpecialValueFor("ultimate_limit") then
+        self.buff_duration= self:GetAbility():GetSpecialValueFor("ultimate_limit")
+    end
+
+    self:SetStackCount(self.buff_duration)
 
     --如果持续时间为0 消除modifier
     if self.buff_duration ==0 then
@@ -626,6 +700,7 @@ function modifier_ability_thdots_reisen2_ultimate:OnIntervalThink()
     --如果大于0 减少1秒
     if self.buff_duration > 0 then
         self.buff_duration = self.buff_duration-1
+        self:SetStackCount(self.buff_duration)
     end
     --print("self. ultimate duration: ",self.buff_duration)
 end
@@ -640,17 +715,20 @@ function modifier_ability_thdots_reisen2_ultimate:OnAttackLanded(keys)
     --如果攻击者是施法者 + 对象是英雄 + buff低于最高值 则增加持续时间
     if keys.attacker==self:GetCaster() and enemy:IsHero() and self.buff_duration < ability:GetSpecialValueFor("ultimate_limit") then
         self.buff_duration=self.buff_duration + ability:GetSpecialValueFor("ultimate_duration_increase_by")
+        self:SetStackCount(self.buff_duration)
     end
 
 end
 
 --增加移速百分比
 function modifier_ability_thdots_reisen2_ultimate:GetModifierMoveSpeedBonus_Percentage()
+    --if not IsServer() then return end
     return self:GetAbility():GetSpecialValueFor("movement_speed")
 end
 
 --增加攻速常值
 function modifier_ability_thdots_reisen2_ultimate:GetModifierAttackSpeedBonus_Constant()
+    --if not IsServer() then return end
     return self:GetAbility():GetSpecialValueFor("attack_speed")
 end
 
@@ -660,7 +738,7 @@ end
 ability_thdots_reisen_2_04=class({})
 
 function ability_thdots_reisen_2_04:GetIntrinsicModifierName()
-	return "modifier_ability_thdots_reisen2_04"
+    return "modifier_ability_thdots_reisen2_04"
 end
 
 --modifier 名字
@@ -668,17 +746,17 @@ modifier_ability_thdots_reisen2_04=class({})
 LinkLuaModifier("modifier_ability_thdots_reisen2_04","scripts/vscripts/abilities/abilityreisen2.lua",LUA_MODIFIER_MOTION_NONE)
 
 --modifier 基础判定
-function modifier_ability_thdots_reisen2_04:IsHidden() 		return false end
-function modifier_ability_thdots_reisen2_04:IsPurgable()		return false end
-function modifier_ability_thdots_reisen2_04:RemoveOnDeath() 	return false end
-function modifier_ability_thdots_reisen2_04:IsDebuff()		return false end
+function modifier_ability_thdots_reisen2_04:IsHidden()      return false end
+function modifier_ability_thdots_reisen2_04:IsPurgable()        return false end
+function modifier_ability_thdots_reisen2_04:RemoveOnDeath()     return false end
+function modifier_ability_thdots_reisen2_04:IsDebuff()      return false end
 
 --modifier 修改列表
 function modifier_ability_thdots_reisen2_04:DeclareFunctions()
-	local funcs = {
+    local funcs = {
         MODIFIER_EVENT_ON_ATTACK_LANDED,
     }
-	return funcs
+    return funcs
 end
 
 function modifier_ability_thdots_reisen2_04:OnCreated()

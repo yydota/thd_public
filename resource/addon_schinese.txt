@@ -552,7 +552,8 @@
 		"DOTA_Tooltip_ability_ability_thdots_youmu03_bouns_damage"	"幻象伤害百分比："
 		"DOTA_Tooltip_ability_ability_thdots_youmu03_Lore"	"妖梦令即使受到伤害也不会消失的幽灵半身,追踪人类半身的行动。"
 		"DOTA_Tooltip_ability_ability_thdots_youmu04"	"人鬼「未来永劫斩」"
-		"DOTA_Tooltip_ability_ability_thdots_youmu04_Description"	"妖梦聚集起内心的力量进行一次威力巨大的攻击。"
+		// "DOTA_Tooltip_ability_ability_thdots_youmu04_Description"	"妖梦聚集起内心的力量进行一次威力巨大的攻击。"
+		"DOTA_Tooltip_ability_ability_thdots_youmu04_Description"	"妖梦聚集起内心的力量进行一次威力巨大的攻击。\n施法距离：900\n万宝槌效果：未来永劫斩对350范围内敌方同时造成伤害,并且控制时间增加至2s。"
 		"DOTA_Tooltip_ability_ability_thdots_youmu04_aghanim_description"	"未来永劫斩对%wanbaochui_radius%范围内敌方同时造成伤害,并且控制时间增加至%wanbaochui_stun%秒。"
 		"DOTA_Tooltip_ability_ability_thdots_youmu04_ability_multi"	"敏捷加成："
 		"DOTA_Tooltip_ability_ability_thdots_youmu04_abilitycastrange"	"施法距离："
@@ -2888,6 +2889,7 @@
 		"DOTA_Tooltip_modifier_ability_thdots_reisen2_ultimate_Description"	"持续时间内，每次攻击英雄持续时间+2秒，最高20秒。"
 		"DOTA_Tooltip_modifier_ability_thdots_reisen2_04"	"「月面防卫兵器」"
 		"DOTA_Tooltip_modifier_ability_thdots_reisen2_04_Description"	"每次攻击在650范围内造成伤害"
+		"DOTA_Tooltip_modifier_ability_thdots_reisen2_ultimate_berserkers_call" "你被嘲讽了"
 
 		// --------------------
 		// 16/2/5

@@ -480,7 +480,8 @@ function AbilityYoumu:OnYoumu04Think(keys)
 					damage_flags = keys.ability:GetAbilityTargetFlags()
 				}
 				UnitDamageTarget(damage_table)
-				UnitPauseTarget(caster,v,keys.WanbaochuiStun)
+				-- UnitPauseTarget(caster,v,keys.WanbaochuiStun)
+				UnitPauseTarget(caster,v,keys.ability:GetSpecialValueFor("wanbaochui_stun"))
 			end
 		else
 
