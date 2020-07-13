@@ -435,7 +435,7 @@ end
 
 
 function AbilityYoumu:OnYoumu04Think(keys)
-	local caster = keys.caster
+	local caster = EntIndexToHScript(keys.caster_entindex)
 	local target = keys.target
 	local vecCaster = caster:GetOrigin()
 	local vecTarget = target:GetOrigin()
