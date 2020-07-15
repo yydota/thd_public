@@ -1096,6 +1096,8 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 		GameRules:GetGameModeEntity():SetDamageFilter(Dynamic_Wrap(THDOTSGameMode, 'OnTHDOTSDamageFilter'), self)
 		abilityEx = hero:FindAbilityByName("ability_thdots_lunasaEx")
 		abilityEx:SetLevel(1)
+		abilityEx = hero:FindAbilityByName("ability_thdots_lunasa_wanbaochui")
+		abilityEx:SetLevel(1)
 	elseif (heroName == "npc_dota_hero_dragon_knight") then
 		abilityEx = hero:FindAbilityByName("ability_thdots_meirinex")
 		abilityEx:SetLevel(1)

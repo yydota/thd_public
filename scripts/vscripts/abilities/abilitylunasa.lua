@@ -77,9 +77,107 @@ end
 function lunasa03OnCreated (keys)
 	-- 随着生命值减少,法术暴击提升
 	local caster = EntIndexToHScript(keys.caster_entindex)
+	local ability = keys.ability
 	local lunasa03_buff = caster:FindModifierByName("modifier_lunasa03")
 	local LUNASA_DAMAGE_BONUS_PERCENT = (caster:GetMaxHealth() - caster:GetHealth())/caster:GetMaxHealth() * 10 / (keys.AbilityMulti - FindTelentValue(caster,"special_bonus_unique_dazzle_4"))
 	caster:SetModifierStackCount("modifier_lunasa03", caster, LUNASA_DAMAGE_BONUS_PERCENT * 100 )
+end
+
+ability_thdots_lunasa_wanbaochui = {}
+
+function ability_thdots_lunasa_wanbaochui:GetAbilityTextureName()
+	if not IsClient() then return end
+	if not self:GetCaster().arcana_style then return "wisp_overcharge" end
+	return "custom/imba_wisp_overcharge_arcana"
+end
+
+function ability_thdots_lunasa_wanbaochui:OnInventoryContentsChanged()
+	if IsServer() then
+		if self:GetCaster():HasModifier("modifier_item_wanbaochui") then
+			self:SetHidden(false)
+		else
+			if self:GetCaster():HasModifier("modifier_ability_thdots_lunasa_wanbaochui") then
+				self:GetCaster():RemoveModifierByName("modifier_ability_thdots_lunasa_wanbaochui")
+				self:ToggleAbility()
+			end
+			self:SetHidden(true)
+		end
+	end
+end
+
+function ability_thdots_lunasa_wanbaochui:OnHeroCalculateStatBonus()
+	self:OnInventoryContentsChanged()
+end
+
+function ability_thdots_lunasa_wanbaochui:OnToggle()
+	if IsServer() then 
+		local caster 			= self:GetCaster()
+		local ability 			= self
+		if ability:GetToggleState() then
+			EmitSoundOn("Hero_Wisp.Overcharge", caster)
+			caster:AddNewModifier( caster, ability, "modifier_ability_thdots_lunasa_wanbaochui", {})
+			self.effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_wisp/wisp_overcharge.vpcf", PATTACH_ABSORIGIN_FOLLOW,caster)
+			ParticleManager:SetParticleControlEnt(self.effectIndex , 0, caster, 5, "attach_hitloc", Vector(0,0,0), true)
+		else
+			caster:StopSound("Hero_Wisp.Overcharge")
+			ParticleManager:DestroyParticleSystem(self.effectIndex,true)			
+			caster:RemoveModifierByName("modifier_ability_thdots_lunasa_wanbaochui")
+		end
+	end
+end
+
+modifier_ability_thdots_lunasa_wanbaochui={}
+LinkLuaModifier("modifier_ability_thdots_lunasa_wanbaochui","scripts/vscripts/abilities/abilitylunasa.lua",LUA_MODIFIER_MOTION_NONE)
+
+--modifier 基础判定
+function modifier_ability_thdots_lunasa_wanbaochui:IsHidden()      return false end
+function modifier_ability_thdots_lunasa_wanbaochui:IsPurgable()        return false end
+function modifier_ability_thdots_lunasa_wanbaochui:RemoveOnDeath()     return false end
+function modifier_ability_thdots_lunasa_wanbaochui:IsDebuff()      return false end
+
+function modifier_ability_thdots_lunasa_wanbaochui:OnCreated()
+		self.caster 				= self:GetCaster()
+		self.ability 				= self:GetAbility()
+		self.drain_pct 				= self:GetAbility():GetSpecialValueFor("drain_pct")/100
+		self.drain_interval 		= self:GetAbility():GetSpecialValueFor("drain_interval")
+		self.deltaDrainPct			= self.drain_interval * self.drain_pct
+		self.bonus_attack_speed 	= self:GetAbility():GetSpecialValueFor("bonus_attack_speed")
+		self.bonus_damage_pct 		= self:GetAbility():GetSpecialValueFor("bonus_damage_pct")
+	if IsServer() then
+
+		self.overcharge_pfx 		= ParticleManager:CreateParticle(self:GetCaster().overcharge_effect, PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
+
+		self:StartIntervalThink(self.drain_interval)
+	end
+end
+
+function modifier_ability_thdots_lunasa_wanbaochui:OnIntervalThink()
+	-- hp removal instead of self dmg... this wont break urn or salve
+	local current_health 	= self.caster:GetHealth() 
+	local health_drain 		= current_health * self.deltaDrainPct
+	self.caster:ModifyHealth(current_health - health_drain, self.ability, true, 0)
+end
+
+function modifier_ability_thdots_lunasa_wanbaochui:DeclareFunctions()
+	local funcs = {
+		MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT,
+		MODIFIER_PROPERTY_CASTTIME_PERCENTAGE,
+		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
+		-- MODIFIER_PROPERTY_ATTACK_RANGE_BONUS,
+	}
+	return funcs
+end
+function modifier_ability_thdots_lunasa_wanbaochui:OnDestroy()
+	if IsServer() then
+		ParticleManager:DestroyParticle(self.overcharge_pfx, false)
+	end
+end
+function modifier_ability_thdots_lunasa_wanbaochui:GetModifierAttackSpeedBonus_Constant()
+	return self.bonus_attack_speed
+end
+
+function modifier_ability_thdots_lunasa_wanbaochui:GetModifierIncomingDamage_Percentage()
+	return self.bonus_damage_pct
 end
 
 

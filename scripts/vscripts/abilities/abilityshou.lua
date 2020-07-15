@@ -212,6 +212,69 @@ function Shou03OnKill( keys )
 	end
 end
 
+function Shou03Think(keys)
+	local caster = keys.caster
+	local ability = keys.ability
+	if caster:HasModifier("modifier_item_wanbaochui") then
+		caster:AddNewModifier(caster, ability, "modifier_ability_thdots_shou_wanbaochui",{})
+	elseif caster:HasModifier("modifier_ability_thdots_shou_wanbaochui") then
+		caster:RemoveModifierByName("modifier_ability_thdots_shou_wanbaochui")
+	end
+end
+
+modifier_ability_thdots_shou_wanbaochui=class({})
+LinkLuaModifier("modifier_ability_thdots_shou_wanbaochui","scripts/vscripts/abilities/abilityshou.lua",LUA_MODIFIER_MOTION_NONE)
+
+--modifier 基础判定
+function modifier_ability_thdots_shou_wanbaochui:IsHidden()      return true end
+function modifier_ability_thdots_shou_wanbaochui:IsPurgable()        return false end
+function modifier_ability_thdots_shou_wanbaochui:RemoveOnDeath()     return false end
+function modifier_ability_thdots_shou_wanbaochui:IsDebuff()      return false end
+
+function modifier_ability_thdots_shou_wanbaochui:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE,
+		MODIFIER_EVENT_ON_DEATH
+	}
+end
+
+function modifier_ability_thdots_shou_wanbaochui:OnCreated()
+	if not IsServer() then return end
+	self.caster = self:GetParent()
+	self.amplify = 0
+	self:StartIntervalThink(0.03)
+end
+
+function modifier_ability_thdots_shou_wanbaochui:OnIntervalThink()
+	if not IsServer() then return end
+	self.amplify = math.floor(self.caster:GetGold()/200)
+	self:SetStackCount(self.amplify)
+end
+
+function modifier_ability_thdots_shou_wanbaochui:GetModifierSpellAmplify_Percentage()
+	return self:GetStackCount()
+end
+
+function modifier_ability_thdots_shou_wanbaochui:OnDeath(keys)
+	if not IsServer() then return end
+	if keys.attacker == self:GetParent() and keys.unit:IsRealHero() then
+		print(keys.unit:GetTimeUntilRespawn())
+		keys.unit:SetContextThink("HasAegis",
+		function()
+			if keys.unit:GetTimeUntilRespawn() > 5 then
+				print("no aeigs")
+				local caster = self:GetParent()
+				local casterPlayerID = caster:GetPlayerOwnerID()
+				local GoldBountyAmount= self:GetAbility():GetSpecialValueFor("reduce_gold")
+				PlayerResource:SetGold(casterPlayerID,PlayerResource:GetUnreliableGold(casterPlayerID) + GoldBountyAmount ,false)
+				-- SendOverheadEventMessage(caster:GetOwner(),OVERHEAD_ALERT_GOLD,caster,GoldBountyAmount,nil)
+			end
+		end
+		,
+		0.03)
+	end
+end
+
 function ShouExThink( keys )
 	-- body
 	local caster = keys.caster

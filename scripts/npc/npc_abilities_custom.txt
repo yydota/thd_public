@@ -22385,6 +22385,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
+		"HasScepterUpgrade"	"1"
 		"Modifiers"
 		{
 			"modifier_lunasa03"
@@ -22413,7 +22414,53 @@
 			}
 		}
 	}
+	"ability_thdots_lunasa_wanbaochui"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"scripts/vscripts/abilities/abilitylunasa.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_NO"
+		"AbilityTextureName"			"wisp_overcharge"
+		"MaxLevel"						"1"
+		"AbilityCastPoint"				"0"
+   		"AbilityCastAnimation"			"ACT_INVALID"
 
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"2.0"
+
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
+			"particle"					"particles/units/heroes/hero_wisp/wisp_overcharge.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_attack_speed"		"50"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"bonus_damage_pct"			"-20"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"drain_interval"			"0.2 0.2 0.2 0.2"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"drain_pct"					"4.5 5.0 5.5 6.0"
+			}
+		}
+	}
 	"ability_thdots_lunasa04"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -23957,6 +24004,7 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HasScepterUpgrade"			"1"
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_sandking.vsndevts"
@@ -23985,6 +24033,16 @@
 						"EffectName"	"hero_sandking.attack"
 					}
 				}
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilityshou.lua"
+						"Function"	"Shou03Think"
+					}
+				}
+				"ThinkInterval"	"0.1"
 			}
 		}
 		"AbilitySpecial"
@@ -24008,6 +24066,18 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"radius"	"250"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_gold"	"-500"
+				"RequiresScepter"			"1"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"amplify_gold"	"200"
+				"RequiresScepter"			"1"
 			}
 		}
 	}

@@ -792,6 +792,22 @@ function OnSatori01SpellStart(keys)
 		end
 	end
 
+	if TargetName == "npc_dota_hero_phantom_lancer" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,75)
+		else 
+			RandomNumber = RandomInt(1,50)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "ability_thdots_reisen_2_01"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "ability_thdots_reisen_2_02"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "ability_thdots_reisen_2_ultimate"
+			i = 2
+		end
+	end
+-------------------------------------------------会员日
 	if TargetName == "npc_dota_hero_lone_druid" then
 		if caster:GetLevel() >= 6 then
 			RandomNumber = RandomInt(1,50)
@@ -817,35 +833,52 @@ function OnSatori01SpellStart(keys)
 			i = 2
 		end
 	end
-	if TargetName == "npc_dota_hero_abyssal_underlord" then
-		if caster:GetLevel() >= 6 then
-			RandomNumber = RandomInt(1,75)
-		else 
-			RandomNumber = RandomInt(1,50)
-		end
-		if RandomNumber <= 25 then
-			AbilityStolenName = "abyssal_underlord_firestorm"
-		elseif RandomNumber > 25 and RandomNumber <= 50 then
-			AbilityStolenName = "abyssal_underlord_pit_of_malice"
-		elseif RandomNumber > 50 and RandomNumber <= 75 then
-			AbilityStolenName = "abyssal_underlord_dark_rift"
-			i = 2
-		end
-	end
-	if TargetName == "npc_dota_hero_xxx" then
+	-- if TargetName == "npc_dota_hero_techies" then
+	-- 	if caster:GetLevel() >= 6 then
+	-- 		RandomNumber = RandomInt(1,75)
+	-- 	else 
+	-- 		RandomNumber = RandomInt(1,50)
+	-- 	end
+	-- 	if RandomNumber <= 25 then
+	-- 		AbilityStolenName = "techies_land_mines"
+	-- 	elseif RandomNumber > 25 and RandomNumber <= 50 then
+	-- 		AbilityStolenName = "techies_stasis_trap"
+	-- 	elseif RandomNumber > 50 and RandomNumber <= 75 then
+	-- 		AbilityStolenName = "techies_suicide"
+	-- 		i = 2
+	-- 	end
+	-- end
+	if TargetName == "npc_dota_hero_snapfire" then
 		if caster:GetLevel() >= 6 then
 			RandomNumber = RandomInt(1,100)
 		else 
 			RandomNumber = RandomInt(1,75)
 		end
 		if RandomNumber <= 25 then
-			AbilityStolenName = "abyssal_underlord_firestorm"
+			AbilityStolenName = "snapfire_scatterblast"
 		elseif RandomNumber > 25 and RandomNumber <= 50 then
-			AbilityStolenName = "abyssal_underlord_pit_of_malice"
+			AbilityStolenName = "snapfire_firesnap_cookie"
 		elseif RandomNumber > 50 and RandomNumber <= 75 then
-			AbilityStolenName = "abyssal_underlord_atrophy_aura"
+			AbilityStolenName = "snapfire_lil_shredder"
 		elseif RandomNumber > 75 and RandomNumber <= 100 then
-			AbilityStolenName = "abyssal_underlord_dark_rift"
+			AbilityStolenName = "snapfire_mortimer_kisses"
+			i = 2
+		end
+	end
+	if TargetName == "npc_dota_hero_techies" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,100)
+		else 
+			RandomNumber = RandomInt(1,75)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "techies_land_mines"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "techies_stasis_trap"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "techies_suicide"
+		elseif RandomNumber > 75 and RandomNumber <= 100 then
+			AbilityStolenName = "techies_suicide"
 			i = 2
 		end
 	end
