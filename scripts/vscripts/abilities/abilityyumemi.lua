@@ -4,30 +4,30 @@ function OnYumemiExSpellThink(keys)
 	caster:SetModifierStackCount("passive_yumemiEx_bonus_attack", keys.ability, #cross+1)
 end
 
-function OnYumemiExSpellOnDamage(keys)
-	local caster = EntIndexToHScript(keys.caster_entindex)
-	local cross = Entities:FindAllByModel("models/thd2/yumemi/yumemi_q_mmd.vmdl")
-	local telentblock = 0 + FindTelentValue(caster,"special_bonus_unique_tinker_2")
+-- function OnYumemiExSpellOnDamage(keys)
+-- 	local caster = EntIndexToHScript(keys.caster_entindex)
+-- 	local cross = Entities:FindAllByModel("models/thd2/yumemi/yumemi_q_mmd.vmdl")
+-- 	local telentblock = 0 + FindTelentValue(caster,"special_bonus_unique_tinker_2")
 
-	for k,v in pairs(cross) do
-		if v~=nil or v:IsNull()==false then 
-			local owner = v:GetOwner()
-			local casterOwner = caster:GetOwner()
-			if owner ~= nil and casterOwner~= nil and owner == casterOwner then
-				if keys.DamageTaken > telentblock then
-					if v.ability_yumemi_01_spell_dealdamage > 0 then
-						v.ability_yumemi_01_spell_dealdamage = v.ability_yumemi_01_spell_dealdamage - keys.DamageTaken
-						caster:SetHealth(caster:GetHealth() + keys.DamageTaken)
-						return
-					else
-						v:RemoveSelf()
+-- 	for k,v in pairs(cross) do
+-- 		if v~=nil or v:IsNull()==false then 
+-- 			local owner = v:GetOwner()
+-- 			local casterOwner = caster:GetOwner()
+-- 			if owner ~= nil and casterOwner~= nil and owner == casterOwner then
+-- 				if keys.DamageTaken > telentblock then
+-- 					if v.ability_yumemi_01_spell_dealdamage > 0 then
+-- 						v.ability_yumemi_01_spell_dealdamage = v.ability_yumemi_01_spell_dealdamage - keys.DamageTaken
+-- 						caster:SetHealth(caster:GetHealth() + keys.DamageTaken)
+-- 						return
+-- 					else
+-- 						v:RemoveSelf()
 						
-					end				
-				end	
-			end
-		end
-	end
-end
+-- 					end				
+-- 				end	
+-- 			end
+-- 		end
+-- 	end
+-- end
 
 function YumemiCreateCross(caster,vector)
 	local count = 1 + FindTelentValue(caster,"special_bonus_unique_tinker")
@@ -249,4 +249,59 @@ function OnYumemi04Destroy(keys)
 		UtilStun:UnitStunTarget(caster,v,keys.StunDuration)
 	end
 	caster:EmitSound("Hero_Phoenix.SuperNova.Explode") 
+end
+
+
+
+function OnYumemiExSpellOnDamage(keys)
+	local caster = EntIndexToHScript(keys.caster_entindex)
+	local cross = Entities:FindAllByModel("models/thd2/yumemi/yumemi_q_mmd.vmdl")
+	local telentblock = 0 + FindTelentValue(caster,"special_bonus_unique_tinker_2")
+
+	for k,v in pairs(cross) do
+		if v~=nil or v:IsNull()==false then 
+			local owner = v:GetOwner()
+			local casterOwner = caster:GetOwner()
+			if owner ~= nil and casterOwner~= nil and owner == casterOwner then
+				if keys.DamageTaken > telentblock then
+					if not caster:HasModifier("modifier_ability_thdots_yumemiEx_cross") then
+						caster:SetHealth(caster:GetHealth() + keys.DamageTaken)
+						caster:AddNewModifier(caster, keys.ability, "modifier_ability_thdots_yumemiEx_cross", {duration = 0.05})
+						v:RemoveSelf()
+					else
+						return
+					end			
+				end
+			end
+		end
+	end
+end
+
+modifier_ability_thdots_yumemiEx_cross = {}
+LinkLuaModifier("modifier_ability_thdots_yumemiEx_cross","scripts/vscripts/abilities/abilityyumemi.lua",LUA_MODIFIER_MOTION_NONE)
+function modifier_ability_thdots_yumemiEx_cross:IsHidden() 		return false end
+function modifier_ability_thdots_yumemiEx_cross:IsPurgable()		return false end
+function modifier_ability_thdots_yumemiEx_cross:RemoveOnDeath() 	return false end
+function modifier_ability_thdots_yumemiEx_cross:IsDebuff()		return false end
+
+function modifier_ability_thdots_yumemiEx_cross:OnCreated()
+	if not IsServer() then return end
+	self.particle = "particles/units/heroes/hero_templar_assassin/templar_assassin_refraction.vpcf"
+	self.duration = 0.3
+	local caster 				= self:GetCaster()
+	self.refraction_particle = ParticleManager:CreateParticle(self.particle, PATTACH_ABSORIGIN_FOLLOW, caster)
+	ParticleManager:SetParticleControlEnt(self.refraction_particle, 1, caster, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
+	ParticleManager:DestroyParticleSystemTime(self.refraction_particle, self.duration)
+end
+
+function modifier_ability_thdots_yumemiEx_cross:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_TOTAL_CONSTANT_BLOCK
+	}
+end
+
+
+function modifier_ability_thdots_yumemiEx_cross:GetModifierTotal_ConstantBlock(kv)
+	if not IsServer() then return end
+	return kv.damage
 end

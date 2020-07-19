@@ -1,5 +1,9 @@
 ability_thdots_reisen_2_01=class({})
 
+function ability_thdots_reisen_2_01:IsHiddenWhenStolen()        return false end
+function ability_thdots_reisen_2_01:IsRefreshable()             return true end
+function ability_thdots_reisen_2_01:IsStealable()           return true end
+
 --技能1 触发事件
 
 --修改施法距离：万宝槌
@@ -190,6 +194,10 @@ end
 
 ability_thdots_reisen_2_02=class({})
 
+function ability_thdots_reisen_2_02:IsHiddenWhenStolen()        return false end
+function ability_thdots_reisen_2_02:IsRefreshable()             return true end
+function ability_thdots_reisen_2_02:IsStealable()           return true end
+
 --技能施法事件
 function ability_thdots_reisen_2_02:OnSpellStart()
     if not IsServer() then return end
@@ -275,17 +283,17 @@ function modifier_ability_thdots_reisen2_02_buff_damageReduction:GetModifierInco
     end
 
     --创造特效
-    local names={
-    "particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_explosion_alliance_wave.vpcf",
-    "particles/econ/items/abaddon/abaddon_alliance/abaddon_death_coil_explosion_alliance_sparks.vpcf",
-    "particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_alliance_explosion.vpcf",
-    "particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_explosion_alliance_trail.vpcf"}
+    -- local names={
+    -- "particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_explosion_alliance_wave.vpcf",
+    -- "particles/econ/items/abaddon/abaddon_alliance/abaddon_death_coil_explosion_alliance_sparks.vpcf",
+    -- "particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_alliance_explosion.vpcf",
+    -- "particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_explosion_alliance_trail.vpcf"}
 
-    for i=1, #names do
-       local particle=ParticleManager:CreateParticle(names[i],PATTACH_ABSORIGIN_FOLLOW, caster)
-       --立马摧毁特效 false 默认消除时间是4秒
-       ParticleManager:DestroyParticle(particle,false)  
-    end
+    -- for i=1, #names do
+    --    local particle=ParticleManager:CreateParticle(names[i],PATTACH_ABSORIGIN_FOLLOW, caster)
+    --    --立马摧毁特效 false 默认消除时间是4秒
+    --    ParticleManager:DestroyParticle(particle,false)  
+    -- end
 
     --反射
     local reflect_enemy=FindUnitsInRadius(
@@ -327,6 +335,10 @@ function modifier_ability_thdots_reisen2_02_buff_damageReduction:GetModifierInco
             damage_flags    = DOTA_DAMAGE_FLAG_NONE,
             ability= self:GetAbility()
         }
+        local effectIndex = ParticleManager:CreateParticle("particles/heroes/reisen2/reisen2_02_1.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW, caster)
+        ParticleManager:SetParticleControlEnt(effectIndex, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
+        ParticleManager:SetParticleControlEnt(effectIndex, 1, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
+        ParticleManager:ReleaseParticleIndex(effectIndex)
         ApplyDamage(damage_table)
     end
     return ability:GetSpecialValueFor("reduction")
@@ -487,7 +499,6 @@ function modifier_ability_thdots_reisen2_03_attack_buff:OnAttackLanded(keys)
     local caster= self:GetCaster()
     local enemy= keys.target
     local ability= self:GetAbility()
-
     --如果攻击者是施法者
     if keys.attacker==caster then
 
@@ -511,11 +522,13 @@ function modifier_ability_thdots_reisen2_03_attack_buff:OnAttackLanded(keys)
             damage_flags    = DOTA_DAMAGE_FLAG_NONE,
             ability= self:GetAbility()
         }
-        ApplyDamage(damage_table)
-        --治疗
-        local heal=total_damage*(ability:GetSpecialValueFor("heal_percent")/100)
-        caster:Heal(heal,caster)
-        SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, caster, heal, nil)
+        if not enemy:IsBuilding() then 
+            ApplyDamage(damage_table)
+            --治疗
+            local heal=total_damage*(ability:GetSpecialValueFor("heal_percent")/100)
+            caster:Heal(heal,caster)
+            SendOverheadEventMessage(nil, OVERHEAD_ALERT_HEAL, caster, heal, nil)
+        end
         --消除modifier
         caster:RemoveModifierByName("modifier_ability_thdots_reisen2_03_attack_buff")
     end
@@ -528,13 +541,17 @@ end
 --技能4
 ability_thdots_reisen_2_ultimate=class({})
 
+function ability_thdots_reisen_2_ultimate:IsHiddenWhenStolen()      return false end
+function ability_thdots_reisen_2_ultimate:IsRefreshable()           return true end
+function ability_thdots_reisen_2_ultimate:IsStealable()             return true end
+
 --万宝槌效果：允许眩晕使用
 function ability_thdots_reisen_2_ultimate:GetBehavior(value)
     local caster = self:GetCaster()
     if caster:HasModifier("modifier_item_wanbaochui") then
         return DOTA_ABILITY_BEHAVIOR_NO_TARGET + DOTA_ABILITY_BEHAVIOR_IMMEDIATE + DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE
     end
-    return DOTA_ABILITY_BEHAVIOR_NO_TARGET
+    return self.BaseClass.GetBehavior(self)
 end
 
 --技能4 施法事件
@@ -563,7 +580,13 @@ function ability_thdots_reisen_2_ultimate:OnSpellStart()
         caster:RemoveModifierByName("modifier_ability_thdots_reisen2_ultimate")
     end
     --加入modifer
+    
     caster:AddNewModifier(caster,self,"modifier_ability_thdots_reisen2_ultimate",{})
+    -- caster:AddNewModifier(caster,self,"modifier_ability_thdots_reisen2_ultimate_dealy",{duration = 2})
+    caster:AddNewModifier(caster,self,"modifier_ability_thdots_reisen2_ultimate_dealy",{duration = self:GetSpecialValueFor("delay_duration")})
+
+
+
 
     --特效
     self.particles={}
@@ -583,20 +606,20 @@ function ability_thdots_reisen_2_ultimate:OnSpellStart()
     EmitSoundOn("Hero_TrollWarlord.BattleTrance.Cast",caster)
     
     --斧王咆哮 使用原版dota的modifier
-    local call_enemy=FindUnitsInRadius(
-        caster:GetTeam(),
-        caster:GetAbsOrigin(),
-        nil,
-        self:GetSpecialValueFor("radius"), 
-        DOTA_UNIT_TARGET_TEAM_ENEMY,
-        DOTA_UNIT_TARGET_ALL,
-        DOTA_UNIT_TARGET_FLAG_NONE,
-        FIND_ANY_ORDER,
-        false
-    )
-    for _,unit in pairs(call_enemy) do
-        unit:AddNewModifier(caster,self,"modifier_ability_thdots_reisen2_ultimate_berserkers_call",{duration=self:GetSpecialValueFor("berserker_call_duration")})
-    end
+    -- local call_enemy=FindUnitsInRadius(
+    --     caster:GetTeam(),
+    --     caster:GetAbsOrigin(),
+    --     nil,
+    --     self:GetSpecialValueFor("radius"), 
+    --     DOTA_UNIT_TARGET_TEAM_ENEMY,
+    --     DOTA_UNIT_TARGET_ALL,
+    --     DOTA_UNIT_TARGET_FLAG_NONE,
+    --     FIND_ANY_ORDER,
+    --     false
+    -- )
+    -- for _,unit in pairs(call_enemy) do
+    --     unit:AddNewModifier(caster,self,"modifier_ability_thdots_reisen2_ultimate_berserkers_call",{duration=self:GetSpecialValueFor("berserker_call_duration")})
+    -- end
     
 end
 --允许被驱散
@@ -731,6 +754,52 @@ function modifier_ability_thdots_reisen2_ultimate:GetModifierAttackSpeedBonus_Co
     --if not IsServer() then return end
     return self:GetAbility():GetSpecialValueFor("attack_speed")
 end
+
+modifier_ability_thdots_reisen2_ultimate_dealy=class({})
+
+LinkLuaModifier("modifier_ability_thdots_reisen2_ultimate_dealy","scripts/vscripts/abilities/abilityreisen2.lua",LUA_MODIFIER_MOTION_NONE)
+
+function modifier_ability_thdots_reisen2_ultimate_dealy:IsHidden()        return false end
+function modifier_ability_thdots_reisen2_ultimate_dealy:IsPurgable()      return false end
+function modifier_ability_thdots_reisen2_ultimate_dealy:RemoveOnDeath()   return true end
+function modifier_ability_thdots_reisen2_ultimate_dealy:IsDebuff()        return false end
+
+function modifier_ability_thdots_reisen2_ultimate_dealy:DeclareFunctions()
+    local funcs = {
+
+    }
+    
+    return funcs
+end
+
+function modifier_ability_thdots_reisen2_ultimate_dealy:OnDestroy()
+    if not IsServer() then return end
+    local caster=self:GetCaster()
+    local ability=self:GetAbility()
+    local radius = ability:GetSpecialValueFor("radius")
+    local particle = ParticleManager:CreateParticle("particles/econ/items/axe/axe_helm_shoutmask/axe_beserkers_call_owner_shoutmask.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+    ParticleManager:SetParticleControl(particle, 2, Vector(radius, radius, radius))
+    ParticleManager:ReleaseParticleIndex(particle)
+
+    local call_enemy=FindUnitsInRadius(
+        caster:GetTeam(),
+        caster:GetAbsOrigin(),
+        nil,
+        ability:GetSpecialValueFor("radius"), 
+        DOTA_UNIT_TARGET_TEAM_ENEMY,
+        DOTA_UNIT_TARGET_ALL,
+        DOTA_UNIT_TARGET_FLAG_NONE,
+        FIND_ANY_ORDER,
+        false
+    )
+    for _,unit in pairs(call_enemy) do
+        unit:AddNewModifier(caster,ability,"modifier_ability_thdots_reisen2_ultimate_berserkers_call",{duration=ability:GetSpecialValueFor("berserker_call_duration")})
+    end
+
+end
+
+
+
 
 ---------------------------------------------------------------------------------
 

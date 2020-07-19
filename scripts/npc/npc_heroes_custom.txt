@@ -155,7 +155,7 @@
 
 		"Model"	"models/new_touhou_model/reimu/reimu.vmdl"
 		"ModelScale"	"1.2"
-		"AttackAnimationPoint"	"0.6"
+		"AttackAnimationPoint"	"0.4"
 		// 攻击前摇
 		"AttackRate"	"1.6"
 		// 攻击速度
@@ -287,7 +287,7 @@
  
 		"Model"	"models/new_touhou_model/marisa/marisa.vmdl"
 		"ModelScale"	"1.15"
-		"AttackAnimationPoint"	"0.6"
+		"AttackAnimationPoint"	"0.4"
 		// 攻击前摇
 		"ArmorPhysical"	"0"
 		// 物理护甲
@@ -368,6 +368,7 @@
 		"Ability10"		"special_bonus_movement_speed_20"
 		"Ability11"		"special_bonus_attack_damage_20"
 		"Ability12"		"special_bonus_unique_juggernaut_2"
+		//"Ability13"		"special_bonus_lifesteal_12"
 		"Ability13"		"special_bonus_agility_15"
 		"Ability14"		"special_bonus_hp_400"
 		"Ability15"		"special_bonus_unique_youmu_1"
@@ -398,9 +399,9 @@
 		// 攻击速度
 		"BaseAttackSpeed"		"100"
 		// 基础攻击速度
-		"AttackDamageMin"	"31"
+		"AttackDamageMin"	"36"
 		// 最大攻击力
-		"AttackDamageMax"	"31"
+		"AttackDamageMax"	"36"
 		// 最小攻击力
 		"AttributeBaseStrength"	"19"
 		// 基础力量
@@ -1934,9 +1935,9 @@
 		"ProjectileSpeed"	"1200"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackRange"	"550"
-		"AttackAnimationPoint"	"0.2"
+		"AttackAnimationPoint"	"0.5"
 		// 攻击前摇
-		"AttackRate"	"1.6"
+		"AttackRate"	"1.5"
 		// 攻击速度
 		"ArmorPhysical"	"1"
 		// 物理护甲

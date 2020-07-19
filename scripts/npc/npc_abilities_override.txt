@@ -1318,8 +1318,8 @@
 	"item_sobi_mask"			"REMOVE"
 	"item_boots"			"REMOVE"
 	//"item_gem"			"REMOVE"
-	//"item_keen_optic"			"REMOVE"		 //只要加了这个就会有中立装备
-	//"item_ultimate_scepter"			"REMOVE"
+	"item_keen_optic"			"REMOVE"		 //只要加了这个就会有中立装备
+	"item_ultimate_scepter"			"REMOVE"
 
 	//=================================================================================================================
 	// Raven
@@ -1630,6 +1630,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"48"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		//"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_BUILDING"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
@@ -1638,7 +1639,7 @@
 		// Stats		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"45.0"
-		//"AbilitySharedCooldown"			"teleport"
+		"AbilitySharedCooldown"			"teleport"
 		"AbilityChannelTime"			"3.0"
 		
 		// Item Info

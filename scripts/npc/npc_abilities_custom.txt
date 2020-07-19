@@ -2510,6 +2510,7 @@
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"HasScepterUpgrade"	"1"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_4"
 		"AbilityCooldown"	"100 85 70"
@@ -8813,7 +8814,8 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"mana_regen_pct"	"0.3 0.5 0.7 0.9"
+				// "mana_regen_pct"	"0.3 0.5 0.7 0.9"
+				"mana_regen_pct"	"0.2 0.3 0.4 0.5"
 			}
 			// Extra variables
 			"03"
@@ -22457,7 +22459,7 @@
 			"04"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"drain_pct"					"4.5 5.0 5.5 6.0"
+				"drain_pct"					"6.0"
 			}
 		}
 	}
@@ -24070,7 +24072,7 @@
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"reduce_gold"	"-500"
+				"reduce_gold"	"-10"
 				"RequiresScepter"			"1"
 			}
 			"06"

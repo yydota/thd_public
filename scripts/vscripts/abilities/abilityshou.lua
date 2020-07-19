@@ -265,7 +265,8 @@ function modifier_ability_thdots_shou_wanbaochui:OnDeath(keys)
 				print("no aeigs")
 				local caster = self:GetParent()
 				local casterPlayerID = caster:GetPlayerOwnerID()
-				local GoldBountyAmount= self:GetAbility():GetSpecialValueFor("reduce_gold")
+				local GoldBountyAmount= self:GetAbility():GetSpecialValueFor("reduce_gold") * caster:GetGold() / 100
+				print(GoldBountyAmount)
 				PlayerResource:SetGold(casterPlayerID,PlayerResource:GetUnreliableGold(casterPlayerID) + GoldBountyAmount ,false)
 				-- SendOverheadEventMessage(caster:GetOwner(),OVERHEAD_ALERT_GOLD,caster,GoldBountyAmount,nil)
 			end

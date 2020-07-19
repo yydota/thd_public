@@ -168,6 +168,9 @@ function Shikieiki03_OnAttackLanded(keys)
 			AbilityShikieiki01:ApplyDataDrivenModifier(Caster,Target,MODIFIER_NAME_ACCUSATION_TIMER,{Duration=keys.AccusationDuration})
 		end
 	end
+	if Target:HasModifier(MODIFIER_NAME_ACCUSATION) then
+		Target:FindModifierByName(MODIFIER_NAME_ACCUSATION):SetDuration(keys.AccusationDuration,true)
+	end
 	if Caster:HasModifier("modifier_item_wanbaochui") then
 		local RandomNumber = RandomInt(1,100)
 		if RandomNumber<51 then
@@ -225,7 +228,7 @@ function Shikieiki04_ModifierKeepDebuffDuration_OnIntervalThink(keys)
 	local Modifier04Debuff=Target:FindModifierByNameAndCaster(DebuffName,Caster)
 	if Modifier04Debuff then
 		Target.Shikieiki04_Debuff_Duration=Target.Shikieiki04_Debuff_Duration or Modifier04Debuff:GetRemainingTime()
-		if CalcDistanceBetweenEntityOBB(Caster,Target)<RadiusKeepDuration then
+		if CalcDistanceBetweenEntityOBB(Caster,Target)<RadiusKeepDuration and Caster:IsAlive() then
 			Modifier04Debuff:SetDuration(Target.Shikieiki04_Debuff_Duration,true)
 		else
 			Target.Shikieiki04_Debuff_Duration=Modifier04Debuff:GetRemainingTime()

@@ -189,6 +189,7 @@ function OnMerlin04TakeDamage( keys )
 			local effectIndex = ParticleManager:CreateParticle("particles/thd2/heroes/merlin/merlin04_thin.vpcf", PATTACH_CUSTOMORIGIN, nil)
 			ParticleManager:SetParticleControl(effectIndex, 0, caster:GetOrigin()+Vector(0, 0, 100))
 			ParticleManager:SetParticleControl(effectIndex, 1, target:GetOrigin()+Vector(0, 0, 100))
+			ParticleManager:DestroyParticleSystem(effectIndex,false)
 		end
 	end
 end
