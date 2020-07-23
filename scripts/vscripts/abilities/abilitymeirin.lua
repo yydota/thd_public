@@ -149,6 +149,9 @@ function CheckTargets(keys)
 		-- Checks if the target is already affected by skewer
 		if unit:HasModifier("modifier_skewer_disable_target") == false then
 			-- If not, move it offset in front of the caster
+			-- if (unit:GetOrigin() - caster:GetOrigin()):Length2D() < 200 then
+			-- 	break 
+			-- end
 			local new_position = caster:GetAbsOrigin() + hero_offset * ability.direction
 			unit:SetAbsOrigin(new_position)
 			-- Apply the motion controller to the target
@@ -165,6 +168,10 @@ function SkewerMotion(keys)
 	local target = keys.target
 	local ability = keys.ability
 	-- Move the target while the distance traveled is less than the original distance upon cast
+	if target:HasModifier("modifier_ability_thdots_hina04") then --踢转转大招BUG
+		target:InterruptMotionControllers(true)
+		target:RemoveModifierByName("modifier_skewer_disable_target")
+	end
 	if ability.traveled_distance < ability.distance then
 		target:SetAbsOrigin(target:GetAbsOrigin() + ability.direction * ability.speed)
 		-- If the target is the caster, calculate the new travel distance

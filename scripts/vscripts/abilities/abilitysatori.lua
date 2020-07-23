@@ -55,6 +55,8 @@ function OnSatori01SpellStart(keys)
 	caster:RemoveModifierByName("modifier_ability_thdots_hatate01")
 	caster:RemoveModifierByName("modifier_ability_thdots_nitori03")
 	caster:RemoveModifierByName("modifier_medusa_mana_shield")
+	caster:RemoveModifierByName("modifier_leshrac_pulse_nova")
+	caster:RemoveModifierByName("modifier_voodoo_restoration_aura")
 	
 	
 
@@ -807,6 +809,23 @@ function OnSatori01SpellStart(keys)
 			i = 2
 		end
 	end
+	if TargetName == "npc_dota_hero_wisp" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,100)
+		else 
+			RandomNumber = RandomInt(1,75)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "ability_thdots_hina01"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "ability_thdots_hina02"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "ability_thdots_hina03"
+		elseif RandomNumber > 75 and RandomNumber <= 100 then
+			AbilityStolenName = "ability_thdots_hina04"
+			i = 2
+		end
+	end
 -------------------------------------------------会员日
 	if TargetName == "npc_dota_hero_lone_druid" then
 		if caster:GetLevel() >= 6 then
@@ -848,37 +867,37 @@ function OnSatori01SpellStart(keys)
 	-- 		i = 2
 	-- 	end
 	-- end
-	if TargetName == "npc_dota_hero_snapfire" then
+	if TargetName == "npc_dota_hero_witch_doctor" then
 		if caster:GetLevel() >= 6 then
 			RandomNumber = RandomInt(1,100)
 		else 
 			RandomNumber = RandomInt(1,75)
 		end
 		if RandomNumber <= 25 then
-			AbilityStolenName = "snapfire_scatterblast"
+			AbilityStolenName = "witch_doctor_paralyzing_cask"
 		elseif RandomNumber > 25 and RandomNumber <= 50 then
-			AbilityStolenName = "snapfire_firesnap_cookie"
+			AbilityStolenName = "witch_doctor_voodoo_restoration"
 		elseif RandomNumber > 50 and RandomNumber <= 75 then
-			AbilityStolenName = "snapfire_lil_shredder"
+			AbilityStolenName = "witch_doctor_maledict"
 		elseif RandomNumber > 75 and RandomNumber <= 100 then
-			AbilityStolenName = "snapfire_mortimer_kisses"
+			AbilityStolenName = "witch_doctor_death_ward"
 			i = 2
 		end
 	end
-	if TargetName == "npc_dota_hero_techies" then
+	if TargetName == "npc_dota_hero_leshrac" then
 		if caster:GetLevel() >= 6 then
 			RandomNumber = RandomInt(1,100)
 		else 
 			RandomNumber = RandomInt(1,75)
 		end
 		if RandomNumber <= 25 then
-			AbilityStolenName = "techies_land_mines"
+			AbilityStolenName = "leshrac_split_earth"
 		elseif RandomNumber > 25 and RandomNumber <= 50 then
-			AbilityStolenName = "techies_stasis_trap"
+			AbilityStolenName = "leshrac_diabolic_edict"
 		elseif RandomNumber > 50 and RandomNumber <= 75 then
-			AbilityStolenName = "techies_suicide"
+			AbilityStolenName = "leshrac_lightning_storm"
 		elseif RandomNumber > 75 and RandomNumber <= 100 then
-			AbilityStolenName = "techies_suicide"
+			AbilityStolenName = "leshrac_pulse_nova"
 			i = 2
 		end
 	end

@@ -276,7 +276,9 @@ function modifier_ability_thdots_reisen2_02_buff_damageReduction:GetModifierInco
     local ReceivedDamage=keys.damage
     local radius=ability:GetSpecialValueFor("radius")
     local ReceivedDamageType=keys.damage_type
-
+    if keys.damage <= 5 then
+        return
+    end
     --如果是塔直接 return
     if enemy:IsTower() or enemy:IsBuilding() then
         return ability:GetSpecialValueFor("reduction")

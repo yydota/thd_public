@@ -1132,11 +1132,14 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 		abilityEx:SetLevel(1)
 		abilityEx = hero:FindAbilityByName("ability_thdots_kokoro03_release")
 		abilityEx:SetLevel(1)
-	elseif (heroName == "npc_dota_hero_luna") then  --天生有BUG，暂时回收
+	elseif (heroName == "npc_dota_hero_luna") then
 		abilityEx = hero:FindAbilityByName("ability_thdots_childEx")
 		abilityEx:SetLevel(1)
-	elseif (heroName == "npc_dota_hero_phantom_lancer") then  --天生有BUG，暂时回收
+	elseif (heroName == "npc_dota_hero_phantom_lancer") then
 		abilityEx = hero:FindAbilityByName("ability_thdots_reisen_2_04")
+		abilityEx:SetLevel(1)
+	elseif (heroName == "npc_dota_hero_wisp") then
+		abilityEx = hero:FindAbilityByName("ability_thdots_hinaEx")
 		abilityEx:SetLevel(1)
 	end
 end

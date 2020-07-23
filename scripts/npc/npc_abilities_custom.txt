@@ -7,6 +7,7 @@
 #base "heroes/nitori/npc_abilities_nitori.txt"  
 #base "heroes/kokoro/npc_abilities_kokoro.txt"  
 #base "heroes/reisen02/npc_abilities_reisen02.txt"  
+#base "heroes/hina/npc_abilities_hina.txt"  
 
 "DOTAAbilities"
 {
