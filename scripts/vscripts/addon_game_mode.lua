@@ -1141,6 +1141,9 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 	elseif (heroName == "npc_dota_hero_wisp") then
 		abilityEx = hero:FindAbilityByName("ability_thdots_hinaEx")
 		abilityEx:SetLevel(1)
+	elseif (heroName == "npc_dota_hero_lycan") then
+		abilityEx = hero:FindAbilityByName("ability_thdots_kagerouEx")
+		abilityEx:SetLevel(1)
 	end
 end
 

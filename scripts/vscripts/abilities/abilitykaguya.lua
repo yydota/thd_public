@@ -221,39 +221,47 @@ function OnKaguya04SpellStart(keys)
 	caster.kaguya04aimrange = effectIndex
 	ParticleManager:SetParticleControl(caster.kaguya04aimrange, 0, Vector(100,0,0))
 	ParticleManager:SetParticleControl(caster.kaguya04aimrange, 1, Vector(100,0,0))
-	ParticleManager:DestroyParticleSystemTime(caster.kaguya04aimrange,15)
+	ParticleManager:DestroyParticleSystemTime(caster.kaguya04aimrange,5)
 
 	local effectIndex2 = ParticleManager:CreateParticle("particles/heroes/kaguya/kaguya04ring.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.kaguya04dummy)
 	caster.kaguya04aimrange2 = effectIndex2
 	ParticleManager:SetParticleControl(caster.kaguya04aimrange2, 0, Vector(90,0,0))
 	ParticleManager:SetParticleControl(caster.kaguya04aimrange2, 1, Vector(90,0,0))
-	ParticleManager:DestroyParticleSystemTime(caster.kaguya04aimrange2,15)
+	ParticleManager:DestroyParticleSystemTime(caster.kaguya04aimrange2,5)
 	
 	local effectIndex3 = ParticleManager:CreateParticle("particles/heroes/kaguya/kaguya04ring.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.kaguya04dummy)
 	caster.kaguya04aimrange3 = effectIndex3
 	ParticleManager:SetParticleControl(caster.kaguya04aimrange3, 0, Vector(80,0,0))
 	ParticleManager:SetParticleControl(caster.kaguya04aimrange3, 1, Vector(80,0,0))
-	ParticleManager:DestroyParticleSystemTime(caster.kaguya04aimrange3,15)	
+	ParticleManager:DestroyParticleSystemTime(caster.kaguya04aimrange3,5)	
 
 	local effectIndex4 = ParticleManager:CreateParticle("particles/heroes/kaguya/kaguya04ring.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.kaguya04dummy)
 	caster.kaguya04aimrange4 = effectIndex4
 	ParticleManager:SetParticleControl(caster.kaguya04aimrange4, 0, Vector(70,0,0))
 	ParticleManager:SetParticleControl(caster.kaguya04aimrange4, 1, Vector(70,0,0))
-	ParticleManager:DestroyParticleSystemTime(caster.kaguya04aimrange4,15)
+	ParticleManager:DestroyParticleSystemTime(caster.kaguya04aimrange4,5)
 
 	local effectIndex5 = ParticleManager:CreateParticle("particles/heroes/kaguya/kaguya04ring.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.kaguya04dummy)
 	caster.kaguya04aimrange5 = effectIndex5
 	ParticleManager:SetParticleControl(caster.kaguya04aimrange5, 0, Vector(60,0,0))
 	ParticleManager:SetParticleControl(caster.kaguya04aimrange5, 1, Vector(60,0,0))	
-	ParticleManager:DestroyParticleSystemTime(caster.kaguya04aimrange5,15)
+	ParticleManager:DestroyParticleSystemTime(caster.kaguya04aimrange5,5)
 	
 
 	local effectIndex6 = ParticleManager:CreateParticle("particles/heroes/kaguya/kaguya04ring.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.kaguya04dummy)
 	caster.kaguya04aimrange6 = effectIndex6
 	ParticleManager:SetParticleControl(caster.kaguya04aimrange6, 0, Vector(50,0,0))
 	ParticleManager:SetParticleControl(caster.kaguya04aimrange6, 1, Vector(50,0,0))	
-	ParticleManager:DestroyParticleSystemTime(caster.kaguya04aimrange6,15)
+	ParticleManager:DestroyParticleSystemTime(caster.kaguya04aimrange6,5)
 	-- keys.ability:SetActivated(false)
+
+	caster.kaguya04dummy:SetContextThink("killself",
+		function ()
+			if caster.kaguya04dummy ~= nil then
+				caster.kaguya04dummy:ForceKill(true)
+			end
+		end, 
+	5)
 end
 
 function OnKaguya04Passive(keys)

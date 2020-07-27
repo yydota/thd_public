@@ -2532,4 +2532,35 @@
 			}
 		}
 	}
+	"models/thd_hero/kagerou/kagerou.vmdl"
+	{
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
+		"PortraitLightFOV"		"88"
+		"PortraitLightDistance"		"343"
+		"PortraitLightColor"		"190 190 190"
+		"PortraitShadowColor"		"74 74 74"
+		"PortraitShadowScale"		"5.000000"
+		"PortraitAmbientColor"		"79 108 108"
+		"PortraitAmbientScale"		"5.000000"
+		"PortraitSpecularColor"		"251 74 84"
+		"PortraitBackgroundTexture"		"materials/vgui/hud/heroportraits/portraitbackground_moon.vmat"
+		"PortraitBackgroundColor1"		"1 1 1"
+		"PortraitBackgroundColor2"		"1 1 1"
+		"PortraitBackgroundColor3"		"1 1 1"
+		"PortraitBackgroundColor4"		"1 1 1"
+		"PortraitLightScale"		"4.500000"
+		"PortraitGroundShadowScale"		"1.500000"
+		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
+		"cameras"
+		{
+			"default"
+			{
+				"PortraitPosition"		"170.0 -24.0 160.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
+				"PortraitFOV"		"16"
+			}
+		}
+	}
 }

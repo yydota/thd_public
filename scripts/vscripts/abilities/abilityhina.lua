@@ -219,6 +219,12 @@ function ability_thdots_hina01:OnSpellStart()
 	-- ParticleManager:SetParticleControl(self.particle, 5, Vector(shield_size,0,0))
 	-- ParticleManager:SetParticleControlEnt(self.particle, 0, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
 	-- ParticleManager:DestroyParticleSystemTime(self.particle, duration)
+	for item_slot = 0, 5 do
+		local individual_item = caster:GetItemInSlot(item_slot)
+		if individual_item ~= nil then
+			print(individual_item:GetName())
+		end
+	end
 end
 
 function hina01_CreateDoll(caster , target , self)
@@ -807,9 +813,13 @@ function modifier_ability_thdots_hina04:OnDestroy()
 		-- end
 			CreateRequiemSoulLine(self.dummy, self.ability, line_position, false)
 	end
-	if self.dummy ~= nil then
-		self.dummy:ForceKill(true)
-	end
+	self.dummy:SetContextThink("dummy_kill",
+		function ()
+			print("doit")
+			if self.dummy ~= nil then
+				self.dummy:ForceKill(true)
+			end
+		end, 1)
 end
 
 function modifier_ability_thdots_hina04:OnTakeDamage(keys)

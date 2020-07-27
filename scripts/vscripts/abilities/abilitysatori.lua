@@ -54,6 +54,12 @@ function OnSatori01SpellStart(keys)
 	caster:RemoveModifierByName("modifier_mystiaEx")
 	caster:RemoveModifierByName("modifier_ability_thdots_hatate01")
 	caster:RemoveModifierByName("modifier_ability_thdots_nitori03")
+	if caster:HasModifier("modifier_kagerou_add_damage") then
+		caster:RemoveModifierByName("modifier_kagerou_add_damage")
+		print("doit")
+	end
+	caster:RemoveModifierByName("modifier_ability_thdots_kagerou03")
+	----------------------------------------------------下面是DOTA2的BUFF
 	caster:RemoveModifierByName("modifier_medusa_mana_shield")
 	caster:RemoveModifierByName("modifier_leshrac_pulse_nova")
 	caster:RemoveModifierByName("modifier_voodoo_restoration_aura")
@@ -823,6 +829,23 @@ function OnSatori01SpellStart(keys)
 			AbilityStolenName = "ability_thdots_hina03"
 		elseif RandomNumber > 75 and RandomNumber <= 100 then
 			AbilityStolenName = "ability_thdots_hina04"
+			i = 2
+		end
+	end
+	if TargetName == "npc_dota_hero_lycan" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,100)
+		else 
+			RandomNumber = RandomInt(1,75)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "ability_thdots_kagerou01"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "ability_thdots_kagerou02"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "ability_thdots_kagerou03"
+		elseif RandomNumber > 75 and RandomNumber <= 100 then
+			AbilityStolenName = "ability_thdots_kagerou06"
 			i = 2
 		end
 	end

@@ -6,6 +6,7 @@
 #base heroes/kokoro/hero.txt
 #base heroes/reisen02/hero.txt
 #base heroes/hina/hero.txt
+#base heroes/kagerou/hero.txt
 
 "DOTAHeroes"
 {

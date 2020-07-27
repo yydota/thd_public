@@ -1,0 +1,609 @@
+"DOTAAbilities"
+{
+	"ability_thdots_kagerou01"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_thdots_kagerou01"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"4"
+		"AbilityCastPoint"	"0.1"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCooldown"	"6"
+		"AbilityManaCost"	"40"
+		// "AbilityCastRange"	"400"
+		"AbilityCastRangeBuffer"	"200"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_monkey_king.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/abilities/abilitykagerou.lua"
+				"Function"	"A1Start"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_const"	"30 60 90 120"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_ratio"	"0.8"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_radius"	"300"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cast_range"	"400"
+			}
+		}
+	}
+
+	"ability_thdots_kagerou03"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_thdots_kagerou03"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ALLIES_YES"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"4"
+		"AbilityCastPoint"	"0.1"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		"AbilityCooldown"	"20"
+		"AbilityManaCost"	"100"
+		"AOERadius"	"500"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lycan.vsndevts"
+			"particle"	"particles/econ/items/lycan/blood_moon/lycan_blood_moon_shapeshift_ambient.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"Duration"	"%active_time"
+				"ModifierName"	"modifier_ability_thdots_kagerou03_wolf"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ability_thdots_kagerou03"
+			{
+				"States"	{}
+				"Properties"	{}
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"OnSuccess"
+						{
+							"RunScript"
+							{
+								"Target"	"TARGET"
+								"ScriptFile"	"scripts/vscripts/abilities/abilitykagerou.lua"
+								"Function"	"A3PassiveTrig"
+							}
+						}
+						"Chance"	"%stun_chance"
+					}
+				}
+				"Passive"	"1"
+				"IsBuff"	"1"
+				"OnDestroy"	{}
+			}
+			"modifier_ability_thdots_kagerou03_wolf"
+			{
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykagerou.lua"
+						"Function"	"A3Start"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykagerou.lua"
+						"Function"	"A3End"
+					}
+					"RemoveModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_ability_thdots_kagerou03_up"
+					}
+				}
+				"IsBuff"	"1"
+				"Duration"	"%active_time"
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"Target"	"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykagerou.lua"
+						"Function"	"A3FirstAtt"
+					}
+				}
+				"EffectName"	"particles/econ/items/lycan/blood_moon/lycan_blood_moon_shapeshift_ambient.vpcf"
+				"EffectAttachType"	"attach_origin"
+			}
+			"modifier_ability_thdots_kagerou03_up"
+			{
+				"IsBuff"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT"	"1.1"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"health_ratio"	"3 6 9 12"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"health_val"	"200"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"active_time"	"10"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_time"	"1"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_chance"	"10 15 20 25"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"health_regen"	"40 60 80 100"
+			}
+		}
+	}
+
+	"ability_thdots_kagerou02"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_thdots_kagerou02"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"HasScepterUpgrade"	"1"
+		"MaxLevel"	"4"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCooldown"	"12 10 8 6"
+		"AbilityManaCost"	"20"
+		"AbilityCastRange"	"800"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/abilities/abilitykagerou.lua"
+				"EffectName"	"particles/basic_projectile/basic_projectile_explosion_flash.vpcf_c"
+				"Function"	"A2Start"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"Target"	"TARGET"
+				"ScriptFile"	"scripts/vscripts/abilities/abilitykagerou.lua"
+				"Function"	"A2Hit"
+			}
+			"DeleteOnHit"	"0"
+		}
+		"OnUpgrade"
+		{
+			"RunScript"
+			{
+				"Target"	"CASTER"
+				"ScriptFile"	"scripts/vscripts/abilities/abilitykagerou.lua"
+				"Function"	"A2Passive"
+			}
+		}
+		"OnProjectileFinish"
+		{
+			"RunScript"
+			{
+				"Target"	"POINT"
+				"ScriptFile"	"scripts/vscripts/abilities/abilitykagerou.lua"
+				"Function"	"A2End"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ability_thdots_kagerou02_slow"
+			{
+				"States"	{}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"-40"
+				}
+				"IsBuff"	"0"
+				"ThinkInterval"	"1"
+				"IsDebuff"	"1"
+				"Duration"	"%slow_time"
+				"IsPurgable"	"1"
+			}
+			"modifier_ability_thdots_kagerou02_reduce"
+			{
+				"IsBuff"	"1"
+				"Duration"	"1"
+			}
+			// "modifier_kagerou_add_damage"
+			// {
+			// 	"Passive"	"1"
+			// 	"IsBuff"	"1"
+			// 	"IsHidden"	"0"
+			// 	"IsPurgable"	"0"
+			// 	"RemoveOnDeath"	"0"
+			// 	"Properties"
+			// 	{
+			// 		"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%add_damage"
+			// 	}
+			// }
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"add_damage"	"10 20 30 40"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_const"	"30 70 110 150"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_ratio"	"1.5"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"len"	"800"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"len_up"	"1200"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"width"	"120"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"width_up"	"150"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"slow_time"	"2"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"slow_val"	"-40"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce"	"25"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"reduce_min"	"20"
+			}
+		}
+	}
+
+	// final
+	"ability_thdots_kagerou06"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_thdots_kagerou06"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"MaxLevel"	"3"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCooldown"	"80 60 40"
+		"AbilityManaCost"	"100 150 200"
+		"AbilityCastRange"	"500"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_elder_titan.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilitykagerou.lua"
+				"Function"	"A6Start"
+				"Target"	"CASTER"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ability_thdots_kagerou06"
+			{
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"Duration"	"%stun_time"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"Target"	"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykagerou.lua"
+						"Function"	"A6OnInterval"
+					}
+				}
+				"ThinkInterval"	"0.01"
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"Target"	"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykagerou.lua"
+						"Function"	"A6End"
+					}
+				}
+			}
+			"modifier_ability_thdots_kagerou06_self"
+			{
+				"States"
+				{
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_LOW_ATTACK_PRIORITY"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"IsBuff"	"1"
+				"Duration"	"%stun_time"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_radius"	"100"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_const"	"130 260 390"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_ratio"	"2.5"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_time"	"1.5"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"delay_time"	"1.5"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"len"	"500"
+			}
+		}
+	}
+	"ability_thdots_kagerouEx"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/ability_thdots_kagerouEx"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitykagerou.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_NONE"
+		"MaxLevel"	"1"
+		"AbilityCooldown"	"6"
+		"AbilityManaCost"	"20"
+		"precache"
+		{
+			"particle"	"particles/econ/items/ember_spirit/ember_sindur/ember_sindur_offhand_ambient.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"	"CASTER"
+				"ModifierName"	"modifier_kagerou_lonely2"
+				"Duration"	"6"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ability_thdots_kagerouEx"
+			{
+				"Passive"	"1"
+				"IsBuff"	"1"
+				"IsHidden"	"1"
+				"Properties"	{}
+				"States"	{}
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitykagerou.lua"
+						"Function"	"A4OnInterval"
+					}
+				}
+				"ThinkInterval"	"0.03"
+			}
+			"modifier_kagerou_lonely"
+			{
+				"IsBuff"	"1"
+				"Properties"	{}
+				"OnDestroy"
+				{
+					"RemoveModifier"
+					{
+						"Target"	"CASTER"
+						"ModifierName"	"modifier_ability_thdots_kagerouEx_up"
+					}
+				}
+			}
+			"modifier_kagerou_lonely2"
+			{
+				"Duration"	"6"
+				"IsBuff"	"1"
+				"EffectName"	"particles/econ/items/ember_spirit/ember_sindur/ember_sindur_offhand_ambient.vpcf"
+				"EffectAttachType"	"follow_chest"
+			}
+			"modifier_ability_thdots_kagerouEx_up"
+			{
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"22"
+				}
+				"IsBuff"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"hold_time"	"6"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"trig_time"	"2.3"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"trig_radius"	"350"
+			}
+		}
+	}
+
+	"special_bonus_unique_kagerou_4"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"18"
+			}
+		}
+	}
+
+	"special_bonus_unique_kagerou_2"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1"
+			}
+		}
+	}
+
+	"special_bonus_unique_kagerou_3"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1"
+			}
+		}
+	}
+
+	"special_bonus_unique_kagerou_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1"
+			}
+		}
+	}
+}

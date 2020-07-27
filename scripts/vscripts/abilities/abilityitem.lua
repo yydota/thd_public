@@ -618,7 +618,9 @@ function ItemAbility_MrYang_OnSpellStart(keys)
 	local ItemAbility = keys.ability
 	local Caster = keys.caster
 	local Target = keys.target
-	
+
+	-- Target:SetMana(Target:GetMana() + ItemAbility:GetSpecialValueFor("decline_mana")) --修改为削660蓝，而不是蓝上限
+
 	Caster:EmitSound("DOTA_Item.DiffusalBlade.Activate")
 	Target:EmitSound("DOTA_Item.DiffusalBlade.Activate")
 	if is_spell_blocked_by_hakurei_amulet(Target) then
