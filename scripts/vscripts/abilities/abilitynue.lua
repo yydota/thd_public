@@ -166,7 +166,9 @@ function OnNue04Start(keys)
 	local caster = EntIndexToHScript(keys.caster_entindex)
 	THDReduceCooldown(keys.ability,FindTelentValue(caster,"special_bonus_unique_phantom_assassin_3"))
 	local targetPoint = keys.target_points[1]
-	caster:EmitSound("Voice_Thdots_Nue.AbilityNue04_1")
+	if caster:GetName() == "npc_dota_hero_phantom_assassin" then
+		caster:EmitSound("Voice_Thdots_Nue.AbilityNue04_1")
+	end
 	local ufoMoveIndex = ParticleManager:CreateParticle("particles/heroes/nue/ability_minoriko_04_ufo_move.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl( ufoMoveIndex , 0, targetPoint)
 	AddFOWViewer( DOTA_TEAM_GOODGUYS, targetPoint, 700, 1.5, false)
@@ -207,7 +209,9 @@ function OnNue04Start(keys)
 			local effectIndex = ParticleManager:CreateParticle("particles/heroes/nue/ability_nue_04.vpcf", PATTACH_CUSTOMORIGIN, caster)
 			ParticleManager:SetParticleControl( effectIndex , 0, targetPoint)
 			ParticleManager:SetParticleControl( effectIndex , 2, Vector(147,112,219))
-			caster:EmitSound("Voice_Thdots_Nue.AbilityNue04_2")
+			if caster:GetName() == "npc_dota_hero_phantom_assassin" then
+				caster:EmitSound("Voice_Thdots_Nue.AbilityNue04_2")
+			end
 
 		    for k,v in pairs(targets) do
 		    	local damage_table = {

@@ -764,6 +764,24 @@ function OnSatori01SpellStart(keys)
 		end
 	end
 
+	if TargetName == "npc_dota_hero_gyrocopter" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,100)
+		else 
+			RandomNumber = RandomInt(1,75)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "ability_thdots_tei01"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "ability_thdots_tei02"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "ability_thdots_tei03"
+		elseif RandomNumber > 75 and RandomNumber <= 100 then
+			AbilityStolenName = "ability_thdots_tei04"
+			i = 2
+		end
+	end
+
 	if TargetName == "npc_dota_hero_spectre" then
 		if caster:GetLevel() >= 6 then
 			RandomNumber = RandomInt(1,100)

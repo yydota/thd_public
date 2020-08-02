@@ -1060,7 +1060,7 @@
 			}
 			"modifier_item_force_staff_effect"
 			{ 
-
+				"IsPurgable"	"0"
 				"Duration"  "%push_duration"
 
 				"OverrideAnimation" "ACT_DOTA_FLAIL"
@@ -10886,15 +10886,15 @@
 				{
 					"MODIFIER_STATE_CANNOT_MISS"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
-				"ThinkInterval"	"0.03"
-				"OnIntervalThink"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
-						"Function"	"ItemAbility_MrYang_OnIntervalThink"
-					}
-				}
+				// "ThinkInterval"	"0.03"
+				// "OnIntervalThink"
+				// {
+				// 	"RunScript"
+				// 	{
+				// 		"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
+				// 		"Function"	"ItemAbility_MrYang_OnIntervalThink"
+				// 	}
+				// }
 			}
 			"modifier_item_mr_yang_slowdown_debuff"
 			{
@@ -10933,7 +10933,8 @@
 				"IsPurgable"	"0"
 				"States"
 				{
-					"MODIFIER_STATE_CANNOT_MISS"	"MODIFIER_STATE_VALUE_ENABLED"
+					//电疗附带必中效果
+					// "MODIFIER_STATE_CANNOT_MISS"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 			}
 		}
@@ -12916,7 +12917,8 @@
 		"ItemResult"	"item_shizijia"
 		"ItemRequirements"
 		{
-			"01"	"item_candle;item_glue;item_scissors"
+			// "01"	"item_candle;item_glue;item_scissors" //更改合成公式，十字架面向酱油，不再提供+20攻击力
+			"01"	"item_candle;item_glue"
 		}
 		"Model"	"models/props_gameplay/recipe.mdl"
 	}
@@ -12943,7 +12945,7 @@
 		"ID"	"8182"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"4000"
+		"ItemCost"	"3000"
 		"ItemDroppable"	"1"
 		"ItemSellable"	"1"
 		"ItemShopTags"	"health_pool;evasion;damage"
@@ -12969,7 +12971,7 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_HEALTH_BONUS"			"%bonus_health"
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+					// "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
 					"MODIFIER_PROPERTY_EVASION_CONSTANT"		"%bonus_evasion"
 				}
 			}
@@ -12982,7 +12984,7 @@
 				"EffectAttachType"	"follow_origin"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_EVASION_CONSTANT"		"75"
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"		"%active_evasion"
 				}
 			}
 			"modifier_item_shizijia_barrier_physical_immune"
@@ -13018,8 +13020,13 @@
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_damage"	"20"
+				"active_evasion"	"75"
 			}
+			// "05"
+			// {
+			// 	"var_type"	"FIELD_INTEGER"
+			// 	"bonus_damage"	"20"
+			// }
 		}
 	}
 

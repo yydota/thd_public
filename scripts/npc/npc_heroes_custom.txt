@@ -689,9 +689,9 @@
 		// 攻击速度
 		"ArmorPhysical"	"4"
 		// 物理护甲
-		"AttackDamageMin"	"22"
+		"AttackDamageMin"	"32"
 		// 最大攻击力
-		"AttackDamageMax"	"37"
+		"AttackDamageMax"	"47"
 		// 最小攻击力
 		"AttributeBaseStrength"	"20"
 		// 基础力量
@@ -709,7 +709,7 @@
 		// 基础移动速度
 		"MovementTurnRate"	"1.2"
 		// 转身速度
-		"StatusHealth"	"200"
+		"StatusHealth"	"300"
 		// 基础生命值
 		"StatusHealthRegen"	"2.0"
 		// 基础生命恢复
@@ -917,7 +917,7 @@
 		"Ability12"		"special_bonus_attack_speed_30"
 		"Ability13"		"special_bonus_unique_naga_siren_3"
 		"Ability14"		"special_bonus_all_stats_14"
-		"Ability15"		"special_bonus_cooldown_reduction_25"
+		"Ability15"		"special_bonus_cooldown_reduction_20"
 		"Ability16"		"special_bonus_lifesteal_30"
 		"Ability17"		"special_bonus_unique_naga_siren_2"
 
@@ -3289,7 +3289,7 @@
 	{
 		"override_hero"			"npc_dota_hero_rubick"
 		"Model"                 "models/satori/satori.vmdl"
-		"ModelScale"            "0.7"
+		"ModelScale"            "1.1"
 		"ProjectileModel"		"particles/units/heroes/hero_dark_willow/dark_willow_willowisp_base_attack.vpcf"
 		"ProjectileSpeed"		"1200"
 		"DisableWearables"		"1"
@@ -3711,7 +3711,7 @@
 		"Ability13"		"special_bonus_magic_resistance_20"
 		"Ability14"		"special_bonus_attack_speed_70"
 		"Ability15"		"special_bonus_hp_500"
-		"Ability16"		"special_bonus_cooldown_reduction_20"
+		"Ability16"		"special_bonus_cooldown_reduction_25"
 		"Ability17"		"special_bonus_unique_dazzle_4"
 
 
@@ -4206,7 +4206,8 @@
 		"Ability15"	"special_bonus_unique_vengeful_spirit_3"
 		"Ability16"	"special_bonus_unique_vengeful_spirit_4"
 		"Ability17"	"special_bonus_unique_vengeful_spirit_5"
-		"Model"	"models/thd_hero/hatate/hatate.vmdl"
+		//"Model"	"models/thd_hero/hatate/hatate.vmdl"
+		"Model"	"models/hatate/hatate.vmdl"
 		"ModelScale"	"1.0"
 		"override_hero"	"npc_dota_hero_vengefulspirit"
 		"AbilityLayout"	"6"

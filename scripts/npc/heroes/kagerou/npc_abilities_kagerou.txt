@@ -4,7 +4,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/ability_thdots_kagerou01"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
@@ -12,8 +12,9 @@
 		"MaxLevel"	"4"
 		"AbilityCastPoint"	"0.1"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
-		"AbilityCooldown"	"6"
+		"AbilityCooldown"	"9 8 7 6"
 		"AbilityManaCost"	"40"
+		"AOERadius"	"300"
 		// "AbilityCastRange"	"400"
 		"AbilityCastRangeBuffer"	"200"
 		"precache"
@@ -34,12 +35,12 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_const"	"30 60 90 120"
+				"damage_const"	"30 70 110 150"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"damage_ratio"	"0.8"
+				"damage_ratio"	"0.6"
 			}
 			"03"
 			{
@@ -63,6 +64,7 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"SpellImmunityType"	"SPELL_IMMUNITY_ALLIES_YES"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"SpellDispellableType" "SPELL_DISPELLABLE_NO"
 		"MaxLevel"	"4"
 		"AbilityCastPoint"	"0.1"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
@@ -147,6 +149,12 @@
 				}
 				"EffectName"	"particles/econ/items/lycan/blood_moon/lycan_blood_moon_shapeshift_ambient.vpcf"
 				"EffectAttachType"	"attach_origin"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%movement_bonus"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%magical_resistance_bonus"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor_bonus"
+				}
 			}
 			"modifier_ability_thdots_kagerou03_up"
 			{
@@ -189,6 +197,21 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"health_regen"	"40 60 80 100"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movement_bonus"	"30 40 50 60"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"armor_bonus"	"4 6 8 10"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"magical_resistance_bonus"	"10 20 30 40"
 			}
 		}
 	}
@@ -298,7 +321,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"damage_ratio"	"1.5"
+				"damage_ratio"	"1.0"
 			}
 			"04"
 			{
@@ -340,6 +363,11 @@
 				"var_type"	"FIELD_INTEGER"
 				"reduce_min"	"20"
 			}
+			"12"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"speed"			"1200"
+			}
 		}
 	}
 
@@ -353,6 +381,7 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES_STRONG"
 		"MaxLevel"	"3"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCooldown"	"80 60 40"
@@ -429,7 +458,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"damage_const"	"130 260 390"
+				"damage_const"	"100 200 300"
 			}
 			"03"
 			{
@@ -522,7 +551,7 @@
 				"IsHidden"	"1"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"22"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"18"  //天赋增加移速
 				}
 				"IsBuff"	"1"
 			}

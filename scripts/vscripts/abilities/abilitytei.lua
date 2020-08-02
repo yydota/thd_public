@@ -345,6 +345,9 @@ function Tei04OnSpellStart( keys )
 	keys.ability:ApplyDataDrivenModifier(caster, caster, "modifier_ability_thdots_tei04", {Duration = duration})
 	local effectIndex = ParticleManager:CreateParticle("particles/heroes/tei/tei04buff.vpcf",PATTACH_ABSORIGIN_FOLLOW, caster)
 	ParticleManager:DestroyParticleSystemTime(effectIndex,duration)
+	if caster:GetName() == "npc_dota_hero_gyrocopter" then
+		caster:EmitSound("Hero_Tei04")
+	end
 end
 
 function Tei04OnAttackLanded( keys )

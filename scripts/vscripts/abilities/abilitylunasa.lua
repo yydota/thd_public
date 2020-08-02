@@ -219,14 +219,16 @@ function lunasa04End( keys )
 end
 
 function lunasaExOnCreated ( keys )
-	-- 天生, 每击杀一个单位增加0.25%法术伤害, 击杀180个单位后层数减半
+	-- 天生, 每击杀一个单位增加法术伤害,达到上限后层数减半
 	local caster = EntIndexToHScript(keys.caster_entindex)
+	local amplify_limit = math.ceil(keys.ability:GetSpecialValueFor("amplify_limit") / keys.ability:GetSpecialValueFor("amplify_bonus") * 2)
+	print(amplify_limit)
 	local lunasaExModifier = caster:FindModifierByName("modifier_lunasaEx")
 	if lunasaExModifier and not caster:IsIllusion() then
 		if LUNASAEX_BONUS_COUNT == nil then
 			LUNASAEX_BONUS_COUNT = caster:GetModifierStackCount("modifier_lunasaEx", caster)
 		end
-		if LUNASAEX_BONUS_COUNT >= 100 then
+		if LUNASAEX_BONUS_COUNT >= amplify_limit then
 			LUNASAEX_BONUS_COUNT = LUNASAEX_BONUS_COUNT +1
 		else
 			LUNASAEX_BONUS_COUNT = LUNASAEX_BONUS_COUNT +2

@@ -2036,10 +2036,10 @@
 			}
 		}
 	}
-	"models/thd_hero/lunasa_prismriver/lunasa.vmdl"
+	"models/lunasa/lunasa.vmdl"
 	{
-		"PortraitLightPosition"		"202.70 -23.15 308.17"
-		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
 		"PortraitLightFOV"		"88"
 		"PortraitLightDistance"		"343"
 		"PortraitLightColor"		"190 190 190"
@@ -2056,13 +2056,13 @@
 		"PortraitLightScale"		"4.500000"
 		"PortraitGroundShadowScale"		"1.500000"
 		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
-		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
 		"cameras"
 		{
 			"default"
 			{
-				"PortraitPosition"		"170.0 -74.0 130.0"
-				"PortraitAngles"		"0.0 155.0 0.0"
+				"PortraitPosition"		"150.0 -24.0 145.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
 				"PortraitFOV"		"16"
 			}
 		}
@@ -2222,10 +2222,10 @@
 			}
 		}
 	}
-	"models/thd_hero/hatate/hatate.vmdl"
+	"models/hatate/hatate.vmdl"
 	{
-		"PortraitLightPosition"		"202.70 -23.15 308.17"
-		"PortraitLightAngles"		"54.79 171.70 0.00"
+		"PortraitLightPosition"		"100.0 -35.0 310.0"
+		"PortraitLightAngles"		"50.0 100.0 0.0"
 		"PortraitLightFOV"		"88"
 		"PortraitLightDistance"		"343"
 		"PortraitLightColor"		"190 190 190"
@@ -2242,13 +2242,13 @@
 		"PortraitLightScale"		"4.500000"
 		"PortraitGroundShadowScale"		"1.500000"
 		"PortraitAmbientDirection"		"-79.070 -84.150 -25.320"
-		"PortraitAnimationActivity"		"ACT_DOTA_IDLE"
+		"PortraitAnimationActivity"		"ACT_DOTA_CAPTURE"
 		"cameras"
 		{
 			"default"
 			{
-				"PortraitPosition"		"170.0 -74.0 150.0"
-				"PortraitAngles"		"0.0 155.0 0.0"
+				"PortraitPosition"		"150.0 -24.0 195.0"
+				"PortraitAngles"		"10.0 170.0 0.0"
 				"PortraitFOV"		"16"
 			}
 		}

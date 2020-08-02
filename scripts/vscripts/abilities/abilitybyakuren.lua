@@ -196,6 +196,7 @@ function OnByakuren04SpellThinkStart(keys)
 		caster.isReborn = true
 		ParticleManager:SetParticleControlEnt(effectIndex , 0, caster, 5, "follow_origin", Vector(0,0,0), true)
 		--ParticleManager:SetParticleControlEnt(effectIndex , 1, caster, 5, "follow_origin", Vector(0,0,0), true)
+
 		caster:SetContextThink("ability_byakuren04_think", 
 		function()
 			if GameRules:IsGamePaused() then return 0.03 end

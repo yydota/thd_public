@@ -18,7 +18,10 @@ function A1Start(k)
 
 	--移动完成后调用
 	bf.success = function ()
-		ParticleManager:CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_jump_stomp.vpcf",PATTACH_ROOTBONE_FOLLOW,cs)
+		local step_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_monkey_king/monkey_king_jump_stomp.vpcf",PATTACH_ROOTBONE_FOLLOW,cs)
+		ParticleManager:SetParticleControl(step_particle, 0, cs:GetAbsOrigin())
+		ParticleManager:SetParticleControl(step_particle, 1, Vector(radius, radius, radius) )
+		ParticleManager:ReleaseParticleIndex(step_particle)
 		EmitSoundOn("Hero_MonkeyKing.Spring.Target", cs)
 
 		--天生强化 刷新技能
@@ -32,7 +35,7 @@ function A1Start(k)
 
 		each(targets,function (t)
 			ApplyDamage({
-				victim = t, attacker = cs, damage = damage + cs:GetBaseDamageMax() * ratio,
+				victim = t, attacker = cs, damage = damage + cs:GetAverageTrueAttackDamage(cs) * ratio,
 				damage_type = getDamageType(), damage_flags = 0
 			})
 		end)
@@ -58,7 +61,7 @@ function A2Start(k)
 	local len_up = ab:GetSpecialValueFor("len_up")
 	local width = ab:GetSpecialValueFor("width")
 	local width_up = ab:GetSpecialValueFor("width_up")
-	local speed = 1600;
+	local speed = ab:GetSpecialValueFor("speed");
 
 	--天生强化 长度宽度
 	--使用变量的原因：这个buff的触发是在伤害的时候，由于是弹道技能，释放技能不能马上触发buff，但是独孤强化效果必须马上移除（如果不马上移除，也会强化其他技能）
@@ -102,7 +105,7 @@ function A2Hit(k)
 	local width_up = ab:GetSpecialValueFor("width_up")
 	local reduceMin = ab:GetSpecialValueFor("reduce_min") * 0.01 --最小受到伤害比例
 	local reduceVal = 1 - ab:GetSpecialValueFor("reduce") * 0.01 --每次递减伤害比例
-	local speed = 1600;
+	local speed = ab:GetSpecialValueFor("speed");
 
 	--天生强化 减速效果
 	if cs.lonely2 then
@@ -122,8 +125,16 @@ function A2Hit(k)
 
 	--最小伤害
 	if reduceRatio < reduceMin then reduceRatio = reduceMin end
+	print("----------------")
+	print("reduceMin is :",reduceMin)
+	print("reduceVal is :",reduceVal)
+	print("reduce:GetStackCount() is :",reduce:GetStackCount())
 
-	damage = reduceRatio * (damage + cs:GetBaseDamageMax() * ratio)
+	damage = reduceRatio * (damage + cs:GetAverageTrueAttackDamage(cs) * ratio)
+	print("reduceRatio is :",reduceRatio)
+	print("cs:GetAverageTrueAttackDamage(cs) is :",cs:GetAverageTrueAttackDamage(cs))
+	print("damage is ",damage)
+	print("ratio is ",ratio)
 
 	local damage_table = {
 		victim = tg, attacker = cs, damage = damage, damage_type = getDamageType(), damage_flags = 0
@@ -209,7 +220,8 @@ function A3Start(k)
 	end
 
 	EmitSoundOn("Hero_Lycan.Howl",cs)
-	ParticleManager:CreateParticle("particles/units/heroes/hero_lycan/lycan_shapeshift_cast.vpcf",PATTACH_ROOTBONE_FOLLOW,cs)
+	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_lycan/lycan_shapeshift_cast.vpcf",PATTACH_ROOTBONE_FOLLOW,cs)
+	ParticleManager:ReleaseParticleIndex(particle)
 
 	if not cs.originalModel then cs.originalModel = cs:GetModelName() end
 
@@ -343,7 +355,8 @@ function A6Start(k)
 	bf.high = 0
 
 	local name = "particles/econ/items/slark/slark_ti6_blade/slark_ti6_pounce_trail.vpcf"
-	ParticleManager:CreateParticle(name, PATTACH_ABSORIGIN_FOLLOW, cs)
+	local particle = ParticleManager:CreateParticle(name, PATTACH_ABSORIGIN_FOLLOW, cs)
+	ParticleManager:ReleaseParticleIndex(particle)
 
 	--每次位移调用，判断是否有敌人可以被抓住
 	bf.callback = function ()
@@ -414,7 +427,7 @@ function A6Start(k)
 
 			each(units,function (t)
 				ApplyDamage({
-					victim = t, attacker = cs, damage = damage + cs:GetBaseDamageMax() * ratio,
+					victim = t, attacker = cs, damage = damage + cs:GetAverageTrueAttackDamage(cs) * ratio,
 					damage_type = getDamageType(), damage_flags = 0
 				})
 			end)
@@ -487,10 +500,11 @@ function A6End(k)
 
 	if ab.time < stunTime - 0.1 then return end --目标被控制效果已经被驱散
 
-	ParticleManager:CreateParticle("particles/econ/items/elder_titan/elder_titan_ti7/elder_titan_echo_stomp_ti7_ring_wave.vpcf", PATTACH_ROOTBONE_FOLLOW, t)
+	local particle = ParticleManager:CreateParticle("particles/econ/items/elder_titan/elder_titan_ti7/elder_titan_echo_stomp_ti7_ring_wave.vpcf", PATTACH_ROOTBONE_FOLLOW, t)
+	ParticleManager:ReleaseParticleIndex(particle)
 	EmitSoundOn("Hero_ElderTitan.EchoStomp.ti7", cs)
 	ApplyDamage({
-		victim = t, attacker = cs, damage = damage + cs:GetBaseDamageMax() * ratio,
+		victim = t, attacker = cs, damage = damage + cs:GetAverageTrueAttackDamage(cs) * ratio,
 		damage_type = getDamageType(), damage_flags = 0
 	})
 
@@ -585,6 +599,7 @@ end
 function partic0(p,name)
 	local id = ParticleManager:CreateParticle(name, PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(id, 0, p)
+	ParticleManager:ReleaseParticleIndex(id)
 end
 
 --释放投射物
@@ -614,8 +629,13 @@ end
 
 --################################  modifier begin
 modifier_kagerou_moving = class({})
-modifier_kagerou_add_damage = class({})
 LinkLuaModifier("modifier_kagerou_moving", "scripts/vscripts/abilities//abilitykagerou.lua", LUA_MODIFIER_MOTION_NONE) --移动buff
+function modifier_kagerou_moving:IsHidden() 		return true end
+function modifier_kagerou_moving:IsPurgable()		return false end
+function modifier_kagerou_moving:RemoveOnDeath() 	return false end
+function modifier_kagerou_moving:IsDebuff()		return false end
+
+modifier_kagerou_add_damage = class({})
 LinkLuaModifier("modifier_kagerou_add_damage", "scripts/vscripts/abilities/abilitykagerou.lua", LUA_MODIFIER_MOTION_NONE) --二技能被动攻击力buff
 function modifier_kagerou_add_damage:IsHidden() 		return false end
 function modifier_kagerou_add_damage:IsPurgable()		return false end

@@ -471,6 +471,7 @@
 			"particle"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
 			"particle"	"particles/econ/items/bounty_hunter/bounty_hunter_ti9_immortal/bh_ti9_immortal_jinada.vpcf"
 			"particle"	"particles/heroes/tei/tei04buff.vpcf"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_tei_sounds.vsndevts"
 		}
 		"OnSpellStart"
 		{

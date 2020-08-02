@@ -4709,7 +4709,7 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastPoint"	"0.2"
-		"AbilityCooldown"	"120"
+		"AbilityCooldown"	"120 110 100"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityManaCost"	"150 200 250"
@@ -4860,7 +4860,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"damage_multi"	"500 650 800"
+				"damage_multi"	"400 500 600"
 			}
 			"03"
 			{
@@ -22451,7 +22451,7 @@
 			"02"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"bonus_damage_pct"			"-20"
+				"bonus_damage_pct"			"-33"
 			}
 			"03"
 			{
@@ -22576,7 +22576,7 @@
 				"States"	{}
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"0.125"
+					"MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE"	"0.2"
 				}
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"OnIntervalThink"
@@ -22610,8 +22610,18 @@
 		{
 			"01"
 			{
-				"var_type"	"FIELD_INTEGER"
+				"var_type"	"FIELD_FLOAT"
 				"damage"	"20"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"amplify_limit"		"50"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"amplify_bonus"		"0.4"
 			}
 		}
 	}
@@ -25913,11 +25923,13 @@
 	"ability_thdots_hatate02"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"hatate_02"
+		"AbilityTextureName"	"custom/ability_thdots_hatate02"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AnimationPlaybackRate"	"1.5"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCooldown"	"5"
 		"AbilityManaCost"	"50 65 80 95"
@@ -25990,6 +26002,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AnimationPlaybackRate"	"4"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
 		"AbilityCooldown"	"15.5 14.0 12.5 11.0"
 		"AbilityManaCost"	"80"
 		"OnSpellStart"
@@ -26062,6 +26075,8 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AnimationPlaybackRate"	"3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCooldown"	"180 130 80"
 		"precache"
@@ -26162,10 +26177,12 @@
 	"ability_thdots_hatateEx"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"touhoutd/release_tower"
+		"AbilityTextureName"	"custom/ability_thdots_hatateEX"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		// "AbilityType"	"DOTA_ABILITY_TYPE_HIDDEN"
+		"AnimationPlaybackRate"	"2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
 		"MaxLevel"	"1"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCooldown"	"180"

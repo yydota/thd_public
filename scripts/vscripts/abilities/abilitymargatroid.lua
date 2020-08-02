@@ -694,7 +694,9 @@ function Margatroid03_OnSpellStart(keys)
 
 	Ability:ApplyDataDrivenModifier(Caster,doll,MARGATROID_ABILITY03_MODIFIER_DOLL_NAME,{})
 	doll:SetForwardVector(Caster:GetForwardVector())
-	doll:SetMaxHealth(keys.DollHP*(1+FindTelentValue(Caster,"special_bonus_unique_visage_1")))
+	print(keys.DollHP)
+	doll:SetBaseMaxHealth(keys.DollHP*(1+FindTelentValue(Caster,"special_bonus_unique_visage_1")))
+	-- doll:SetMaxHealth(keys.DollHP*(1+FindTelentValue(Caster,"special_bonus_unique_visage_1")))
 	doll:CreatureLevelUp(0)
 	doll:SetBaseDamageMax(keys.DollDamage*(1+FindTelentValue(Caster,"special_bonus_unique_visage_1")))
 	doll:SetBaseDamageMin(keys.DollDamage*(1+FindTelentValue(Caster,"special_bonus_unique_visage_1")))
@@ -705,7 +707,7 @@ function Margatroid03_OnSpellStart(keys)
 		doll:SetPhysicalArmorBaseValue(30)
 		doll:SetBaseMagicalResistanceValue(75)
 	end
-	doll:SetHealth(doll:GetMaxHealth())
+	-- doll:SetHealth(doll:GetMaxHealth())
 
 
 
