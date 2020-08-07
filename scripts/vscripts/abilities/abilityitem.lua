@@ -11,15 +11,22 @@ function ItemAbility_wanbaochui02_OnSpellStart(keys)
 	local ItemAbility = keys.ability
 	local caster = keys.caster
 	local target = keys.target
+	local TargetName = target:GetClassname()
 	if target ~= caster and target:IsRealHero() == false then 
 		print("No")
 		return 
 	else
 		keys.ability:ApplyDataDrivenModifier(caster, caster, "modifier_item_wanbaochui", {})
-		keys.caster:AddNewModifier(keys.caster, nil, "modifier_item_ultimate_scepter", {duration = -1})
 		if (ItemAbility:IsItem()) then
 			caster:RemoveItem(ItemAbility)
 		end	
+		if TargetName == "npc_dota_hero_chaos_knight" then
+			return
+		end
+		if TargetName == "npc_dota_hero_clinkz" then
+			return
+		end
+		keys.caster:AddNewModifier(keys.caster, nil, "modifier_item_ultimate_scepter", {duration = -1})
 	end	
 end
 
@@ -34,6 +41,14 @@ end
 
 function modifier_item_ultimate_scepter_datadriven_on_created(keys)
 	if not keys.caster:HasModifier("modifier_item_ultimate_scepter") then
+		local target = keys.caster
+	    local TargetName = target:GetClassname()
+	    if TargetName == "npc_dota_hero_chaos_knight" then
+			return
+		end
+		if TargetName == "npc_dota_hero_clinkz" then
+			return
+		end
 		keys.caster:AddNewModifier(keys.caster, nil, "modifier_item_ultimate_scepter", {duration = -1})
 	end
 end
