@@ -1,0 +1,81 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_seija"
+	{
+		"Ability1"	"ability_thdots_seija01"
+		"Ability2"	"ability_thdots_seija02"
+		"Ability3"	"ability_thdots_seija03"
+		"Ability4"	"ability_thdots_seijaEx"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"ability_thdots_seija04"
+		"Ability7"	"generic_hidden"
+		"Ability8"	"generic_hidden"
+		"Ability9"	"generic_hidden"
+		"Ability10"	"special_bonus_armor_5"
+		"Ability11"	"special_bonus_movement_speed_20"
+		"Ability12"	"special_bonus_strength_15"
+		"Ability13"	"special_bonus_unique_seija_2"
+		"Ability14"	"special_bonus_unique_seija_1"
+		"Ability15"	"special_bonus_unique_seija_3"
+		"Ability16"	"special_bonus_attack_speed_100"
+		"Ability17"	"special_bonus_unique_seija_4"
+		"override_hero"	"npc_dota_hero_batrider"
+		"Model"	"models/thd_hero/seija/seija.vmdl"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AbilityLayout"	"6"
+		"DisableWearables"	"1"
+		// "Carry"			"核心"
+		// "Support"			"辅助"
+		// "Nuker"			"爆发"
+		// "Disabler"		"控制"
+		// "Jungler"			"打野"
+		// "Durable"			"耐久"
+		// "Escape"			"逃生"
+		// "LaneSupport"		"对线辅助"
+		// "Pusher"			"推进"
+		// "Initiator"		"先手"
+		// "Role"			"Carry,Support,Nuker,Disabler,Jungler,Durable,Escape,LaneSupport,Pusher,Initiator"
+		"Role"	"Carry,Disabler,Support,LaneSupport,Jungler"
+		"Rolelevels"	"3,1,2,2,2"
+		"AttackRange"	"550"
+		// 攻击距离
+		"ArmorPhysical"	"1"
+		// 攻击前摇
+		"AttackRate"	"1.5"
+		// 攻击速度
+		"AttackDamageMin"	"39"
+		// 最大攻击力
+		"AttackDamageMax"	"40"
+		// 最小攻击力
+		"AttributeBaseStrength"	"16"
+		// 基础力量
+		"AttributeStrengthGain"	"1.6"
+		// 每级增加的力量，力量成长
+		"AttributeBaseAgility"	"23"
+		// 基础敏捷
+		"AttributeAgilityGain"	"2.3"
+		// 每级增加的敏捷，敏捷成长
+		"AttributeBaseIntelligence"	"17"
+		// 基础智力
+		"AttributeIntelligenceGain"	"1.8"
+		// 每级增加的智力，智力成长
+		"MovementSpeed"	"290"
+		// 基础移动速度
+		"MovementTurnRate"	"1.2"
+		// 转身速度
+		"StatusHealth"	"200"
+		// 基础生命值
+		"StatusHealthRegen"	"1.2"
+		// 基础生命恢复
+		"StatusMana"	"70"
+		// 基础魔法值
+		"StatusManaRegen"	"0.6"
+		// 基础魔法恢复
+		"VisionDaytimeRange"	"1050"
+		// 白天视野大小
+		"VisionNighttimeRange"	"700"
+		"ModelScale"	"1"
+		"ProjectileModel"	"particles/units/heroes/hero_dazzle/dazzle_base_attack.vpcf"
+		"ProjectileSpeed"	"1600"
+	}
+}

@@ -36,6 +36,7 @@ require ( "util/shuffle")
 require ( "util/urd")
 require ( "util/super_siege")
 require ( "util/thd_wheel")
+require ( "util/camerayaw")
 
 
 if THDOTSGameMode == nil then
@@ -483,6 +484,8 @@ function THDOTSGameMode:OnPlayerSay( keys )
 		if PlayerResource:GetSelectedHeroName(plyid) == "npc_dota_hero_invoker" then
 			CustomGameEventManager:Send_ServerToPlayer(plyhd, "custom_key_bind", {key_val = ss[2], event = "xianzhezhishi"} )
 		end
+	elseif text == "-yaw" then
+		CustomGameEventManager:Send_ServerToPlayer(plyhd, "set_camera_yaw", {key_val = 0} )
 	elseif text == "-pause" then
 		if is_host or G_Player_Pause_Count[plyid+1] < MAX_Pause_Count then --host可以无限暂停
 			G_Player_Pause_Count[plyid+1] = G_Player_Pause_Count[plyid+1] + 1
@@ -1144,6 +1147,9 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 	elseif (heroName == "npc_dota_hero_lycan") then
 		abilityEx = hero:FindAbilityByName("ability_thdots_kagerouEx")
 		abilityEx:SetLevel(1)
+	elseif (heroName == "npc_dota_hero_batrider") then
+		abilityEx = hero:FindAbilityByName("ability_thdots_seijaEx")
+		abilityEx:SetLevel(1)
 	end
 end
 
@@ -1624,4 +1630,6 @@ RegisterCustomEventListener("Cast_xianzhezhishi", Cast_xianzhezhishi)
 
 
 RegisterCustomEventListener("Shuffle_Pressed", Shuffle_Pressed)
+
+RegisterCustomEventListener("get_camera_yaw_callback",get_camera_yaw_callback)
 

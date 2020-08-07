@@ -107,7 +107,7 @@
 	"npc_dota_hero_huskar" "1"
 
 	//"npc_dota_hero_jakiro" "1"
-	//"npc_dota_hero_batrider" "1"
+	"npc_dota_hero_batrider" "1"
 
 
 	"npc_dota_hero_warlock" "1"

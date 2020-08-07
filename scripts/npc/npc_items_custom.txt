@@ -92,10 +92,11 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"ID"	"7981"
-		"ItemCost"	"0"
+		"ItemCost"	"1"
 		"AbilityTextureName"	"item_sample_item"
 		"ItemRecipe"	"1"
 		"ItemResult"	"item_wanbaochui"
+		"InvalidHeroes"	"npc_dota_hero_chaos_knight"
 		"ItemRequirements"
 		{
 			"01"	"item_cat_foot;item_paper_mask;item_rocket_diagram;item_zun_hat"
@@ -10703,9 +10704,19 @@
 			"RunScript"
 			{
 				"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
-				"Function"	"ItemAbility_ModifierTarget"
+				"Function"	"Item_tentacle_Ability_ModifierTarget"
 				"ModifierName"	"modifier_item_tentacle_root"
 				"Blockable"	"1"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"1"
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
+				"Function"		"ItemAbility_tentacle_OnProjectileHitUnit"
+				"ModifierName"	"modifier_item_tentacle_root"
 			}
 		}
 		"Modifiers"

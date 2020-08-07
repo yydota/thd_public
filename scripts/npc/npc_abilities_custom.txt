@@ -9,6 +9,7 @@
 #base "heroes/reisen02/npc_abilities_reisen02.txt"  
 #base "heroes/hina/npc_abilities_hina.txt"  
 #base "heroes/kagerou/npc_abilities_kagerou.txt"  
+#base "heroes/seija/npc_abilities_seija.txt"  
 
 "DOTAAbilities"
 {
@@ -17702,6 +17703,7 @@
 			"particle"				"particles/heroes/yumemi/ability_yumemi_04_exolosion.vpcf"
 			"particle"				"particles/econ/items/luna/luna_lucent_ti5/luna_shiled_ambient_moonfall_d.vpcf"
 			"particle"				"particles/econ/courier/courier_wyvern_hatchling/courier_wyvern_anim_firebreath_e.vpcf"
+			"particle"				"particles/econ/courier/courier_cluckles/patchouli_sorcererstone.vpcf"
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_huskar.vsndevts"
 			"soundfile"				"soundevents/thdots_hero_sounds/thdots_patchouli_sun_sounds.vsndevts"
 			"soundfile"				"soundevents/thdots_hero_sounds/thdots_patchouli_moon_sounds.vsndevts"
@@ -17731,6 +17733,15 @@
 					{
 						"ScriptFile"	"scripts/vscripts/abilities/abilitypatchouli.lua"
 						"Function"		"OnPatchouliMaxLevel"
+					}
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"	"particles/econ/courier/courier_cluckles/patchouli_sorcererstone.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"	"CASTER"
 					}
 				}
 			}	

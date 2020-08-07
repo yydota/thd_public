@@ -7,12 +7,12 @@ function Tei01OnSpellStart( keys )
 	local odds = FindValueTHD("odds",ability)
 	local heal = FindValueTHD("regen",ability)
 	local effectIndex
-	print(caster.debuff_count)
 	if caster:HasModifier("modifier_ability_thdots_tei04") then
 		odds = 100
 	end
 	if caster:GetModifierStackCount("modifier_ability_thdots_tei01_count", caster) >= FindValueTHD("count",ability) then
 		odds = 100
+		caster:SetModifierStackCount("modifier_ability_thdots_tei01_count", caster, 0)
 	end
 	if caster:HasModifier("modifier_item_wanbaochui") and caster:GetHealth() <= caster:GetMaxHealth()*0.3 then --万宝槌效果
 		local targets = FindUnitsInRadius(caster:GetTeam(), caster:GetAbsOrigin(), nil, 450,
@@ -46,7 +46,6 @@ function Tei01OnSpellStart( keys )
 	end
 	if RandomInt(0,100) <= odds then
 		local random = RandomInt(1,4)
-		caster:SetModifierStackCount("modifier_ability_thdots_tei01_count", caster, 0)
 		if random == 1 then
 			if caster:HasModifier("modifier_item_wanbaochui") then
 				ability:ApplyDataDrivenModifier(caster, caster, "modifier_ability_thdots_tei01_movebonus_wanbaochui",{Duration = duration})

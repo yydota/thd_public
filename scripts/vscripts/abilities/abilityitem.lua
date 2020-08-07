@@ -475,6 +475,53 @@ function ItemAbility_ModifierTarget(keys)
 	ItemAbility:ApplyDataDrivenModifier(Caster,Target,keys.ModifierName,{})
 end
 
+function Item_tentacle_Ability_ModifierTarget(keys)
+	local ItemAbility = keys.ability
+	local Caster = keys.Caster or keys.caster
+	local Target = keys.Target or keys.target
+	-- if Caster and Target and Caster:GetTeam()~=Target:GetTeam() then
+	-- 	if keys.Blockable==1 and is_spell_blocked_by_hakurei_amulet(Target) then
+	-- 		return
+	-- 	elseif (not keys.ApplyToTower or keys.ApplyToTower==0) and Target:IsBuilding() then
+	-- 		return
+	-- 	end
+	-- end
+	Caster:EmitSound("DOTA_Item.RodOfAtos.Cast")
+	local projectile =
+				{
+					Target 				= Target,
+					Source 				= Caster,
+					Ability 			= ItemAbility,
+					EffectName 			= "particles/items2_fx/rod_of_atos_attack.vpcf",
+					iMoveSpeed			= 1200,
+					vSourceLoc 			= Caster:GetAbsOrigin(),
+					bDrawsOnMinimap 	= false,
+					bDodgeable 			= true,
+					bIsAttack 			= false,
+					bVisibleToEnemies 	= true,
+					bReplaceExisting 	= false,
+					flExpireTime 		= GameRules:GetGameTime() + 20,
+					bProvidesVision 	= false,
+				}
+				
+	ProjectileManager:CreateTrackingProjectile(projectile)
+
+	-- ItemAbility:ApplyDataDrivenModifier(Caster,Target,keys.ModifierName,{})
+end
+
+function ItemAbility_tentacle_OnProjectileHitUnit(keys)
+	-- print_r(three_dimension_projectile)
+	local caster = keys.Caster or keys.caster
+	local target = keys.Target or keys.target
+	if is_spell_blocked(target,caster) then return end
+	if target and not target:IsMagicImmune() then
+		target:EmitSound("DOTA_Item.RodOfAtos.Target")
+		keys.ability:ApplyDataDrivenModifier(caster,target,keys.ModifierName,{})
+		-- if target:GetTeam() ~= caster:GetTeam() then
+		-- end
+	end
+end
+
 -- extra keys params:
 -- string ModifierName
 -- int ModifierCount
