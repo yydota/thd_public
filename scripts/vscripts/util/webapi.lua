@@ -2,6 +2,7 @@ WebApi = WebApi or {}
 
 local isTesting = IsInToolsMode() and false
 local serverHost = "https://thd2.cc"
+local dedicatedServerKey = GetDedicatedServerKeyV2("qwq")
 
 function WebApi:SetTesting(val)
 	isTesting = val
@@ -14,7 +15,7 @@ function WebApi:Send(path, data, onSuccess, onError)
 		DeepPrintTable(data)
 	end
 
-	--request:SetHTTPRequestHeaderValue("Dedicated-Server-Key", dedicatedServerKey)
+	request:SetHTTPRequestHeaderValue("thd2-key", dedicatedServerKey)
 	if data ~= nil then
 		request:SetHTTPRequestRawPostBody("application/json", json.encode(data))
 	end
