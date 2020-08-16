@@ -193,7 +193,7 @@
 		//"AbilityCastPoint"	"0.4"
 		"AbilityCastAnimation"	"ACT_DOTA_IDLE"
 		"AnimationPlaybackRate"	"1.5"
-		"AbilityCooldown"	"90 75 60"
+		"AbilityCooldown"	"90"
 		"AbilityManaCost"	"150"
 		"AbilityCastRange"	"0"
 		"precache"

@@ -58,7 +58,7 @@ end
 function modifier_ability_thdots_hinaEx_passive:OnTakeDamage(keys)
 	if not IsServer() then return end
 	if keys.unit == self:GetParent() then
-		self.interval_time = self.refresh_time
+		-- self.interval_time = self.refresh_time
 	end
 end
 
@@ -795,31 +795,36 @@ function modifier_ability_thdots_hina04:OnDestroy()
 									caster, 
 									caster:GetTeamNumber()
 									)
-	for i = 1, line_count do
-		local qangle = QAngle(0, qangle_rotation_rate, 0)
-		line_position = RotatePosition(self.caster:GetAbsOrigin(), qangle, line_position)
-
-		-- Create every other line
-		-- if self.caster:IsAlive() then
-		-- 	CreateRequiemSoulLine(self.caster, self.ability, line_position, false)
-		-- else
-		-- 	self.dummy = CreateUnitByName("npc_dummy_unit", 
-	 --    	                        caster:GetOrigin(), 
-		-- 							false, 
-		-- 						    caster, 
-		-- 							caster, 
-		-- 							caster:GetTeamNumber()
-		-- 							)
-		-- end
-			CreateRequiemSoulLine(self.dummy, self.ability, line_position, false)
-	end
-	self.dummy:SetContextThink("dummy_kill",
+	caster:SetContextThink("dummy_kill",
 		function ()
-			print("doit")
-			if self.dummy ~= nil then
-				self.dummy:ForceKill(true)
+			for i = 1, line_count do
+				local qangle = QAngle(0, qangle_rotation_rate, 0)
+				line_position = RotatePosition(self.caster:GetAbsOrigin(), qangle, line_position)
+
+				-- Create every other line
+				-- if self.caster:IsAlive() then
+				-- 	CreateRequiemSoulLine(self.caster, self.ability, line_position, false)
+				-- else
+				-- 	self.dummy = CreateUnitByName("npc_dummy_unit", 
+			 --    	                        caster:GetOrigin(), 
+				-- 							false, 
+				-- 						    caster, 
+				-- 							caster, 
+				-- 							caster:GetTeamNumber()
+				-- 							)
+				-- end
+				CreateRequiemSoulLine(self.dummy, self.ability, line_position, false)
+			caster:SetContextThink("dummy_kill",
+				function ()
+					print("doit")
+					if self.dummy ~= nil then
+						self.dummy:ForceKill(true)
+					end
+				end,
+			1)
 			end
-		end, 1)
+		end,
+	0.03)
 end
 
 function modifier_ability_thdots_hina04:OnTakeDamage(keys)
@@ -830,11 +835,11 @@ function modifier_ability_thdots_hina04:OnTakeDamage(keys)
 	if distance <= self.radius then
 		local absorb = ( keys.damage * self.damage_absorb / 100)
 		if unit:GetHealth() >= keys.damage then
-			print("-------------")
+			-- print("-------------")
 			unit:SetHealth(unit:GetHealth() - keys.damage + absorb)
 		end
 		self:GetAbility().absorb_damage = self:GetAbility().absorb_damage + absorb
-		print(self:GetAbility().absorb_damage)
+		-- print(self:GetAbility().absorb_damage)
 	end
 end
 
@@ -870,7 +875,7 @@ function modifier_ability_thdots_hina04_damage:OnCreated()
 	local caster = ability:GetCaster()
 	local target = self:GetParent()
 	local damage = ability.absorb_damage + ability:GetSpecialValueFor("min_damage")
-	print("damage is :",damage)
+	-- print("damage is :",damage)
 	local damageTable = {victim = target,
 						damage = damage,
 						damage_type = ability:GetAbilityDamageType(),

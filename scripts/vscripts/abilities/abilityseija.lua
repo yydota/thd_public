@@ -233,6 +233,8 @@ function ability_thdots_seija02:OnSpellStart()
 	self.damage 				= self:GetSpecialValueFor("damage")
 	self.damage_reduce 			= self:GetSpecialValueFor("damage_reduce")
 	self.damage_limit 			= self:GetSpecialValueFor("damage_limit")
+	self.duration_slow 			= self:GetSpecialValueFor("duration_slow")
+	self.radius 				= self:GetSpecialValueFor("radius")
 	local num 					= self:GetSpecialValueFor("num") + 1 + FindTelentValue(caster,"special_bonus_unique_seija_2")	--最大弹幕数量
 	local direction 			= caster:GetForwardVector()
 	local count 				= 1										--
@@ -331,6 +333,7 @@ function ability_thdots_seija02:OnProjectileHitHandle(hTarget, vLocation, iProje
 						ability = ability
 						}
 	target:EmitSound("Voice_Thdots_Suika.AbilitySeija02_2")
+	target:AddNewModifier(caster,ability, "modifier_ability_thdots_seija02_debuff",{duration = self.duration_slow})
 	local damage_dealt = ApplyDamage(damageTable)
 	for i = 1,#self.projectile_table do
 		if self.projectile_table[i].barrage == iProjectileHandle then
@@ -350,6 +353,20 @@ function Seija02CreateProjectile(caster,ability,start_position,direction,damage_
 	local speed 				= 500 + count * 120
 	local end_position  		= caster:GetOrigin() + direction * 20000
 	local particle 				= "particles/heroes/seija/seija02"..count..".vpcf"
+	-- local direction_wanbaochui  = direction
+
+	if caster:HasModifier("modifier_item_wanbaochui") then --添加万宝槌效果
+		speed = 1000 + count * 120 	--弹幕速度增加
+		local targets = FindUnitsInRadius(caster:GetTeam(),caster:GetAbsOrigin(),nil,ability.radius,ability:GetAbilityTargetTeam(),
+		ability:GetAbilityTargetType(),0,0,false)
+		for _,v in pairs (targets) do
+			if v:HasModifier("modifier_ability_thdots_seija03") then
+				end_position = v:GetOrigin()		--弹幕射向目标
+				direction = ((end_position - start_position) * Vector(1, 1, 0)):Normalized()
+			end
+		end
+	end
+
 	if count ~= 1 then
 		direction = RotatePosition(Vector(0,0,0), QAngle(0, RandomInt(-5,5), 0), direction)
 	end
@@ -375,9 +392,27 @@ function Seija02CreateProjectile(caster,ability,start_position,direction,damage_
 				iVisionRadius 		= 250,
 				iVisionTeamNumber 	= caster:GetTeamNumber(),
 			})
+	-- direction = direction_wanbaochui
 	local projectile = {barrage = barrage,damage_reduce = damage_reduce,count = count,direction = direction}
 	projectile_table[i] = projectile
 	-- print_r(projectile_table)
+end
+
+modifier_ability_thdots_seija02_debuff = {}
+LinkLuaModifier("modifier_ability_thdots_seija02_debuff","scripts/vscripts/abilities/abilityseija.lua",LUA_MODIFIER_MOTION_NONE)
+function modifier_ability_thdots_seija02_debuff:IsHidden() 			return false end
+function modifier_ability_thdots_seija02_debuff:IsPurgable()			return true end
+function modifier_ability_thdots_seija02_debuff:RemoveOnDeath() 		return true end
+function modifier_ability_thdots_seija02_debuff:IsDebuff()			return true end
+
+function modifier_ability_thdots_seija02_debuff:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
+	}
+end
+
+function modifier_ability_thdots_seija02_debuff:GetModifierMoveSpeedBonus_Percentage()
+	return self:GetAbility():GetSpecialValueFor("movement_slow")
 end
 
 
@@ -385,6 +420,14 @@ end
 --逆符「Evil in the Mirror」
 --------------------------------------------------------
 ability_thdots_seija03 = {}
+
+function ability_thdots_seija03:GetAbilityTextureName()
+	if self:GetCaster():HasModifier("modifier_ability_thdots_seijaEx_talent_3") then
+		return "custom/ability_thdots_seija03_1"
+	else
+		return "custom/ability_thdots_seija03"
+	end
+end
 
 function ability_thdots_seija03:CastFilterResultTarget(hTarget)
 	if self:GetCaster():GetTeamNumber() == hTarget:GetTeamNumber() and self:GetCaster() ~= hTarget then
@@ -622,6 +665,11 @@ function ability_thdots_seija04:OnSpellStart()
 			,self.caster
 			,self.caster:GetTeam()
 		)
+	dummy:SetContextThink("remove", 
+		function ()
+			dummy:ForceKill(true)
+		end, 
+		0.03)
 	local particle = ParticleManager:CreateParticle("particles/heroes/seija/seija04.vpcf", PATTACH_ABSORIGIN_FOLLOW, dummy)
     ParticleManager:SetParticleControl(particle, 2, Vector(self.radius, self.radius, self.radius))
     ParticleManager:ReleaseParticleIndex(particle)
@@ -772,8 +820,8 @@ function set_camera_yaw(caster,sense) --sense为180度或者0度
 	caster:SetContextThink("yaw", 
 		function ()
 			if GameRules:IsGamePaused() then return 0.03 end
-			CustomGameEventManager:Send_ServerToPlayer(plyhd, "set_camera_yaw", {key_val = angle} )
 			angle = angle + num
+			CustomGameEventManager:Send_ServerToPlayer(plyhd, "set_camera_yaw", {key_val = angle} )
 			if angle == sense then
 				return nil
 			else
@@ -802,7 +850,11 @@ function modifier_ability_thdots_seijaEx_passive:OnCreated()
 	self.yaw 	= 180
 	self.angle 	= 0
 	self.num 	= 3
-	self:StartIntervalThink(0.03)
+	self.parent:SetContextThink("delay", 
+		function ()
+		self:StartIntervalThink(0.03)
+		end, 
+		3)
 end
 
 function modifier_ability_thdots_seijaEx_passive:OnIntervalThink()
@@ -831,6 +883,9 @@ function modifier_ability_thdots_seijaEx_passive:OnIntervalThink()
 	if FindTelentValue(self:GetParent(),"special_bonus_unique_seija_3") ~= 0 and not self:GetParent():HasModifier("modifier_ability_thdots_seijaEx_talent_3") then
 		self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_ability_thdots_seijaEx_talent_3", {})
 	end
+	if FindTelentValue(self:GetParent(),"special_bonus_unique_seija_5") ~= 0 and not self:GetParent():HasModifier("modifier_ability_thdots_seijaEx_talent_5") then
+		self:GetParent():AddNewModifier(self:GetParent(), self:GetAbility(), "modifier_ability_thdots_seijaEx_talent_5", {})
+	end
 end
 
 modifier_ability_thdots_seijaEx_talent_3 = {}
@@ -846,3 +901,20 @@ function modifier_ability_thdots_seijaEx_talent_4:IsHidden() 			return true end
 function modifier_ability_thdots_seijaEx_talent_4:IsPurgable()			return false end
 function modifier_ability_thdots_seijaEx_talent_4:RemoveOnDeath() 		return false end
 function modifier_ability_thdots_seijaEx_talent_4:IsDebuff()			return false end
+
+modifier_ability_thdots_seijaEx_talent_5 = {}
+LinkLuaModifier("modifier_ability_thdots_seijaEx_talent_5","scripts/vscripts/abilities/abilityseija.lua",LUA_MODIFIER_MOTION_NONE)
+function modifier_ability_thdots_seijaEx_talent_5:IsHidden() 			return true end
+function modifier_ability_thdots_seijaEx_talent_5:IsPurgable()			return false end
+function modifier_ability_thdots_seijaEx_talent_5:RemoveOnDeath() 		return false end
+function modifier_ability_thdots_seijaEx_talent_5:IsDebuff()			return false end
+
+function modifier_ability_thdots_seijaEx_talent_5:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE
+	}
+end
+
+function modifier_ability_thdots_seijaEx_talent_5:GetModifierSpellAmplify_Percentage()
+	return 50
+end

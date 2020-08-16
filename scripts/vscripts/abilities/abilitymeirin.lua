@@ -167,6 +167,7 @@ function SkewerMotion(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
+	print("args")
 	-- Move the target while the distance traveled is less than the original distance upon cast
 	if target:HasModifier("modifier_ability_thdots_hina04") then --踢转转大招BUG
 		target:InterruptMotionControllers(true)

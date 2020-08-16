@@ -225,6 +225,9 @@ function OnKomachi04SpellStart(keys)
 			return 0.03
 		end,
 	0.03)
+	if caster:GetName() == "npc_dota_hero_elder_titan" then 
+		caster:EmitSound("Voice_Thdots_Suika.AbilityKomachi04")
+	end
 end
 
 function OnKomachi04KillTarget(keys)

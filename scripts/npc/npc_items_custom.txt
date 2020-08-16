@@ -92,11 +92,11 @@
 		// General
 		// -------------------------------------------------------------------------------------------------------------
 		"ID"	"7981"
-		"ItemCost"	"1"
+		"ItemCost"	"0"
 		"AbilityTextureName"	"item_sample_item"
 		"ItemRecipe"	"1"
 		"ItemResult"	"item_wanbaochui"
-		"InvalidHeroes"	"npc_dota_hero_chaos_knight"
+		// "InvalidHeroes"	"npc_dota_hero_chaos_knight"
 		"ItemRequirements"
 		{
 			"01"	"item_cat_foot;item_paper_mask;item_rocket_diagram;item_zun_hat"
@@ -6678,7 +6678,7 @@
 					"RunScript"
 					{
 						"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
-						"Function"	"ItemAbility_ModifierTarget"
+						"Function"	"Item_frozen_frog_Ability_ModifierTarget"
 						"ModifierName"	"modifier_item_frozen_frog_cold_debuff"
 					}
 				}
@@ -6696,6 +6696,9 @@
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%cold_movespeed"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%cold_attackspeed"
+					// "MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE"	"%regen_amplify"
+					// "MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET"	"-99"
+					// "MODIFIER_PROPERTY_TOOLTIP"	"-99"
 				}
 			}
 		}
@@ -6732,6 +6735,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"cold_attackspeed"	"-20"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"regen_amplify"		"-40"
 			}
 		}
 		// Sound

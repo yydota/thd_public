@@ -35,7 +35,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"extra_cost"	"5 4 3 2"
+				"extra_cost"	"3 3 2 2"
 			}
 			"04"
 			{
@@ -54,6 +54,7 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"HasScepterUpgrade"	"1"
 		"AbilityCooldown"	"27 24 21 18"
 		"AbilityManaCost"	"40 55 70 85"
 		"AbilityCastRange"	"800"
@@ -84,7 +85,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"int_bonus"	"0.1"
+				"int_bonus"	"0.2"
 			}
 			"04"
 			{
@@ -105,6 +106,16 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"num"	"10"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"movement_slow"	"-100"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration_slow"	"1"
 			}
 		}
 	}
@@ -156,8 +167,8 @@
 		"AbilityCastPoint"	"0.2"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
 		"AnimationPlaybackRate"	"1.5"
-		"AbilityCooldown"	"60 45 30"
-		"AbilityManaCost"	"45"
+		"AbilityCooldown"	"40 30 20"
+		"AbilityManaCost"	"45 60 75"
 		"AbilityCastRange"	"600 800 1000"
 		"AOERadius"	"500 700 900"
 		"precache"
@@ -254,7 +265,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"value"	"4"
+				"value"	"6"
 			}
 		}
 	}
@@ -285,6 +296,20 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"value"	"1000"
+			}
+		}
+	}
+	"special_bonus_unique_seija_5"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"50"
 			}
 		}
 	}

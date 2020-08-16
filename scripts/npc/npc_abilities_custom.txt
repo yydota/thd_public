@@ -1076,7 +1076,7 @@
 		"AbilityManaCost"	"100 120 140 160"
 		// Stats
 		// ----------------------------------------------------------------
-		"AbilityCastRange"	"700"
+		"AbilityCastRange"	"600 700 800 900"
 		"AOERadius"	"%radius"
 		"ID"	"1999"
 		"precache"
@@ -1151,6 +1151,11 @@
 				"var_type"	"FIELD_FLOAT"
 				"radius"	"200"
 			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"range"	"600 700 800 900"
+			}
 		}
 	}
 
@@ -1160,7 +1165,7 @@
 		"AbilityTextureName"	"custom/ability_dota2x_reimu02"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
 		"MaxLevel"	"4"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_1"
@@ -1233,7 +1238,7 @@
 		"HasScepterUpgrade"			"1"
 		// Stats
 		// ----------------------------------------------------------------
-		"AbilityCastRange"	"650"
+		"AbilityCastRange"	"600 700 800 900"
 		"ID"	"2001"
 		"precache"
 		{
@@ -1317,6 +1322,11 @@
 				"var_type" "FIELD_INTEGER"
 				"scepter_slowdown" "-40"
 				"RequiresScepter"			"1"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"range"	"600 700 800 900"
 			}
 		}
 	}
@@ -4261,7 +4271,8 @@
 			"03"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"attack_speed"	"27"
+				// "attack_speed"	"27"
+				"attack_speed"	"25 30 35 40"
 			}
 			"04"
 			{
@@ -4376,7 +4387,7 @@
 		"AbilityTextureName"	"custom/ability_thdots_flandreEx"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-		"AbilityType"	"DOTA_ABILITY_TYPE_HIDDEN"
+		// "AbilityType"	"DOTA_ABILITY_TYPE_HIDDEN"
 		"MaxLevel"	"1"		
 		"Modifiers"
 		{
@@ -11222,7 +11233,8 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"base_damage"	"40 60 80 100"
+				// "base_damage"	"40 60 80 100"
+				"base_damage"	"20 30 40 50"
 			}
 			"03"
 			{
@@ -11386,7 +11398,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"value"	"-4"
+				"value"	"-3"
 			}
 		}
 	}
@@ -12492,7 +12504,8 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_3"
-		"AbilityCooldown"	"15 13 11 9"
+		// "AbilityCooldown"	"15 13 11 9"
+		"AbilityCooldown"	"14 12 10 8"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityManaCost"	"29"
@@ -12579,7 +12592,8 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastPoint"	"0.2"
-		"AbilityCooldown"	"120 110 100"
+		// "AbilityCooldown"	"120 110 100"
+		"AbilityCooldown"	"90 75 60"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityManaCost"	"59"
@@ -17610,6 +17624,7 @@
 			"particle"				"particles/heroes/komachi/ability_komachi_04_blink.vpcf"
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+			"soundfile"				"soundevents/thdots_hero_sounds/thdots_komachi_sounds.vsndevts"
 		}
 
 		"OnSpellStart"
@@ -23084,6 +23099,7 @@
 			"modifier_skewer_datadriven"
 			{
 				"Duration"	"%slow_duration"
+				"IsPurgable"	"0"
 				"IsDebuff"	"1"
 				"IsHidden"	"1"
 				"EffectName"	"particles/units/heroes/hero_magnataur/magnataur_skewer_debuff.vpcf"
@@ -23101,7 +23117,9 @@
 			}
 			"modifier_skewer_disable_caster"
 			{
-				"IsHidden"	"1"
+				"IsHidden"	"0"
+				"IsPurgable"	"1"
+				"IsDebuff"	"1"
 				"EffectName"	"particles/units/heroes/hero_magnataur/magnataur_skewer.vpcf"
 				"EffecAttachType"	"follow_origin"
 				"OnCreated"
@@ -23129,7 +23147,9 @@
 			}
 			"modifier_skewer_disable_target"
 			{
-				"IsHidden"	"1"
+				"IsHidden"	"0"
+				"IsPurgable"	"1"
+				"IsDebuff"	"1"
 				"OnCreated"
 				{
 					"ApplyMotionController"
@@ -23205,6 +23225,7 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/ability_thdots_meirin02"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"SpellDispellableType" "SPELL_DISPELLABLE_NO"
 		"MaxLevel"	"4"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_2"
@@ -23245,6 +23266,7 @@
 				"Duration"	"%buff_duration"
 				"EffectName"	"particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_blade_fury_dragon.vpcf"
 				"EffectAttachType"	"follow_origin"
+				"IsPurgable"	"0"
 				"IsBuff"	"1"
 				"ThinkInterval"	"0.03"
 				"OnIntervalThink"
@@ -23264,6 +23286,7 @@
 			"modifier_meirin02_buff_ex"
 			{
 				"Duration"	"%buff_duration"
+				"IsPurgable"	"0"
 				"IsBuff"	"1"
 				"IsHidden"	"1"
 				"Properties"

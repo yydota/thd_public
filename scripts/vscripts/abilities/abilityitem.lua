@@ -490,6 +490,48 @@ function ItemAbility_ModifierTarget(keys)
 	ItemAbility:ApplyDataDrivenModifier(Caster,Target,keys.ModifierName,{})
 end
 
+function Item_frozen_frog_Ability_ModifierTarget(keys)
+	local ItemAbility = keys.ability
+	local Caster = keys.Caster or keys.caster
+	local Target = keys.Target or keys.target
+	if Caster and Target and Caster:GetTeam()~=Target:GetTeam() then
+		if keys.Blockable==1 and is_spell_blocked_by_hakurei_amulet(Target) then
+			return
+		elseif (not keys.ApplyToTower or keys.ApplyToTower==0) and Target:IsBuilding() then
+			return
+		end
+	end
+	ItemAbility:ApplyDataDrivenModifier(Caster,Target,keys.ModifierName,{})
+	Target:AddNewModifier(Caster, ItemAbility, "modifier_item_frozen_frog_cold_debuff_reduce_regen", {duration = ItemAbility:GetSpecialValueFor("cold_duration")})
+end
+
+modifier_item_frozen_frog_cold_debuff_reduce_regen = {}
+LinkLuaModifier("modifier_item_frozen_frog_cold_debuff_reduce_regen","scripts/vscripts/abilities/abilityItem.lua",LUA_MODIFIER_MOTION_NONE)
+function modifier_item_frozen_frog_cold_debuff_reduce_regen:IsHidden() 		return true end
+function modifier_item_frozen_frog_cold_debuff_reduce_regen:IsPurgable()		return true end
+function modifier_item_frozen_frog_cold_debuff_reduce_regen:RemoveOnDeath() 	return true end
+function modifier_item_frozen_frog_cold_debuff_reduce_regen:IsDebuff()		return true end
+
+function modifier_item_frozen_frog_cold_debuff_reduce_regen:DeclareFunctions()	
+	return {
+		MODIFIER_PROPERTY_HEAL_AMPLIFY_PERCENTAGE_TARGET,
+		MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE,
+		MODIFIER_PROPERTY_TOOLTIP
+	}
+end
+
+function modifier_item_frozen_frog_cold_debuff_reduce_regen:GetModifierHealAmplify_PercentageTarget()
+	return -40
+end
+
+function modifier_item_frozen_frog_cold_debuff_reduce_regen:GetModifierHPRegenAmplify_Percentage()
+	return -40
+end
+
+function modifier_item_frozen_frog_cold_debuff_reduce_regen:OnTooltip()
+	return -40
+end
+
 function Item_tentacle_Ability_ModifierTarget(keys)
 	local ItemAbility = keys.ability
 	local Caster = keys.Caster or keys.caster

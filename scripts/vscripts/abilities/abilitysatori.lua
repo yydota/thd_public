@@ -867,6 +867,23 @@ function OnSatori01SpellStart(keys)
 			i = 2
 		end
 	end
+	if TargetName == "npc_dota_hero_batrider" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,100)
+		else 
+			RandomNumber = RandomInt(1,75)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "ability_thdots_seija01"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "ability_thdots_seija02"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "ability_thdots_seija03"
+		elseif RandomNumber > 75 and RandomNumber <= 100 then
+			AbilityStolenName = "ability_thdots_seija04"
+			i = 2
+		end
+	end
 -------------------------------------------------会员日
 	if TargetName == "npc_dota_hero_lone_druid" then
 		if caster:GetLevel() >= 6 then
