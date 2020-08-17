@@ -884,64 +884,6 @@ function OnSatori01SpellStart(keys)
 			i = 2
 		end
 	end
--------------------------------------------------会员日
-	if TargetName == "npc_dota_hero_lone_druid" then
-		if caster:GetLevel() >= 6 then
-			RandomNumber = RandomInt(1,50)
-		else
-			RandomNumber = RandomInt(1,50)
-		end
-		if RandomNumber <= 50 then
-			AbilityStolenName = "lone_druid_savage_roar"
-		end
-	end
-	if TargetName == "npc_dota_hero_abaddon" then
-		if caster:GetLevel() >= 6 then
-			RandomNumber = RandomInt(1,75)
-		else 
-			RandomNumber = RandomInt(1,50)
-		end
-		if RandomNumber <= 25 then
-			AbilityStolenName = "abaddon_death_coil"
-		elseif RandomNumber > 25 and RandomNumber <= 50 then
-			AbilityStolenName = "abaddon_aphotic_shield"
-		elseif RandomNumber > 50 and RandomNumber <= 75 then
-			AbilityStolenName = "abaddon_borrowed_time"
-			i = 2
-		end
-	end
-	-- if TargetName == "npc_dota_hero_techies" then
-	-- 	if caster:GetLevel() >= 6 then
-	-- 		RandomNumber = RandomInt(1,75)
-	-- 	else 
-	-- 		RandomNumber = RandomInt(1,50)
-	-- 	end
-	-- 	if RandomNumber <= 25 then
-	-- 		AbilityStolenName = "techies_land_mines"
-	-- 	elseif RandomNumber > 25 and RandomNumber <= 50 then
-	-- 		AbilityStolenName = "techies_stasis_trap"
-	-- 	elseif RandomNumber > 50 and RandomNumber <= 75 then
-	-- 		AbilityStolenName = "techies_suicide"
-	-- 		i = 2
-	-- 	end
-	-- end
-	if TargetName == "npc_dota_hero_witch_doctor" then
-		if caster:GetLevel() >= 6 then
-			RandomNumber = RandomInt(1,100)
-		else 
-			RandomNumber = RandomInt(1,75)
-		end
-		if RandomNumber <= 25 then
-			AbilityStolenName = "witch_doctor_paralyzing_cask"
-		elseif RandomNumber > 25 and RandomNumber <= 50 then
-			AbilityStolenName = "witch_doctor_voodoo_restoration"
-		elseif RandomNumber > 50 and RandomNumber <= 75 then
-			AbilityStolenName = "witch_doctor_maledict"
-		elseif RandomNumber > 75 and RandomNumber <= 100 then
-			AbilityStolenName = "witch_doctor_death_ward"
-			i = 2
-		end
-	end
 	if TargetName == "npc_dota_hero_leshrac" then
 		if caster:GetLevel() >= 6 then
 			RandomNumber = RandomInt(1,100)
@@ -949,13 +891,13 @@ function OnSatori01SpellStart(keys)
 			RandomNumber = RandomInt(1,75)
 		end
 		if RandomNumber <= 25 then
-			AbilityStolenName = "leshrac_split_earth"
+			AbilityStolenName = "ability_thdots_lily01_lua"
 		elseif RandomNumber > 25 and RandomNumber <= 50 then
-			AbilityStolenName = "leshrac_diabolic_edict"
+			AbilityStolenName = "ability_thdots_lily02"
 		elseif RandomNumber > 50 and RandomNumber <= 75 then
-			AbilityStolenName = "leshrac_lightning_storm"
+			AbilityStolenName = "ability_thdots_lily03"
 		elseif RandomNumber > 75 and RandomNumber <= 100 then
-			AbilityStolenName = "leshrac_pulse_nova"
+			AbilityStolenName = "ability_thdots_lily04"
 			i = 2
 		end
 	end

@@ -8,6 +8,7 @@
 #base heroes/hina/hero.txt
 #base heroes/kagerou/hero.txt
 #base heroes/seija/hero.txt
+#base heroes/lilywhite/hero.txt
 
 "DOTAHeroes"
 {

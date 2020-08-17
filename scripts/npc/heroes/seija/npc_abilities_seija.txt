@@ -115,7 +115,12 @@
 			"09"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"duration_slow"	"1"
+				"duration_slow"	"0.2"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"extra_cost"	"10"
 			}
 		}
 	}
@@ -130,6 +135,7 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AnimationPlaybackRate"	"3"
@@ -196,12 +202,12 @@
 			"03"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"talent_radius"	"1900"
+				"talent_radius"	"1700"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"talent_range"	"2000"
+				"talent_range"	"1800"
 			}
 		}
 	}
@@ -295,7 +301,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"value"	"1000"
+				"value"	"800"
 			}
 		}
 	}

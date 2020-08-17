@@ -1,0 +1,66 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_leshrac"
+	{
+		"BaseAttackSpeed"		"100"
+		"Model"                 "models/new_thd/lily/lilywhite.vmdl"
+		"ModelScale"            "1"
+		"DisableWearables"	"1"
+		"Ability1"				"ability_thdots_lily01_lua"
+		"Ability2"				"ability_thdots_lily02"		
+		"Ability3"				"ability_thdots_lily03"
+		"Ability4"				"generic_hidden"
+		"Ability5"				"ability_thdots_lily05"		
+		"Ability6"				"ability_thdots_lily04"
+		"Ability7"				"generic_hidden"
+		"Ability10"				"special_bonus_gold_income_90"
+		"Ability11"				"special_bonus_exp_boost_25"
+		"Ability12"				"special_bonus_strength_10"
+		"Ability13"				"special_bonus_cast_range_150"
+		"Ability14"				"special_bonus_movement_speed_40"
+		"Ability15"				"special_bonus_unique_lily_2"
+		"Ability16"				"special_bonus_spell_amplify_15"
+		"Ability17"				"special_bonus_unique_lily_1"
+		
+		"Role"					"Carry,Nuker,Disabler,Jungler,Escape,Pusher,Initiator,support"
+		"Rolelevels"			"0,3,3,0,0,0,3,0"			
+		"AttackRate"	"1.6"
+		"AttributeBaseStrength"		"18"	
+		
+		"AttributeStrengthGain"		"1.8"
+		
+		"AttributeBaseAgility"		"20"
+		
+		"AttributeAgilityGain"		"2.2"
+		
+		"AttributeBaseIntelligence"	"20"
+		
+		"AttributeIntelligenceGain"	"2.0"
+		
+		"MovementTurnRate"	"1000000"
+			
+		"MovementSpeed"				"305"
+
+		"MovementTurnRate"			"100000.0"
+			//转身速度
+		"AttackDamageMin"			"38"
+		// 最大攻击力
+		"AttackDamageMax"			"38"
+		"StatusHealthRegen"			"0.0"		
+		"AttackRange"				"500"
+		"StatusMana"				"80"	
+		"ArmorPhysical"				"0"		
+		"StatusManaRegen"			"0.9"	
+		"StatusHealth"				"135"		
+		"VisionDaytimeRange"		"1050"
+		// 白天视野大小
+		"VisionNighttimeRange"		"700"		
+		"DisableWearables"			"1"		
+		"ProjectileSpeed"	"1200"		
+		"AttackAnimationPoint"	"0.4"
+
+		"Complexity"	"1"	
+		"MagicalResistance"     "0"	
+		
+	}	
+}

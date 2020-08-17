@@ -10,6 +10,7 @@
 #base "heroes/hina/npc_abilities_hina.txt"  
 #base "heroes/kagerou/npc_abilities_kagerou.txt"  
 #base "heroes/seija/npc_abilities_seija.txt"  
+#base "heroes/lilywhite/npc_abilities_lilywhite.txt"  
 
 "DOTAAbilities"
 {

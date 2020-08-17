@@ -2729,7 +2729,7 @@
 		"DOTA_Tooltip_ability_ability_thdots_seija01_damage"	"弹幕伤害："
 		"DOTA_Tooltip_ability_ability_thdots_seija01_extra_cost"	"额外消耗魔法："
 		"DOTA_Tooltip_ability_ability_thdots_seija02"	"逆弓「天壤梦弓」"
-		"DOTA_Tooltip_ability_ability_thdots_seija02_Description"	"向面向方向丢出数支箭矢,箭矢会在距离超过释放者%radius%码时消失,并从另一端重现,以更快的速度飞出,命中单位会造成减速。\n箭矢每穿过一个单位者都会使伤害降低%damage_reduce%%%,最低降至%damage_limit%%%。\n智力加成：%int_bonus%"
+		"DOTA_Tooltip_ability_ability_thdots_seija02_Description"	"向面向方向丢出数支箭矢,箭矢会在距离超过释放者%radius%码时消失,并从另一端重现,以更快的速度飞出,命中单位会造成减速。\n箭矢每穿过一个单位者都会使伤害降低%damage_reduce%%%,最低降至%damage_limit%%%。\n每波箭矢额外消耗%extra_cost%魔法值\n智力加成：%int_bonus%"
 		"DOTA_Tooltip_ability_ability_thdots_seija02_aghanim_description"	"增加弹幕速度，当有少女被逆符「Evil in the Mirror」命中时,弹幕会从向少女汇集"
 		"DOTA_Tooltip_ability_ability_thdots_seija02_damage"	"箭矢伤害："
 		"DOTA_Tooltip_ability_ability_thdots_seija02_reappear"	"重现次数："
@@ -2761,8 +2761,62 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_seija_1"	"「天壤梦弓」伤害不削减"
 		"DOTA_Tooltip_ability_special_bonus_unique_seija_2"	"+3波「天壤梦弓」"
 		"DOTA_Tooltip_ability_special_bonus_unique_seija_3"	"「Evil in the Mirror」可以作用友军"
-		"DOTA_Tooltip_ability_special_bonus_unique_seija_4"	"+1000「Reverse Hierarchy」距离与范围"
+		"DOTA_Tooltip_ability_special_bonus_unique_seija_4"	"+800「Reverse Hierarchy」距离与范围"
 		"DOTA_Tooltip_ability_special_bonus_unique_seija_5"	"+50% 技能增强"
+
+		//2020/08/17 Eriko
+		// --------------------
+		// 莉莉白
+		// --------------------
+		"npc_dota_hero_leshrac"												"莉莉白"
+		"DOTA_Tooltip_ability_ability_thdots_lily05"						"莉符「逆样迷宫」"																												
+		"DOTA_Tooltip_ability_ability_thdots_lily05_Description" 			"转换成黑莉莉型态，黑莉利型态下，所有魔力消耗会变成血量消耗，并转换至黑莉莉的相对技能"	
+		"DOTA_Tooltip_ability_ability_thdots_lily01_lua"					"回春「春之奏鸣/春之咆哮」"																												
+		"DOTA_Tooltip_ability_ability_thdots_lily01_lua_Description"		"指定一个单位\n【白】每秒恢复生命值\n【黑】每秒造成法术伤害\n持续%duration%秒\n智力加成：%statscale%\n持续时间：%cast_range% "
+		"DOTA_Tooltip_ability_ability_thdots_lily01_lua_spell_cost" 		"消耗魔法/生命："
+		"DOTA_Tooltip_ability_ability_thdots_lily01_lua_healanddamage" 		"治疗/伤害："
+
+		"DOTA_Tooltip_ability_ability_thdots_lily02"	 		 			"春度「春度满载/春度回收」"																												
+		"DOTA_Tooltip_ability_ability_thdots_lily02_Description"  			"指定一个普通友军单位\n【白】将该单位生命值回满，让附近所有发军得到激励大幅提升攻击力\n【黑】完全吸取该单位的生命，让附近所有故方受到惊吓大幅降低攻击力\n持续8秒\n作用范围：%radius% "		
+		"DOTA_Tooltip_ability_ability_thdots_lily02_spell_cost" 			"消耗魔法/生命："
+		"DOTA_Tooltip_ability_ability_thdots_lily02_buffatk"  		  		"提升/降低攻击力："
+			
+		"DOTA_Tooltip_ability_ability_thdots_lily03" 		 		 		"「百合之湖/酱薇之海」"																												
+		"DOTA_Tooltip_ability_ability_thdots_lily03_Description"   			"在地上画下一个湖或海\n【白】每秒回复附近友方单位生命值,若任何友军在湖中存在3秒以上,可以免疫魔法和纯粹伤害\n【黑】每秒对附近敌方单位造成伤害,若任何敌军在海中存在3秒,会被眩晕\n智力加成：%statscale% \n 持续时间：%duration% \n 眩晕时间：%immune_duration% + 技能剩余时间"	
+		"DOTA_Tooltip_ability_ability_thdots_lily03_spell_cost" 			"消耗魔法/生命："
+		"DOTA_Tooltip_ability_ability_thdots_lily03_healanddamage" 			"治疗/伤害："			
+			
+		"DOTA_Tooltip_ability_ability_thdots_lily04"	 		 			"「白色的春天/黑色的春天」"																												
+		"DOTA_Tooltip_ability_ability_thdots_lily04_Description" 			"指定一个区域\n【白】每秒回复该区域所有友军生命值，并减少受到的伤害\n【黑】每秒对该区域所有敌军造成法术伤害，并增加受到的伤害\n持续时间：7\n增加/减少伤害：%bonus_reduction%%%\n智力加成：%statscale% \n施法范围：全地图"		
+		"DOTA_Tooltip_ability_ability_thdots_lily04_spell_cost" 			"消耗魔法/生命："
+		"DOTA_Tooltip_ability_ability_thdots_lily04_healanddamage" 			"治疗/伤害："	
+			
+		"DOTA_Tooltip_ability_special_bonus_unique_lily_1" 		 			"+50% 技能治疗量"	
+			
+		"DOTA_Tooltip_ability_special_bonus_unique_lily_2" 		 			"-30秒 「白色的春天/黑色的春天」冷却"	
+
+		"DOTA_Tooltip_modifier_lily_black"									"莉莉黑"
+		"DOTA_Tooltip_modifier_lily_black_Description"						"消耗生命值释放技能"		
+		"DOTA_Tooltip_modifier_ability_thdots_lily01_lua_buff"									"「春之奏鸣」"
+		"DOTA_Tooltip_modifier_ability_thdots_lily01_lua_buff_Description"						"每秒恢复生命值"		
+		"DOTA_Tooltip_modifier_ability_thdots_lily01_lua_debuff"								"「春之咆哮」"
+		"DOTA_Tooltip_modifier_ability_thdots_lily01_lua_debuff_Description"					"每秒受到法术伤害"		
+		"DOTA_Tooltip_modifier_lily02buff_attack"								"「春度满载」"
+		"DOTA_Tooltip_modifier_lily02buff_attack_Description"					"提升攻击力"
+		"DOTA_Tooltip_modifier_lily02debuff_penalty"								"「春度回收」"
+		"DOTA_Tooltip_modifier_lily02debuff_penalty_Description"					"降低攻击力"
+		"DOTA_Tooltip_modifier_lily_white03_area_buff"								"「百合之湖」"
+		"DOTA_Tooltip_modifier_lily_white03_area_buff_Description"					"每秒回复生命值"
+		"DOTA_Tooltip_modifier_lily_white03_immunity"								"「百合之湖」"
+		"DOTA_Tooltip_modifier_lily_white03_immunity_Description"					"免疫魔法和纯粹伤害"	
+		"DOTA_Tooltip_modifier_lily_black03_area_debuff"								"「酱薇之海」"
+		"DOTA_Tooltip_modifier_lily_black03_area_debuff_Description"					"每秒受到法术伤害"	
+		"DOTA_Tooltip_modifier_lily_black03_stun"								"「酱薇之海」"
+		"DOTA_Tooltip_modifier_lily_black03_stun_Description"					"被眩晕"	
+		"DOTA_Tooltip_modifier_lily_white04_area_buff"								"「白色的春天」"
+		"DOTA_Tooltip_modifier_lily_white04_area_buff_Description"					"每秒回复生命值，并减少受到的伤害"	
+		"DOTA_Tooltip_modifier_lily_black04_area_debuff"								"「黑色的春天」"
+		"DOTA_Tooltip_modifier_lily_black04_area_debuff_Description"					"每秒受到法术伤害，并增加受到的伤害"
 
 		//2020/03/06 玩偶魔女艾露迪
 		// --------------------
@@ -3578,5 +3632,7 @@
 		"DOTA_Tooltip_ability_item_wanmeitiaoyuezhuangzhi_bonus_health"	"+$health"
 		"DOTA_Tooltip_ability_item_wanmeitiaoyuezhuangzhi_bonus_mana"	"+$mana"
 		"DOTA_Tooltip_ability_item_wanmeitiaoyuezhuangzhi_note0" "不会被伤害打断，不会被缠绕禁止。<br>PS by 白薯"
+
+			
 	}
 }

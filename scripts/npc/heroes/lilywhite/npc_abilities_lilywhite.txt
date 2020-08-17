@@ -1,0 +1,1068 @@
+"DOTAAbilities"
+{
+	"ability_thdots_lily05"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		
+	//	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_CHECK_DISABLE_HELP"		
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"custom/lily/ability_thdots_lily05"	
+		//"ID"							"40109"		
+		
+		"AbilityCastPoint"				"0"
+	
+		"AbilityCooldown"				"7"
+	
+		"AbilityManaCost"				"0"	
+		
+		"MaxLevel"	"1"			
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"60"
+			}			
+		}
+		"precache"
+		{
+			"model"		"models/new_thd/lily/lilywhite.vmdl"	
+			"model"		"models/new_thd/lily/lilyblack.vmdl"					
+		}
+		
+		"OnToggleOn"
+		{
+			"RunScript"
+			{			
+				"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+				"Function"		"OnLilyInnateToggleon"	
+				"model"			"models/new_thd/lily/lilyblack.vmdl"					
+			}	
+		}	
+		"OnToggleOff"
+		{
+			"RunScript"
+			{			
+				"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+				"Function"		"OnLilyInnateToggleoff"	
+				"model2"		"models/new_thd/lily/lilywhite.vmdl"				
+			}	
+		}		
+
+		"Modifiers"
+		{
+			"modifier_lily_black"
+			{				
+				"RemoveOnDeath"				"0"		
+			}	
+			"modifier_lily_black_check"
+			{				
+				"RemoveOnDeath"				"0"
+				"IsHidden"	"1"				
+				"ThinkInterval"				"0.1"				
+				"Passive"					"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"				"LilyInnatetogglecheck"
+					}
+				}				
+			}			
+		}
+	}
+	"ability_thdots_lily01"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/lily/ability_thdots_lily01"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"		
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"MaxLevel"	"4"
+	//	"AbilityCastPoint"	"0.5"
+		"AbilityCastPoint"	"0.3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		//"ID"							"40110"		
+		"AbilityCooldown"	"6"
+		"AbilityManaCost"	"0"
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"	"%cast_range"
+		"precache"
+		{
+			"particle"					"particles/units/heroes/hero_warlock/warlock_shadow_word_buff.vpcf"
+			"particle"					"particles/econ/items/witch_doctor/wd_ti8_immortal_head/wd_ti8_immortal_maledict.vpcf"	
+			"soundfile"					"soundevents/thdots_hero_sounds/thdots_lily_sounds.vsndevts"			
+		}
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+				"Function"	"OnLily01SpellStart"
+				"spellcost"        "%spell_cost"				
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_lily01buff"
+			{
+				"Duration"				"%duration"				
+				"IsPurgable"			"1"
+				"EffectName"			"particles/units/heroes/hero_warlock/warlock_shadow_word_buff.vpcf"
+				"EffectAttachType"		"attach_hitloc"				
+				"ThinkInterval"			"1"					
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"Target"		"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"		"lily01buffhealing"
+						"effective"		"%healanddamage"
+						"scale"			"%statscale"						
+					}
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"		"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"		"lily01buffhealing"
+						"effective"		"%healanddamage"
+						"scale"			"%statscale"						
+					}
+				}				
+			}	
+			"modifier_lily01debuff"
+			{
+				"Duration"				"%duration"	
+				"IsPurgable"	"1"
+				"EffectName"			"particles/econ/items/witch_doctor/wd_ti8_immortal_head/wd_ti8_immortal_maledict.vpcf"
+				"EffectAttachType"		"attach_hitloc"								
+				"ThinkInterval"	"1"	
+				"IsDebuff"	"1"				
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"Target"		"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"		"lily01debuffdamage"
+						"effective"		"%healanddamage"
+						"scale"			"%statscale"						
+					}
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"		"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"		"lily01debuffdamage"
+						"effective"		"%healanddamage"
+						"scale"			"%statscale"						
+					}
+				}
+			}			
+			"modifier_lily01_mana_check"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"ThinkInterval"	"0.01"					
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"	"lily01costcheck"
+						"spellcost"        "%spell_cost"						
+					}
+				}			
+
+			}			
+			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"spell_cost"	"30 60 90 120"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"5"
+			}	
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"healanddamage"	"16 32 48 64"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"statscale"	"0.6"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cast_range"	"600"
+			}
+			"30"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"show_cast_range"	"1"
+			}	
+		}
+	}
+	
+	"ability_thdots_lily01_lua"
+	{
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"scripts/vscripts/abilities/abilitylily.lua"
+		"AbilityTextureName"	"custom/lily/ability_thdots_lily01"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"		
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"MaxLevel"	"4"
+	//	"AbilityCastPoint"	"0.5"
+		"AbilityCastPoint"	"0.3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		//"ID"							"40110"		
+		"AbilityCooldown"	"6"
+		"AbilityManaCost"	"0"
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"	"600"
+		"precache"
+		{
+			"particle"					"particles/units/heroes/hero_warlock/warlock_shadow_word_buff.vpcf"
+			"particle"					"particles/econ/items/witch_doctor/wd_ti8_immortal_head/wd_ti8_immortal_maledict.vpcf"	
+			"soundfile"					"soundevents/thdots_hero_sounds/thdots_lily_sounds.vsndevts"			
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"spell_cost"	"30 60 90 120"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"5"
+			}	
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"healanddamage"	"16 32 48 64"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"statscale"	"0.6"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cast_range"	"600"
+			}		
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"tick_rate"	"1.0"
+			}	
+			"30"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"show_cast_range"	"1"
+			}	
+		}
+	}
+	
+	
+	"ability_thdots_lily02"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/lily/ability_thdots_lily02"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"		
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"MaxLevel"	"4"
+		"AbilityCastPoint"	"0.5"
+		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_1"
+		"AbilityCooldown"	"23 19 15 11"
+		//"ID"							"40111"			
+		"AbilityManaCost"	"0"
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"	"600"
+		"precache"
+		{
+			"particle"					"particles/econ/items/ogre_magi/ogre_ti8_immortal_weapon/ogre_ti8_immortal_bloodlust_buff.vpcf"
+			"particle"					"particles/units/heroes/hero_dark_willow/dark_willow_wisp_spell_debuff.vpcf"			
+		}
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+				"Function"	"OnLily02SpellStart"
+				"spellcost"        "%spell_cost"
+				"Radius"	"%radius"				
+			}
+		}
+		"Modifiers"
+		{	
+			
+			
+			"modifier_lily02buff"
+			{
+				"IsHidden"			"1"
+				"Duration"				"%duration"					
+		
+				"Aura"          	"modifier_lily02buff_attack"
+				"Aura_Radius"   	"%radius"
+				"Aura_Teams"    	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC" 
+				"Aura_Flags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ALLIES" 
+			}
+	
+			"modifier_lily02buff_attack"
+			{
+				"EffectName"			"particles/econ/items/ogre_magi/ogre_ti8_immortal_weapon/ogre_ti8_immortal_bloodlust_buff.vpcf"
+				"EffectAttachType"		"attach_hitloc"				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%buffatk"
+				}
+			}			
+			"modifier_lily02debuff_penalty"
+			{
+				"Duration"				"%duration"	
+				"EffectName"			"particles/units/heroes/hero_dark_willow/dark_willow_wisp_spell_debuff.vpcf"
+				"EffectAttachType"		"follow_overhead"					
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%debuffatk"
+				}
+				
+			}			
+			"modifier_lily02_cost_check"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"ThinkInterval"	"0.01"					
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"	"lily02costcheck"
+						"spellcost"        "%spell_cost"						
+					}
+				}			
+			}			
+			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"spell_cost"	"75"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"8"
+			}	
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"buffatk"	"15 30 45 60"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"500"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"debuffatk"	"-15 -30 -45 -60"
+			}	
+			"30"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"show_cast_range"	"1"
+			}	
+		}
+	}
+
+
+	"ability_thdots_lily03"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/lily/ability_thdots_lily03"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"	"4"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_2"
+		"AbilityCooldown"	"17 16 15 14"
+		//"ID"							"40112"			
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"	"700"
+		"AOERadius"	"%radius"
+		"precache"
+		{
+			"particle"		"particles/units/heroes/hero_enigma/enigma_midnight_pulse.vpcf"
+			"particle"		"particles/heroes/lily/ability_lily_01.vpcf"	
+			"soundfile"		"sounds/weapons/hero/enigma/midnight_pulse.vsnd"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+			"particle"	"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"		
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts"
+			"soundfile"					"soundevents/thdots_hero_sounds/thdots_lily_sounds.vsndevts"			
+		}
+		"OnSpellStart"
+		{		
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+				"Function"		"OnLily03SpellStart"
+				"spellcost"		"%spell_cost"
+		 		"Target" 		"POINT"				
+				//"Radius"		"%radius"				
+			}			
+		}		
+		"Modifiers"		
+		{
+			"modifier_lily03_cost_check"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"ThinkInterval"	"0.01"					
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"	"lily03costcheck"
+						"spellcost"        "%spell_cost"						
+					}
+				}			
+			}
+			"modifier_lily03_caster_check"
+			{
+				"IsPurgable"	"0"	
+				"IsBuff"	"1"				
+				//"Duration"				"%duration"	
+				"IsHidden"	"1"				
+			}			
+			"modifier_lily_white03_area"
+			{
+				"Aura"					"modifier_lily_white03_area_buff"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+
+				"Duration"				"%duration"
+	
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Enigma.Midnight_Pulse"
+						"Target"		"TARGET"
+					}
+					"AttachEffect"
+					{
+						"EffectName"		"maps/journey_assets/particles/journey_fountain_radiant.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+						}
+					}					
+	
+					"AttachEffect"
+					{
+						"EffectName"		"particles/heroes/lily/ability_lily_01.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius %radius %radius"
+						}
+					}
+					
+					"DestroyTrees"
+					{
+						"Target"	"TARGET"
+						"Radius"	"%radius"
+					}					
+				}
+				"ThinkInterval"	"1"				
+				"OnIntervalThink"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/heroes/lily/ability_lily_01.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius %radius %radius"
+						}
+					}
+				}				
+			}
+	
+			"modifier_lily_white03_area_buff"
+			{				
+				"ThinkInterval"	"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"		"lilywhite03bufftick"
+						"effective"		"%healanddamage"
+						"scale"			"%statscale"							
+					}
+				}
+			}
+			"modifier_lily_white03_immunity_check"
+			{				
+				"IsHidden"	"1"	
+				"Duration"				"%duration"								
+			}			
+			"modifier_lily_white03_immunity"
+			{
+				"IsBuff"				"1"			
+				//"Duration"				"%immune_duration"
+				"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
+				"EffectAttachType"	"follow_origin"				
+			//	"States"
+			//	{
+			//		"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+			//	}	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_MAGICAL"	"1"
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PURE"	"1"
+				}
+				"OnCreated"
+				{				
+					"FireSound"
+					{
+						"EffectName"		"Hero_Omniknight.Repel"
+						"Target"			"TARGET"
+					}				
+				}
+			}
+
+
+
+			"modifier_lily_black03_area"
+			{
+				"Aura"					"modifier_lily_black03_area_debuff"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				"Aura_Flags"			"DOTA_UNIT_TARGET_FLAG_INVULNERABLE | DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+				"Duration"				"%duration"
+	
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Enigma.Midnight_Pulse"
+						"Target"		"TARGET"
+					}
+					"AttachEffect"
+					{
+						"EffectName"		"maps/journey_assets/particles/journey_fountain_radiant.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+						}
+					}					
+	
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_enigma/enigma_midnight_pulse.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius %radius %radius"
+						}
+					}
+					
+					"DestroyTrees"
+					{
+						"Target"	"TARGET"
+						"Radius"	"%radius"
+					}
+				}
+			}
+	
+			"modifier_lily_black03_area_debuff"
+			{				
+				"ThinkInterval"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"	
+				"IsDebuff"		"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"		"lilyblack03debufftick"
+						"effective"		"%healanddamage"
+						"scale"			"%statscale"							
+					}
+				}
+			}
+			"modifier_lily_black03_stun_check"
+			{				
+				"IsHidden"	"1"
+				"Duration"				"%duration"	
+				"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"	
+				"IsDebuff"		"1"
+			}			
+			"modifier_lily_black03_stun"
+			{						
+			//	"Duration"				"%immune_duration"
+				"IsDebuff"		"1"
+				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"	"follow_overhead"				
+				
+				"IsPurgable"	"1"				
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}	
+				"OnCreated"
+				{				
+					"FireSound"
+					{
+						"EffectName"		"Hero_VengefulSpirit.MagicMissileImpact"
+						"Target"			"TARGET"
+					}				
+				}				
+				"Attributes"	"MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"	
+			}			
+
+			
+		}	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"5.0 5.5 6.0 6.5"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_duration"	"3"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"immune_duration"			"3"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"healanddamage"				"15 30 45 60"
+			}	
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"statscale"						"0.6"
+			}	
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"spell_cost"				"150"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"375"
+			}
+			
+			"08"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"magic_resist"					"1"
+			}
+			"30"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"show_cast_range"	"1"
+			}	
+			
+		}
+	}	
+	
+	"ability_thdots_lily04"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/lily/ability_thdots_lily04"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"	"3"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"		
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_4"
+		"AbilityCooldown"	"120"
+		//"ID"							"15987"			
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"	"99999"
+		"AOERadius"	"%radius"
+		"precache"
+		{
+			"particle"			"particles/units/heroes/hero_enigma/enigma_midnight_pulse.vpcf"
+			"particle"			"particles/heroes/lily/ability_lily_01.vpcf"	
+			"soundfile"			"sounds/weapons/hero/enigma/midnight_pulse.vsnd"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+			"particle"			"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"		
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts"
+			"particle"			"particles/heroes/thtd_patchouli/ability_patchouli_01_bury_in_lake.vpcf"
+			"particle"			"particles/thd2/heroes/eirin/ability_eirin02_heal.vpcf"
+			"particle"			"particles/heroes/lily/04ring.vpcf"	
+			"particle"			"particles/heroes/thtd_patchouli/ability_patchouli_01_mercury_poison.vpcf"	
+			"soundfile"			"soundevents/thdots_hero_sounds/thdots_lily_sounds.vsndevts"			
+		}
+		"OnSpellStart"
+		{		
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+				"Function"		"OnLily04SpellStart"
+				"spellcost"		"%spell_cost"
+		 		"Target" 		"POINT"				
+				"Radius"		"%radius"
+				"Duration"		"%duration"
+				
+			}			
+		}		
+		"Modifiers"		
+		{
+			"modifier_lily04_cost_check"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"ThinkInterval"	"0.01"					
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"	"lily04costcheck"
+						"spellcost"        "%spell_cost"						
+					}
+				}			
+			}
+			"modifier_lily_white04_area"
+			{
+				"Aura"					"modifier_lily_white04_area_buff"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				"Duration"				"%duration"
+				
+	
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"		"lilywhite04startsound"
+						"Target"		"TARGET"						
+					}
+	
+					"AttachEffect"
+					{
+						"EffectName"		"particles/heroes/thtd_patchouli/ability_patchouli_01_bury_in_lake.vpcf"
+				//		"EffectName"		"particles/units/heroes/hero_arc_warden/arc_warden_magnetic.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius %radius %radius"
+						}
+					}
+					
+					"DestroyTrees"
+					{
+						"Target"	"TARGET"
+						"Radius"	"%radius"
+					}
+				}
+				"ThinkInterval"	"2"				
+				"OnIntervalThink"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/thd2/heroes/eirin/ability_eirin02_heal.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius %radius %radius"
+						}
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"		"lilywhite04stopsound"
+						"Target"		"TARGET"						
+					}
+				}				
+			}
+	
+			"modifier_lily_white04_area_buff"
+			{				
+				"ThinkInterval"	"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"		"lilywhite04bufftick"
+						"effective"		"%healanddamage"
+						"scale"			"%statscale"							
+					}
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"		"lilywhite04bufftick"
+						"effective"		"%healanddamage"
+						"scale"			"%statscale"							
+					}
+				}				
+				"Properties"
+				{
+	            	"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"%bonus_reduction"
+				}				
+			}
+
+
+
+			"modifier_lily_black04_area"
+			{
+				"Aura"					"modifier_lily_black04_area_debuff"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				"Duration"				"%duration"
+	
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"		"lilyblack04startsound"
+						"Target"		"TARGET"						
+					}
+	
+					"AttachEffect"
+					{
+						"EffectName"		"particles/heroes/thtd_patchouli/ability_patchouli_01_mercury_poison.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+						"ControlPoints"
+						{
+							"00" "0 0 0"
+							"01" "%radius %radius %radius"
+						}
+					}
+					
+					"DestroyTrees"
+					{
+						"Target"	"TARGET"
+						"Radius"	"%radius"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"		"lilyblack04stopsound"
+						"Target"		"TARGET"						
+					}
+				}					
+			}
+	
+			"modifier_lily_black04_area_debuff"
+			{				
+				"ThinkInterval"	"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"		"lilyblack04debufftick"
+						"effective"		"%healanddamage"
+						"scale"			"%statscale"							
+					}
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
+						"Function"		"lilyblack04debufftick"
+						"effective"		"%healanddamage"
+						"scale"			"%statscale"							
+					}
+				}				
+				"Properties"
+				{
+	            	"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"%bonus_damage"
+				}				
+			}
+
+			
+		}	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"7"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"stun_duration"	"3"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"immune_duration"			"3"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"healanddamage"				"60 80 100"
+			}	
+			"05"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"statscale"						"0.9"
+			}	
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"spell_cost"				"200 300 400"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"600"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_reduction"	"-15 -20 -25"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"bonus_damage"	"15 20 25"
+			}			
+			
+		}
+	}
+	"special_bonus_unique_lily_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"ID"							"40114"		
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"111"
+			}
+		}
+	}	
+	"special_bonus_unique_lily_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"ID"							"40115"			
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"-30"
+			}
+		}
+	}	
+}

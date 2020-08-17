@@ -235,6 +235,7 @@ function ability_thdots_seija02:OnSpellStart()
 	self.damage_limit 			= self:GetSpecialValueFor("damage_limit")
 	self.duration_slow 			= self:GetSpecialValueFor("duration_slow")
 	self.radius 				= self:GetSpecialValueFor("radius")
+	self.extra_cost 			= self:GetSpecialValueFor("extra_cost")
 	local num 					= self:GetSpecialValueFor("num") + 1 + FindTelentValue(caster,"special_bonus_unique_seija_2")	--最大弹幕数量
 	local direction 			= caster:GetForwardVector()
 	local count 				= 1										--
@@ -255,6 +256,7 @@ function ability_thdots_seija02:OnSpellStart()
 			angle = RotatePosition(Vector(0,0,0), qangle, caster:GetForwardVector())
 			Seija02CreateProjectile(caster,ability,caster:GetAbsOrigin()+excursion,angle,self.damage_reduce,count,self.projectile_table,times)
 			times = times + 1
+			caster:SetMana(caster:GetMana()-self.extra_cost) --额外耗蓝
 			if times >= num then
 				return nil
 			end
@@ -449,6 +451,7 @@ function ability_thdots_seija03:OnSpellStart()
 	local target 				= self:GetCursorTarget()
 	local duration 				= self:GetSpecialValueFor("duration")
 	self.attack 				= target:GetAverageTrueAttackDamage(target)
+	if is_spell_blocked(target,caster) then return end
 	if target:IsHero() then
 		self.intellect_all 			= target:GetIntellect()
 		self.intellect 				= target:GetBaseIntellect()
@@ -463,7 +466,7 @@ end
 modifier_ability_thdots_seija03 = {}
 LinkLuaModifier("modifier_ability_thdots_seija03","scripts/vscripts/abilities/abilityseija.lua",LUA_MODIFIER_MOTION_NONE)
 function modifier_ability_thdots_seija03:IsHidden() 		return false end
-function modifier_ability_thdots_seija03:IsPurgable()		return false end
+function modifier_ability_thdots_seija03:IsPurgable()		return true end
 function modifier_ability_thdots_seija03:RemoveOnDeath() 	return true end
 function modifier_ability_thdots_seija03:IsDebuff()
 	if self:GetParent():GetTeamNumber() == self:GetCaster():GetTeamNumber() then
@@ -724,9 +727,15 @@ function modifier_ability_thdots_seija04:OnCreated()
 	end
 	self.limit 		= 0
 	if self.parent:HasModifier("modifier_thdots_yugi04_think_interval") then --判定红三大招
+		self:Destroy()
+		return
+	end
+	if self.parent:HasModifier("modifier_thdots_yasaka04_buff") then --判定神奈子大招
+		self:Destroy()
 		return
 	end
 	if self.parent:GetName() == "npc_dota_roshan" then --判定肉山
+		self:Destroy()
 		return
 	end
 	self:StartIntervalThink(0.03)
@@ -768,6 +777,7 @@ function ability_thdots_seijaEx:OnSpellStart()
 	self.caster 			= self:GetCaster()
 	self.target 			= self:GetCursorTarget()
 	self.duration 			= self:GetSpecialValueFor("duration")
+	if is_spell_blocked(self.target,self.caster) then return end
 	self.target:AddNewModifier(self.caster, self, "modifier_ability_thdots_seijaEx", {duration = self.duration})
 end
 
