@@ -1,3 +1,4 @@
+--8/18/2020 Update
 ability_thdots_reisen_2_01=class({})
 
 function ability_thdots_reisen_2_01:IsHiddenWhenStolen()        return false end
@@ -154,6 +155,14 @@ function modifier_ability_thdots_reisen2_01_buff:DeclareFunctions()
         MODIFIER_EVENT_ON_ORDER,
     }
     return funcs
+end
+
+--提供相位
+function modifier_ability_thdots_reisen2_01_buff:CheckState()
+	local state = {
+	[MODIFIER_STATE_NO_UNIT_COLLISION] = true,
+	}
+	return state
 end
 
 --modifier 修改函数
@@ -399,8 +408,8 @@ function modifier_ability_thdots_reisen2_03:OnAttacked(keys)
     local abilityName="special_bonus_unique_Reisen_2_ability3_multiplier"
     local temp=1
 
-    --如果目标是施法者
-    if keys.target==self:GetParent() and not keys.target:IsIllusion() then
+    --如果目标是施法者,非英雄单位不生效
+    if keys.target==self:GetParent() and not keys.target:IsIllusion() and keys.attacker:IsHero() then
         --天赋判定：倍数
         if self.caster:HasAbility(abilityName) and self.caster:FindAbilityByName(abilityName):GetLevel()>0 then 
             temp = temp*self.caster:FindAbilityByName(abilityName):GetSpecialValueFor("value")
@@ -408,6 +417,12 @@ function modifier_ability_thdots_reisen2_03:OnAttacked(keys)
         --增加cd count
         if self.count < self.max_count and not self.caster:HasModifier("modifier_ability_thdots_reisen2_03_attack_buff") then
             self.count=self.count+temp
+            self:SetStackCount(self.count)
+        end
+        --如果大于或者等于cd最高值 而且没有攻击buff
+        if self.count >= self.max_count and not self.caster:HasModifier("modifier_ability_thdots_reisen2_03_attack_buff") then
+            self.caster:AddNewModifier(self.caster,self.ability,"modifier_ability_thdots_reisen2_03_attack_buff", {})
+            self.count=0
             self:SetStackCount(self.count)
         end
     end
@@ -432,7 +447,12 @@ function modifier_ability_thdots_reisen2_03:OnAttackLanded(keys)
             self.count=self.count+temp
             self:SetStackCount(self.count)
         end
-
+        --如果大于或者等于cd最高值 而且没有攻击buff
+        if self.count >= self.max_count and not self.caster:HasModifier("modifier_ability_thdots_reisen2_03_attack_buff") then
+            self.caster:AddNewModifier(self.caster,self.ability,"modifier_ability_thdots_reisen2_03_attack_buff", {})
+            self.count=0
+            self:SetStackCount(self.count)
+        end
     end
 
 end
@@ -440,6 +460,7 @@ end
 function modifier_ability_thdots_reisen2_03:OnIntervalThink()
     if not IsServer() then return end
 
+    local abilityName="special_bonus_unique_Reisen_2_ability3_multiplier"
     local temp=1
     --天赋判定：倍数
     if self.caster:HasAbility(abilityName) and self.caster:FindAbilityByName(abilityName):GetLevel()>0 then 
@@ -459,7 +480,7 @@ function modifier_ability_thdots_reisen2_03:OnIntervalThink()
     if self.caster:HasModifier("modifier_ability_thdots_reisen2_03_attack_buff") then
         self.count=0
         self:SetStackCount(self.count)
-    else
+    elseif self.caster:IsAlive() then
         --每秒加一秒cd值
         self.count=self.count+temp
         self:SetStackCount(self.count)
@@ -842,7 +863,7 @@ end
 
 function modifier_ability_thdots_reisen2_04:OnIntervalThink()
     if not IsServer() then return end
-    --print("think")
+    --print("think hero level")
 
     --基础信息
     local caster=self:GetParent()
@@ -855,7 +876,8 @@ function modifier_ability_thdots_reisen2_04:OnIntervalThink()
         ability:SetLevel(ability:GetLevel()+1)
     elseif caster:GetLevel()>=15 and ability:GetLevel()==3 then
         ability:SetLevel(ability:GetLevel()+1)
-        return -1
+        --结束计时thinker
+        self:StartIntervalThink(-1)
     end
 end
 

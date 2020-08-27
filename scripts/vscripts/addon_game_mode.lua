@@ -486,6 +486,7 @@ function THDOTSGameMode:OnPlayerSay( keys )
 		end
 	elseif text == "-yaw" then
 		CustomGameEventManager:Send_ServerToPlayer(plyhd, "set_camera_yaw", {key_val = 0} )
+		print(GameRules:GetDOTATime(false, false))
 	elseif text == "-pause" then
 		if is_host or G_Player_Pause_Count[plyid+1] < MAX_Pause_Count then --host可以无限暂停
 			G_Player_Pause_Count[plyid+1] = G_Player_Pause_Count[plyid+1] + 1
@@ -1152,6 +1153,9 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 		abilityEx:SetLevel(1)
 	elseif (heroName == "npc_dota_hero_leshrac") then
 		abilityEx = hero:FindAbilityByName("ability_thdots_lily05")
+		abilityEx:SetLevel(1)
+	elseif (heroName == "npc_dota_hero_ursa") then
+		abilityEx = hero:FindAbilityByName("ability_thdotsr_NazrinEx")
 		abilityEx:SetLevel(1)
 	end
 end

@@ -503,6 +503,7 @@
 						"EffectName"	"Hero_Enigma.Midnight_Pulse"
 						"Target"		"TARGET"
 					}
+
 					"AttachEffect"
 					{
 						"EffectName"		"maps/journey_assets/particles/journey_fountain_radiant.vpcf"
@@ -546,6 +547,11 @@
 							"01" "%radius %radius %radius"
 						}
 					}
+					"FireSound"
+					{
+						"EffectName"	"lily03heal"
+						"Target"		"TARGET"
+					}
 				}				
 			}
 	
@@ -558,7 +564,7 @@
 					{
 						"ScriptFile"	"scripts/vscripts/abilities/abilitylily.lua"
 						"Function"		"lilywhite03bufftick"
-						"effective"		"%healanddamage"
+						"effective"		"%healanddamage" 
 						"scale"			"%statscale"							
 					}
 				}

@@ -2223,4 +2223,20 @@ function ItemAbility_zaiezhizhurenxing(keys)
 		ability:ApplyDataDrivenModifier(caster, v, "modifier_item_zaiezhizhurenxing_play_debuff", {})
 	end
 end
+
+function item_horse_red_active( keys )
+	local caster = keys.caster
+	local attacker = keys.attacker
+	if attacker:IsHero() then
+		caster:RemoveModifierByName("modifier_item_horse_red_active")
+	end
+end
+
+function item_horse_blue_active( keys )
+	local caster = keys.caster
+	local attacker = keys.attacker
+	if attacker:IsHero() then
+		caster:RemoveModifierByName("modifier_item_horse_blue_active")
+	end
+end
 ------------------------------------------------------------------------------------------------

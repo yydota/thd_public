@@ -48,7 +48,7 @@
 		"AbilityCastPoint"	"0.2"
 		"AbilityCooldown"	"15"
 		"AbilityManaCost"	"70 85 100 115"
-		"AbilityCastRange"	"400"
+		"AbilityCastRange"	"600"
 		"precache"
 		{
 			"particle"	"particles/thd2/heroes/merlin/merlin04_thin.vpcf"
@@ -161,7 +161,7 @@
 		"BaseClass"	"ability_lua"
 		"ScriptFile"	"scripts/vscripts/abilities/abilityhina.lua"
 		"AbilityTextureName"	"custom/ability_thdots_hina03"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
@@ -226,6 +226,7 @@
 			"particle"	"particles/units/heroes/hero_nevermore/nevermore_requiemofsouls.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
 			"particle"	"particles/heroes/hina/hina04.vpcf"
+			"particle"	"particles/heroes/hina/hina04_text.vpcf"
 		}
 		"Modifiers"
 		{

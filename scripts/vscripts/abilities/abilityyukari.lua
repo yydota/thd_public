@@ -354,8 +354,11 @@ function Yukari03_OnChannelSucceeded(keys)
 			}
 			UnitDamageTarget(damage_table)	
 		end
+		local pfx = ParticleManager:CreateParticle("particles/econ/items/death_prophet/death_prophet_ti9/death_prophet_silence_ti9.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		ParticleManager:SetParticleControl(pfx, 0, caster:GetAbsOrigin())
+		ParticleManager:SetParticleControl(pfx, 1, Vector(375, 0, 1))
+		ParticleManager:ReleaseParticleIndex(pfx)
 	end
-	
 end
 
 function Yukari03_OnChannelInterrupted(keys)
@@ -379,8 +382,9 @@ function Yukari03_OnIntervalThink(keys)
 
 	if CasterName == "npc_dota_hero_obsidian_destroyer" and caster:IsRealHero() then
 		caster.add_unit_to_gap_time=caster.add_unit_to_gap_time or GameRules:GetGameTime()
-
-		if Ability02 and GameRules:GetGameTime()-caster.add_unit_to_gap_time>=(ability:GetCooldown(ability:GetLevel())-caster:GetLevel())*0.7 then
+		-- if Ability02 and GameRules:GetGameTime()-caster.add_unit_to_gap_time>=(ability:GetCooldown(ability:GetLevel())-caster:GetLevel())*0.7 then
+		-- 修改了技能冷却，所以技能自动增加单位的时间也要改，+20秒
+		if Ability02 and GameRules:GetGameTime()-caster.add_unit_to_gap_time>=((ability:GetCooldown(ability:GetLevel())-caster:GetLevel())+20)*0.7 then
 			caster.add_unit_to_gap_time=GameRules:GetGameTime()
 			local creep=CreateUnitByName(
 				g_creeps_name[RandomInt(1,#g_creeps_name)],

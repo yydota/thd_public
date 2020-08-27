@@ -114,7 +114,7 @@
 
 	//"npc_dota_hero_alchemist" "1"
 	//"npc_dota_hero_death_prophet" "1"
-	//"npc_dota_hero_ursa" "1"
+	"npc_dota_hero_ursa" "1"
 
 
 	"npc_dota_hero_bounty_hunter" "1"

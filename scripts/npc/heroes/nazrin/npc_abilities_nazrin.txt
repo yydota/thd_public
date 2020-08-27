@@ -1,0 +1,635 @@
+"DOTAAbilities"
+{
+	"ability_thdotsr_Nazrin01"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/nazrin/ability_thdots_nazrin01"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+	//	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		// "AnimationPlaybackRate"	"1.5"
+		"MaxLevel"	"4"
+		"AbilityCooldown"	"10 8 6 4"
+		"AbilityManaCost"	"35"
+		//"ID"							"40100"			
+		"precache"
+		{
+			"soundfile" "soundevents/game_sounds_items.vsndevts"
+			"particle"  "particles/items_fx/force_staff.vpcf"
+			"particle"  "particles/status_fx/status_effect_forcestaff.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"  "DOTA_Item.ForceStaff.Activate"
+				"Target"  "CASTER"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"  "modifier_OnNazrin01_effect"
+				"Target"  "CASTER"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"  "modifier_OnNazrin01_dash"
+				"Target"  "CASTER"
+			}			
+			"RunScript"
+			{
+				"ScriptFile"  "scripts/vscripts/abilities/abilitynazrin.lua"
+				"Function"  "OnNazrin01SpellStart"
+				"Target"  "CASTER"
+			}
+			"ApplyMotionController"
+			// For this: gfycat.com/BraveHideousGiantschnauzer -> check: bit.ly/1KWulqA
+			{
+					"Target"    "CASTER"
+					"ScriptFile"    "scripts/vscripts/abilities/abilitynazrin.lua"
+					"HorizontalControlFunction" "Nazrin01Horizontal"       
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_OnNazrin01_active"
+			{
+				//"Passive"  "1"
+			//	"IsHidden" "1" 
+				"Duration"	"%increaseattack_duration"
+				"Attributes" "MODIFIER_ATTRIBUTE_NONE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+				}
+			}
+			"modifier_OnNazrin01_active_talent"
+			{
+				//"Passive"  "1"
+				"IsHidden" "1" 
+				"Duration"	"%increaseattack_duration"
+				"Attributes" "MODIFIER_ATTRIBUTE_NONE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%bonus_damage"
+				}
+			}			
+			"modifier_OnNazrin01_effect"
+			{ 
+				"IsHidden" "1"
+				"Duration"  "%push_duration"
+
+			//	"OverrideAnimation" "ACT_DOTA_FLAIL"
+
+				"StatusEffectName"     "particles/status_fx/status_effect_forcestaff.vpcf"
+				"StatusEffectPriority"  "10"
+				
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"  "particles/items_fx/force_staff.vpcf"
+						"EffectAttachType" "follow_origin"
+						"Target"  "CASTER"
+					}
+				}
+
+			}
+			"modifier_OnNazrin01_dash"
+			{ 
+				"IsHidden" "1"
+				"Duration"  "%push_duration"
+				"OverrideAnimation" "ACT_DOTA_RUN"
+				"ThinkInterval"  "0.1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"  "scripts/vscripts/abilities/abilitynazrin.lua"
+						"Function"  "OnNazrin01controlmotion"
+						"Target"  "CASTER"
+					}
+					"DestroyTrees"
+					{
+						"Target"  "TARGET"
+						"Radius"  "%tree_radius"
+					}					
+
+				}
+				"States"
+				{
+					"MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"		"MODIFIER_STATE_VALUE_ENABLED"
+				}				
+			}			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"bonus_intellect"   "10"
+			}
+			"02"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"bonus_health_regen"  "4"
+			}
+			"03"
+			{
+				"var_type"        "FIELD_INTEGER"
+				"push_length"     "800"
+			}
+			"04"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"push_speed"    "800"
+			}
+			"05"
+			{
+				"var_type"      "FIELD_FLOAT"
+				"push_duration" "1"
+			}
+			"06"
+			{
+				"var_type"    "FIELD_INTEGER"
+				"tree_radius" "100"
+			}
+			"07"
+			{
+				"var_type"    "FIELD_INTEGER"
+				"increaseattack_duration" "3"
+			}
+			"08"
+			{
+				"var_type"    "FIELD_INTEGER"
+				"bonus_damage" "35 45 55 65"
+			}			
+			
+		}
+	}
+	
+	"ability_thdotsr_Nazrin02"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/nazrin/ability_thdots_nazrin02"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"1.5"
+		"AbilityCooldown"	"12"
+		"AbilityManaCost"	"70 80 90 100"		
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"	"%cast_range"
+		////"ID"	"2010"
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
+
+			"particle"					"particles/units/heroes/hero_pangolier/pangolier_tailthump_buff.vpcf"				
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_Nazrin02_Pendulum"
+				"Target"				"TARGET"
+			}
+			"RunScript"
+			{
+				"ScriptFile"		"scripts/vscripts/abilities/abilitynazrin.lua"
+				"Function"			"OnNazrin02spellstart"
+			}			
+		}
+		"Modifiers"
+		{
+			"modifier_Nazrin02_Pendulum"
+			{
+				"Duration"		"%Pendulum_duration"
+			
+			//	"OnCreated"
+			//	{
+			//		"RunScript"
+			//		{
+			//			"ScriptFile"		"scripts/vscripts/abilities/abilitynazrin.lua"
+			//			"Function"			"OnNazrin02spellstart"
+			//		}					
+			//		"FireSound"
+			//		{
+			//			"EffectName"		"Hero_Wisp.Spirits.Loop"
+			//			"Target"			"CASTER"
+			//		}
+			//	}
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"EffectName"		"nazrin03.sound"
+						"Target"			"TARGET"
+					}				
+					"AttachEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_pangolier/pangolier_tailthump_buff.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "TARGET"
+	
+						"ControlPointEntities"
+						{
+							"TARGET"	"attach_origin"
+							"TARGET"	"attach_hitloc"
+						}
+					}
+					
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/abilities/abilitynazrin.lua"
+						"Function"			"OnNazrin02ModifierCreated"
+					}	
+					
+				}	
+				"OnDestroy"
+				{	
+				
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/abilities/abilitynazrin.lua"
+						"Function"			"OnNazrin02ModifierDestroyed"
+					}
+				}
+				
+				"ThinkInterval"		"%thinkinterval"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/abilities/abilitynazrin.lua"
+						"Function"			"OnNazrin02spelldamage"	
+						"basedealdamage"	"%basedamage"
+						"abilitymulti" 		"%ability_multi"
+						"intervals" "%thinkinterval"
+						"Radius" "%radius"
+					}
+				}	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%mag"
+				}				
+			}	
+				
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"ability_multi"	"0.25"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"basedamage"	"40 60 80 100"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"Pendulum_duration"	"7"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"armor"	"3 6 9 12"
+			}	
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mag"	"8 16 24 32"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"thinkinterval"	"0.2"
+			}	
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cast_range"	"500"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"300"
+			}	
+			"30"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"show_cast_range"	"1"
+			}			
+		}
+	}		
+	"ability_thdotsr_Nazrin03"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"custom/nazrin/ability_thdots_nazrin03"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// Stats
+		// ----------------------------------------------------------------
+		"MaxLevel"	"4"
+		//"ID"							"40102"			
+		////"ID"	"2013"
+		"precache"
+		{
+			"particle"	"particles/econ/items/windrunner/windrunner_cape_cascade/windrunner_windrun_cascade.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
+		}
+		"Modifiers"
+		{
+			"passive_nazrin03_attack"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"				
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitynazrin.lua"
+						"Function"	"OnNazrin03Attacklanded"
+						"basechance" "%ability_chance_base"
+					}
+				}
+			}
+			"passive_nazrin03_attack_double"
+			{
+			//	"Passive"	"1"
+				"Duration"  "10"	
+				"IsHidden"	"1"				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"1000"
+				}				
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitynazrin.lua"
+						"Function"	"OnNazrin03Attackdouble"
+					}
+				}
+			}			
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ability_chance_base"	"16 24 32 40"
+			}
+		}
+	}
+	"ability_thdotsr_Nazrin04"
+	{
+		"BaseClass"	"ability_datadriven"
+		"AbilityTextureName"	"touhoutd/thtd_nazrin_01"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCastPoint"	"0.3"
+	//	"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_4"
+		"AbilityCooldown"	"60 45 30"
+		"AbilityManaCost"	"150"
+		// Stats
+		// ----------------------------------------------------------------
+		"AbilityCastRange"	"750"
+		//"ID"							"40103"			
+		////"ID"	"2010"
+		"precache"
+		{
+			"soundfile" "soundevents/thdots_hero_sounds/thdots_nazrin_sounds.vsndevts"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+			"particle"  "particles/heroes/nazrin/nazrin04trail.vpcf"
+			"particle"  "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
+			"particle"		"particles/generic_gameplay/lasthit_coins.vpcf"
+			"particle"		"particles/units/heroes/hero_furion/furion_tnt_rain_coins.vpcf"					
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"  "scripts/vscripts/abilities/abilitynazrin.lua"
+				"Function"  "OnNazrin04SpellStart"
+			//	"Target"  "TARGET"
+			}
+			"FireSound"
+			{
+				"EffectName"	"Nazrin04.start"
+				"Target"		"TARGET"
+			}			
+		}
+		"Modifiers"
+		{
+			"modifier_nazrin04takedamage"
+			{
+				"Duration"	"%duration"
+				"IsHidden" "1"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"        "particles/newthd/nazrin/041/nazrin04trail.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "TARGET"
+	
+						"ControlPointEntities"
+						{
+							"TARGET"	"attach_origin"
+							"TARGET"	"attach_hitloc"
+						}
+					}
+	
+					"AttachEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
+						"EffectAttachType"  "follow_overhead"
+						"Target"            "TARGET"
+					}
+				}							
+				"States"
+				{
+					"MODIFIER_STATE_PROVIDES_VISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}				
+				
+			}
+			"modifier_nazrin04_check"
+			{
+				"Duration"	"%duration"
+				"IsHidden" "1" 				
+			}
+			"modifier_nazrin04_stun"
+			{
+				"IsDebuff"	"1"			
+				"Duration"	"%stun_duration"
+				"IsPurgable"	"1"				
+				"IsHidden" "1" 
+				"EffectName"	"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType"	"follow_overhead"				
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}				
+			}				
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"ability_multi"	"1.0"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"basedamage"	"100 150 200"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"10"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_gold"	"200 300 400"
+			}	
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"0.9 1.2 1.5"
+			}	
+			"30"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"show_cast_range"	"1"
+			}			
+		}
+	}	
+	
+	
+	"ability_thdotsr_NazrinEx"
+	{
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitynazrin.lua"
+		"AbilityTextureName"	"custom/nazrin/ability_thdots_nazrin05"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		// Stats
+		// ----------------------------------------------------------------
+		"MaxLevel"	"1"	
+		"precache"
+		{
+			"particle"	"particles/econ/items/windrunner/windrunner_cape_cascade/windrunner_windrun_cascade.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"give_gold_interval"	"10"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"give_gold_amount"		"5"
+			}
+		}
+	}	
+	"special_bonus_unique_nazrin_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"ID"							"40105"		
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"4"
+			}
+		}
+	}
+	"special_bonus_unique_nazrin_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"ID"							"40106"		
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"15"
+			}
+		}
+	}	
+	"special_bonus_unique_nazrin_3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"ID"							"40107"			
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"60"
+			}
+		}
+	}
+	"special_bonus_unique_nazrin_4"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"ID"							"40108"		
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"200"
+			}
+		}
+	}	
+}

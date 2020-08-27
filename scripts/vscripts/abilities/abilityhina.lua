@@ -590,7 +590,9 @@ end
 function ability_thdots_hina03:OnSpellStart()
 	if not IsServer() then return end
 	local caster = self:GetCaster()
-	local vPosition = self:GetCursorPosition()
+	local target = self:GetCursorTarget()
+	if is_spell_blocked(target) then return end
+	local vPosition = target:GetOrigin()
 	local ability = self
 	local damage = self:GetSpecialValueFor("damage")
 	local radius = self:GetSpecialValueFor("radius") + FindTelentValue(caster,"special_bonus_unique_hina_4")
@@ -724,12 +726,12 @@ function modifier_ability_thdots_hina04:OnIntervalThink()
 	ParticleManager:SetParticleControl(self.particle, 10, Vector(self.radius, self.pull_radius, 0))
 end
 
--- function modifier_ability_thdots_hina04:CheckState() --大招无碰撞
--- 	-- return {[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true}
--- 	return {
--- 		[MODIFIER_STATE_NO_UNIT_COLLISION] 		= true
--- 	}
--- end
+function modifier_ability_thdots_hina04:CheckState() --大招无碰撞
+	-- return {[MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY] = true}
+	return {
+		[MODIFIER_STATE_NO_UNIT_COLLISION] 		= true
+	}
+end
 
 function modifier_ability_thdots_hina04:DeclareFunctions()
 	return {
@@ -759,7 +761,6 @@ end
 function modifier_ability_thdots_hina04:OnDestroy()
 	if not IsServer() then return end
 	local caster = self.caster
-	print(self:GetAbility().absorb_damage)
 	ParticleManager:DestroyParticle(self.particle, false)
 	ParticleManager:ReleaseParticleIndex(self.particle)
 	caster:RemoveGesture(ACT_DOTA_IDLE)
@@ -778,6 +779,8 @@ function modifier_ability_thdots_hina04:OnDestroy()
 	local qangle_rotation_rate = 360 / line_count
 	local particle_caster_souls = "particles/units/heroes/hero_nevermore/nevermore_requiemofsouls_a.vpcf"
 	local particle_caster_ground = "particles/units/heroes/hero_nevermore/nevermore_requiemofsouls.vpcf"
+	-- local particle_damage_text = "particles/heroes/hina/hina04_text.vpcf"
+	local particle_damage_text = "particles/econ/items/earthshaker/earthshaker_arcana/earthshaker_arcana_damage.vpcf"
 	local particle_caster_souls_fx = ParticleManager:CreateParticle(particle_caster_souls, PATTACH_ABSORIGIN, caster)
 	ParticleManager:SetParticleControl(particle_caster_souls_fx, 0, caster:GetAbsOrigin())
 	ParticleManager:SetParticleControl(particle_caster_souls_fx, 1, Vector(lines, 0, 0))
@@ -788,6 +791,12 @@ function modifier_ability_thdots_hina04:OnDestroy()
 	ParticleManager:SetParticleControl(particle_caster_ground_fx, 0, caster:GetAbsOrigin())
 	ParticleManager:SetParticleControl(particle_caster_ground_fx, 1, Vector(lines, 0, 0))
 	ParticleManager:ReleaseParticleIndex(particle_caster_ground_fx)
+
+	local particle_damage_text_fx = ParticleManager:CreateParticle(particle_damage_text, PATTACH_CUSTOMORIGIN, caster)
+	ParticleManager:SetParticleControl(particle_damage_text_fx, 0, caster:GetOrigin() + Vector(15,0,356))
+	-- ParticleManager:SetParticleControl(particle_damage_text_fx, 3, caster:GetAbsOrigin())
+	ParticleManager:SetParticleControl(particle_damage_text_fx, 1, Vector(0,math.ceil(self:GetAbility().absorb_damage), 0))
+	ParticleManager:ReleaseParticleIndex(particle_damage_text_fx)
 	self.dummy = CreateUnitByName("npc_dummy_unit", 
 	    	                        caster:GetOrigin(), 
 									false, 
@@ -814,9 +823,8 @@ function modifier_ability_thdots_hina04:OnDestroy()
 				-- 							)
 				-- end
 				CreateRequiemSoulLine(self.dummy, self.ability, line_position, false)
-			caster:SetContextThink("dummy_kill",
+			self.dummy:SetContextThink("dummy_kill",
 				function ()
-					print("doit")
 					if self.dummy ~= nil then
 						self.dummy:ForceKill(true)
 					end
@@ -899,7 +907,6 @@ function CreateRequiemSoulLine(caster, ability, line_end_position, death_cast) -
 
 	-- Calculate velocity
 	local velocity = (line_end_position - caster:GetAbsOrigin()):Normalized() * lines_travel_speed
-	print(velocity)
 	-- Launch the line
 	projectile_info = {Ability = ability,
 					   EffectName = particle_lines,

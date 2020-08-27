@@ -108,17 +108,14 @@ function OnSuika04SpellStart(keys)
 	local caster = EntIndexToHScript(keys.caster_entindex)
 	local Caster = keys.caster
 	local CasterName = Caster:GetClassname()
-	local duration = 8.5
-	caster:EmitSound("Voice_Thdots_Suika.AbilitySuika04")
-	if FindTelentValue(caster,"special_bonus_unique_tidehunter_3")~=0 then
-		duration = 14.5
-	end
+	local ability = keys.ability
+	local duration = ability:GetSpecialValueFor("duration") + FindTelentValue(caster,"special_bonus_unique_tidehunter_3")
 	if FindTelentValue(caster,"special_bonus_unique_tidehunter")~=0 then
 		keys.ability:ApplyDataDrivenModifier( caster, caster, "modifier_thdots_Suika_04_telent", {} )
 	end
 
-	
 	if CasterName == "npc_dota_hero_tidehunter" then
+		caster:EmitSound("Voice_Thdots_Suika.AbilitySuika04")
 		caster:SetModelScale(2.0)
 		local ability = caster:FindAbilityByName("ability_thdots_suika02") 
 		caster:SetContextNum("ability_thdots_suika02_level", ability:GetLevel(), 0) 
@@ -128,8 +125,9 @@ function OnSuika04SpellStart(keys)
 		local abilityUlt = caster:FindAbilityByName("ability_thdots_suika02_ult")
 		abilityUlt:SetLevel(keys.ability:GetLevel())
 	else
-		caster:SetModelScale(1.4)
+		caster:SetModelScale(2.0)
 	end
+	ability:SetActivated(false)
 	caster:SetContextThink("ability_thdots_suika04_duration", 
 		function ()
 			if GameRules:IsGamePaused() then return 0.03 end
@@ -141,11 +139,12 @@ function OnSuika04SpellStart(keys)
 				ability02:SetLevel(caster:GetContext("ability_thdots_suika02_level"))
 				caster:SetModelScale(1.0)
 			else
-				caster:SetModelScale(0.7)
+				caster:SetModelScale(1.0)
 			end
 			
 			caster:RemoveModifierByName("modifier_thdots_Suika_04")
 			caster:RemoveModifierByName("modifier_thdots_Suika_04_telent") 
+			ability:SetActivated(true)
 		end
 	,duration) 
 end
@@ -159,6 +158,7 @@ function Suika_04_wanbaochui_check(keys)
 		abilityEx:SetLevel(1)
 	else
 		abilityEx = caster:FindAbilityByName("ability_thdots_suikaex")
+		if abilityEx == nil then return end
 		abilityEx:SetLevel(0)
 	end
 end

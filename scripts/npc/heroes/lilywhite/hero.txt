@@ -60,7 +60,5 @@
 		"AttackAnimationPoint"	"0.4"
 
 		"Complexity"	"1"	
-		"MagicalResistance"     "0"	
-		
 	}	
 }

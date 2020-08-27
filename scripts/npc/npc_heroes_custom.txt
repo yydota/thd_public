@@ -9,6 +9,7 @@
 #base heroes/kagerou/hero.txt
 #base heroes/seija/hero.txt
 #base heroes/lilywhite/hero.txt
+#base heroes/nazrin/hero.txt
 
 "DOTAHeroes"
 {
@@ -2409,11 +2410,11 @@
 		"Ability6"	"ability_thdots_yasaka04"
 		"Ability10"		"special_bonus_gold_income_90"
 		"Ability11"		"special_bonus_hp_250"
-		"Ability12"		"special_bonus_armor_5"
-		"Ability13"		"special_bonus_magic_resistance_15"
-		"Ability14"		"special_bonus_movement_speed_40"
+		"Ability12"		"special_bonus_unique_yasaka_2"
+		"Ability13"		"special_bonus_magic_resistance_20"
+		"Ability14"		"special_bonus_unique_yasaka_1"
 		"Ability15"		"special_bonus_all_stats_12"
-		"Ability16"		"special_bonus_attack_range_200"
+		"Ability16"		"special_bonus_attack_range_400"
 		"Ability17"		"special_bonus_unique_zeus"
 
 
@@ -3954,6 +3955,7 @@
 		"VisionDaytimeRange"	"1050"
 		// 白天视野大小
 		"VisionNighttimeRange"	"700"
+		"AttackRange"	"450"
 	}
 	"npc_dota_hero_shou"
 	{

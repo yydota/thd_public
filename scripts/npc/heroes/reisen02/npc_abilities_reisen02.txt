@@ -168,7 +168,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"agility_bonus"	"0.2 0.4 0.6 0.8"
+				"agility_bonus"	"0.2 0.3 0.4 0.5"
 			}
 			"04"
 			{
@@ -209,7 +209,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"berserker_call_duration"	"2.4 2.7 3.0"
+				"berserker_call_duration"	"1.6 2.0 2.4"
 			}
 			"02"
 			{
@@ -277,7 +277,8 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"cleave_damage"	"12 24 36 48"
+				//"cleave_damage"	"12 24 36 48"
+				"cleave_damage"	"12 20 28 36"
 			}
 		}
 	}

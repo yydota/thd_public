@@ -364,7 +364,7 @@ function lilywhite03bufftick (keys)
 	local statscale = keys.scale * caster:GetIntellect()
 	local healingdone = statscale+baseheal 
 --	SendOverheadEventMessage(nil,OVERHEAD_ALERT_HEAL,target,healingdone,nil)	
-	target:EmitSound("lily03heal")	
+	-- target:EmitSound("lily03heal")	
 --	target:Heal(healingdone,caster)	
 
 	THDHealTargetLily(caster,target,healingdone)	

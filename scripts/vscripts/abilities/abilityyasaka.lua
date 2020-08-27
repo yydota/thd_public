@@ -38,8 +38,7 @@ end
 function Yasaka01_OnSpellStart(keys)	
 	local Ability=keys.ability
 	local Caster=keys.caster
-	
-
+	local StunDuration = keys.StunDuration + FindTelentValue(Caster,"special_bonus_unique_yasaka_1")
 	local TargetPoint=keys.target_points[1]	
 	Caster:SetContextThink(
 		"yasaka01_main_loop",
@@ -64,7 +63,7 @@ function Yasaka01_OnSpellStart(keys)
 				}
 				UnitDamageTarget(damage_table)
 
-				UtilStun:UnitStunTarget(Caster,v,keys.StunDuration)
+				UtilStun:UnitStunTarget(Caster,v,StunDuration)
 			end
 			Caster:EmitSound("Hero_EarthSpirit.BoulderSmash.Target")
 			return nil
@@ -85,12 +84,13 @@ function Yasaka02_OnSpellStart(keys)
 	local radius=keys.radius
 	local tick_interval=keys.tick_interval
 	local offset=60
+	local damage = Ability:GetAbilityDamage() + FindTelentValue(Caster,"special_bonus_unique_yasaka_2")
 
 	local damage_table={
 		victim=nil, 
 		attacker=Caster, 
 		ability=Ability, 
-		damage=Ability:GetAbilityDamage()*tick_interval,
+		damage=damage*tick_interval,
 		damage_type=Ability:GetAbilityDamageType(),
 	}
 
@@ -361,7 +361,7 @@ function Yasaka41_OnSpellStart(keys)
 	local rate_tick=keys.rate*keys.tick_interval
 	local tick=0
 	local last_down_tick=0
-
+	local stun_duration = keys.stun_duration + FindTelentValue(Caster,"special_bonus_unique_yasaka_1")
 	damage_table={
 		victim=nil, 
 		attacker=Caster, 
@@ -402,7 +402,7 @@ function Yasaka41_OnSpellStart(keys)
 					damage_table.victim=v
 					UnitDamageTarget(damage_table)
 
-					UtilStun:UnitStunTarget(Caster,v,keys.stun_duration)
+					UtilStun:UnitStunTarget(Caster,v,stun_duration)
 				end
 				local effectIndex = ParticleManager:CreateParticle("particles/heroes/kanako/ability_kanako_041.vpcf", PATTACH_CUSTOMORIGIN, nil)
 				ParticleManager:SetParticleControl(effectIndex, 0, rdpos)

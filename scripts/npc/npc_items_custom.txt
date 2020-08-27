@@ -5708,10 +5708,11 @@
 				"OnTakeDamage"
 				// "%attack_damage" is set to the damage value after mitigation
 				{
-					"RemoveModifier"
+					"RunScript"
 					{
-						"ModifierName"	"modifier_item_horse_red_active"
-						"Target" 		"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilityitem.lua"
+						"Function"	"item_horse_red_active"
+						"Caster"	"CASTER"
 					}
 				}
 			}
@@ -5959,10 +5960,11 @@
 				"OnTakeDamage"
 				// "%attack_damage" is set to the damage value after mitigation
 				{
-					"RemoveModifier"
+					"RunScript"
 					{
-						"ModifierName"	"modifier_item_horse_blue_active"
-						"Target" 		"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilityitem.lua"
+						"Function"	"item_horse_blue_active"
+						"Caster"	"CASTER"
 					}
 				}
 			}
@@ -7464,7 +7466,7 @@
 		"ID"	"8106"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"250"
+		"ItemCost"	"0"
 		"ItemRecipe"	"1"
 		"ItemResult"	"item_kafziel"
 		"ItemRequirements"
@@ -7919,7 +7921,8 @@
 	// =================================================================================================================
 	"item_nuclear_stick"
 	{
-		"BaseClass"	"item_datadriven"
+		"BaseClass"	"item_lua"
+		"ScriptFile"            "items/item_nuclear_stick"
 		"AbilityTextureName"	"item_nuclear_stick"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// General
@@ -7933,30 +7936,6 @@
 		"ItemDroppable"	"1"
 		"ItemSellable"	"1"
 		"ItemShopTags"	"mana_pool;regen_health;regen_mana"
-		"Modifiers"
-		{
-			"modifier_item_nuclear_stick"
-			{
-				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_HEALTH_BONUS"			"%bonus_health"
-					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
-					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
-				}
-			}
-			"modifier_item_nuclear_stick_cooldown_reduction"
-			{
-				"Passive"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE"	"%reduction_cooldown"
-				}
-			}
-		}
 		// Special
 		// -------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
@@ -7985,9 +7964,95 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"reduction_cooldown"	"25"
-			}			
+			}
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"regen_amplify"			"35"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_regen_amplify"			"20"
+			}		
 		}
 	}
+	// "item_nuclear_stick"
+	// {
+	// 	"BaseClass"	"item_datadriven"
+	// 	"AbilityTextureName"	"item_nuclear_stick"
+	// 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	// 	// General
+	// 	// -------------------------------------------------------------------------------------------------------------
+	// 	// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	// 	"ID"	"8113"
+	// 	"ItemQuality"	"secret_shop"
+	// 	// Item Info
+	// 	// -------------------------------------------------------------------------------------------------------------
+	// 	"ItemCost"	"4940"
+	// 	"ItemDroppable"	"1"
+	// 	"ItemSellable"	"1"
+	// 	"ItemShopTags"	"mana_pool;regen_health;regen_mana"
+	// 	"Modifiers"
+	// 	{
+	// 		"modifier_item_nuclear_stick"
+	// 		{
+	// 			"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+	// 			"Passive"	"1"
+	// 			"IsHidden"	"1"
+	// 			"Properties"
+	// 			{
+	// 				"MODIFIER_PROPERTY_HEALTH_BONUS"			"%bonus_health"
+	// 				"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
+	// 				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health_regen"
+	// 				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%bonus_mana_regen"
+	// 			}
+	// 		}
+	// 		"modifier_item_nuclear_stick_cooldown_reduction"
+	// 		{
+	// 			"Passive"	"1"
+	// 			"Properties"
+	// 			{
+	// 				"MODIFIER_PROPERTY_COOLDOWN_PERCENTAGE"	"%reduction_cooldown"
+	// 			}
+	// 		}
+	// 	}
+	// 	// Special
+	// 	// -------------------------------------------------------------------------------------------------------------
+	// 	"AbilitySpecial"
+	// 	{
+	// 		"01"
+	// 		{
+	// 			"var_type"	"FIELD_INTEGER"
+	// 			"bonus_mana"	"425"
+	// 		}
+	// 		"02"
+	// 		{
+	// 			"var_type"	"FIELD_INTEGER"
+	// 			"bonus_health"	"175"
+	// 		}
+	// 		"03"
+	// 		{
+	// 			"var_type"	"FIELD_INTEGER"
+	// 			"bonus_health_regen"	"5"
+	// 		}
+	// 		"04"
+	// 		{
+	// 			"var_type"	"FIELD_FLOAT"
+	// 			"bonus_mana_regen"	"5"
+	// 		}
+	// 		"05"
+	// 		{
+	// 			"var_type"	"FIELD_INTEGER"
+	// 			"reduction_cooldown"	"25"
+	// 		}
+	// 		"06"
+	// 		{
+	// 			"var_type"	"FIELD_INTEGER"
+	// 			"regen_amplify"			"40"
+	// 		}		
+	// 	}
+	// }
 
 	// =================================================================================================================
 	// Recipe: Frock
@@ -11189,14 +11254,14 @@
 		"ID"	"8157"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"1115"
+		"ItemCost"	"965"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
 		"ItemResult"	"item_peach"
 		"ItemRequirements"
 		{
-			"01"	"item_candle;item_mushroom;item_swimming_suit"
+			"01"	"item_candle;item_mushroom;item_sailor_suit"
 		}
 		"Model"	"models/props_gameplay/recipe.mdl"
 	}
@@ -11281,15 +11346,10 @@
 				"var_type"	"FIELD_INTEGER"
 				"bonus_all_stats"	"5"
 			}
-			"03"
-			{
-				"var_type"	"FIELD_INTEGER"
-				"bonus_damage"	"26"
-			}
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_armor"	"10"
+				"bonus_armor"	"5"
 			}
 			"05"
 			{
@@ -11768,7 +11828,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"crit_mult"	"150"
+				"crit_mult"	"200"
 			}
 			"03"
 			{
@@ -11910,7 +11970,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"crit_chance"	"20"
+				"crit_chance"	"30"
 			}
 		}
 	}
@@ -13039,7 +13099,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"active_evasion"	"75"
+				"active_evasion"	"100"
 			}
 			// "05"
 			// {
@@ -13897,6 +13957,7 @@
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%bonus_health"
 					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+					"MODIFIER_PROPERTY_MP_REGEN_AMPLIFY_PERCENTAGE"   "%mana_regen_amplify"
 				}
 			}
 			"modifier_item_yueyaomishi_radiate_regen_mana_aura"
@@ -13958,6 +14019,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"radiate_regen_mana"	"250"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"mana_regen_amplify"	"40"
 			}
 		}
 	}
