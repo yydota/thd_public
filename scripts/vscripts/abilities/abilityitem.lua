@@ -256,10 +256,16 @@ end
 
 
 function ForceStaff (keys)
-
+	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
-	local ability_level = ability:GetLevel() - 1	
+	local ability_level = ability:GetLevel() - 1
+	if is_spell_blocked(target,caster) then return end	
+
+	if target:HasModifier("modifier_thdots_yugi04_think_interval") and caster:GetTeamNumber() ~= target:GetTeamNumber() then
+		return
+	end
+	ability:ApplyDataDrivenModifier(caster,target,"modifier_item_force_staff_effect",{})
 
 	ability.forced_direction = target:GetForwardVector()
 	ability.forced_distance = ability:GetLevelSpecialValueFor("push_length", ability_level)
@@ -269,9 +275,15 @@ function ForceStaff (keys)
 end
 
 function ForceHorizontal( keys )
-
+	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
+
+	if target:HasModifier("modifier_thdots_yugi04_think_interval") and caster:GetTeamNumber() ~= target:GetTeamNumber() then
+		target:RemoveModifierByName("modifier_item_force_staff_effect")
+		target:InterruptMotionControllers(true)
+		return
+	end
 
 	if ability.forced_traveled < ability.forced_distance then
 		target:SetAbsOrigin(target:GetAbsOrigin() + ability.forced_direction * ability.forced_speed)
@@ -1034,6 +1046,7 @@ function ItemAbility_DummyDoll_OnSpellStart(keys)
 	end
 end
 
+
 function ItemAbility_Good_Lunchbox_Charge(keys)
 	local ItemAbility = keys.ability
 	local Caster = keys.caster
@@ -1166,9 +1179,18 @@ function ItemAbility_God_Lunchbox_Charge(keys)
 	end
 end
 
+function Lunchbox_particle(caster)
+	local stick_pfx = ParticleManager:CreateParticle("particles/items2_fx/magic_stick.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+	ParticleManager:SetParticleControl(stick_pfx, 0, caster:GetAbsOrigin())
+	ParticleManager:SetParticleControl(stick_pfx, 1, Vector(10,0,0))
+	ParticleManager:ReleaseParticleIndex(stick_pfx)
+	caster:EmitSound("DOTA_Item.MagicStick.Activate")
+end
+
 function ItemAbility_Lunchbox_OnSpellStart(keys)
 	local ItemAbility = keys.ability
 	local Caster = keys.caster
+	Lunchbox_particle(Caster)
 	if (ItemAbility:IsItem()) then
 		local Charge = ItemAbility:GetCurrentCharges()
 		local HealAmount = Charge*keys.RestorePerCharge
@@ -1186,6 +1208,7 @@ end
 function ItemAbility_God_Lunchbox_OnSpellStart(keys)
 	local ItemAbility = keys.ability
 	local Caster = keys.caster
+	Lunchbox_particle(Caster)
 	if (ItemAbility:GetCurrentCharges()>=7) then
 		--Purge(bool RemovePositiveBuffs, bool RemoveDebuffs, bool BuffsCreatedThisFrameOnly, bool RemoveStuns, bool RemoveExceptions) 
 		Caster:Purge(false,true,false,true,false)
@@ -1275,6 +1298,7 @@ function ItemAbility_DonationBox_OnSpellStart(keys)
 	local effectIndex = ParticleManager:CreateParticle("particles/thd2/items/item_donation_box.vpcf", PATTACH_CUSTOMORIGIN, Caster)
 	ParticleManager:SetParticleControl(effectIndex, 0, Caster:GetAbsOrigin())
 	ParticleManager:SetParticleControl(effectIndex, 1, Target:GetAbsOrigin())
+	ParticleManager:ReleaseParticleIndex(effectIndex)
 	
 	local Duration=0.0
 	Caster:SetThink(function ()

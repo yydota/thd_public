@@ -68,11 +68,12 @@ function Yukari_FalldownUnitInGap(caster,pos)
 						Ability01:SetLevel(ability_level)
 
 						unit_in_gap:EmitSound("Ability.TossImpact")
+						print(Ability01:GetAbilityDamage() + caster:GetIntellect() * 1.2)
 						local damage_table={
 							victim=nil, 
 							attacker=caster, 
 							ability=Ability01,
-							damage=Ability01:GetAbilityDamage(),
+							damage=Ability01:GetAbilityDamage() + caster:GetIntellect() * 1.2,
 							damage_type=Ability01:GetAbilityDamageType(),
 						}
 						local enemies = FindUnitsInRadius(
@@ -319,7 +320,8 @@ function Yukari03_OnChannelSucceeded(keys)
 	local ability=keys.ability
 	local caster=keys.caster
 	local target=keys.target_points[1]
-
+	local wanbaochui_radius = ability:GetSpecialValueFor("wanbaochui_radius")
+	local int_bonus = ability:GetSpecialValueFor("int_bonus")
 	local e1 = ParticleManager:CreateParticle("particles/heroes/yukari/ability_yukari_03_teleportflash.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(e1, 0, caster:GetOrigin())
 
@@ -334,12 +336,12 @@ function Yukari03_OnChannelSucceeded(keys)
 	ParticleManager:DestroyParticle(caster.Yukari03_effect_2 or -1,false)
 	
 	if caster:HasModifier("modifier_item_wanbaochui") then
-		local intdamage=caster:GetIntellect()*4
+		local intdamage=caster:GetIntellect()*int_bonus
 		local enemies=FindUnitsInRadius(
 						caster:GetTeamNumber(),
 						caster:GetOrigin(),
 						nil,
-						375,
+						wanbaochui_radius,
 						DOTA_UNIT_TARGET_TEAM_ENEMY,
 						DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_CREEP,
 						DOTA_UNIT_TARGET_FLAG_NONE,
@@ -356,7 +358,7 @@ function Yukari03_OnChannelSucceeded(keys)
 		end
 		local pfx = ParticleManager:CreateParticle("particles/econ/items/death_prophet/death_prophet_ti9/death_prophet_silence_ti9.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(pfx, 0, caster:GetAbsOrigin())
-		ParticleManager:SetParticleControl(pfx, 1, Vector(375, 0, 1))
+		ParticleManager:SetParticleControl(pfx, 1, Vector(wanbaochui_radius, 0, 1))
 		ParticleManager:ReleaseParticleIndex(pfx)
 	end
 end
@@ -410,6 +412,8 @@ function Yukari04_OnSpellStart(keys)
 	local target=keys.target_points[1]
 	local vecPos=nil
 	local lvl=ability:GetLevel()
+	local wanbaochui_radius = ability:GetSpecialValueFor("wanbaochui_radius")
+	local int_bonus = ability:GetSpecialValueFor("int_bonus")
 
 	if lvl==1 then
 		local allies = FindUnitsInRadius(
@@ -595,6 +599,10 @@ function Yukari04_OnSpellStart(keys)
 							}
 							UnitDamageTarget(damage_table)	
 						end
+						local pfx = ParticleManager:CreateParticle("particles/econ/items/death_prophet/death_prophet_ti9/death_prophet_silence_ti9.vpcf", PATTACH_CUSTOMORIGIN, nil)
+						ParticleManager:SetParticleControl(pfx, 0, caster:GetAbsOrigin())
+						ParticleManager:SetParticleControl(pfx, 1, Vector(wanbaochui_radius, 0, 1))
+						ParticleManager:ReleaseParticleIndex(pfx)
 					end
 					return nil
 				end

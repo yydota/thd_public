@@ -1052,17 +1052,21 @@ end
 
 function ability_thdots_kokoroEx:OnSpellStart()
 	if not IsServer() then return end
-	local target = self:GetCursorTarget()
-	if is_spell_blocked(target) then return end
+	-- local target = self:GetCursorTarget()
+	-- if is_spell_blocked(target) then return end
+
+	local caster = self:GetCaster()
 	local duration = self:GetSpecialValueFor("duration")
-	target:AddNewModifier(self:GetCaster(), self, "modifier_ability_thdots_kokoroEx",{duration = duration})
-	-- local soulbind_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_grimstroke/grimstroke_soulchain_debuff.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-	-- ParticleManager:SetParticleControlEnt(soulbind_particle, 2, target, PATTACH_ABSORIGIN_FOLLOW, nil, target:GetAbsOrigin(), true)
-	-- ParticleManager:DestroyParticleSystemTime(soulbind_particle,duration)
+	local radius = self:GetSpecialValueFor("radius")
+	local targets = FindUnitsInRadius(caster:GetTeam(),caster:GetOrigin(),nil,radius,self:GetAbilityTargetTeam(),
+	 								self:GetAbilityTargetType(),0,0,false)
+	for _,v in pairs(targets) do
+		v:AddNewModifier(self:GetCaster(), self, "modifier_ability_thdots_kokoroEx",{duration = duration})
+	end
 	if self:GetCaster():GetName() == "npc_dota_hero_legion_commander" then
 		self:GetCaster():EmitSound("Voice_Thdots_Kokoro.AbilityKokoroEx")
 	end
-		target:EmitSound("Hero_Grimstroke.InkCreature.Spawn")
+	caster:EmitSound("Hero_Grimstroke.InkCreature.Spawn")
 end
 
 modifier_ability_thdots_kokoroEx = {}

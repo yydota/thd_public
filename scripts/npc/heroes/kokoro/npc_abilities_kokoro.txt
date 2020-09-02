@@ -255,7 +255,7 @@
 	{
 		"BaseClass"	"ability_lua"
 		"ScriptFile"	"scripts/vscripts/abilities/abilitykokoro.lua"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
@@ -279,6 +279,11 @@
 				"var_type"	"FIELD_FLOAT"
 				"duration"	"8"
 			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"600"
+			}
 		}
 	}
 
@@ -291,9 +296,9 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityTextureName"	"custom/ability_thdots_kokoroEx_2"
 		"MaxLevel"	"1"
-		"AbilityCastPoint"	"0.4"
+		"AbilityCastPoint"	"0.2"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_6"
-		"AnimationPlaybackRate"	"2"
+		"AnimationPlaybackRate"	"3"
 		"AbilityCooldown"	"120"
 		"AbilitySpecial"
 		{

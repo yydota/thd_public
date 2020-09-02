@@ -1017,7 +1017,8 @@
 		"DOTA_Tooltip_ability_ability_thdots_reisenOld02_tooltip_illusion_damage"	"%分身继承攻击："
 		"DOTA_Tooltip_ability_ability_thdots_reisenOld02_Lore"	"铃仙展开令敌人认识狂乱的波长。敌人将会看到本身不应该出现的东西。拥有将虚像的射击化作实弹的效果"
 		"DOTA_Tooltip_ability_ability_thdots_reisenOld03"	"散符「胧月花栞」"
-		"DOTA_Tooltip_ability_ability_thdots_reisenOld03_Description"	"蓄力1.0秒后射出威力巨大的一击，对直线上的单位造成物理伤害并触发「丧心丧意」。\n蓄力时间决定最终伤害，如果完全蓄力，则使得被击中的单位在5秒内被铃仙和其幻象攻击时必定触发「丧心丧意」。\n万宝槌效果：使胧月花栞伤害类型转为魔法，并使目标击退200码，蓄力满额后额外造成80%%伤害，冷却时间-9s"
+		"DOTA_Tooltip_ability_ability_thdots_reisenOld03_Description"	"蓄力1.0秒后射出威力巨大的一击，对直线上的单位造成物理伤害并触发「丧心丧意」。\n蓄力时间决定最终伤害，如果完全蓄力，则使得被击中的单位在5秒内被铃仙和其幻象攻击时必定触发「丧心丧意」。"
+		"DOTA_Tooltip_ability_ability_thdots_reisenOld03_aghanim_description"	"使胧月花栞伤害类型转为魔法，并使目标击退%block_back%码，蓄力满额后额外造成%damage_bonus%%%伤害，冷却时间-%reduce_time%秒"
 		"DOTA_Tooltip_ability_ability_thdots_reisenOld03_max_lenth"	"最远距离："
 		"DOTA_Tooltip_ability_ability_thdots_reisenOld04"	"「幻胧月睨」"
 		"DOTA_Tooltip_ability_ability_thdots_reisenOld04_Description"	"主动：铃仙迅速进入隐身，获得相位移动状态，并在一定时间内本体增加攻速，拥有100%%概率制造分身和触发「丧心丧意」。（攻击显影）\n被动：增加「丧心丧意」触发几率。"
@@ -1222,16 +1223,18 @@
 		"DOTA_Tooltip_ability_ability_thdots_yukariEx_radius"	"影响范围:"
 		"DOTA_Tooltip_ability_ability_thdots_yukariEx_falldown_num"	"最大数量:"
 		"DOTA_Tooltip_ability_ability_thdots_yukari01"	"外力「轨道牵引」"
-		"DOTA_Tooltip_ability_ability_thdots_yukari01_Description"	"从高空中放出一个间隙单位，落地时可以震晕敌方地面单位并造成伤害及晕眩。"
+		"DOTA_Tooltip_ability_ability_thdots_yukari01_Description"	"从高空中放出一个间隙单位，落地时可以震晕敌方地面单位并造成伤害及晕眩。\n智力加成：%int_bonus%"
 		"DOTA_Tooltip_ability_ability_thdots_yukari01_stun_duration"	"眩晕时间:"
 		"DOTA_Tooltip_ability_ability_thdots_yukari01_radius"	"影响范围:"
 		"DOTA_Tooltip_ability_ability_thdots_yukari02"	"魍魉「八云紫的神隐」"
 		"DOTA_Tooltip_ability_ability_thdots_yukari02_Description"	"将一个单位拉到隙间，使目标在技能持续时间内完全脱离与现实世界的联系。如果该单位是普通单位，则会永久无法回来。间隙中最多可以容纳36个单位"
 		"DOTA_Tooltip_ability_ability_thdots_yukari02_hero_hidden_duration"	"少女隙间时间:"
 		"DOTA_Tooltip_ability_ability_thdots_yukari03"	"魍魉「栖息于禅寺的妖蝶」"
-		"DOTA_Tooltip_ability_ability_thdots_yukari03_Description"	"将自己传送至地图上任意已探索的地区。需要2.5秒的施法时间。同时每过一段时间会在间隙中存放多一只生物。\n万宝槌效果：传送完成后产生空间震，对375范围内的敌方单位造成4倍智力的魔法伤害"
+		"DOTA_Tooltip_ability_ability_thdots_yukari03_Description"	"将自己传送至地图上任意已探索的地区。需要2.5秒的施法时间。同时每过一段时间会在间隙中存放多一只生物。"
+		"DOTA_Tooltip_ability_ability_thdots_yukari03_aghanim_description"	"传送完成后产生空间震，对%wanbaochui_radius%范围内的敌方单位造成%int_bonus%倍智力的魔法伤害"
 		"DOTA_Tooltip_ability_ability_thdots_yukari04"	"「深弹幕结界 - 梦幻泡影 - 」 "
-		"DOTA_Tooltip_ability_ability_thdots_yukari04_Description"	"展开大型的传送结界，结界范围内的己方队友和其他队友玩家的单位会一起被传送至目标地点，结界范围内的敌方普通单位则会被拉入间隙。引导时间越长，传送结界的范围就越大。最大引导时间2秒，结界的最大范围为750.无论引导多久，只要引导一结束，传送就会进行。引导期间，目标地点会散射出大量的弹幕，对周围的敌方单位造成伤害。\n万宝槌效果：传送完成后产生空间震，对750范围内的敌方单位造成4倍智力的魔法伤害"
+		"DOTA_Tooltip_ability_ability_thdots_yukari04_Description"	"展开大型的传送结界，结界范围内的己方队友和其他队友玩家的单位会一起被传送至目标地点，结界范围内的敌方普通单位则会被拉入间隙。引导时间越长，传送结界的范围就越大。最大引导时间2秒，结界的最大范围为750.无论引导多久，只要引导一结束，传送就会进行。引导期间，目标地点会散射出大量的弹幕，对周围的敌方单位造成伤害。"
+		"DOTA_Tooltip_ability_ability_thdots_yukari04_aghanim_description"	"传送完成后产生空间震，对%wanbaochui_radius%范围内的敌方单位造成%int_bonus%倍智力的魔法伤害"
 		"DOTA_Tooltip_ability_ability_thdots_yukari04_min_radius"	"传送最小范围:"
 		"DOTA_Tooltip_ability_ability_thdots_yukari04_max_radius"	"传送最大范围:"		
 		"DOTA_Tooltip_ability_ability_thdots_yukari04_ex_damage"	"弹幕持续伤害:"
@@ -1490,7 +1493,7 @@
 		"DOTA_Tooltip_ability_item_teeth_berserk_duration"	"狂暴持续时间："
 		"DOTA_Tooltip_ability_item_recipe_horse_red"	"格斗扫把制作书"
 		"DOTA_Tooltip_ability_item_horse_red"	"格斗扫把"
-		"DOTA_Tooltip_ability_item_horse_red_Description" "<h1>主动：格斗之力</h1>增加%bonus_health_regen%生命恢复，持续%duration%秒，受到伤害会中断"
+		"DOTA_Tooltip_ability_item_horse_red_Description" "<h1>主动：格斗之力</h1>增加%bonus_health_regen%生命恢复，持续%duration%秒，受到英雄伤害会中断"
 		"DOTA_Tooltip_ability_item_horse_red_Lore" "多个鞋类物品提供的移动速度加成不叠加。"
 		"DOTA_Tooltip_ability_item_horse_red_bonus_movement_speed"	"+$move_speed"
 		"DOTA_Tooltip_ability_item_horse_red_bonus_attack_speed"	"+$attack"
@@ -1510,7 +1513,7 @@
 		"DOTA_Tooltip_modifier_item_horse_green_active_Description"	"短时间内增加攻击速度"
 		"DOTA_Tooltip_ability_item_recipe_horse_blue"	"魔力扫把制作书"
 		"DOTA_Tooltip_ability_item_horse_blue"	"魔力扫把"
-		"DOTA_Tooltip_ability_item_horse_blue_Description" "<h1>主动：魔法之力</h1>增加%bonus_mana_regen%魔法恢复，持续%duration%秒，受到伤害会中断"
+		"DOTA_Tooltip_ability_item_horse_blue_Description" "<h1>主动：魔法之力</h1>增加%bonus_mana_regen%魔法恢复，持续%duration%秒，受到英雄伤害会中断"
 		"DOTA_Tooltip_ability_item_horse_blue_Lore" "多个鞋类物品提供的移动速度加成不叠加。"
 		"DOTA_Tooltip_ability_item_horse_blue_bonus_movement_speed"	"+$move_speed"
 		"DOTA_Tooltip_ability_item_horse_blue_bonus_attack_speed"	"+$attack"
@@ -1837,7 +1840,7 @@
 		"DOTA_Tooltip_ability_item_peach_Description"	"<h1>被动：蟠桃之力</h1>特殊的体制导致被攻击后会兴奋，每受到%take_damage_trigger%点伤害，会增加%speedup_attackspeed_once%的攻击速度，持续%speedup_duration%秒。最高叠加%speedup_max_modifier_stack%层。"
 		"DOTA_Tooltip_ability_item_peach_bonus_evasion"	"%+$evasion"
 		"DOTA_Tooltip_ability_item_peach_bonus_all_stats"	"+$all"
-		"DOTA_Tooltip_ability_item_peach_bonus_armor"	"+$armor"
+		//"DOTA_Tooltip_ability_item_peach_bonus_armor"	"+$armor"
 		"DOTA_Tooltip_ability_item_peach_note0"	"每次触发时将刷新持续时间，并非独立计算每层效果时间。<br>当达到最大堆叠层数时再次触发，不会增加层数，但是会刷新持续时间。<br>效果图标上的数字显示的是叠加层数。"
 		"DOTA_Tooltip_ability_item_recipe_anchor"	"念缚灵的船钩制作书"
 		"DOTA_Tooltip_ability_item_anchor"	"念缚灵的船钩"
@@ -2643,7 +2646,7 @@
 
 		"npc_dota_hero_legion_commander"	"秦心"
 		"DOTA_Tooltip_ability_ability_thdots_kokoroEx"	"凭依「喜怒哀乐Possession」"
-		"DOTA_Tooltip_ability_ability_thdots_kokoroEx_Description"	"对600码范围内敌方单位附上凭依，被凭依的单位受到秦心的攻击和技能伤害转变为纯粹伤害。"
+		"DOTA_Tooltip_ability_ability_thdots_kokoroEx_Description"	"对600码范围内敌方少女附上凭依，被凭依的单位受到秦心的攻击和技能伤害转变为纯粹伤害。"
 		"DOTA_Tooltip_ability_ability_thdots_kokoro01"	"吼怒的妖狐面"
 		"DOTA_Tooltip_ability_ability_thdots_kokoro01_Description"	"向指定方向突进%cast_range%码，对击中的第一个敌人造成%duration%秒的物品锁闭效果，并造成%damage%点伤害。使用此技能后状态切为<font color=\"#d9534f\">怒</font>。\n&nbsp;如果状态为<font color=\"#d9534f\">怒</font>时使用此技能，则距离增加400，伤害翻倍。&nbsp;&nbsp;&nbsp;&nbsp;\n如果状态为<font color=\"#5cb85c\">喜</font>时使用此技能，攻击力提高%preattack_damage%，并且攻击附带%life_steal%%%吸血，持续%movespeed_duraiton%秒。&nbsp;&nbsp;&nbsp;&nbsp;\n如果状态为<font color=\"#5bc0de\">忧</font>时使用此技能，击中后附带沉默与锁闭效果效果%you_duration%秒。"
 		"DOTA_Tooltip_ability_ability_thdots_kokoro02"	"狂喜的火男面"
@@ -2664,6 +2667,8 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_kokoro_5_Description"	"喜忧怒状态常驻"
 		"DOTA_Tooltip_ability_special_bonus_unique_kokoro_6"	"「假面丧心舞」击杀刷新所有技能冷却"
 		"DOTA_Tooltip_ability_ability_thdots_kokoroEx_duration"	"持续时间："
+		"DOTA_Tooltip_modifier_ability_thdots_kokoroEx"		"「喜怒哀乐Possession」"
+		"DOTA_Tooltip_modifier_ability_thdots_kokoroEx_Description"		"被凭依的单位受到秦心的攻击和技能伤害转变为纯粹伤害"
 		"DOTA_Tooltip_modifier_ability_thdots_kokoroEx_2"		"表情丰富的扑克脸"
 		"DOTA_Tooltip_modifier_ability_thdots_kokoroEx_2_Description"		"根据使用的面具变换状态，1是<font color=\"#d9534f\">怒</font>，2是<font color=\"#5cb85c\">喜</font>，3是<font color=\"#5bc0de\">忧</font>"
 		"DOTA_Tooltip_modifier_ability_thdots_kokoroEx_2_active"		"表情丰富的扑克脸"
@@ -2862,8 +2867,55 @@
 				
 		"DOTA_Tooltip_ability_special_bonus_unique_nazrin_3" 			"「无畏的寻宝大将」增加双倍攻击"		
 				
-		"DOTA_Tooltip_ability_special_bonus_unique_nazrin_4" 			"+200 「Gold Rush」 获取金币"	
+		"DOTA_Tooltip_ability_special_bonus_unique_nazrin_5" 			"-20秒 「Gold Rush」 冷却"	
 
+		// --------------------
+		// 斯塔·塞菲尔 by Eriko
+		// --------------------
+		"npc_dota_hero_keeper_of_the_light"								"斯塔·塞菲尔"
+		"ability_star03_ward"											"星粒"
+		"DOTA_Tooltip_ability_ability_thdotsr_star05"	 		 		"星符「蓝宝石星星」"	
+		"DOTA_Tooltip_ability_ability_thdotsr_star05_Description"	 	"持续施法%duration%秒内每%intervals%秒召唤蓝宝石星群从天而降\n随机选择身边%effect_radius%范围内少女以外的敌人不断造成合计%base_damage%[+智力 x %int_scale%]的法术伤害\n并不断恢复斯塔合计%heal% + 智力 x %heal_int_Scale%)生命值"
+
+		"DOTA_Tooltip_modifier_thdotsr_star05_think_interval"	 		"「蓝宝石星星」"	
+		"DOTA_Tooltip_modifier_thdotsr_star05_think_interval_Description""召唤蓝宝石星群从天而降"
+	
+		"DOTA_Tooltip_ability_ability_thdotsr_star01"	 		 		"星粒「星屑阵雨」"	
+		"DOTA_Tooltip_ability_ability_thdotsr_star01_Description"	 	"0.57秒后在目标位置降下一颗星星,对被击中的单位造成法术伤害并眩晕\n智力加成：%int_scale%"	
+		"DOTA_Tooltip_ability_ability_thdotsr_star01_base_damage"	 	"基础伤害："	
+		"DOTA_Tooltip_ability_ability_thdotsr_star01_stun_duration"	 	"眩晕时间："	
+		"DOTA_Tooltip_ability_ability_thdotsr_star01_aoe"	 			"影响范围："	
+		"DOTA_Tooltip_ability_ability_thdotsr_star01_cast_range"	 	"施法距离："	
+
+		"DOTA_Tooltip_ability_ability_thdotsr_star02"	 		 		"星光「星星风暴」"	
+		"DOTA_Tooltip_ability_ability_thdotsr_star02_Description"	 	"让一个敌人被星星风暴所困,无法进行任何移动。\n该少女可以施放任何技能解除此状态，解除后该少女法力值会被扣除并造成等值的法术伤害。"	
+		"DOTA_Tooltip_ability_ability_thdotsr_star02_snare_duration"	"持续时间："	
+		"DOTA_Tooltip_ability_ability_thdotsr_star02_mana_burn"	 		"%扣除法力值："	
+		"DOTA_Tooltip_ability_ability_thdotsr_star02_cast_range"	 	"施法距离："	
+		"DOTA_Tooltip_ability_ability_thdotsr_star02_aghanim_description"	 	"少女在释放技能时会对%wanbaochui_radius%范围内的单位造成（最大魔法值-当前魔法值）* %wanbaochui_bonus% 的法术伤害"	
+
+		"DOTA_Tooltip_modifier_ability_thdotsr_star02_curse"	 		"「星星风暴」"	
+		"DOTA_Tooltip_modifier_ability_thdotsr_star02_curse_Description""被星星风暴所困,无法进行任何移动。使用技能可以解除状态，但是会受到伤害"
+
+		"DOTA_Tooltip_ability_ability_thdotsr_star03"	 		 		"星粒「繁星点点」"	
+		"DOTA_Tooltip_ability_ability_thdotsr_star03_Description"	 	"在目标空中放置一颗带有探测功能的星星，星星带有%aoe%范围的空中视野以及%true_sight_range%真视范围(星星是虚无状态)。\n星星受到%attack_count%次伤害以后会消失"	
+		"DOTA_Tooltip_ability_ability_thdotsr_star03_duration"	 		"持续时间："	
+		"DOTA_Tooltip_ability_ability_thdotsr_star03_cast_range"	 	"施法距离："	
+
+		"DOTA_Tooltip_modifier_thdotsr_star03_ward"	 					"「繁星点点」"	
+		"DOTA_Tooltip_modifier_thdotsr_star03_ward_Description"	 		"星粒具有高空真实视野，受到一定次数的伤害后会消失"	
+		
+		"DOTA_Tooltip_ability_ability_thdotsr_star04"	 		 		"星符「周星星」"	
+		"DOTA_Tooltip_ability_ability_thdotsr_star04_Description"	 	"降低%radius%范围内友军少女的冷却时间。"
+		"DOTA_Tooltip_ability_ability_thdotsr_star04_reduction_cooldown""%减少技能冷却时间："	
+
+		"DOTA_Tooltip_ability_thdotsr_star04_cooldown"	 				"「周星星」"	
+		"DOTA_Tooltip_ability_thdotsr_star04_cooldown_Description"		"减少技能冷却时间"
+
+		"DOTA_Tooltip_ability_special_bonus_unique_star_1"				"+1秒「星屑阵雨」眩晕时间"	
+		"DOTA_Tooltip_ability_special_bonus_unique_star_2"				"「星屑阵雨」+150眩晕范围"	
+		"DOTA_Tooltip_ability_special_bonus_unique_star_3"				"「星星风暴」400范围缠绕"	
+		"DOTA_Tooltip_ability_special_bonus_unique_star_4"				"「蓝宝石星星」优先攻击英雄"	
 		//2020/03/06 玩偶魔女艾露迪
 		// --------------------
 		// 红美铃
@@ -3451,8 +3503,8 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_centaur_3"	"+15% 三步必杀结算伤害"
 		"DOTA_Tooltip_ability_special_bonus_unique_tidehunter"	"开启鬼神后无视眩晕"
 		"DOTA_Tooltip_ability_special_bonus_unique_tidehunter_2"	"+50 小萃香移动速度"
-		"DOTA_Tooltip_ability_special_bonus_unique_tidehunter_3"	"+6s 鬼神「Missing Purple Power」持续时间"
-		"DOTA_Tooltip_ability_special_bonus_unique_tidehunter_4"	"+8s 小萃香持续时间"
+		"DOTA_Tooltip_ability_special_bonus_unique_tidehunter_3"	"+3.5秒 鬼神「Missing Purple Power」持续时间"
+		"DOTA_Tooltip_ability_special_bonus_unique_tidehunter_4"	"+8秒 小萃香持续时间"
 		"DOTA_Tooltip_ability_special_bonus_unique_lifestealer"	"3倍 「是~这样~吗~」获取力量"
 		"DOTA_Tooltip_ability_special_bonus_unique_lifestealer_2"	"-12秒 「是~这样~吗~」冷却时间"
 		"DOTA_Tooltip_ability_special_bonus_unique_lifestealer_3"	"暗符「月的暗面」驱散异常状态"
@@ -3497,7 +3549,7 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_drow_ranger_1" 	"大招获得极速移动状态"
 		"DOTA_Tooltip_ability_special_bonus_unique_drow_ranger_4" 	"+500 恋之埋火判定范围"
 		"DOTA_Tooltip_ability_special_bonus_unique_tinker" 	"+1 十字架叠加数量"
-		"DOTA_Tooltip_ability_special_bonus_unique_tinker_2" 	"「大统一定理」只抵挡35以上的伤害"
+		"DOTA_Tooltip_ability_special_bonus_unique_tinker_2" 	"「大统一定理」只抵挡少女伤害"
 		"DOTA_Tooltip_ability_special_bonus_unique_tinker_3" 	"「四次元核弹」范围+350"
 		"DOTA_Tooltip_ability_special_bonus_unique_zeus" 	"古战场无冷却"
 		"DOTA_Tooltip_ability_special_bonus_unique_kunkka" 	"-60s 幽灵船重造时间"

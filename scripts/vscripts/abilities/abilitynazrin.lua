@@ -97,7 +97,8 @@ function OnNazrin04SpellStart(keys)
 	local caster = keys.caster
 	local target = keys.target	
 	local ability = keys.ability
-
+	THDReduceCooldown(keys.ability,FindTelentValue(caster,"special_bonus_unique_nazrin_5"))
+	if is_spell_blocked(target,caster) then return end
 	local spell_duration = ability:GetSpecialValueFor("duration")
 	ability:ApplyDataDrivenModifier(caster, target, "modifier_nazrin04takedamage", {})	
 	target:AddNewModifier(caster, keys.ability, "modifier_nazrin04_track",  {duration = spell_duration} )
@@ -111,114 +112,112 @@ function OnNazrin04SpellStart(keys)
 end	
 
 
-function OnNazrin04Attacked(keys)
+-- function OnNazrin04Attacked(keys)
 
-	local attacker = keys.attacker
+-- 	local attacker = keys.attacker
 
-	local caster = keys.caster
-	local target = keys.target		
-	local ability = keys.ability
-	local nazrin04dealdamage = keys.basenazrindamage + (keys.bonusnazrindamage*caster:GetAgility() )
+-- 	local caster = keys.caster
+-- 	local target = keys.target		
+-- 	local ability = keys.ability
+-- 	local nazrin04dealdamage = keys.basenazrindamage + (keys.bonusnazrindamage*caster:GetAgility() )
 	
 	
 	
 	
-	if attacker:IsRealHero() then
+-- 	if attacker:IsRealHero() then
 	
-		if attacker:HasModifier("modifier_nazrin04_check") then
-			return
+-- 		if attacker:HasModifier("modifier_nazrin04_check") then
+-- 			return
 
-		end
+-- 		end
 		
 		
-		local damage_table = {
-				ability = keys.ability,
-			    victim = target,
-			    attacker = caster,
-			    damage = nazrin04dealdamage,
-			    damage_type = keys.ability:GetAbilityDamageType(), 
-	    	    damage_flags = 0
-		}
-		target:EmitSound("Nazrin04")
-		target:EmitSound("Nazrin04_"..math.random(1,6))
-		local effectIndex = ParticleManager:CreateParticle("particles/generic_gameplay/lasthit_coins.vpcf", PATTACH_CUSTOMORIGIN, caster)
-		ParticleManager:SetParticleControl(effectIndex, 0, target:GetOrigin())
---		ParticleManager:SetParticleControl(effectIndex, 1, Vector(300,0,0))
+-- 		local damage_table = {
+-- 				ability = keys.ability,
+-- 			    victim = target,
+-- 			    attacker = caster,
+-- 			    damage = nazrin04dealdamage,
+-- 			    damage_type = keys.ability:GetAbilityDamageType(), 
+-- 	    	    damage_flags = 0
+-- 		}
+-- 		target:EmitSound("Nazrin04")
+-- 		target:EmitSound("Nazrin04_"..math.random(1,6))
+-- 		local effectIndex = ParticleManager:CreateParticle("particles/generic_gameplay/lasthit_coins.vpcf", PATTACH_CUSTOMORIGIN, caster)
+-- 		ParticleManager:SetParticleControl(effectIndex, 0, target:GetOrigin())
+-- --		ParticleManager:SetParticleControl(effectIndex, 1, Vector(300,0,0))
 		
-		ParticleManager:SetParticleControl(effectIndex, 1, target:GetOrigin())
-		ParticleManager:DestroyParticleSystem(effectIndex,false)		
-		
-		ability:ApplyDataDrivenModifier(caster, attacker, "modifier_nazrin04_check", {})	
-		ability:ApplyDataDrivenModifier(caster, target, "modifier_nazrin04_stun", {})			
-		UnitDamageTarget(damage_table)		
+-- 		ParticleManager:SetParticleControl(effectIndex, 1, target:GetOrigin())
+-- 		ParticleManager:DestroyParticleSystem(effectIndex,false)		
+-- 		ability:ApplyDataDrivenModifier(caster, attacker, "modifier_nazrin04_check", {})	
+-- 		ability:ApplyDataDrivenModifier(caster, target, "modifier_nazrin04_stun", {})			
+-- 		UnitDamageTarget(damage_table)		
 	
 	
-	end
+-- 	end
 
 
 
-end
+-- end
 
-function OnNazrin04bounty(keys)
+-- function OnNazrin04bounty(keys)
 
-	local caster = keys.caster
---	local target = keys.target		
-	local ability = keys.ability
-
-	local targets = FindUnitsInRadius(
-				   caster:GetTeam(),						--caster team
-				   caster:GetOrigin(),							--find position
-				   nil,										--find entity
-				   FIND_UNITS_EVERYWHERE,						--find radius
-				   DOTA_UNIT_TARGET_TEAM_FRIENDLY,
-				   DOTA_UNIT_TARGET_HERO,
-				   DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0,
-				   false
-			    )
+-- 	local caster = keys.caster
+-- --	local target = keys.target		
+-- 	local ability = keys.ability
+-- 	local targets = FindUnitsInRadius(
+-- 				   caster:GetTeam(),						--caster team
+-- 				   caster:GetOrigin(),							--find position
+-- 				   nil,										--find entity
+-- 				   FIND_UNITS_EVERYWHERE,						--find radius
+-- 				   DOTA_UNIT_TARGET_TEAM_FRIENDLY,
+-- 				   DOTA_UNIT_TARGET_HERO,
+-- 				   DOTA_UNIT_TARGET_FLAG_INVULNERABLE, 0,
+-- 				   false
+-- 			    )
 					
-	EmitGlobalSound("Nazrin04_4")	
+-- 	EmitGlobalSound("Nazrin04_4")	
 	
-	for _,v in pairs(targets) do
+-- 	for _,v in pairs(targets) do
 		
-	local totalgoldget = keys.GiveGoldAmount+FindTelentValue(caster,"special_bonus_unique_nazrin_4")
+-- 	local totalgoldget = keys.GiveGoldAmount
 	
-		if v:HasModifier("modifier_nazrin04_check")	 then
-			local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_furion/furion_tnt_rain_coins.vpcf", PATTACH_CUSTOMORIGIN, caster)		
-			ParticleManager:SetParticleControl(effectIndex, 0, v:GetOrigin())
-			ParticleManager:SetParticleControl(effectIndex, 1, v:GetOrigin())
-			ParticleManager:DestroyParticleSystem(effectIndex,false)
-		--	target:EmitSound("Nazrin04_4")				
+-- 		if v:HasModifier("modifier_nazrin04_check")	 then
+-- 			local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_furion/furion_tnt_rain_coins.vpcf", PATTACH_CUSTOMORIGIN, caster)		
+-- 			ParticleManager:SetParticleControl(effectIndex, 0, v:GetOrigin())
+-- 			ParticleManager:SetParticleControl(effectIndex, 1, v:GetOrigin())
+-- 			ParticleManager:DestroyParticleSystem(effectIndex,false)
+-- 		--	target:EmitSound("Nazrin04_4")				
 	
-			v:ModifyGold(totalgoldget, false, 0)
-			v:RemoveModifierByName("modifier_nazrin04_check")			
-		end
+-- 			v:ModifyGold(totalgoldget, false, 0)
+-- 			v:RemoveModifierByName("modifier_nazrin04_check")			
+-- 		end
 	
-	end
+-- 	end
 
-end
+-- end
 
-function OnNazrin04deatheffect(keys)
-	local ability = keys.ability
-	--local target = ability:GetParent()
-	local target = keys.Target
-	local caster = keys.caster
-	if target:GetHealth() == 0 then
+-- function OnNazrin04deatheffect(keys)
+-- 	local ability = keys.ability
+-- 	--local target = ability:GetParent()
+-- 	local target = keys.Target
+-- 	local caster = keys.caster
+-- 	if target:GetHealth() == 0 then
 	
-		local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_furion/furion_tnt_rain_coins.vpcf", PATTACH_CUSTOMORIGIN, caster)
-		ParticleManager:SetParticleControl(effectIndex, 0, target:GetOrigin())
---		ParticleManager:SetParticleControl(effectIndex, 1, Vector(300,0,0))
+-- 		local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_furion/furion_tnt_rain_coins.vpcf", PATTACH_CUSTOMORIGIN, caster)
+-- 		ParticleManager:SetParticleControl(effectIndex, 0, target:GetOrigin())
+-- --		ParticleManager:SetParticleControl(effectIndex, 1, Vector(300,0,0))
 		
-		ParticleManager:SetParticleControl(effectIndex, 1, target:GetOrigin())
-		ParticleManager:DestroyParticleSystem(effectIndex,false)	
-		target:EmitSound("Nazrin04_4")	
+-- 		ParticleManager:SetParticleControl(effectIndex, 1, target:GetOrigin())
+-- 		ParticleManager:DestroyParticleSystem(effectIndex,false)	
+-- 		target:EmitSound("Nazrin04_4")	
 	
 	
-	end
+-- 	end
 
 
 
 
-end
+-- end
 
 modifier_ability_thdots_nazrin02_effect = {}
 LinkLuaModifier("modifier_ability_thdots_nazrin02_effect","scripts/vscripts/abilities/abilitynazrin.lua",LUA_MODIFIER_MOTION_NONE)
@@ -366,7 +365,7 @@ function modifier_nazrin04_track:OnCreated(keys)
 	local caster = self:GetCaster()
 	
 	self.group = {}
-	
+	print("1111111111111111")
 	local base_gold = ability:GetSpecialValueFor("bonus_gold")
 	print("basegold=="..base_gold)
 	print(caster:GetUnitName())
@@ -377,6 +376,10 @@ function modifier_nazrin04_track:OnCreated(keys)
 	
 end
 
+function modifier_nazrin04_track:OnRefresh(keys)
+	if not IsServer() then return end
+	self:OnCreated(keys)
+end
 
 function modifier_nazrin04_track:OnAttackLanded(keys)
 	if not IsServer() then return end
@@ -384,7 +387,7 @@ function modifier_nazrin04_track:OnAttackLanded(keys)
 	if keys.target ~= self:GetParent() then
 		return
 	end
-	
+	print("222222222222222")
 	local attacker = keys.attacker
 	if keys.attacker:IsHero() ~= true then
 		return
@@ -454,11 +457,24 @@ function modifier_nazrin04_track:OnRemoved(keys)
 		if v ~= caster then
 			local PlayerID = v:GetPlayerOwnerID()
 			PlayerResource:SetGold(PlayerID,PlayerResource:GetUnreliableGold(PlayerID) + totalgoldget,false)
+			local effectIndex = ParticleManager:CreateParticle("particles/thd2/items/item_donation_box.vpcf", PATTACH_CUSTOMORIGIN, v)
+			ParticleManager:SetParticleControl(effectIndex, 0, v:GetAbsOrigin())
+			ParticleManager:SetParticleControl(effectIndex, 1, v:GetAbsOrigin())
+			ParticleManager:ReleaseParticleIndex(effectIndex)
+			v:EmitSound("DOTA_Item.Hand_Of_Midas")
+			SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD,v, totalgoldget, nil)
 		end
 	end
+
+	local effectIndex = ParticleManager:CreateParticle("particles/thd2/items/item_donation_box.vpcf", PATTACH_CUSTOMORIGIN, caster)
+	ParticleManager:SetParticleControl(effectIndex, 0, caster:GetAbsOrigin())
+	ParticleManager:SetParticleControl(effectIndex, 1, caster:GetAbsOrigin())
+	ParticleManager:ReleaseParticleIndex(effectIndex)
+	caster:EmitSound("DOTA_Item.Hand_Of_Midas")
+	SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD,caster, totalgoldget, nil)
+
 	local PlayerID = caster:GetPlayerOwnerID()
 	PlayerResource:SetGold(PlayerID,PlayerResource:GetUnreliableGold(PlayerID) + totalgoldget,false)
-	-- SendOverheadEventMessage(caster, OVERHEAD_ALERT_GOLD, caster, totalgoldget, nil)
 	print(PlayerResource:GetNetWorth(caster:GetPlayerOwnerID()))
 	
 end

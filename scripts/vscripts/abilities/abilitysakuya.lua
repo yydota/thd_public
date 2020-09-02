@@ -129,6 +129,9 @@ function OnSakuya02SpellDamage(keys)
 		if IsPointInCircularSector(vVec.x,vVec.y,math.cos(vecRad),math.sin(vecRad),keys.DamageRadius,math.pi * (keys.DamageRad/180),vecCaster.x,vecCaster.y) then
 			local intBouns = (caster:GetIntellect()	- (caster:GetIntellect()%6)) / 6 * keys.IntMulti + 1
 			local agiBouns = (caster:GetAgility() - (caster:GetAgility()%6)) / 6 * keys.AgiMulti
+			print("----------------------")
+			print(intBouns)
+			print(agiBouns)
 			local dealdamage = (agiBouns + keys.Damage) * intBouns
 			local damage_table = {
 				victim = v,

@@ -524,10 +524,11 @@ end
 
 function OnReisen03ChannellStart(keys)
 	local caster = keys.caster
+	local reduce_time = keys.ability:GetSpecialValueFor("reduce_time")
 	caster.ability_reisen_03_time_count = 0.05
 	caster.ability_reisen_03_damage_count = 0.05
 	if caster:HasModifier("modifier_item_wanbaochui") then
-		THDReduceCooldown(keys.ability,-9)
+		THDReduceCooldown(keys.ability,reduce_time)
 	end
 
 end
@@ -546,6 +547,7 @@ function OnReisenOld03SpellHit(keys)
 	local caster = keys.caster
 	local damage_rate = math.floor(10*caster.ability_reisen_03_damage_count/1.0)/10	
 	local damagetype = keys.ability:GetAbilityDamageType()
+	local damage_bonus = keys.ability:GetSpecialValueFor("damage_bonus") / 100
 	--[[if caster:HasModifier("modifier_item_wanbaochui") then
 		damage_rate=1
 	end]]--
@@ -558,7 +560,7 @@ function OnReisenOld03SpellHit(keys)
 	
 	if damage_rate == 1 then
 		if caster:HasModifier("modifier_item_wanbaochui") then
-			deal_damage=deal_damage*1.8
+			deal_damage=deal_damage*(1 + damage_bonus)
 		end
 		print("damage_rate = "..damage_rate)
 		keys.ability:ApplyDataDrivenModifier(caster, keys.target, "modifier_thdots_reisen03_full", {})

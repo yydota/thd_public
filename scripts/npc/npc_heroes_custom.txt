@@ -10,6 +10,7 @@
 #base heroes/seija/hero.txt
 #base heroes/lilywhite/hero.txt
 #base heroes/nazrin/hero.txt
+#base heroes/star/hero.txt
 
 "DOTAHeroes"
 {
@@ -830,8 +831,8 @@
 		"Ability13"		"special_bonus_unique_templar_assassin_2"
 		"Ability14"		"special_bonus_mp_400"
 		"Ability15"		"special_bonus_unique_templar_assassin"
-		"Ability16"		"special_bonus_attack_speed_70"
-		"Ability17"		"special_bonus_cooldown_reduction_20"
+		"Ability16"		"special_bonus_attack_speed_80"
+		"Ability17"		"special_bonus_spell_amplify_25"
 
 
 		//"Carry"			"核心"
@@ -2628,7 +2629,7 @@
 		// 每级增加的敏捷，敏捷成长
 		"AttributeBaseIntelligence"	"28"
 		// 基础智力
-		"AttributeIntelligenceGain"	"3.9"
+		"AttributeIntelligenceGain"	"4.5"
 		// 每级增加的智力，智力成长
 		"MovementSpeed"	"290"
 		// 基础移动速度
@@ -3955,7 +3956,7 @@
 		"VisionDaytimeRange"	"1050"
 		// 白天视野大小
 		"VisionNighttimeRange"	"700"
-		"AttackRange"	"450"
+		"AttackRange"	"350"
 	}
 	"npc_dota_hero_shou"
 	{

@@ -20,7 +20,7 @@
 		"Ability14"				"special_bonus_agility_20"
 		"Ability15"				"special_bonus_unique_nazrin_3"
 		"Ability16"				"special_bonus_unique_nazrin_2"
-		"Ability17"				"special_bonus_unique_nazrin_4"
+		"Ability17"				"special_bonus_unique_nazrin_5"
 		
 		"Role"					"Carry,Nuker,Disabler,Jungler,Escape,Pusher,Initiator,support"
 		"Rolelevels"			"0,3,3,0,0,0,2,2"

@@ -720,7 +720,9 @@ function modifier_ability_thdots_hina04:OnIntervalThink()
 		local vec = v:GetAbsOrigin()
 		local distance = ( caster:GetAbsOrigin() - vec):Length2D()
 		local direct = ( caster:GetAbsOrigin() - vec):Normalized() * speed
-		FindClearSpaceForUnit(v,v:GetAbsOrigin() + direct, true)
+		if not v:IsInvulnerable() then
+			FindClearSpaceForUnit(v,v:GetAbsOrigin() + direct, true)
+		end
 	end
 	ParticleManager:SetParticleControl(self.particle, 0, Vector(self:GetParent():GetAbsOrigin().x,self:GetParent():GetAbsOrigin().y,self:GetParent():GetAbsOrigin().z+64))
 	ParticleManager:SetParticleControl(self.particle, 10, Vector(self.radius, self.pull_radius, 0))
@@ -871,17 +873,14 @@ function ability_thdots_hina04:OnProjectileHit_ExtraData(target, location, extra
 	target:EmitSound("Hero_Nevermore.RequiemOfSouls.Damage")
 end
 
-function modifier_ability_thdots_hina04_damage:CheckState()
-	return {
-		[MODIFIER_STATE_STUNNED] = true,
-	}
-end
+
 
 function modifier_ability_thdots_hina04_damage:OnCreated()
 	if not IsServer() then return end
 	local ability = self:GetAbility()
 	local caster = ability:GetCaster()
 	local target = self:GetParent()
+	local stun_time = ability:GetSpecialValueFor("stun_time")
 	local damage = ability.absorb_damage + ability:GetSpecialValueFor("min_damage")
 	-- print("damage is :",damage)
 	local damageTable = {victim = target,
@@ -890,7 +889,9 @@ function modifier_ability_thdots_hina04_damage:OnCreated()
 						attacker = caster,
 						ability = ability
 						}
+	UtilStun:UnitStunTarget(caster,target,stun_time)
 	local damage_dealt = ApplyDamage(damageTable)
+
 end
 function CreateRequiemSoulLine(caster, ability, line_end_position, death_cast) --IMBA影魔大招特效
 	-- Ability properties

@@ -256,8 +256,10 @@ end
 function OnYumemiExSpellOnDamage(keys)
 	local caster = EntIndexToHScript(keys.caster_entindex)
 	local cross = Entities:FindAllByModel("models/thd2/yumemi/yumemi_q_mmd.vmdl")
-	local telentblock = 0 + FindTelentValue(caster,"special_bonus_unique_tinker_2")
-
+	local telentblock = 0
+	if not keys.attacker:IsHero() and FindTelentValue(caster,"special_bonus_unique_tinker_2") ~= 0 then
+		return
+	end
 	for k,v in pairs(cross) do
 		if v~=nil or v:IsNull()==false then 
 			local owner = v:GetOwner()

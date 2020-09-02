@@ -916,6 +916,16 @@ function OnSatori01SpellStart(keys)
 			i = 2
 		end
 	end
+	if TargetName == "npc_dota_hero_keeper_of_the_light" then
+		RandomNumber = RandomInt(1,75)
+		if RandomNumber <= 25 then
+			AbilityStolenName = "ability_thdotsr_star01"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "ability_thdotsr_star02"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "ability_thdotsr_star03"
+		end
+	end
 
 
 	abilityname[a] = AbilityStolenName

@@ -113,7 +113,7 @@ function OnSuika04SpellStart(keys)
 	if FindTelentValue(caster,"special_bonus_unique_tidehunter")~=0 then
 		keys.ability:ApplyDataDrivenModifier( caster, caster, "modifier_thdots_Suika_04_telent", {} )
 	end
-
+	ability:ApplyDataDrivenModifier(caster, caster, "modifier_thdots_Suika_04", {duration = duration})
 	if CasterName == "npc_dota_hero_tidehunter" then
 		caster:EmitSound("Voice_Thdots_Suika.AbilitySuika04")
 		caster:SetModelScale(2.0)

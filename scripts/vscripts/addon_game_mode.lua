@@ -1157,6 +1157,9 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 	elseif (heroName == "npc_dota_hero_ursa") then
 		abilityEx = hero:FindAbilityByName("ability_thdotsr_NazrinEx")
 		abilityEx:SetLevel(1)
+	elseif (heroName == "npc_dota_hero_keeper_of_the_light") then
+		abilityEx = hero:FindAbilityByName("ability_thdotsr_star05")
+		abilityEx:SetLevel(1)
 	end
 end
 
