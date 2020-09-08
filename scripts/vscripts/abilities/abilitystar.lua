@@ -275,15 +275,15 @@ function ability_thdotsr_star01:OnSpellStart()
 			end
 			local dummy = CreateUnitByName("npc_dummy_unit", point, false, caster, caster, caster:GetTeam() )
 
-			local particle = ParticleManager:CreateParticle("particles/econ/events/darkmoon_2017/darkmoon_generic_aoe.vpcf", PATTACH_POINT, self:GetCaster())
-  			ParticleManager:SetParticleControl(particle, 0, point)
-  			ParticleManager:SetParticleControl(particle, 1, Vector(search_radius, 1, 1))
-  			ParticleManager:ReleaseParticleIndex(particle)
-			-- local strike_particle = "particles/units/heroes/hero_disruptor/disruptor_thunder_strike_bolt.vpcf"
-			-- self.strike_particle_fx = ParticleManager:CreateParticle(strike_particle, PATTACH_ABSORIGIN, caster)
-			-- ParticleManager:SetParticleControl(self.strike_particle_fx, 0, dummy:GetAbsOrigin())
-			-- ParticleManager:SetParticleControl(self.strike_particle_fx, 1, dummy:GetAbsOrigin())
-			-- ParticleManager:SetParticleControl(self.strike_particle_fx, 2, dummy:GetAbsOrigin())
+			-- local particle = ParticleManager:CreateParticle("particles/econ/events/darkmoon_2017/darkmoon_generic_aoe.vpcf", PATTACH_POINT, caster)
+  	-- 		ParticleManager:SetParticleControl(particle, 0, point)
+  	-- 		ParticleManager:SetParticleControl(particle, 1, Vector(search_radius, 1, 1))
+  	-- 		ParticleManager:ReleaseParticleIndex(particle)
+			local strike_particle = "particles/units/heroes/hero_disruptor/disruptor_thunder_strike_bolt.vpcf"
+			self.strike_particle_fx = ParticleManager:CreateParticle(strike_particle, PATTACH_ABSORIGIN, caster)
+			ParticleManager:SetParticleControl(self.strike_particle_fx, 0, dummy:GetAbsOrigin())
+			ParticleManager:SetParticleControl(self.strike_particle_fx, 1, dummy:GetAbsOrigin())
+			ParticleManager:SetParticleControl(self.strike_particle_fx, 2, dummy:GetAbsOrigin())
 
 
 			dummy:RemoveSelf()

@@ -295,6 +295,8 @@ end
 
 function AbilityReimu:OnReimu03Start(keys)
 	local caster = EntIndexToHScript(keys.caster_entindex)
+    if is_spell_blocked(keys.target,caster) then return end
+    keys.ability:ApplyDataDrivenModifier(caster, keys.target, "modifier_ability_dota2x_reimu03_effect", {Duration = keys.Duration})
 	if(caster:GetTeam() == keys.target:GetTeam())then
 		 keys.ability:ApplyDataDrivenModifier(caster, keys.target, "modifier_ability_dota2x_reimu03_armor", {Duration = keys.Duration})
 		 if caster:HasModifier("modifier_item_wanbaochui") then 

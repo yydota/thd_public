@@ -10,7 +10,9 @@ function ThdotsJumpTrigger( data )
 	local jumpSpeed = 30
 	local fallSpeed = 100
 	local fallG = 10
-	
+	if target:HasModifier("modifier_ability_thdots_yorihime_01_move") then --一鸡冲刺
+		return
+	end
     UnitPauseTarget(target,target,2)
     local effectIndex = ParticleManager:CreateParticle("particles/thd2/heroes/reimu/reimu_01_effect.vpcf", PATTACH_CUSTOMORIGIN, target)
 	ParticleManager:SetParticleControl(effectIndex, 0, vecTarget)

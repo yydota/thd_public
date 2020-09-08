@@ -11,6 +11,7 @@
 #base heroes/lilywhite/hero.txt
 #base heroes/nazrin/hero.txt
 #base heroes/star/hero.txt
+#base heroes/yorihime/hero.txt
 
 "DOTAHeroes"
 {
@@ -3935,7 +3936,7 @@
 		// 每级增加的力量，力量成长
 		"AttributeBaseAgility"	"24"
 		// 基础敏捷
-		"AttributeAgilityGain"	"3.0"
+		"AttributeAgilityGain"	"2.5"
 		// 每级增加的敏捷，敏捷成长
 		"AttributeBaseIntelligence"	"17"
 		// 基础智力
@@ -3956,7 +3957,7 @@
 		"VisionDaytimeRange"	"1050"
 		// 白天视野大小
 		"VisionNighttimeRange"	"700"
-		"AttackRange"	"350"
+		"AttackRange"	"450"
 	}
 	"npc_dota_hero_shou"
 	{

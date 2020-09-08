@@ -365,7 +365,6 @@ function modifier_nazrin04_track:OnCreated(keys)
 	local caster = self:GetCaster()
 	
 	self.group = {}
-	print("1111111111111111")
 	local base_gold = ability:GetSpecialValueFor("bonus_gold")
 	print("basegold=="..base_gold)
 	print(caster:GetUnitName())
@@ -387,7 +386,6 @@ function modifier_nazrin04_track:OnAttackLanded(keys)
 	if keys.target ~= self:GetParent() then
 		return
 	end
-	print("222222222222222")
 	local attacker = keys.attacker
 	if keys.attacker:IsHero() ~= true then
 		return
@@ -445,37 +443,53 @@ function modifier_nazrin04_track:OnRemoved(keys)
 		return
 	
 	end
-	print("Nazrin04Start")
-	print(PlayerResource:GetNetWorth(caster:GetPlayerOwnerID()))
-	EmitGlobalSound("Nazrin04_4")	
-	local base_gold = ability:GetSpecialValueFor("bonus_gold")
-	print("basegold=="..base_gold)
-	local totalgoldget = (base_gold + FindTelentValue(caster,"special_bonus_unique_nazrin_4"))
-	
-	print("totalgoldtoget=="..totalgoldget)
-	for _,v in pairs(self.group) do
-		if v ~= caster then
-			local PlayerID = v:GetPlayerOwnerID()
-			PlayerResource:SetGold(PlayerID,PlayerResource:GetUnreliableGold(PlayerID) + totalgoldget,false)
-			local effectIndex = ParticleManager:CreateParticle("particles/thd2/items/item_donation_box.vpcf", PATTACH_CUSTOMORIGIN, v)
-			ParticleManager:SetParticleControl(effectIndex, 0, v:GetAbsOrigin())
-			ParticleManager:SetParticleControl(effectIndex, 1, v:GetAbsOrigin())
-			ParticleManager:ReleaseParticleIndex(effectIndex)
-			v:EmitSound("DOTA_Item.Hand_Of_Midas")
-			SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD,v, totalgoldget, nil)
+	print(target:GetTimeUntilRespawn())
+	if not target:IsRealHero() then 
+		print("11111")
+		return end
+	--判断是否有盾
+	target:SetContextThink("HasAegis",
+		function()
+			if target:GetTimeUntilRespawn() > 5 then
+				print(target:GetTimeUntilRespawn())
+				print("no aeigs")
+
+				print("Nazrin04Start")
+				print(PlayerResource:GetNetWorth(caster:GetPlayerOwnerID()))
+				EmitGlobalSound("Nazrin04_4")	
+				local base_gold = ability:GetSpecialValueFor("bonus_gold")
+				print("basegold=="..base_gold)
+				local totalgoldget = (base_gold + FindTelentValue(caster,"special_bonus_unique_nazrin_4"))
+				
+				print("totalgoldtoget=="..totalgoldget)
+				for _,v in pairs(self.group) do
+					if v ~= caster then
+						local PlayerID = v:GetPlayerOwnerID()
+						PlayerResource:SetGold(PlayerID,PlayerResource:GetUnreliableGold(PlayerID) + totalgoldget,false)
+						local effectIndex = ParticleManager:CreateParticle("particles/thd2/items/item_donation_box.vpcf", PATTACH_CUSTOMORIGIN, v)
+						ParticleManager:SetParticleControl(effectIndex, 0, v:GetAbsOrigin())
+						ParticleManager:SetParticleControl(effectIndex, 1, v:GetAbsOrigin())
+						ParticleManager:ReleaseParticleIndex(effectIndex)
+						v:EmitSound("DOTA_Item.Hand_Of_Midas")
+						SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD,v, totalgoldget, nil)
+					end
+				end
+
+				local effectIndex = ParticleManager:CreateParticle("particles/thd2/items/item_donation_box.vpcf", PATTACH_CUSTOMORIGIN, caster)
+				ParticleManager:SetParticleControl(effectIndex, 0, caster:GetAbsOrigin())
+				ParticleManager:SetParticleControl(effectIndex, 1, caster:GetAbsOrigin())
+				ParticleManager:ReleaseParticleIndex(effectIndex)
+				caster:EmitSound("DOTA_Item.Hand_Of_Midas")
+				SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD,caster, totalgoldget, nil)
+
+				local PlayerID = caster:GetPlayerOwnerID()
+				PlayerResource:SetGold(PlayerID,PlayerResource:GetUnreliableGold(PlayerID) + totalgoldget,false)
+				print(PlayerResource:GetNetWorth(caster:GetPlayerOwnerID()))
+
+			end
 		end
-	end
-
-	local effectIndex = ParticleManager:CreateParticle("particles/thd2/items/item_donation_box.vpcf", PATTACH_CUSTOMORIGIN, caster)
-	ParticleManager:SetParticleControl(effectIndex, 0, caster:GetAbsOrigin())
-	ParticleManager:SetParticleControl(effectIndex, 1, caster:GetAbsOrigin())
-	ParticleManager:ReleaseParticleIndex(effectIndex)
-	caster:EmitSound("DOTA_Item.Hand_Of_Midas")
-	SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD,caster, totalgoldget, nil)
-
-	local PlayerID = caster:GetPlayerOwnerID()
-	PlayerResource:SetGold(PlayerID,PlayerResource:GetUnreliableGold(PlayerID) + totalgoldget,false)
-	print(PlayerResource:GetNetWorth(caster:GetPlayerOwnerID()))
+		,
+		0.03)
 	
 end
 

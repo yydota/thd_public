@@ -13203,7 +13203,7 @@
 				{
 					"Random"
 					{
-						"Chance"	"75"
+						"Chance"	"%change"
 						"OnSuccess"
 						{
 							"ApplyModifier"
@@ -13249,6 +13249,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"bonus_outgoing_damage"		"10"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"change"		"75"
 			}
 		}
 	}

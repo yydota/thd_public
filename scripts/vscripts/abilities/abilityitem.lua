@@ -12,7 +12,10 @@ function ItemAbility_wanbaochui02_OnSpellStart(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local TargetName = target:GetClassname()
-	if target ~= caster and target:IsRealHero() == false then 
+	print(caster:GetUnitName())
+	print(target:GetUnitName())
+	print(caster:IsHero())
+	if target ~= caster or not target:IsRealHero() then 
 		print("No")
 		return 
 	else
@@ -289,6 +292,7 @@ function ForceHorizontal( keys )
 		target:SetAbsOrigin(target:GetAbsOrigin() + ability.forced_direction * ability.forced_speed)
 		ability.forced_traveled = ability.forced_traveled + (ability.forced_direction * ability.forced_speed):Length2D()
 	else
+		FindClearSpaceForUnit(target, target:GetAbsOrigin(), true)
 		target:InterruptMotionControllers(true)
 	end
 

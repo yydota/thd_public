@@ -189,6 +189,14 @@ function ability_thdots_kokoro02:GetAOERadius()
 	return self:GetSpecialValueFor("radius")
 end
 
+function ability_thdots_kokoro02:GetCooldown(level)
+	if self:GetCaster():HasModifier("modifier_ability_thdots_kokoroEx_2_talent1") then
+		return self.BaseClass.GetCooldown(self, level) - 4
+	else
+		return self.BaseClass.GetCooldown(self, level)
+	end
+end
+
 function ability_thdots_kokoro02:OnSpellStart()
 	if not IsServer() then return end
 	local caster = self:GetCaster()
@@ -260,8 +268,8 @@ function ability_thdots_kokoro02:OnSpellStart()
 		UnitDamageTarget(damage_tabel)
 	end
 	if you == true then 
-		if FindTelentValue(self:GetCaster(),"special_bonus_unique_kokoro_1") ~= 0 then
-			heal = heal * 3
+		if FindTelentValue(self:GetCaster(),"special_bonus_unique_kokoro_1") ~= 0 then --天赋加三倍回血，改为减4秒CD
+			-- heal = heal * 3
 		end
 		caster:Heal(heal * heal_count, caster)
 		SendOverheadEventMessage(nil,OVERHEAD_ALERT_HEAL,caster,heal * heal_count,nil)
@@ -903,7 +911,7 @@ end
 
 function modifier_ability_thdots_kokoro04_caster:OnIntervalThink()
 	if not IsServer() then return end
-	local vec = self.target:GetOrigin() - self.caster:GetOrigin()
+	local vec = self.target:GetAbsOrigin() - self.caster:GetAbsOrigin()
 	vec.z = 0
 	self.caster:SetForwardVector(vec:Normalized())
 end
@@ -1267,6 +1275,9 @@ function modifier_ability_thdots_kokoroEx_2:OnIntervalThink()
 	end
 	if not IsServer() then return end
 	self:GetCaster():SetPrimaryAttribute(self.num) --设置主属性，0是力量，1是敏捷，2是智力
+	if FindTelentValue(self:GetCaster(),"special_bonus_unique_kokoro_1") ~= 0 and not self:GetCaster():HasModifier("modifier_ability_thdots_kokoroEx_2_talent1") then
+		self:GetCaster():AddNewModifier(self:GetCaster(),self:GetAbility(),"modifier_ability_thdots_kokoroEx_2_talent1",{})
+	end
 	if FindTelentValue(self:GetCaster(),"special_bonus_unique_kokoro_2") ~= 0 and not self:GetCaster():HasModifier("modifier_ability_thdots_kokoroEx_2_talent2") then
 		self:GetCaster():AddNewModifier(self:GetCaster(),self:GetAbility(),"modifier_ability_thdots_kokoroEx_2_talent2",{})
 	end
@@ -1351,6 +1362,13 @@ end
 function modifier_ability_thdots_kokoroEx_2_Intellect:GetModifierSpellAmplify_Percentage()
 	return self:GetStackCount() * self:GetAbility():GetSpecialValueFor("intellect_bonus")
 end
+
+modifier_ability_thdots_kokoroEx_2_talent1 = modifier_ability_thdots_kokoroEx_2_talent1 or {}  --天赋监听
+LinkLuaModifier("modifier_ability_thdots_kokoroEx_2_talent1","scripts/vscripts/abilities/abilitykokoro.lua",LUA_MODIFIER_MOTION_NONE)
+function modifier_ability_thdots_kokoroEx_2_talent1:IsHidden() 		return true end
+function modifier_ability_thdots_kokoroEx_2_talent1:IsPurgable()		return false end
+function modifier_ability_thdots_kokoroEx_2_talent1:RemoveOnDeath() 	return false end
+function modifier_ability_thdots_kokoroEx_2_talent1:IsDebuff()		return false end
 
 modifier_ability_thdots_kokoroEx_2_talent2 = modifier_ability_thdots_kokoroEx_2_talent2 or {}  --天赋监听
 LinkLuaModifier("modifier_ability_thdots_kokoroEx_2_talent2","scripts/vscripts/abilities/abilitykokoro.lua",LUA_MODIFIER_MOTION_NONE)

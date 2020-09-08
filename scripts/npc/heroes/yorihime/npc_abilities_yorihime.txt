@@ -1,0 +1,354 @@
+"DOTAAbilities"
+{
+	"ability_thdots_yorihime_01"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"sven_storm_bolt"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityyorihime.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING |
+		DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES_STRONG"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0.3 0.3 0.3 0.3"
+		// "AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCooldown"	"21 18 16 13"
+		"AbilityManaCost"	"90 100 110 120"
+		"AbilityCastRange"	"0"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_stormspirit/stormspirit_ball_lightning.vpcf"
+			"particle"	"sounds/weapons/hero/storm_spirit/ball_lightning_loop.vsnd_c"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"dash_speed"	"1000"
+				"LinkedSpecialBonus"	"special_bonus_movdspeed_1000"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"275"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"0.9 1.1 1.3 1.5"
+				"LinkedSpecialBonus"	"special_bonus_stun_time"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"120 180 240 300"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"heal_duration"	"0.5 0.75 1.0 1.25"
+				"LinkedSpecialBonus"	"special_bonus_stun_time"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"buff_heal"	"120 180 240 300"
+			}
+		}
+	}
+
+	"ability_thdots_yorihime_02"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"treant_living_armor"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityyorihime.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ALLIES_YES"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0.3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		"AnimationPlaybackRate"	"3.0"
+		"AbilityCooldown"	"30 22 14 6"
+		"AbilityManaCost"	"50"
+		"AbilityCastRange"	"99999"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"02_magical"	"3 4 5 6"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"02_armor"	"2 4 6 8"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"02_duration"	"30"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"02_healregen"	"3 6 9 12"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"02_manaregen"	"1 2 3 4"
+			}
+		}
+	}
+
+	"ability_thdots_yorihime_03"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"omniknight_purification"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityyorihime.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ALLIES_YES"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		"AnimationPlaybackRate"	"3.0"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0.3"
+		// Time
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"	"30 24 18 12"
+		// Cost
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"	"75"
+		// Casting
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"500"
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"shield_duration"	"9999"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"shield_health"	"120 150 180 210"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"buff_damage"	"15 30 45 60"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"buff_movespeed"	"3 6 9 12"
+			}
+		}
+	}
+
+	"ability_thdots_yorihime_Ex"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"elder_titan_ancestral_spirit"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityyorihime.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"FightRecapLevel"	"1"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"MaxLevel"	"1"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+			"particle"	"particles/units/heroes/hero_abaddon/abaddon_aphotic_shield_explosion.vpcf"
+			"particle"	"particles/units/heroes/hero_abaddon/abaddon_aphotic_shield.vpcf"
+			"particle"	"particles/units/heroes/hero_abaddon/abaddon_aphotic_shield_hit.vpcf"
+			"particle"	"particles/units/heroes/hero_abaddon/abaddon_frost_slow.vpcf"
+			"particle"	"particles/units/heroes/hero_abaddon/abaddon_frost_buff.vpcf"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"ex_magical"	"3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"ex_armor"	"3"
+			}
+			// "03"
+			// {
+			// 	"var_type"	"FIELD_FLOAT"
+			// 	"ex_manaregen"	"2"
+			// }
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"ex_healthregen"	"3"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"ex_radius"	"800"
+			}
+		}
+	}
+
+	"ability_thdots_yorihime_ultimate"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"sven_gods_strength"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityyorihime.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"SpellDispellableType" "SPELL_DISPELLABLE_NO"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+		"AnimationPlaybackRate"	"3.0"
+		"MaxLevel"	"3"
+		"RequiredLevel"	"6"
+		"LevelsBetweenUpgrades"	"6"
+		"AbilityCastPoint"	"0.3"
+		"AbilityCooldown"	"85"
+		"AbilityManaCost"	"150"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"ultimate_duration"	"25 30 35"
+				"LinkedSpecialBonus"	"special_bonus_god_strength_duration"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"gods_strength_damage"	"30 40 50"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"ult_radius"	"900 1200 1500"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"ult_strength"	"6 9 12"
+			}
+		}
+	}
+
+	"special_bonus_shield_strength"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"2.0"
+			}
+		}
+	}
+
+	"special_bonus_movdspeed_1000"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1000"
+			}
+		}
+	}
+
+	"special_bonus_god_strength_duration"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"8"
+			}
+		}
+	}
+
+	"special_bonus_radius_99999"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"ex_talent_radius"	"99999"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"ult_talent_radius"	"99999"
+			}
+		}
+	}
+
+	"special_bonus_stun_time"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"		"1"
+			}
+		}
+	}
+}

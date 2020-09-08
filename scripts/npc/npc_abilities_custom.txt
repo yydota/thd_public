@@ -13,6 +13,7 @@
 #base "heroes/lilywhite/npc_abilities_lilywhite.txt"  
 #base "heroes/nazrin/npc_abilities_nazrin.txt"  
 #base "heroes/star/npc_abilities_star.txt"  
+#base "heroes/yorihime/npc_abilities_yorihime.txt"  
 
 "DOTAAbilities"
 {
@@ -1264,11 +1265,11 @@
 				"Target"	"TARGET"
 				"Duration"	"%ability_duration"
 			}
-			"ApplyModifier"
-			{
-				"Target"	"TARGET"
-				"ModifierName"	"modifier_ability_dota2x_reimu03_effect"
-			}
+			// "ApplyModifier"
+			// {
+			// 	"Target"	"TARGET"
+			// 	"ModifierName"	"modifier_ability_dota2x_reimu03_effect"
+			// }
 		}
 		"Modifiers"
 		{
@@ -23202,7 +23203,7 @@
 			{
 				"IsHidden"	"0"
 				"IsPurgable"	"1"
-				"IsDebuff"	"1"
+				"IsDebuff"	"0"
 				"RemoveOnDeath"	"1"
 				"EffectName"	"particles/units/heroes/hero_magnataur/magnataur_skewer.vpcf"
 				"EffecAttachType"	"follow_origin"
