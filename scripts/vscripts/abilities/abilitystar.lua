@@ -471,6 +471,9 @@ function modifier_ability_thdotsr_star02_curse:OnAbilityExecuted(keys)
 		target:RemoveModifierByName("modifier_ability_thdotsr_star02_curse")
 		
 		local mana_burn = ability:GetSpecialValueFor("mana_burn")
+		if self:GetCaster():HasModifier("modifier_item_wanbaochui") then
+			mana_burn = ability:GetSpecialValueFor("mana_burn_wanbaochui")
+		end
 	--	target:ReduceMana(target:GetMaxMana()*mana_burn*0.01)
 		local manatoburn = math.min(target:GetMaxMana()*mana_burn*0.01,target:GetMana())
 		
@@ -485,16 +488,6 @@ function modifier_ability_thdotsr_star02_curse:OnAbilityExecuted(keys)
 
 		local caster = self:GetCaster()
 		
-		local damage_table = {
-			ability = ability,
-		    victim = target,
-		    attacker = caster,
-		    damage = manatoburn,
-		    damage_type = ability:GetAbilityDamageType(), 
-			damage_flags = 0
-		}
-		UnitDamageTarget(damage_table)
-
 		if caster:HasModifier("modifier_item_wanbaochui") then
 			local damage = (target:GetMaxMana() - target:GetMana() ) * ability:GetSpecialValueFor("wanbaochui_bonus")
 			local radius = ability:GetSpecialValueFor("wanbaochui_radius")
@@ -518,6 +511,16 @@ function modifier_ability_thdotsr_star02_curse:OnAbilityExecuted(keys)
 					}
 				UnitDamageTarget(wanbaochui_damage_table)
 			end
+		else
+			local damage_table = {
+			ability = ability,
+		    victim = target,
+		    attacker = caster,
+		    damage = manatoburn,
+		    damage_type = ability:GetAbilityDamageType(), 
+			damage_flags = 0
+			}
+			UnitDamageTarget(damage_table)
 		end
 	end
 end

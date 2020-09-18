@@ -12,7 +12,7 @@
 		"MaxLevel"	"4"
 		"AbilityCastPoint"	"0.1"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
-		"AbilityCooldown"	"9 8 7 6"
+		"AbilityCooldown"	"6 5 4 3"
 		"AbilityManaCost"	"40"
 		"AOERadius"	"300"
 		// "AbilityCastRange"	"400"
@@ -408,6 +408,7 @@
 			{
 				"IsDebuff"	"1"
 				"IsPurgable"	"1"
+				"RemoveOnDeath"	"1"
 				"States"
 				{
 					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
@@ -423,7 +424,7 @@
 						"Function"	"A6OnInterval"
 					}
 				}
-				"ThinkInterval"	"0.01"
+				"ThinkInterval"	"0.03"
 				"OnDestroy"
 				{
 					"RunScript"

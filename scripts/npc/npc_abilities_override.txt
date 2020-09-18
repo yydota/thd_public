@@ -1288,15 +1288,15 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"11"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CUSTOM"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_CUSTOM"
+		//"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		//"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CUSTOM"
+		//"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_CUSTOM"
 		"AbilityTextureName"			"item_hetongmugongren"
 
 
 		"AbilityCastRange"				"350"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"4.0"
+		"AbilityCooldown"				"12"
 		"Model"							"models/props_gameplay/quelling_blade.vmdl"
 		
 		// Item Info
@@ -2879,7 +2879,7 @@
 			"01"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"value"				"3.5"
+				"value"				"5"
 			}
 		}
 	}
@@ -4884,7 +4884,7 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"value"				"2"
+				"value"				"6"
 			}
 		}
 	}

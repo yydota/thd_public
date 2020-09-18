@@ -225,3 +225,12 @@ function CastRang_Calculate(caster,point,range)
     end
     return distance
 end
+
+function DeleteDummy(targets)
+    for i=1,#targets do
+        if targets[i]:HasModifier("dummy_unit") then
+            table.remove(targets, i)
+            DeleteDummy(targets)
+        end
+    end
+end

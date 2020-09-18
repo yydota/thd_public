@@ -20,7 +20,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"base_damage"				"700"
+				"base_damage"				"1000"
 			}
 			"02"
 			{
@@ -265,8 +265,9 @@
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"cast_range"	"600"
-			}
+				"mana_burn_wanbaochui"	"50"
+				"RequiresScepter"		"1"
+			}	
 			"05"
 			{
 				"var_type"				"FIELD_FLOAT"
@@ -281,6 +282,11 @@
 			{
 				"var_type"				"FIELD_FLOAT"
 				"wanbaochui_bonus"		"1"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cast_range"	"600"
 			}
 		}
 		

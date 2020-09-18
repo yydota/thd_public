@@ -559,6 +559,14 @@ function Yukari04_OnSpellStart(keys)
 						DOTA_UNIT_TARGET_FLAG_NONE,
 						FIND_ANY_ORDER,
 						false)
+					-- if #units > 0 then 
+					-- 	for i=1,#units do 
+					-- 		print_r(units)
+					-- 		if units[i]:HasModifier("modifier_ability_thdots_kogasa04") then
+					-- 			table.remove(units,i)
+					-- 		end
+					-- 	end
+					-- end
 					for _,u in pairs(units) do
 						if Yukari_CanMovetoGap(u) and u:GetTeam()~=caster:GetTeam() and Ability02 then
 							Ability02:ApplyDataDrivenModifier(caster,u,Yukari02_MODIFIER_HIDDEN_NAME,{})
@@ -567,8 +575,9 @@ function Yukari04_OnSpellStart(keys)
 						elseif u:IsControllableByAnyPlayer() and u:GetTeam()==caster:GetTeam() then
 							local e3 = ParticleManager:CreateParticle("particles/heroes/yukari/ability_yukari_03_teleportflash.vpcf", PATTACH_CUSTOMORIGIN, caster)
 							ParticleManager:SetParticleControl(e3, 0, caster:GetOrigin())
-
-							FindClearSpaceForUnit(u,vecPos,true)
+							if not u:HasModifier("modifier_ability_thdots_kogasa04") then --去掉开大的小伞
+								FindClearSpaceForUnit(u,vecPos,true)
+							end
 							local e4 = ParticleManager:CreateParticle("particles/heroes/yukari/ability_yukari_03_teleportflash2.vpcf", PATTACH_CUSTOMORIGIN, caster)
 							ParticleManager:SetParticleControl(e4, 0, caster:GetOrigin())
 						end

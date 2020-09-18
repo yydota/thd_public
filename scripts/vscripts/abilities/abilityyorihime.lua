@@ -37,6 +37,8 @@ function ability_thdots_yorihime_01:OnSpellStart()
     if not IsServer() then return end
     local caster=self:GetCaster()
 	self.target = self:GetCursorTarget()
+	print(caster:GetOrigin())
+	print(caster:GetAbsOrigin())
 	-- print(self:GetEffectiveCooldown(self:GetLevel()-1))
 	if is_spell_blocked(self.target,caster) then return end
 	
@@ -72,7 +74,11 @@ function modifier_ability_thdots_yorihime_01_move:IsDebuff()        return false
 -- 	return state
 -- end
 
-
+function modifier_ability_thdots_yorihime_01_move:CheckState()
+	return {
+		[MODIFIER_STATE_DISARMED] = true
+	}
+end
 
 function modifier_ability_thdots_yorihime_01_move:OnCreated(params)
 	if not IsServer() then return end
@@ -103,8 +109,12 @@ function modifier_ability_thdots_yorihime_01_move:OnCreated(params)
 		print("do it")
 		self.target:AddNewModifier(self.caster, self.ability, "modifier_ability_thdots_yorihime_01_vision", {})
 	end
-	print("do it2")
 	self:StartIntervalThink(FrameTime())
+	self.talent_effect = nil
+	print(FindTelentValue(self.caster,"special_bonus_movdspeed_1000"))
+	if FindTelentValue(self.caster,"special_bonus_movdspeed_1000") ~= 0 then
+		self.talent_effect = ParticleManager:CreateParticle( "particles/units/heroes/hero_phoenix/phoenix_icarus_dive.vpcf", PATTACH_WORLDORIGIN, nil )
+	end
 end
 
 function modifier_ability_thdots_yorihime_01_move:OnOrder(keys)
@@ -130,12 +140,14 @@ function modifier_ability_thdots_yorihime_01_move:OnIntervalThink()
 	if not IsServer() then return end
 	if not self.target:IsAlive() then
 		local targets = FindUnitsInRadius(self.caster:GetTeam(), self.target:GetAbsOrigin(),nil,1000,
-			self.ability:GetAbilityTargetTeam(),self.ability:GetAbilityTargetType(),0,0, false)
+			self.ability:GetAbilityTargetTeam(),self.ability:GetAbilityTargetType(),DOTA_UNIT_TARGET_FLAG_NO_INVIS,FIND_CLOSEST, false)
+		DeleteDummy(targets)
 		if #targets > 0 then
 			for _,unit in pairs (targets) do
 				self.target:RemoveModifierByName("modifier_ability_thdots_yorihime_01_vision")
 				self.target = unit
 				self.target:AddNewModifier(self.caster, self.ability, "modifier_ability_thdots_yorihime_01_vision",{})
+				break
 			end
 		else
 			self.target:RemoveModifierByName("modifier_ability_thdots_yorihime_01_vision")
@@ -151,7 +163,9 @@ function modifier_ability_thdots_yorihime_01_move:OnIntervalThink()
 	self.caster:SetForwardVector(self.direction)
 	self.direction=(self.target:GetAbsOrigin() - self.caster:GetAbsOrigin()):Normalized()
 	self.distance=calDistanceHero(self.caster,self.target)
-
+	if self.talent_effect ~= nil then
+		ParticleManager:SetParticleControl(self.talent_effect, 0, self.caster:GetAbsOrigin() + self.caster:GetRightVector() * 32 )
+	end
 	if self.caster:IsRooted() or self.caster:IsStunned() or self.caster:IsHexed() then
 		FindClearSpaceForUnit(self.caster,self.caster:GetAbsOrigin(),false)
 		self.cancel=true
@@ -177,11 +191,13 @@ function modifier_ability_thdots_yorihime_01_move:OnDestroy()
 	local 	target 	= self.target
 	local	caster  = ability:GetCaster()
 	ability:SetActivated(true)
-	-- print(self:GetEffectiveCooldown(self:GetLevel()-1))
 	ability:StartCooldown(ability:GetEffectiveCooldown(ability:GetLevel()-1))
-	-- ability:StartCooldown(13)
 	ParticleManager:DestroyParticle(self.particle_lightning,true) 
 	target:RemoveModifierByName("modifier_ability_thdots_yorihime_01_vision")
+	if self.talent_effect ~= nil then
+		ParticleManager:DestroyParticle(self.talent_effect, false)
+		ParticleManager:ReleaseParticleIndex(self.talent_effect)
+	end
 
 
 	local   radius 	= ability:GetSpecialValueFor("radius")
@@ -245,7 +261,7 @@ end
 --视野buff
 modifier_ability_thdots_yorihime_01_vision=class({})
 LinkLuaModifier( "modifier_ability_thdots_yorihime_01_vision", "scripts/vscripts/abilities/abilityyorihime.lua",LUA_MODIFIER_MOTION_NONE )
-function modifier_ability_thdots_yorihime_01_vision:IsHidden()		return false end
+function modifier_ability_thdots_yorihime_01_vision:IsHidden()		return true end
 function modifier_ability_thdots_yorihime_01_vision:IsPurgable()	return false end
 function modifier_ability_thdots_yorihime_01_vision:GetAttributes()	return MODIFIER_ATTRIBUTE_MULTIPLE end
 function modifier_ability_thdots_yorihime_01_vision:ShouldUseOverheadOffset() return true end -- I have no idea when this works but it might be particle-specific
@@ -304,6 +320,7 @@ function modifier_ability_thdots_yorihime_01_buff:OnCreated()
 	local 	ability = self:GetAbility()
 	local heal=ability:GetSpecialValueFor("buff_heal")
 	self:GetParent():Heal(heal,caster)
+	SendOverheadEventMessage(nil,OVERHEAD_ALERT_HEAL,self:GetParent(),heal,nil)
 end
 
 function modifier_ability_thdots_yorihime_01_buff:GetModifierMagicalResistanceBonus() 
@@ -330,7 +347,8 @@ function ability_thdots_yorihime_02:OnSpellStart()
 	self.caster = caster
 	self.target = target
 	target:AddNewModifier(caster,self,"modifier_ability_thdots_yorihime_02",{duration = duration })
-	EmitSoundOn("Hero_Abaddon.AphoticShield.Cast", target)
+	EmitSoundOn("Hero_Treant.LivingArmor.Target", target)
+	EmitSoundOn("Hero_Treant.LivingArmor.Cast", caster)
 end
 
 --------------------------------------------------------------------------------
@@ -406,6 +424,14 @@ end
 
 ability_thdots_yorihime_03 = class({})
 
+function ability_thdots_yorihime_03:GetCooldown(level)
+	if self:GetCaster():HasModifier("ability_thdots_yorihime_talent_1") then
+		return self.BaseClass.GetCooldown(self, level) - 6
+	else
+		return self.BaseClass.GetCooldown(self, level)
+	end
+end
+
 function ability_thdots_yorihime_03:OnSpellStart()
 	if not IsServer() then return end
 	local caster = self:GetCaster()
@@ -413,7 +439,7 @@ function ability_thdots_yorihime_03:OnSpellStart()
 	self.caster 	= caster
 	self.target 	= target
 	local duration = self:GetSpecialValueFor("shield_duration")
-	target:EmitSound("Hero_Omniknight.Purification")
+	target:EmitSound("Hero_Sven.WarCry")
 	-- local MaxHealth = self:GetSpecialValueFor("shield_health")
 	local MaxHealth = self:GetSpecialValueFor("shield_health")
 	local strength = self.caster:GetStrength() * FindTelentValue(caster,"special_bonus_shield_strength")
@@ -424,10 +450,6 @@ function ability_thdots_yorihime_03:OnSpellStart()
 		target:RemoveModifierByName("modifier_shield_buff")
 	end
 	target:AddNewModifier(caster,self,"modifier_shield_buff",{duration = duration })
-	
-	
-
-
 end
 
 --------------------------------------------------------------------------------
@@ -455,15 +477,19 @@ function modifier_shield_buff:OnCreated()
     local caster = ability.caster
     local target = ability.target
 
-    self.particle= ParticleManager:CreateParticle("particles/units/heroes/hero_omniknight/omniknight_repel_buff.vpcf", PATTACH_ROOTBONE_FOLLOW, target)
+    self.particle= ParticleManager:CreateParticle("particles/econ/items/ember_spirit/ember_ti9/ember_ti9_flameguard_shield_outer.vpcf", PATTACH_ROOTBONE_FOLLOW, target)
 	ParticleManager:SetParticleControlEnt(self.particle, 0, target, PATTACH_ROOTBONE_FOLLOW, "follow_rootbone", target:GetAbsOrigin(), true)
 	ParticleManager:SetParticleControlEnt(self.particle, 1, target, PATTACH_ROOTBONE_FOLLOW, "follow_rootbone", target:GetAbsOrigin(), true)
+
+
 end
 
 function modifier_shield_buff:OnDestroy()
     if not IsServer() then return end
     local ability=self:GetAbility()
-    ParticleManager:DestroyParticle(self.particle,true) 
+	ParticleManager:DestroyParticle(self.particle,true) 
+
+	
 end
 
 function modifier_shield_buff:GetModifierPreAttack_BonusDamage()
@@ -537,21 +563,13 @@ end
 function modifier_thdots_yorihime_ex:OnIntervalThink()
 	if not IsServer() then return end
 	local caster 		= self:GetParent()
-	local abilityName="special_bonus_radius_99999"
-	
-	if caster:HasAbility(abilityName) and caster:FindAbilityByName(abilityName):GetLevel()>0 then 
-		self.radius = caster:FindAbilityByName(abilityName):GetSpecialValueFor("ex_talent_radius")
-	else 
-		self.radius	= self:GetAbility():GetSpecialValueFor("ex_radius")
-	end 
-	local radius = self.radius
-	-- print("tianfu",radius)
 	local ability = self:GetAbility()
+	self.radius	= self:GetAbility():GetSpecialValueFor("ex_radius") + FindTelentValue(self:GetParent(),"special_bonus_radius_99999")
 	local allies = FindUnitsInRadius(
 					self:GetParent():GetTeam(),		
 					self:GetParent():GetOrigin(),		
 				   nil,					
-				   radius,		
+				   self.radius,		
 				   DOTA_UNIT_TARGET_TEAM_FRIENDLY,
 				   DOTA_UNIT_TARGET_HERO,
 				   0, FIND_CLOSEST,
@@ -567,9 +585,18 @@ function modifier_thdots_yorihime_ex:OnIntervalThink()
 	-- 	count = 0
 	-- end
 	self:GetParent():SetModifierStackCount("modifier_thdots_yorihime_ex", self:GetAbility(), count)
+
+	if FindTelentValue(self:GetCaster(),"special_bonus_unique_yorihime_1") ~= 0 and not self:GetCaster():HasModifier("ability_thdots_yorihime_talent_1") then
+		self:GetCaster():AddNewModifier(self:GetCaster(),self:GetAbility(),"ability_thdots_yorihime_talent_1",{})
+	end
 end
 
-
+ability_thdots_yorihime_talent_1 = ability_thdots_yorihime_talent_1 or {}  --天赋监听
+LinkLuaModifier("ability_thdots_yorihime_talent_1","scripts/vscripts/abilities/abilityyorihime.lua",LUA_MODIFIER_MOTION_NONE)
+function ability_thdots_yorihime_talent_1:IsHidden() 		return true end
+function ability_thdots_yorihime_talent_1:IsPurgable()		return false end
+function ability_thdots_yorihime_talent_1:RemoveOnDeath() 	return false end
+function ability_thdots_yorihime_talent_1:IsDebuff()		return false end
 
 
 
@@ -621,7 +648,13 @@ function ability_thdots_yorihime_ultimate:OnSpellStart()
 	ParticleManager:SetParticleControlEnt( nFXIndex, 1, self:GetCaster(), PATTACH_ABSORIGIN_FOLLOW, nil, self:GetCaster():GetOrigin(), true )
 	ParticleManager:ReleaseParticleIndex( nFXIndex )
 
-	EmitSoundOn( "Hero_Sven.GodsStrength", self:GetCaster() )
+	-- self.particle = ParticleManager:CreateParticleForTeam("particles/econ/items/sven/sven_warcry_ti5/sven_spell_warcry_ti_5.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent(), self:GetCaster():GetTeamNumber())
+	-- self:AddParticle(self.particle, false, false, -1, false, true)
+
+	-- EmitSoundOn("Hero_Sven.GodsStrength",caster)
+
+
+	EmitSoundOn("Hero_Earthshaker.Arcana.GlobalLayer2",caster)
 
 end
 
@@ -649,7 +682,6 @@ end
 
 function modifier_thdots_yorihime_ultimate:OnCreated( kv )
 	self.gods_strength_damage = self:GetAbility():GetSpecialValueFor( "gods_strength_damage" )
-	-- self.radius 		= self:GetAbility():GetSpecialValueFor("ult_radius")
 	-- self.caster 		= self:GetParent()
 	if not IsServer() then return end
 	local nFXIndex = ParticleManager:CreateParticle( "particles/units/heroes/hero_sven/sven_spell_gods_strength_ambient.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent() )
@@ -657,23 +689,26 @@ function modifier_thdots_yorihime_ultimate:OnCreated( kv )
 		ParticleManager:SetParticleControlEnt( nFXIndex, 2, self:GetParent(), PATTACH_POINT_FOLLOW, "attach_head" , self:GetParent():GetOrigin(), true )
 		self:AddParticle( nFXIndex, false, false, -1, false, true )
 		self:StartIntervalThink(0.1)
-end
+	
+		self.particle_foot= ParticleManager:CreateParticle("particles/econ/items/sven/sven_warcry_ti5/sven_spell_warcry_ti_5.vpcf", PATTACH_ROOTBONE_FOLLOW, self:GetParent())
+		ParticleManager:SetParticleControlEnt(self.particle_foot, 0, self:GetParent(), PATTACH_ROOTBONE_FOLLOW, "follow_rootbone", self:GetParent():GetAbsOrigin(), true)
+		ParticleManager:SetParticleControlEnt(self.particle_foot, 1, self:GetParent(), PATTACH_ROOTBONE_FOLLOW, "follow_rootbone", self:GetParent():GetAbsOrigin(), true)
+
+
+	end
 
 
 
 function modifier_thdots_yorihime_ultimate:OnIntervalThink()
 	if not IsServer() then return end
 	local caster 		= self:GetParent()
-	self.radius	= self:GetAbility():GetSpecialValueFor("ult_radius") + FindTelentValue(caster,"special_bonus_radius_99999")
-
-	local radius = self.radius
-	-- print("ult",radius)
 	local ability = self:GetAbility()
+	self.radius 		= self:GetAbility():GetSpecialValueFor("ult_radius")  + FindTelentValue(self:GetParent(),"special_bonus_radius_99999")
 	local allies = FindUnitsInRadius(
 					self:GetParent():GetTeam(),		
 					self:GetParent():GetOrigin(),		
 				   nil,					
-				   radius,		
+				   self.radius,		
 				   DOTA_UNIT_TARGET_TEAM_FRIENDLY,
 				   DOTA_UNIT_TARGET_HERO,
 				   0, FIND_CLOSEST,
@@ -691,7 +726,7 @@ end
 
 function modifier_thdots_yorihime_ultimate:DeclareFunctions()
 	local funcs = {
-		MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE,
+		-- MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE,
 		MODIFIER_PROPERTY_STATS_STRENGTH_BONUS,
 	}
 
@@ -700,9 +735,9 @@ end
 
 --------------------------------------------------------------------------------
 
-function modifier_thdots_yorihime_ultimate:GetModifierBaseDamageOutgoing_Percentage()
-	return self.gods_strength_damage * self:GetStackCount()
-end
+-- function modifier_thdots_yorihime_ultimate:GetModifierBaseDamageOutgoing_Percentage()
+-- 	return self.gods_strength_damage * self:GetStackCount()
+-- end
 
 function modifier_thdots_yorihime_ultimate:GetModifierBonusStats_Strength()
 	return self:GetAbility():GetSpecialValueFor( "ult_strength" ) * self:GetStackCount()

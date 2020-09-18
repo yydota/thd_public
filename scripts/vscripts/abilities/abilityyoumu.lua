@@ -166,6 +166,15 @@ function AbilityYoumu:OnYoumu01Start(keys)
 	local caster = EntIndexToHScript(keys.caster_entindex)
 	THDReduceCooldown(keys.ability,FindTelentValue(caster,"special_bonus_unique_juggernaut_2"))
 	local targetPoint = keys.target_points[1]
+	local vecCaster = caster:GetOrigin()
+	local maxRange = keys.ability:GetSpecialValueFor("cast_range")
+	local pointRad = GetRadBetweenTwoVec2D(vecCaster,targetPoint)
+	if(GetDistanceBetweenTwoVec2D(vecCaster,targetPoint)<=maxRange)then
+		targetPoint = targetPoint
+	else
+		local blinkVector = Vector(math.cos(pointRad)*maxRange,math.sin(pointRad)*maxRange,0) + vecCaster
+		targetPoint = blinkVector
+	end
 	local Youmu01rad = GetRadBetweenTwoVec2D(caster:GetOrigin(),targetPoint)
 	local Youmu01MoveSpeed = GetDistanceBetweenTwoVec2D(caster:GetOrigin(),targetPoint)/2
 	keys.ability:SetContextNum("ability_Youmu01_Rad",Youmu01rad,0)

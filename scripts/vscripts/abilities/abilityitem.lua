@@ -292,7 +292,10 @@ function ForceHorizontal( keys )
 		target:SetAbsOrigin(target:GetAbsOrigin() + ability.forced_direction * ability.forced_speed)
 		ability.forced_traveled = ability.forced_traveled + (ability.forced_direction * ability.forced_speed):Length2D()
 	else
-		FindClearSpaceForUnit(target, target:GetAbsOrigin(), true)
+		target:SetContextThink("clear_space",function ()
+			FindClearSpaceForUnit(target, target:GetAbsOrigin(), true)
+			end,
+			0.03)
 		target:InterruptMotionControllers(true)
 	end
 

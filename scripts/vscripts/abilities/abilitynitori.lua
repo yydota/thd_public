@@ -498,6 +498,7 @@ function modifier_ability_thdots_nitori04_funnel_cast:OnCreated()
 
 end
 function modifier_ability_thdots_nitori04_funnel_cast:OnDestroy()
+	if not IsServer() then return end
 	local caster = self:GetParent()
 	local target = self:GetAbility().target
 	local distance = (target:GetOrigin() - caster:GetOrigin()):Length2D()

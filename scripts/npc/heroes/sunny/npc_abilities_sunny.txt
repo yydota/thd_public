@@ -1,0 +1,244 @@
+"DOTAAbilities"
+{
+	"ability_thdots_sunny01"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"touhoutd/thtd_eirin_03"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitysunny.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"SpellDispellableType" "SPELL_DISPELLABLE_NO"
+		"AbilityCooldown"	"16"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+		}
+		"Modifiers"
+		{
+			"modifier_ability_thdots_sunny01"	{}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"10 12 14 16"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"movement_speed"	"5 10 15 20"
+			}
+		}
+	}
+
+	"ability_thdots_sunny02"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"touhoutd/thtd_eirin_02"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitysunny.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"ACT_DOTA_ATTACK2"
+		"AnimationPlaybackRate"	"2"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES_STRONG"
+		"AbilityCooldown"	"16 15 14 13"
+		"AOERadius"	"225"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"225 250 275 300"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"85 120 155 190"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_time"	"1.4 1.7 2.0 2.3"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"int_bonus"	"1.9"
+			}
+		}
+	}
+
+	"ability_thdots_sunny03"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"touhoutd/thtd_sunny_01"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitysunny.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_5"
+		"AnimationPlaybackRate"	"2"
+		"AbilityCooldown"	"11 10 9 8"
+		"AbilityCastRange"	"550"
+		"Modifiers"
+		{
+			"modifier_ability_thdots_sunny03_debuff"	{}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"85 120 155 190"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_bonus"	"150"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"4"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"regen_reduce"	"-50"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"int_bonus"	"1.9"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"500"
+			}
+		}
+	}
+
+	"ability_thdots_sunny04"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"touhoutd/thtd_sunny_02"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitysunny.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCooldown"	"90 75 60"
+		"AbilityCastRange"	"2000"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_puck.vsndevts"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_seija_sounds.vsndevts"
+		}
+		"Modifiers"
+		{
+			"modifier_ability_thdots_sunny04"	{}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"50"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"120"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"constant"	"200"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"base_count"	"3 6 9"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"int_bonus"	"0.3"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"length"	"1200"
+			}
+		}
+	}
+
+	"ability_thdots_sunnyEx"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"touhoutd/star_up"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitysunny.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"MaxLevel"	"1"
+		"HasScepterUpgrade"	"1"
+		"Modifiers"
+		{
+			"modifier_ability_thdots_sunnyEx"	{}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"int"	"3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"resistance"	"1"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"regen_bonus"	"0.5"
+			}
+		}
+	}
+
+	"ability_thdots_sunny05"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"custom/thtd_sunny_05"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitysunny.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCooldown"	"40"
+		"AbilityCastRange"	"800"
+		"MaxLevel"	"1"
+		"Modifiers"
+		{
+			"modifier_ability_thdots_sunny05"	{}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"40"
+			}
+		}
+	}
+}

@@ -263,6 +263,11 @@ function OnClown03Damage(keys)
 	if FindTelentValue(caster,"special_bonus_unique_doom_4") == 1 then
 		deal_damage = deal_damage * 1.5
 	end
+	if caster:GetUnitName() == "npc_dota_hero_doom_bringer" then
+		local clown03_effect = ParticleManager:CreateParticle("particles/units/heroes/hero_doom_bringer/doom_infernal_blade.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+		ParticleManager:SetParticleControl(clown03_effect, 0, target:GetAbsOrigin() )
+		ParticleManager:ReleaseParticleIndex(clown03_effect)
+	end
 	local targets = FindUnitsInRadius(
 						caster:GetTeam(),
 						target:GetOrigin(),

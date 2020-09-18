@@ -1163,6 +1163,11 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 	elseif (heroName == "npc_dota_hero_sven") then
 		abilityEx = hero:FindAbilityByName("ability_thdots_yorihime_Ex")
 		abilityEx:SetLevel(1)
+	elseif (heroName == "npc_dota_hero_rattletrap") then
+		abilityEx = hero:FindAbilityByName("ability_thdots_sunnyEx")
+		abilityEx:SetLevel(1)
+		abilityEx = hero:FindAbilityByName("ability_thdots_sunny05")
+		abilityEx:SetLevel(1)
 	end
 end
 

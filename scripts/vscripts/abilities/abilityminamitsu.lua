@@ -57,7 +57,9 @@ function OnMinamitsu01SpellStart(keys)
 					   false
 				    )
 				    for k,v in pairs(targets) do
-				    	if v == caster or v:GetClassname()=="npc_dota_roshan" or v:GetUnitName()=="ability_minamitsu_04_ship" or v:HasModifier("dummy_unit") then
+				    	if v == caster or v:GetClassname()=="npc_dota_roshan" or v:GetUnitName()=="ability_minamitsu_04_ship" 
+				    		or v:HasModifier("dummy_unit") or v:HasModifier("modifier_item_dragon_star_buff") 
+				    		or v:HasModifier("modifier_meirin02_buff") then
 				    		table.remove(targets,k)
 				    	end
 				    end
@@ -127,7 +129,9 @@ function OnMinamitsu01Back(vecHook,target,rad,distance,effectIndex,keys)
 						   false
 					    )
 					    for k,v in pairs(targets) do
-					    	if v == caster or v:GetClassname()=="npc_dota_roshan" or v:GetUnitName()=="ability_minamitsu_04_ship" or v:HasModifier("dummy_unit") then
+					    	if v == caster or v:GetClassname()=="npc_dota_roshan" or v:GetUnitName()=="ability_minamitsu_04_ship"
+					    	 or v:HasModifier("dummy_unit") or v:HasModifier("modifier_item_dragon_star_buff") 
+					    	 or v:HasModifier("modifier_meirin02_buff") then
 					    		table.remove(targets,k)
 					    	end
 					    end
@@ -176,7 +180,7 @@ function OnMinamitsu02SpellStart(keys)
 	local forwardVector = caster:GetForwardVector()
 	local timeCount = 0
 
-	local effectIndex = ParticleManager:CreateParticle("particles/heroes/minamitsu/ability_minamitsu_02_body.vpcf", PATTACH_CUSTOMORIGIN, nil)
+	local effectIndex = ParticleManager:CreateParticle("particles/heroes/minamitsu/ability_minamitsu_02_body.vpcf", PATTACH_CUSTOMORIGIN, caster)
 	ParticleManager:SetParticleControl(effectIndex, 3, vecHook)
 	ParticleManager:SetParticleControlForward(effectIndex, 3, forwardVector)
 
@@ -247,26 +251,28 @@ function OnMinamitsu02Vortex(keys)
 							damage_type = keys.ability:GetAbilityDamageType(), 
 						    damage_flags = keys.ability:GetAbilityTargetFlags()
 						}
-						UnitDamageTarget(damage_table) 
-			    		table.insert(caster.ability_minamitsu_02_group,v)
-						if v:IsNull() ==false and v~=nil then
-							if v:HasModifier("modifier_minamitsu02_pause") == false then
-								keys.ability:ApplyDataDrivenModifier( caster, v, "modifier_minamitsu02_pause", {} )
-							end
-							if v:HasModifier("modifier_minamitsu02_vortex_target") == false then
-								local vecTarget = v:GetOrigin()
-								local distance = GetDistanceBetweenTwoVec2D(vecTarget,targetPoint)
-								local targetRad = GetRadBetweenTwoVec2D(targetPoint,vecTarget)
-								if distance>30 then
-									v:SetOrigin(Vector(vecTarget.x - math.cos(targetRad - math.pi/3) * keys.VortexSpeed *1.5, vecTarget.y - math.sin(targetRad - math.pi/3) * keys.VortexSpeed *1.5, vecTarget.z))
-								else
-									v:AddNoDraw()
-									keys.ability:ApplyDataDrivenModifier( caster, v, "modifier_minamitsu02_vortex_target", {} )
-									keys.ability:ApplyDataDrivenModifier( caster, v, "modifier_minamitsu02_vortex_pause_target", {} )
-									v:SetOrigin(v:GetOrigin()+RandomVector(100)+Vector(0,0,128))
+						UnitDamageTarget(damage_table)
+						if not v:HasModifier("modifier_item_dragon_star_buff") and not v:HasModifier("modifier_meirin02_buff") then
+			    			table.insert(caster.ability_minamitsu_02_group,v)
+							if v:IsNull() ==false and v~=nil then
+								if v:HasModifier("modifier_minamitsu02_pause") == false then
+									keys.ability:ApplyDataDrivenModifier( caster, v, "modifier_minamitsu02_pause", {} )
+								end
+								if v:HasModifier("modifier_minamitsu02_vortex_target") == false then
+									local vecTarget = v:GetOrigin()
+									local distance = GetDistanceBetweenTwoVec2D(vecTarget,targetPoint)
+									local targetRad = GetRadBetweenTwoVec2D(targetPoint,vecTarget)
+									if distance>30 then
+										v:SetOrigin(Vector(vecTarget.x - math.cos(targetRad - math.pi/3) * keys.VortexSpeed *1.5, vecTarget.y - math.sin(targetRad - math.pi/3) * keys.VortexSpeed *1.5, vecTarget.z))
+									else
+										v:AddNoDraw()
+										keys.ability:ApplyDataDrivenModifier( caster, v, "modifier_minamitsu02_vortex_target", {} )
+										keys.ability:ApplyDataDrivenModifier( caster, v, "modifier_minamitsu02_vortex_pause_target", {} )
+										v:SetOrigin(v:GetOrigin()+RandomVector(100)+Vector(0,0,128))
+									end
 								end
 							end
-						end
+			    		end
 				    end
 			    end
 			    if timeCount >= 1.5 then

@@ -35,12 +35,56 @@ function OnYugi04SpellStart(keys)
 	local caster = EntIndexToHScript(keys.caster_entindex)
 	local target = keys.target
 	local vecTarget = target:GetOrigin()
+	local ability_radius = keys.ability:GetSpecialValueFor("ability_radius")
+	local ability_duration = keys.ability:GetSpecialValueFor("ability_duration")
 	target:SetContextNum("ability_yugi04_point_x",vecTarget.x,0)
 	target:SetContextNum("ability_yugi04_point_y",vecTarget.y,0)
 	if target:IsHero() then
 		-- caster:EmitSound("Voice_Thdots_Yugi.AbilityYugi04_1")
 		caster:EmitSound("Voice_Thdots_Yugi.AbilityYugi04")
 	end
+	--以下是特效
+	local coil_thinker = CreateModifierThinker(
+		caster,
+		keys.ability,
+		"modifier_yugi04_effect",
+		{duration = ability_duration},
+		vecTarget,
+		caster:GetTeamNumber(),
+		false
+	)
+
+	local coil_modifier = target:AddNewModifier(caster, keys.ability, "modifier_imba_puck_dream_coil", 
+		{
+			duration		= ability_duration,
+			coil_thinker	= coil_thinker:entindex()
+		})
+
+	local coil_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_puck/puck_dreamcoil_tether.vpcf", PATTACH_ABSORIGIN, coil_thinker)
+	ParticleManager:SetParticleControlEnt(coil_particle, 0, coil_thinker, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", coil_thinker:GetAbsOrigin(), true)
+	ParticleManager:SetParticleControlEnt(coil_particle, 1, target, PATTACH_ABSORIGIN_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
+	local count = ability_duration
+
+	target:SetContextThink("yugi04", 
+		function()
+			if GameRules:IsGamePaused() then return 0.03 end
+			local particle = ParticleManager:CreateParticle("particles/heroes/seija/seija04.vpcf", PATTACH_ABSORIGIN_FOLLOW, coil_thinker)
+		    ParticleManager:SetParticleControl(particle, 2, Vector(ability_radius, ability_radius, ability_radius))
+		    ParticleManager:ReleaseParticleIndex(particle)
+		    count = count - 0.5
+		    if count <= 0 then
+		    	return nil
+		    else
+		    	return 0.5
+		    end
+		end,
+		0)
+end
+
+modifier_yugi04_effect = {}
+LinkLuaModifier("modifier_yugi04_effect", "scripts/vscripts/abilities/abilityYugi.lua", LUA_MODIFIER_MOTION_NONE)
+function modifier_yugi04_effect:GetEffectName()
+	return "particles/units/heroes/hero_puck/puck_dreamcoil.vpcf"
 end
 
 function OnYugi04SpellThink(keys)
@@ -51,6 +95,9 @@ function OnYugi04SpellThink(keys)
 	end
 	local vecPoint = Vector(target:GetContext("ability_yugi04_point_x"),target:GetContext("ability_yugi04_point_y"),0)
 	local dis = GetDistanceBetweenTwoVec2D(target:GetOrigin(),vecPoint)
+
+
+
 
 	if(dis>keys.AbilityRadius)then
 		--[[local damage_table = {

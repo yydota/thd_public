@@ -455,7 +455,8 @@
 	
 					"AttachEffect"
 					{
-						"EffectName"        "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
+						//"EffectName"        "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
+						"EffectName"        "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_scroll.vpcf"
 						"EffectAttachType"  "follow_overhead"
 						"Target"            "TARGET"
 					}

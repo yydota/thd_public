@@ -46,6 +46,32 @@ function OnSuika02ULTStart(keys)
 	end
 end
 
+function OnSuika03Start(keys)
+	local caster = keys.caster
+	local ability = keys.ability
+	local ability_duration = ability:GetSpecialValueFor("ability_duration")
+	ability:ApplyDataDrivenModifier(caster, caster, "modifier_thdots_suika03_states", {})
+	ability:ApplyDataDrivenModifier(caster, caster, "modifier_thdots_suika03_think_interval", {})
+	if caster:GetUnitName() == "npc_dota_hero_tidehunter" then
+		caster:EmitSound("Voice_Thdots_Suika.AbilitySuika01")
+	end
+	local ModifierSuika03=caster:FindModifierByName("modifier_thdots_Suika_04")
+	if ModifierSuika03 then
+		caster.suika03_time = ModifierSuika03:GetRemainingTime()
+		ModifierSuika03:SetDuration(caster.suika03_time + ability_duration, true)
+		if caster:FindModifierByName("modifier_thdots_Suika_04_telent") then
+			caster:FindModifierByName("modifier_thdots_Suika_04_telent"):SetDuration(caster.suika03_time + ability_duration, true)
+		end
+	end
+end
+
+function OnSuika03End(keys)
+	local caster = keys.caster
+	local ability = keys.ability
+	print("caster.suika03_time is:")
+	print(caster.suika03_time)
+end
+
 function OnSuika03Spawn(keys)
 	local caster = EntIndexToHScript(keys.caster_entindex)
 	local Caster = keys.caster
@@ -111,7 +137,7 @@ function OnSuika04SpellStart(keys)
 	local ability = keys.ability
 	local duration = ability:GetSpecialValueFor("duration") + FindTelentValue(caster,"special_bonus_unique_tidehunter_3")
 	if FindTelentValue(caster,"special_bonus_unique_tidehunter")~=0 then
-		keys.ability:ApplyDataDrivenModifier( caster, caster, "modifier_thdots_Suika_04_telent", {} )
+		keys.ability:ApplyDataDrivenModifier( caster, caster, "modifier_thdots_Suika_04_telent", {duration = duration} )
 	end
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_thdots_Suika_04", {duration = duration})
 	if CasterName == "npc_dota_hero_tidehunter" then
@@ -128,25 +154,45 @@ function OnSuika04SpellStart(keys)
 		caster:SetModelScale(2.0)
 	end
 	ability:SetActivated(false)
-	caster:SetContextThink("ability_thdots_suika04_duration", 
-		function ()
-			if GameRules:IsGamePaused() then return 0.03 end
-			if CasterName == "npc_dota_hero_tidehunter" then
-				caster:RemoveAbility("ability_thdots_suika02_ult") 
-				caster:AddAbility("ability_thdots_suika02")
-				caster:RemoveModifierByName("passive_suika02_ult_attack") 
-				local ability02 = caster:FindAbilityByName("ability_thdots_suika02")
-				ability02:SetLevel(caster:GetContext("ability_thdots_suika02_level"))
-				caster:SetModelScale(1.0)
-			else
-				caster:SetModelScale(1.0)
-			end
+	-- caster:SetContextThink("ability_thdots_suika04_duration", 
+	-- 	function ()
+	-- 		if GameRules:IsGamePaused() then return 0.03 end
+	-- 		if CasterName == "npc_dota_hero_tidehunter" then
+	-- 			caster:RemoveAbility("ability_thdots_suika02_ult") 
+	-- 			caster:AddAbility("ability_thdots_suika02")
+	-- 			caster:RemoveModifierByName("passive_suika02_ult_attack") 
+	-- 			local ability02 = caster:FindAbilityByName("ability_thdots_suika02")
+	-- 			ability02:SetLevel(caster:GetContext("ability_thdots_suika02_level"))
+	-- 			caster:SetModelScale(1.0)
+	-- 		else
+	-- 			caster:SetModelScale(1.0)
+	-- 		end
 			
-			caster:RemoveModifierByName("modifier_thdots_Suika_04")
-			caster:RemoveModifierByName("modifier_thdots_Suika_04_telent") 
-			ability:SetActivated(true)
-		end
-	,duration) 
+	-- 		caster:RemoveModifierByName("modifier_thdots_Suika_04")
+	-- 		caster:RemoveModifierByName("modifier_thdots_Suika_04_telent") 
+	-- 		ability:SetActivated(true)
+	-- 	end
+	-- ,duration) 
+end
+
+function OnSuika04End( keys )
+	local caster = EntIndexToHScript(keys.caster_entindex)
+	local Caster = keys.caster
+	local CasterName = Caster:GetClassname()
+	local ability = keys.ability
+	if CasterName == "npc_dota_hero_tidehunter" then
+		caster:RemoveAbility("ability_thdots_suika02_ult") 
+		caster:AddAbility("ability_thdots_suika02")
+		caster:RemoveModifierByName("passive_suika02_ult_attack") 
+		local ability02 = caster:FindAbilityByName("ability_thdots_suika02")
+		ability02:SetLevel(caster:GetContext("ability_thdots_suika02_level"))
+		caster:SetModelScale(1.0)
+	else
+		caster:SetModelScale(1.0)
+	end	
+	caster:RemoveModifierByName("modifier_thdots_Suika_04")
+	caster:RemoveModifierByName("modifier_thdots_Suika_04_telent") 
+	ability:SetActivated(true)
 end
 
 function Suika_04_wanbaochui_check(keys)

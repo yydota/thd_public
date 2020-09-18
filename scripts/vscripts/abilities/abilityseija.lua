@@ -28,7 +28,7 @@ function ability_thdots_seija01:OnSpellStart()
 	self.point 				= self:GetCursorPosition()
 	self.damage 			= self:GetSpecialValueFor("damage")
 	self.int_bonus 			= self:GetSpecialValueFor("int_bonus")
-	self.cast_range 		= self:GetSpecialValueFor("cast_range")
+	self.cast_range 		= self:GetSpecialValueFor("cast_range") + 200
 	if self.caster:HasModifier("modifier_ability_thdots_seija03") then --是否对自己判定
 		self.target = self.caster
 		self.caster:AddNewModifier(self.caster, self, "modifier_ability_thdots_seija01_target",{})
@@ -183,10 +183,12 @@ end
 function Seija01CreateProjectile(caster,ability,start_position,end_position)
 	local caster  			= caster
 	local ability 			= ability
+	local range 			= ability.cast_range
 	-- local distance 			= ability:GetSpecialValueFor("cast_range")
-	local distance 			= 1200
+	local distance 			= range
+	print(distance)
 	if caster:HasModifier("modifier_ability_thdots_seija01_target") then
-		distance = distance +1100
+		distance = distance + distance
 	end
 	StartSoundEventFromPosition("Voice_Thdots_Suika.AbilitySeija01_1",start_position)
 	local particle 			= "particles/heroes/seija/seija01.vpcf"
@@ -256,7 +258,7 @@ function ability_thdots_seija02:OnSpellStart()
 			angle = RotatePosition(Vector(0,0,0), qangle, caster:GetForwardVector())
 			Seija02CreateProjectile(caster,ability,caster:GetAbsOrigin()+excursion,angle,self.damage_reduce,count,self.projectile_table,times)
 			times = times + 1
-			caster:SetMana(caster:GetMana()-self.extra_cost) --额外耗蓝
+			-- caster:SetMana(caster:GetMana()-self.extra_cost) --额外耗蓝
 			if times >= num then
 				return nil
 			end

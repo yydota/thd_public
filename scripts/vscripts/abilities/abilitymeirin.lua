@@ -147,7 +147,7 @@ function CheckTargets(keys)
 	-- Loops through target
 	for i,unit in ipairs(units) do
 		-- Checks if the target is already affected by skewer
-		if unit:HasModifier("modifier_skewer_disable_target") == false then
+		if not unit:HasModifier("modifier_skewer_disable_target")and not unit:HasModifier("modifier_item_dragon_star_buff") then
 			-- If not, move it offset in front of the caster
 			-- if (unit:GetOrigin() - caster:GetOrigin()):Length2D() < 200 then
 			-- 	break 

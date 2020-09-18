@@ -1,0 +1,82 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_sunny"
+	{
+		"Ability1"	"ability_thdots_sunny01"
+		"Ability2"	"ability_thdots_sunny02"
+		"Ability3"	"ability_thdots_sunny03"
+		"Ability4"	"ability_thdots_sunnyEx"
+		"Ability5"	"ability_thdots_sunny05"
+		"Ability6"	"ability_thdots_sunny04"
+		"Ability7"	"generic_hidden"
+		"Ability8"	"generic_hidden"
+		"Ability9"	"generic_hidden"
+		"Ability10"	"special_bonus_exp_boost_15"
+		"Ability11"	"special_bonus_gold_income_60"
+		"Ability12"	"special_bonus_strength_15"
+		"Ability13"	"special_bonus_spell_amplify_10"
+		"Ability14"	"special_bonus_hp_500"
+		"Ability15"	"special_bonus_all_stats_15"
+		"Ability16"	"special_bonus_hp_regen_80"
+		"Ability17"	"special_bonus_cooldown_reduction_25"
+		"override_hero"	"npc_dota_hero_rattletrap"
+		"ModelScale"	"1.2"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AbilityLayout"	"7"
+		"DisableWearables"	"1"
+		"ProjectileSpeed"	"9999"
+		// "Carry"			"核心"
+		// "Support"			"辅助"
+		// "Nuker"			"爆发"
+		// "Disabler"		"控制"
+		// "Jungler"			"打野"
+		// "Durable"			"耐久"
+		// "Escape"			"逃生"
+		// "LaneSupport"		"对线辅助"
+		// "Pusher"			"推进"
+		// "Initiator"		"先手"
+		// "Role"			"Carry,Support,Nuker,Disabler,Jungler,Durable,Escape,LaneSupport,Pusher,Initiator"
+		"Role"	"Support,Disabler,Jungler,Durable,Escape,LaneSupport,Initiator"
+		"Rolelevels"	"2,3,2,2,2,2"
+		"AttackRange"	"140"
+		// 攻击距离
+		"ArmorPhysical"	"1"
+		// 攻击前摇
+		"AttackRate"	"1.6"
+		// 攻击速度
+		"AttackDamageMin"	"31"
+		// 最大攻击力
+		"AttackDamageMax"	"32"
+		// 最小攻击力
+		"AttributeBaseStrength"	"22"
+		// 基础力量
+		"AttributeStrengthGain"	"2.2"
+		// 每级增加的力量，力量成长
+		"AttributeBaseAgility"	"19"
+		// 基础敏捷
+		"AttributeAgilityGain"	"1.6"
+		// 每级增加的敏捷，敏捷成长
+		"AttributeBaseIntelligence"	"19"
+		// 基础智力
+		"AttributeIntelligenceGain"	"1.6"
+		// 每级增加的智力，智力成长
+		"MovementSpeed"	"295"
+		// 基础移动速度
+		"MovementTurnRate"	"1.2"
+		// 转身速度
+		"StatusHealth"	"200"
+		// 基础生命值
+		"StatusHealthRegen"	"0"
+		// 基础生命恢复
+		"StatusMana"	"70"
+		// 基础魔法值
+		"StatusManaRegen"	"0.6"
+		// 基础魔法恢复
+		"VisionDaytimeRange"	"1050"
+		// 白天视野大小
+		"VisionNighttimeRange"	"700"
+		"Model"	"models/sunny/sunny.vmdl"
+		"SoundSet"	"Hero_LifeStealer"
+		"GameSoundsFile"	"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+	}
+}

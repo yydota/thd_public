@@ -12,6 +12,7 @@
 #base heroes/nazrin/hero.txt
 #base heroes/star/hero.txt
 #base heroes/yorihime/hero.txt
+#base heroes/sunny/hero.txt
 
 "DOTAHeroes"
 {
@@ -1457,13 +1458,13 @@
 		// 基础智力
 		"AttributeIntelligenceGain"	"1.1"
 		// 每级增加的智力，智力成长
-		"MovementSpeed"	"285"
+		"MovementSpeed"	"310"
 		// 基础移动速度
 		"MovementTurnRate"	"0.8"
 		// 转身速度
 		"StatusHealth"	"75"
 		// 基础生命值
-		"StatusHealthRegen"	"2.0"
+		"StatusHealthRegen"	"4.5"
 		// 基础生命恢复
 		"StatusMana"	"90"
 		// 基础魔法值
@@ -3122,9 +3123,9 @@
 		"Ability7"	"generic_hidden"
 		"Ability8"	"generic_hidden"
 		"Ability9"	"generic_hidden"
-		"Ability10"		"special_bonus_unique_elder_titan"
+		"Ability10"		"special_bonus_exp_boost_15"
 		"Ability11"		"special_bonus_strength_10"
-		"Ability12"		"special_bonus_armor_8"
+		"Ability12"		"special_bonus_unique_elder_titan"
 		"Ability13"		"special_bonus_unique_elder_titan_2"
 		"Ability14"		"special_bonus_unique_elder_titan_3"
 		"Ability15"		"special_bonus_all_stats_14"
@@ -4067,7 +4068,7 @@
 		// 物理护甲
 		"AttackAnimationPoint"	"0.3"
 		// 攻击前摇
-		"AttackRate"	"1.6"
+		"AttackRate"	"1.5"
 		// 攻击速度
 		"AttackDamageMin"	"31"
 		// 最大攻击力
@@ -4100,7 +4101,7 @@
 		"VisionDaytimeRange"	"1050"
 		// 白天视野大小
 		"VisionNighttimeRange"	"700"
-		"AttackRange"	"550"
+		"AttackRange"	"600"
 	}
 	"npc_dota_hero_mystia"
 	{

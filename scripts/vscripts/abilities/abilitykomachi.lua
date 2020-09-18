@@ -11,12 +11,13 @@ function Komachi01_Think(keys)
 	local modifier = caster:FindModifierByName("modifier_thdots_komachi_blink")
 	local exduration = 0
 	local stackcount=keys.stackCount
+	local cooldown = keys.ability:GetEffectiveCooldown(keys.ability:GetLevel()-1)
 	if caster:HasModifier("modifier_item_wanbaochui") then
 		
 		stackcount=keys.stackCount+3
 	end
 	if modifier:GetStackCount()<stackcount and caster:HasModifier("modifier_thdots_komachi_time_to_add_blink")==false then
-		keys.ability:ApplyDataDrivenModifier(caster,caster,"modifier_thdots_komachi_time_to_add_blink",{duration = 10 - FindTelentValue(caster,"special_bonus_unique_elder_titan")})
+		keys.ability:ApplyDataDrivenModifier(caster,caster,"modifier_thdots_komachi_time_to_add_blink",{duration = cooldown - FindTelentValue(caster,"special_bonus_unique_elder_titan")})
 	end
 end
 
@@ -84,16 +85,19 @@ function Komachi02_AttackLanded(keys)
 	if ability~=nil then
 		local Damage = ability:GetAbilityDamage() + FindTelentValue(caster,"special_bonus_unique_elder_titan_2")
 		for _,v in pairs(targets) do
-			local distance = GetDistanceBetweenTwoVec2D(caster:GetOrigin(),v:GetOrigin())
-			if distance < 200 then
-				deal_damage = Damage*0.5
-				Komachi03_FireEffect(caster,v)
-			elseif distance >= 200 then
+			-- local distance = GetDistanceBetweenTwoVec2D(caster:GetOrigin(),v:GetOrigin())
+			-- if distance < 200 then
+			-- 	deal_damage = Damage*0.5
+			-- 	Komachi03_FireEffect(caster,v)
+			-- elseif distance >= 200 then
+			-- 	deal_damage = Damage*1.0
+			-- 	Komachi03_FireEffect(caster,v)
+			-- 	Komachi03_FireEffect(caster,v)
+			-- end
+			-- if v ~= target then
+			-- end
 				deal_damage = Damage*1.0
 				Komachi03_FireEffect(caster,v)
-				Komachi03_FireEffect(caster,v)
-			end
-
 			local damage_table = {
 					ability = keys.ability,
 				    victim = v,
@@ -135,6 +139,8 @@ function Komachi03_FireEffect(caster,target)
 		else
 			if modifier:GetStackCount() < 12 then
 				modifier:IncrementStackCount()
+				modifier:SetDuration(12.0,true)
+			else
 				modifier:SetDuration(12.0,true)
 			end
 		end

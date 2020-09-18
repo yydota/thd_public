@@ -450,7 +450,7 @@ function A6OnInterval(k)
 	if not t:HasModifier("modifier_ability_thdots_kagerou06") or not cs:IsAlive()
 	then return end
 
-	ab.time = ab.time + 0.01
+	ab.time = ab.time + 0.03
 
 	local p = t:GetOrigin()
 	local tp = p + angleToVector(ab.angle) * 150 --在目标周围旋转
