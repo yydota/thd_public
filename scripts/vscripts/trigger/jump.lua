@@ -10,7 +10,10 @@ function ThdotsJumpTrigger( data )
 	local jumpSpeed = 30
 	local fallSpeed = 100
 	local fallG = 10
-	if target:HasModifier("modifier_ability_thdots_yorihime_01_move") then --一鸡冲刺
+	if target:HasModifier("modifier_ability_thdots_yorihime_01_move") --一鸡冲刺
+		or target:HasModifier("modifier_ability_thdots_chen01") --橙滚球
+		or target:HasModifier("modifier_kagerou_moving") --影狼跳
+		then 
 		return
 	end
     UnitPauseTarget(target,target,2)

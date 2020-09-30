@@ -256,7 +256,7 @@ function Yuuka02_OnSpellStart(keys)
 			YuukaCreateFlower(Caster, vecPos, Duration)
 			if (Target:GetOrigin()-vecPos):Length2D()<50 then
 				if Target:IsAlive() then
-					ApplyDamage{
+					UnitDamageTarget{
 						ability = Ability,
 						victim = Target,
 						attacker = Caster,

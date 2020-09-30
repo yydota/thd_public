@@ -534,7 +534,7 @@ function modifier_ability_thdots_hina02_bonds:OnTakeDamage(keys)
 						damage_flags	= DOTA_DAMAGE_FLAG_REFLECTION
 					}
 
-					ApplyDamage(damageTable)
+					UnitDamageTarget(damageTable)
 				
 					-- Add particle hit effect
 					local particle_hit_fx = ParticleManager:CreateParticle(self.particle_hit, PATTACH_CUSTOMORIGIN_FOLLOW, self.parent)
@@ -558,7 +558,7 @@ function modifier_ability_thdots_hina02_bonds:OnTakeDamage(keys)
 					damage_flags	= DOTA_DAMAGE_FLAG_REFLECTION
 				}
 
-				ApplyDamage(damageTable)
+				UnitDamageTarget(damageTable)
 				
 				-- Add particle hit effect
 				local particle_hit_fx = ParticleManager:CreateParticle(self.particle_hit, PATTACH_CUSTOMORIGIN_FOLLOW, self.parent)
@@ -614,7 +614,7 @@ function ability_thdots_hina03:OnSpellStart()
 					ability			= self.ability,
 					damage_flags	= self:GetAbilityTargetFlags()
 				}
-		ApplyDamage(damageTable)
+		UnitDamageTarget(damageTable)
 	end
 	if #targets > 0 then
 		EmitSoundOn("Hero_WitchDoctor.Maledict_Cast", self:GetCaster())
@@ -890,7 +890,7 @@ function modifier_ability_thdots_hina04_damage:OnCreated()
 						ability = ability
 						}
 	UtilStun:UnitStunTarget(caster,target,stun_time)
-	local damage_dealt = ApplyDamage(damageTable)
+	local damage_dealt = UnitDamageTarget(damageTable)
 
 end
 function CreateRequiemSoulLine(caster, ability, line_end_position, death_cast) --IMBA影魔大招特效

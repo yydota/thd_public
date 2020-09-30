@@ -11413,8 +11413,8 @@
 		"BaseClass"	"item_datadriven"
 		"AbilityTextureName"	"item_yuri"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-		// "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
-		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		// "AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_COURIER"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_ALL"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 		"AbilityCastPoint"	"0.0"
@@ -12327,15 +12327,30 @@
 		"ItemDroppable"	"1"
 		"ItemSellable"	"1"
 		"ItemShopTags"	"int;regen_mana"
+		"precache"
+		{
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_lion.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
 				"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
-				"Function"	"ItemAbility_ModifierTarget"
+				"Function"	"Item_yukkuri_stick_ModifierTarget"
 				"ModifierName"	"modifier_item_yukkuri_stick_debuff"
 				"Blockable"	"1"
 			}
+			// "FireSound"
+			// {
+			// 	"EffectName"	"Hero_Lion.Voodoo"
+			// 	"Target" 		"TARGET"
+			// }
+			// "FireEffect"
+			// {
+			// 	"EffectName"	"particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf"
+			// 	"Target"		"TARGET"
+			// 	"EffectAttachType"	"follow_origin"
+			// }
 		}
 		"Modifiers"
 		{
@@ -13980,7 +13995,7 @@
 				"Aura_Flags"	"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
 				"Aura_ApplyToCaster"	"1"
 				"RemoveOnDeath"	"1"
-				"Duration"	"4"
+				"Duration"	"%duration"
 				"OnCreated"{}
 			}
 			"modifier_item_yueyaomishi_radiate_regen_mana"
@@ -14028,12 +14043,17 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"radiate_regen_mana"	"250"
+				"radiate_regen_mana"	"180"
 			}
 			"07"
 			{
 				"var_type"	"FIELD_INTEGER"
 				"mana_regen_amplify"	"40"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"duration"	"10"
 			}
 		}
 	}

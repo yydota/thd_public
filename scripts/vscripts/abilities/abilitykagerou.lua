@@ -34,7 +34,7 @@ function A1Start(k)
 			ab:GetAbilityTargetTeam(), ab:GetAbilityTargetType(), 0,0,false)
 
 		each(targets,function (t)
-			ApplyDamage({
+			UnitDamageTarget({
 				victim = t, attacker = cs, damage = damage + cs:GetAverageTrueAttackDamage(cs) * ratio,
 				damage_type = getDamageType(), damage_flags = 0
 			})
@@ -140,7 +140,7 @@ function A2Hit(k)
 		victim = tg, attacker = cs, damage = damage, damage_type = getDamageType(), damage_flags = 0
 	}
 
-	ApplyDamage(damage_table)
+	UnitDamageTarget(damage_table)
 
 	--增加层数 刷新时间
 	reduce:IncrementStackCount(); reduce:SetDuration(1,true)
@@ -287,9 +287,14 @@ function A4OnInterval(k)
 		ab:GetAbilityTargetType(), 0,0,false)
 	--判断周围有没有除了自己的友方单位
 	local exists = false
-	if #units >= 2 then
-		exists = true
+	for _,v in pairs(units) do
+		if v:IsRealHero() and v ~= cs then
+			exists = true
+		end
 	end
+	-- if #units >= 2 then
+	-- 	exists = true
+	-- end
 
 	ab.time = ab.time or 0.0
 
@@ -322,6 +327,7 @@ function A4OnInterval(k)
 	end
 
 end
+
 
 -- 大招施法 跳跃
 function A6Start(k)
@@ -426,7 +432,7 @@ function A6Start(k)
 				ab:GetAbilityTargetTeam(), ab:GetAbilityTargetType(), ab:GetAbilityTargetFlags())
 
 			each(units,function (t)
-				ApplyDamage({
+				UnitDamageTarget({
 					victim = t, attacker = cs, damage = damage + cs:GetAverageTrueAttackDamage(cs) * ratio,
 					damage_type = getDamageType(), damage_flags = 0
 				})
@@ -450,7 +456,7 @@ function A6OnInterval(k)
 	if not t:HasModifier("modifier_ability_thdots_kagerou06") or not cs:IsAlive()
 	then return end
 
-	ab.time = ab.time + 0.03
+	ab.time = ab.time + 0.01
 
 	local p = t:GetOrigin()
 	local tp = p + angleToVector(ab.angle) * 150 --在目标周围旋转
@@ -503,7 +509,7 @@ function A6End(k)
 	local particle = ParticleManager:CreateParticle("particles/econ/items/elder_titan/elder_titan_ti7/elder_titan_echo_stomp_ti7_ring_wave.vpcf", PATTACH_ROOTBONE_FOLLOW, t)
 	ParticleManager:ReleaseParticleIndex(particle)
 	EmitSoundOn("Hero_ElderTitan.EchoStomp.ti7", cs)
-	ApplyDamage({
+	UnitDamageTarget({
 		victim = t, attacker = cs, damage = damage + cs:GetAverageTrueAttackDamage(cs) * ratio,
 		damage_type = getDamageType(), damage_flags = 0
 	})

@@ -100,8 +100,10 @@
 	
 	function UnitDamageTarget(DamageTable)
 		local dDamage = vlua.clone(DamageTable)
-		if(dDamage.victim:IsNightmared())then
-			dDamage.victim:RemoveModifierByName("modifier_bane_nightmare")
+		local victim = dDamage.victim or dDamage.target
+		if victim == nil then return end
+		if(victim:IsNightmared())then
+			victim:RemoveModifierByName("modifier_bane_nightmare")
 		end
 		--[[if dDamage.attacker:HasItemInInventory("item_bagua") then
 							dDamage.damage = dDamage.damage * 1.25
@@ -110,9 +112,31 @@
 							dDamage.damage = dDamage.damage * 1.1
 						end]]
 		if dDamage.attacker:HasItemInInventory("item_pomojinlingli") and dDamage.damage_type == DAMAGE_TYPE_MAGICAL then
-			if dDamage.victim:HasModifier("modifier_item_green_dam_barrier") then
-				dDamage.victim:RemoveModifierByName("modifier_item_green_dam_barrier")
+			if victim:HasModifier("modifier_item_green_dam_barrier") then
+				victim:RemoveModifierByName("modifier_item_green_dam_barrier")
 			end
 		end
 		return ApplyDamage(dDamage)
 	end
+
+	-- 原版伤害
+	-- function UnitDamageTarget(DamageTable)
+	-- 	local dDamage = vlua.clone(DamageTable)
+	-- 	if(dDamage.victim:IsNightmared())then
+	-- 		dDamage.victim:RemoveModifierByName("modifier_bane_nightmare")
+	-- 	end
+	-- 	--[[if dDamage.attacker:HasItemInInventory("item_bagua") then
+	-- 						dDamage.damage = dDamage.damage * 1.25
+	-- 					end]]
+	-- 	--[[if dDamage.attacker:HasModifier("modifier_thdots_patchouli_xianzhezhishi_sun") then
+	-- 						dDamage.damage = dDamage.damage * 1.1
+	-- 					end]]
+	-- 	if dDamage.attacker:HasItemInInventory("item_pomojinlingli") and dDamage.damage_type == DAMAGE_TYPE_MAGICAL then
+	-- 		print("--------------")
+	-- 		print(dDamage.victim:HasModifier("modifier_item_green_dam_barrier"))
+	-- 		if dDamage.victim:HasModifier("modifier_item_green_dam_barrier") then
+	-- 			dDamage.victim:RemoveModifierByName("modifier_item_green_dam_barrier")
+	-- 		end
+	-- 	end
+	-- 	return ApplyDamage(dDamage)
+	-- end

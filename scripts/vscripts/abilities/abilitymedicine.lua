@@ -130,7 +130,7 @@ function modifier_ability_thdots_medicine00_debuff:OnIntervalThink()
 		damage_type = self.ability:GetAbilityDamageType(),
 		damage_flags = 0
 	}
-	ApplyDamage(damageTable)
+	UnitDamageTarget(damageTable)
 end
 
 function OnMedicine01Spellbegining(keys)

@@ -25,6 +25,9 @@ function ability_thdots_nitori01:OnSpellStart()
 		if not caster:HasModifier("modifier_bloodseeker_thirst") then
 			caster:AddNewModifier(caster, self, "modifier_bloodseeker_thirst", {duration = duration})
 		end
+		if caster:GetName() == "npc_dota_hero_spectre" and RollPercentage(80) then
+			caster:EmitSound("Voice_Thdots_Nitori.AbilityNitori01")
+		end
 		caster:EmitSound("Hero_Phoenix.SolarForge.Layer")
 		StartSoundEvent("Hero_Phoenix.SunRay.Loop",caster)
 	end
@@ -75,7 +78,8 @@ end
 
 function modifier_ability_thdots_nitori01:OnIntervalThink()
 	if self.caster:IsAlive() then
-		if self.caster:IsStunned() or self.caster:IsFrozen() or self.caster:IsRooted() then
+		-- if self.caster:IsStunned() or self.caster:IsFrozen() or self.caster:IsRooted() then
+		if self.caster:IsFrozen() or self.caster:IsRooted() then
 			return
 		end
 		self.caster:SetOrigin(self.caster:GetAbsOrigin() + self.forward*10)
@@ -260,6 +264,9 @@ function modifier_ability_thdots_nitori02:OnDestroy()
 				vVelocity = ((ability.point - caster:GetAbsOrigin()) * Vector(1, 1, 0)):Normalized() * 7500,
 				bProvidesVision = false,	
 			})
+			if caster:GetName() == "npc_dota_hero_spectre" and RollPercentage(50) then
+				caster:EmitSound("Voice_Thdots_Nitori.AbilityNitori02")
+			end
 			caster:EmitSound("Hero_Tinker.LaserImpact")
 			caster:EmitSound("Hero_Tinker.Laser")
 		end
@@ -451,6 +458,9 @@ function ability_thdots_nitori04:OnSpellStart()
 		self.tNitori04Funnel[i].Funnel:AddNewModifier(caster, self, "modifier_ability_thdots_nitori04_funnel", {duration = self:GetSpecialValueFor("duration")})
 		-- caster:CastAbilityOnTarget(target,self,self.caster:GetPlayerID())
 		self.tNitori04Funnel[i].Funnel:SetOrigin(back_point + Vector(math.cos(vec+math.pi/3*i) * 250,math.sin(vec+math.pi/3*i) * 250,point.z))
+	end
+	if caster:GetName() == "npc_dota_hero_spectre" and RollPercentage(80) then
+		caster:EmitSound("Voice_Thdots_Nitori.AbilityNitori04")
 	end
 end
 

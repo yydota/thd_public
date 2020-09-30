@@ -41,9 +41,9 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"AbilityCastPoint"	"0.2"
+		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK2"
-		"AnimationPlaybackRate"	"2"
+		"AnimationPlaybackRate"	"1.4"
 		"SpellDispellableType" "SPELL_DISPELLABLE_YES_STRONG"
 		"AbilityCooldown"	"16 15 14 13"
 		"AOERadius"	"225"
@@ -67,7 +67,7 @@
 			"04"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"int_bonus"	"1.9"
+				"int_bonus"	"0.8"
 			}
 		}
 	}
@@ -201,7 +201,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"int"	"3"
+				"int"	"5"
 			}
 			"02"
 			{

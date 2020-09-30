@@ -216,7 +216,7 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"AbilityCooldown"	"160"
+		"AbilityCooldown"	"160 140 120"
 		"AbilityManaCost"	"150 200 250"
 		"AbilityCastRange"	"800"
 		"precache"

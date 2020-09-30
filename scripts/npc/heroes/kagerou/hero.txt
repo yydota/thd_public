@@ -44,6 +44,6 @@
     		"AttackDamageMin"	"31"
     		"AttackDamageMax"	"32"
     		"StatusStartingMana"	"110"
-    		"AttackRate"	"1.6"
+    		"AttackRate"	"1.5"
 	}
 }

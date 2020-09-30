@@ -84,13 +84,13 @@
 		{
 			"01"
 			{
-				"var_type"		"FIELD_FLOAT"
-				"duration"		"6.0"
+				"var_type"			"FIELD_FLOAT"
+				"duration"			"10"
 			}
 			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"movement_speed"	"100"
+				"movement_speed"	"30"
 			}
 		}
 		
@@ -306,7 +306,7 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"975"
-		"AbilityCastPoint"				"0.5 0.5 0.5 0.5"
+		"AbilityCastPoint"				"0.3"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -422,6 +422,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"HasScepterUpgrade"		"0"
 		
 		
 		// Casting
@@ -1357,7 +1358,7 @@
 	"item_blitz_knuckles"			"REMOVE"
 	"item_ultimate_scepter"			"REMOVE"
 	//"item_gem"			"REMOVE"
-	"item_keen_optic"			"REMOVE"		 //只要加了这个就会有中立装备
+	//"item_keen_optic"			"REMOVE"		 //只要加了这个就会有中立装备
 
 	//=================================================================================================================
 	// Raven
@@ -4907,7 +4908,7 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"value"				"120"
+				"value"				"90"
 			}
 		}
 	}

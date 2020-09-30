@@ -1,4 +1,4 @@
-TOP = 5			--取前X种排序
+TOP = 3			--取前X种排序
 PlayerList = {}		--前X种排序的列表
 PlayerRatings = {}
 PlayerRounds = {}

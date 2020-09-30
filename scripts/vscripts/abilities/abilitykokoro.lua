@@ -191,7 +191,7 @@ end
 
 function ability_thdots_kokoro02:GetCooldown(level)
 	if self:GetCaster():HasModifier("modifier_ability_thdots_kokoroEx_2_talent1") then
-		return self.BaseClass.GetCooldown(self, level) - 4
+		return self.BaseClass.GetCooldown(self, level) - 5
 	else
 		return self.BaseClass.GetCooldown(self, level)
 	end
@@ -911,6 +911,12 @@ end
 
 function modifier_ability_thdots_kokoro04_caster:OnIntervalThink()
 	if not IsServer() then return end
+	if not self.target:IsAlive() then
+		self:SetStackCount(1)
+		self:Destroy()
+		self.caster:StopSound("Voice_Thdots_Kokoro.AbilityKokoro04")
+		return
+	end
 	local vec = self.target:GetAbsOrigin() - self.caster:GetAbsOrigin()
 	vec.z = 0
 	self.caster:SetForwardVector(vec:Normalized())
@@ -923,7 +929,10 @@ function modifier_ability_thdots_kokoro04_caster:OnDestroy()
 	local damage = self:GetAbility():GetSpecialValueFor("damage")
 	local buyback_time = self:GetAbility():GetSpecialValueFor("buyback_time")
 	local HasAegis = target:HasModifier("modifier_item_aegis")
-	if not caster:IsAlive() then return end --caster死亡不触发
+	if not caster:IsAlive() or self:GetStackCount() == 1 then 
+		self:GetAbility():EndCooldown()
+		return 
+	end --caster死亡不触发,重置冷却
 	damage = damage * (target:GetMaxHealth() - target:GetHealth()) --造成伤害
 	local mask = 0
 	if caster:HasModifier("modifier_ability_thdots_kokoroEx_2") then

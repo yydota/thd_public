@@ -1,0 +1,62 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_ogre_magi"
+	{
+		"BaseAttackSpeed"		"100"
+		"Model"                 "models/new_thd/suwako/moriya.vmdl"
+		"ModelScale"            "1"
+		"DisableWearables"		"1"
+		"Ability1"				"ability_thdots_suwako01"
+		"Ability2"				"ability_thdots_suwako02"
+		"Ability3"				"ability_thdots_suwako03z"
+		"Ability4"				"ability_thdots_suwako05"
+		"Ability5"				"generic_hidden"
+		//"Ability3"				"ability_thdotsr_suwako03"
+		"Ability6"				"ability_thdots_suwako04new"
+		"Ability7"				"generic_hidden"
+		"Ability10"				"special_bonus_hp_regen_4"
+		"Ability11"				"special_bonus_unique_suwako_1"
+		"Ability12"				"special_bonus_mp_350"
+		"Ability13"				"special_bonus_spell_amplify_5"
+		"Ability14"				"special_bonus_armor_7"
+		"Ability15"				"special_bonus_movement_speed_40"
+		"Ability16"				"special_bonus_hp_350"
+		"Ability17"				"special_bonus_unique_suwako_4"
+		
+		"Role"					"Carry,Nuker,Disabler,Jungler,Escape,Pusher,Initiator,support"
+		"Rolelevels"			"0,3,3,0,0,0,3,0"			
+		"AttributeBaseStrength"		"20"
+		"AttackRate"	"1.6"		
+			//基础力量
+		"AttributeStrengthGain"		"2.0"
+			//每级增加的力量，力量成长
+		"AttributeBaseAgility"		"20"
+			//基础敏捷
+		"AttributeAgilityGain"		"2.0"
+			//每级增加的敏捷，敏捷成长
+		"AttributeBaseIntelligence"	"20"
+			//基础智力
+		"AttributeIntelligenceGain"	"2.0"
+		"MovementTurnRate"	"1000000"
+			//每级增加的智力，智力成长
+			
+		"MovementSpeed"				"322"
+			//基础移动速度
+		"MovementTurnRate"			"100000.0"
+			//转身速度
+		"AttackDamageMin"	"42"
+		// 最大攻击力
+		"AttackDamageMax"	"42"
+		"StatusHealthRegen"	"0.5"		
+		"AttackRange"	"150"
+		"StatusMana"	"100"	
+		"ArmorPhysical"	"0"		
+		"StatusManaRegen"	"0.9"	
+		"StatusHealth"	"120"		
+		"VisionDaytimeRange"	"1050"
+		// 白天视野大小
+		"VisionNighttimeRange"	"700"		
+		"DisableWearables"	"1"	
+		"Complexity"	"2"		
+	}
+}

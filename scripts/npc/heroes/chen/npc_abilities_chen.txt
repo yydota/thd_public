@@ -1,0 +1,243 @@
+"DOTAAbilities"
+{
+	"ability_thdots_chenEx"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"tidehunter_kraken_shell"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitychen.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"MaxLevel"	"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"reduce"	"45"
+			}
+		}
+	}
+
+	"ability_thdots_chen01"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"pangolier_gyroshell"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitychen.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCooldown"	"6.5 6.0 5.5 5.0"
+		"AbilityManaCost"	"20"
+		"SpellDispellableType" "SPELL_DISPELLABLE_NO"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cast_range"	"450 500 550 600"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attackspeed_bonus"	"40 60 80 100"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"4"
+			}
+		}
+	}
+
+	"ability_thdots_chen02"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"touhoutd/thtd_chen_01"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitychen.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"ACT_DOTA_ATTACK2"
+		"AnimationPlaybackRate"	"3"
+		"AbilityCooldown"	"22 18 14 10"
+		"AbilityManaCost"	"30 40 50 60"
+		"AbilityCastRange"	"400"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_silencer.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wait_time"	"3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"2.5 3 3.5 4"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration_stun"	"1.25 1.5 1.75 2"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"90 110 130 150"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"talent_range"	"800"
+			}
+		}
+	}
+
+	"ability_thdots_chen03"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"earthshaker_aftershock"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitychen.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES"
+		"AbilityCooldown"	"10"
+		"AbilityManaCost"	"45"
+		"AbilityCastRange"	"250"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ursa.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_monkey_king.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"50 75 100 125"
+				"LinkedSpecialBonus"	"special_bonus_unique_cheng_3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"250"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_reduce"	"15 20 25 30"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"movespeed_reduce"	"15 20 25 30"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"2"
+			}
+		}
+	}
+
+	"ability_thdots_chen04"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"ursa_fury_swipes"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitychen.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellDispellableType" "SPELL_DISPELLABLE_NO"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCooldown"	"30"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"0"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_riki.vsndevts"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_chen_sounds.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"6"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_bonus"	"15 30 45 60"
+			}
+		}
+	}
+
+	"special_bonus_unique_cheng_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1"
+			}
+		}
+	}
+	"special_bonus_unique_cheng_2"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"800"
+			}
+		}
+	}
+	"special_bonus_unique_cheng_3"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"120"
+			}
+		}
+	}
+	"special_bonus_unique_cheng_4"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"600"
+			}
+		}
+	}
+}

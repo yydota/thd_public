@@ -235,7 +235,7 @@ function modifier_ability_thdots_yorihime_01_move:OnDestroy()
 				ability= ability
 			}
 		UtilStun:UnitStunTarget(caster,unit,stun_duration)
-		ApplyDamage(damage_table)	
+		UnitDamageTarget(damage_table)	
 	end
 
 	local allies = FindUnitsInRadius(

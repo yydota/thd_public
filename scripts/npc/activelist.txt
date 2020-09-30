@@ -131,7 +131,7 @@
 	//"npc_dota_hero_lone_druid" "1"
 	//"npc_dota_hero_brewmaster" "1"
 	//"npc_dota_hero_treant" "1"
-	//"npc_dota_hero_ogre_magi" "1"
+	"npc_dota_hero_ogre_magi" "1"
 
 
 	"npc_dota_hero_chaos_knight" "1"
@@ -176,7 +176,7 @@
 	//"npc_dota_hero_ember_spirit" "1"
 	"npc_dota_hero_legion_commander" "1"
 	//"npc_dota_hero_phoenix" "1"
-	//"npc_dota_hero_terrorblade" "1"
+	"npc_dota_hero_terrorblade" "1"
 	//"npc_dota_hero_monkey_king" "1"
 	//"npc_dota_hero_snapfire" "1"
 	//"npc_dota_hero_techies" "1"

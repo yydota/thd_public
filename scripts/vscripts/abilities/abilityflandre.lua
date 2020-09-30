@@ -319,11 +319,11 @@ function Onflandre04Success(keys)
 	end
 end
 
-function Onflandre04Kill(keys )
-	local caster = keys.caster
-	local target = keys.unit
-	if target:IsRealHero() then
-		keys.ability:ApplyDataDrivenModifier(caster, caster, "modifier_thdots_flandre_04_speed", {})
-	end
-end
+-- function Onflandre04Kill(keys )
+-- 	local caster = keys.caster
+-- 	local target = keys.unit
+-- 	if target:IsRealHero() then
+-- 		-- keys.ability:ApplyDataDrivenModifier(caster, caster, "modifier_thdots_flandre_04_speed", {})
+-- 	end
+-- end
 

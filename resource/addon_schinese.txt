@@ -727,7 +727,7 @@
 		"DOTA_Tooltip_ability_ability_thdots_flandre03_Description"	"使芙兰的物理攻击带有吸血效果。"
 		"DOTA_Tooltip_ability_ability_thdots_flandre03_lifesteal_percent"	"吸血百分比:"
 		"DOTA_Tooltip_ability_ability_thdots_flandre04"	"「之后，就什么都没有了哦」"
-		"DOTA_Tooltip_ability_ability_thdots_flandre04_Description"	"将接下来的力量爆发。芙兰回收所有分身，于1[+回收分身量]次攻击内附加巨额物理伤害(无法享受暴击装备效果加成），击杀后提升30%%移速，持续%ability_speed_duration%秒，爆发效果最多保留12秒。"
+		"DOTA_Tooltip_ability_ability_thdots_flandre04_Description"	"将接下来的力量爆发。芙兰回收所有分身，于1[+回收分身量]次攻击内附加巨额物理伤害(无法享受暴击装备效果加成)。"
 		"DOTA_Tooltip_ability_ability_thdots_flandre04_ability_duration"	"持续时间："
 		"DOTA_Tooltip_ability_ability_thdots_flandre04_damage_multi"	"%暴击倍率："
 		//"DOTA_Tooltip_ability_ability_thdots_flandre04_ability_chance_base"	"%刷新几率："
@@ -925,7 +925,7 @@
 		"DOTA_Tooltip_ability_ability_thdots_kaguya02"	"「蓬莱神宝」"
 		"DOTA_Tooltip_ability_ability_thdots_kaguya02_Description"	"辉夜召唤自己信赖的宝具为自己战斗：\n神宝「Brilliant Dragon Bullet」（耀眼的龙玉）\n--此物品下辉夜获得额外的视野：300/400/500/600 \n神宝「Buddhist Diamond」（佛体的金刚石）\n--此物品下辉夜获得额外的防御力 增加防御：3/5/7/9\n神宝「Salamander Shield」（火蜥蜴之盾）\n--此物品下辉夜获得一个小范围的献祭 献祭范围：700 献祭伤害：10/20/30/40\n神宝「Life Spring Infinity」（无限的生命之泉）\n--此物品下辉夜及周围单位的生命恢复速度提升 范围：500 恢复速度提升：3/5/7/9" 
 		"DOTA_Tooltip_ability_ability_thdots_kaguya03"	"「永夜归返」"
-		"DOTA_Tooltip_ability_ability_thdots_kaguya03_Description"	"被动：黑夜中，辉夜用自己操纵永远和须臾的能力，极大的提高自身的魔法恢复速度，游戏时间越长，恢复速度越快。\n主动：将世界变为黑夜\n黑夜持续时间：60秒\n光明之世：晚上可以获得1.5倍魔法恢复速度，白天可以获得2倍魔法恢复速度。 "
+		"DOTA_Tooltip_ability_ability_thdots_kaguya03_Description"	"<h1>被动: </h1>黑夜中，辉夜用自己操纵永远和须臾的能力，极大的提高自身的魔法恢复速度，游戏时间越长，恢复速度越快。\n主动：将世界变为黑夜\n黑夜持续时间：60秒\n光明之世：晚上可以获得1.5倍魔法恢复速度，白天可以获得2倍魔法恢复速度。 "
 		"DOTA_Tooltip_ability_ability_thdots_kaguya03_mana_regen"	"基础魔法恢复速度："
 		"DOTA_Tooltip_ability_ability_thdots_kaguya03_bonus_regen"	"每60秒提升："
 		"DOTA_Tooltip_ability_ability_thdots_kaguya04"	" 「蓬莱的树海」"
@@ -2062,7 +2062,7 @@
 		"DOTA_Tooltip_modifier_thdots_komachi_04_debuff"	"被死神盯上..."
 		"DOTA_Tooltip_modifier_thdots_komachi_04_debuff_Description"	"无法回复生命值。"
 		"DOTA_Tooltip_ability_special_bonus_unique_elder_titan"	"-6秒「无间之狭间」充能时间"
-		"DOTA_Tooltip_ability_special_bonus_unique_elder_titan_2"	"+120「生魂流离之镰」伤害"
+		"DOTA_Tooltip_ability_special_bonus_unique_elder_titan_2"	"+90「生魂流离之镰」伤害"
 		"DOTA_Tooltip_ability_special_bonus_unique_elder_titan_3"	"恶灵爆发血量上限伤害+1.5%"
 		"DOTA_Tooltip_ability_special_bonus_unique_elder_titan_4"	"「无间之狭间」斩杀线+15%"
 		
@@ -2663,7 +2663,7 @@
 		"DOTA_Tooltip_ability_ability_thdots_kokoroEx_2_Description"	"<h1>主动：</h1>提升%stat_bonus%%%当前主属性。\n被动：根据当前三围中最高的属性改变为相应的主属性，根据主属性增加相应的加成：\n每1点力量增加%strength_bonus%魔抗\n每1点敏捷增加%agility_bonus%移速\n每1点智力增加%intellect_bonus%技能增强。\n多个属性相同的情况会按照力量>敏捷>智力的顺序进行变化"
 		"DOTA_Tooltip_ability_ability_thdots_kokoro03_release"	"忧心的鬼婆面"
 		"DOTA_Tooltip_ability_ability_thdots_kokoro03_release_Description"	"施放技能靠近击飞目标"
-		"DOTA_Tooltip_ability_special_bonus_unique_kokoro_1"	"-4秒 火男面 冷却"
+		"DOTA_Tooltip_ability_special_bonus_unique_kokoro_1"	"-5秒 火男面 冷却"
 		"DOTA_Tooltip_ability_special_bonus_unique_kokoro_2"	"-4秒 妖狐面 冷却"
 		"DOTA_Tooltip_ability_special_bonus_unique_kokoro_3"	"凭依无法驱散"
 		"DOTA_Tooltip_ability_special_bonus_unique_kokoro_4"	"凭依-60秒冷却"
@@ -2814,6 +2814,48 @@
 		"DOTA_Tooltip_modifier_ability_thdots_sunny05"	"「棱镜闪光」"
 		"DOTA_Tooltip_modifier_ability_thdots_sunny05_Description"	"桑尼的恶作剧"
 		"DOTA_Tooltip_ability_ability_thdots_sunny05_duration"	"持续时间："
+
+		"npc_dota_hero_terrorblade"	"橙"
+		"DOTA_Tooltip_ability_ability_thdots_chenEx"	"方符「奇门遁甲」"
+		"DOTA_Tooltip_ability_ability_thdots_chenEx_Description"	"受到非少女和小兵的物理伤害时，降低所受伤害%reduce%%%。"
+		"DOTA_Tooltip_modifier_ability_thdots_chenEx"	"「奇门遁甲」"
+		"DOTA_Tooltip_modifier_ability_thdots_chenEx_Description"	"受到非少女的物理伤害时，降低所受伤害"
+		"DOTA_Tooltip_ability_ability_thdots_chen01"	"滚符「滚球」"
+		"DOTA_Tooltip_ability_ability_thdots_chen01_Description"	"向目标位置滚动，滚球完毕后提攻击速度%duration%秒。"
+		"DOTA_Tooltip_ability_ability_thdots_chen04"	"仙符「尸解永远」"
+		"DOTA_Tooltip_ability_ability_thdots_chen04_Description"	"施展后每一下攻击敌方少女，橙的攻击力都会被提升。\n持续至橙%duration%秒内没有攻击任何敌方少女。"
+		"DOTA_Tooltip_ability_ability_thdots_chen04_attack_bonus"	"提升攻击力："
+		"DOTA_Tooltip_modifier_ability_thdots_chen01_buff"	"「滚球」"
+		"DOTA_Tooltip_modifier_ability_thdots_chen01_buff_Description"	"增加攻速"
+		"DOTA_Tooltip_ability_ability_thdots_chen01_cast_range"	"滚球距离："
+		"DOTA_Tooltip_ability_ability_thdots_chen01_attackspeed_bonus"	"提升攻速："
+		"DOTA_Tooltip_modifier_ability_thdots_chen02_debuff"	"「晴明大纹」"
+		"DOTA_Tooltip_modifier_ability_thdots_chen02_debuff_Description"	"被沉默"
+		"DOTA_Tooltip_modifier_ability_thdots_chen02_target"	"「晴明大纹」"
+		"DOTA_Tooltip_modifier_ability_thdots_chen02_target_Description"	"该状态消失会被沉默，若状态期间施法则状态消失会被眩晕"
+		"DOTA_Tooltip_ability_ability_thdots_chen02"	"阴阳「晴明大纹」"
+		"DOTA_Tooltip_ability_ability_thdots_chen02_Description"	"指定一个单位，造成法术伤害，%wait_time%秒后令其再受到一次法术伤害，并沉默一段时间。\n若持续时间内，该单位进行任何施法，则完结时沉默会变成晕眩效果。"
+		"DOTA_Tooltip_ability_ability_thdots_chen02_duration"		"沉默时间："
+		"DOTA_Tooltip_ability_ability_thdots_chen02_duration_stun"	"眩晕时间："
+		"DOTA_Tooltip_ability_ability_thdots_chen02_damage"	"造成伤害："
+		"DOTA_Tooltip_modifier_ability_thdots_chen03_debuff"	"「天仙鸣动」"
+		"DOTA_Tooltip_modifier_ability_thdots_chen03_debuff_Description"	"降低攻击及移动速度"
+		"DOTA_Tooltip_modifier_ability_thdots_chen03"	"「天仙鸣动」"
+		"DOTA_Tooltip_modifier_ability_thdots_chen03_Description"	"每次施法完时震一次地"
+		"DOTA_Tooltip_ability_ability_thdots_chen03"	"天符「天仙鸣动」"
+		"DOTA_Tooltip_ability_ability_thdots_chen03_Description"	"<h1>被动：</h1>每次施法完时，在自身附近范围震一次地，震地对敌方单位造成法术伤害并降低攻击及移动速度，持续%duration%秒。\n<h1>主动：</h1>主动触发该效果，且该伤害量和范围2倍。\n智力加成：%int_bonus%"
+		"DOTA_Tooltip_ability_ability_thdots_chen03_Note0"	"负面状态可以叠加"
+		"DOTA_Tooltip_ability_ability_thdots_chen03_damage"	"造成伤害："
+		"DOTA_Tooltip_ability_ability_thdots_chen03_radius"	"影响范围："
+		"DOTA_Tooltip_ability_ability_thdots_chen03_damage_reduce"	"%降低攻击："
+		"DOTA_Tooltip_ability_ability_thdots_chen03_movespeed_reduce"	"%降低移速："
+		"DOTA_Tooltip_modifier_ability_thdots_chen04"	"「尸解永远」"
+		"DOTA_Tooltip_modifier_ability_thdots_chen04_Description"	"每一下攻击敌方少女，攻击力都会被提升"
+		"DOTA_Tooltip_ability_special_bonus_unique_cheng_1"	"-3秒「滚球」冷却"
+		"DOTA_Tooltip_ability_special_bonus_unique_cheng_2"	"+400「晴明大纹」施法距离"
+		"DOTA_Tooltip_ability_special_bonus_unique_cheng_3"	"+120「天仙鸣动」伤害"
+		"DOTA_Tooltip_ability_special_bonus_unique_cheng_3_Description"	"该伤害不会翻倍"
+		"DOTA_Tooltip_ability_special_bonus_unique_cheng_4"	"「奇门遁甲」对少女和小兵也生效"
 		//2020/08/17 Eriko
 		// --------------------
 		// 莉莉白
@@ -2907,6 +2949,62 @@
 		"DOTA_Tooltip_ability_special_bonus_unique_nazrin_3" 			"「无畏的寻宝大将」增加双倍攻击"		
 				
 		"DOTA_Tooltip_ability_special_bonus_unique_nazrin_5" 			"-20秒 「Gold Rush」 冷却"	
+
+		// --------------------
+		// Suwako Moriya by Eriko
+		// --------------------
+		"npc_dota_hero_ogre_magi"											"洩矢诹访子"
+		"DOTA_Tooltip_ability_ability_thdots_suwako01"						"作祟「赤口吞噬」"		
+		"DOTA_Tooltip_ability_ability_thdots_suwako01_Description"			"从地面上扩散出一个黑湖,被黑湖锁触碰的单位会受到赤口的噬咬,造成伤害并且无法进行任何移动 \n智力加成：%int_scale%"					
+		"DOTA_Tooltip_ability_ability_thdots_suwako01_light_strike_array_aoe" "影响范围： "
+		"DOTA_Tooltip_ability_ability_thdots_suwako01_root_duration"		"持续时间： "
+		"DOTA_Tooltip_modifier_suwako01" 								"「赤口吞噬」"
+		"DOTA_Tooltip_modifier_suwako01_Description" 					"被缠绕"	
+		
+		
+
+		
+		"DOTA_Tooltip_ability_ability_thdots_suwako02"						"「岩浆的两栖类」"		
+		"DOTA_Tooltip_ability_ability_thdots_suwako02_Description"			"诹访子钻入地下不能被攻击,制造一个水涡并对区域内造成伤害.\n增加 %movement_speed_percent_bonus_suwako%% 移速,并减少敌方 %slow_speed_percent_bonus_suwako%% 移速\n施法期间不能攻击,使用技能和物品\n智力加成：%int_scale%"					
+		"DOTA_Tooltip_ability_ability_thdots_suwako02_ability_duration"		"持续时间： "	
+		"DOTA_Tooltip_ability_ability_thdots_suwako02_burn_damage_radius"	"影响范围： "		
+		"DOTA_Tooltip_modifier_suwako02_slow" 								"「岩浆的两栖类」"
+		"DOTA_Tooltip_modifier_suwako02_slow_Description" 					"被减速"	
+		"DOTA_Tooltip_aura_suwako_02_checker" 								"「岩浆的两栖类」"
+		"DOTA_Tooltip_aura_suwako_02_checker_Description" 					"钻入地下"	
+		
+
+
+		"DOTA_Tooltip_ability_ability_thdots_suwako03z"						"「小小青蛙不畏风雨」"		
+		"DOTA_Tooltip_ability_ability_thdots_suwako03z_Description"			"<h1>被动: </h1>使用技能(间歇泉除外)造成伤害会返还法力值。\n<h1>激活: </h1>魔法护盾吸收%damage_reduction%%%伤害,持续%duration%秒"					
+		"DOTA_Tooltip_ability_ability_thdots_suwako03z_damage_per_mana"		"每点魔法吸收： "
+		"DOTA_Tooltip_ability_ability_thdots_suwako03z_tooltip_manareturn"	"%法力返回： "	
+		"DOTA_Tooltip_modifier_suwako03shield" 								"「小小青蛙不畏风雨」"
+
+		"DOTA_Tooltip_modifier_suwako03shield_Description" 					"消耗魔法值抵挡伤害"	
+		"DOTA_Tooltip_modifier_suwako03_return_mana" 						"「小小青蛙不畏风雨」"
+		"DOTA_Tooltip_modifier_suwako03_return_mana_Description" 			"造成伤害会返还法力值。"	
+		
+		"DOTA_Tooltip_ability_medusa_mana_shield"						"Native God「Kero-chan Braves the Elements」"		
+		"DOTA_Tooltip_ability_medusa_mana_shield_Description"			"Activates a magic shield, which absorbs damage using spirit. Absorbs 60% of total damage taken.Has a passive effect of returning the damage dealt by the usage of skills as mana(mana gain does not work on ultimate)."					
+		"DOTA_Tooltip_ability_medusa_mana_shield_damage_per_mana"		"Damage absorb per mana： "
+		"DOTA_Tooltip_ability_medusa_mana_shield_tooltip_manareturn"	"Mana return as %： "
+		"DOTA_Tooltip_ability_medusa_mana_shield_lore"					"kerokerokerokerokero"	
+
+		"DOTA_Tooltip_ability_ability_thdots_suwako04new"						"土著神「古之间歇泉喷发」"		
+		"DOTA_Tooltip_ability_ability_thdots_suwako04new_Description"			"操纵泉水喷射将所有敌方少女冲向空中,造成伤害和眩晕\n对视野内目标发动\n智力加成：%int_scale%"					
+		"DOTA_Tooltip_ability_ability_thdots_suwako04new_stun_duration"		"眩晕时间： "	
+		
+		"DOTA_Tooltip_ability_ability_thdots_suwako04new_air_time"				"空中时间： "
+		
+		
+		"DOTA_Tooltip_ability_ability_thdots_suwako05"						"神具「洩矢之小铁轮」"		
+		"DOTA_Tooltip_ability_ability_thdots_suwako05_Description"			"向前发射铁轮，对范围目标造成伤害\n智力加成：%int_multi%					
+		"DOTA_Tooltip_ability_ability_thdots_suwako05_light_strike_array_aoe"			"影响范围： "																										
+		"DOTA_Tooltip_ability_special_bonus_unique_suwako_1"				"+50 「赤口吞噬」伤害"																																																				
+		"DOTA_Tooltip_ability_special_bonus_unique_suwako_2"				"-13s 「岩浆的两栖类」冷却"
+		"DOTA_Tooltip_ability_special_bonus_unique_suwako_3"				"-30s 「古之间歇泉喷发」冷却"
+		"DOTA_Tooltip_ability_special_bonus_unique_suwako_4"				"+300 「古之间歇泉喷发」伤害"
 
 		// --------------------
 		// 斯塔·塞菲尔 by Eriko
@@ -3257,7 +3355,7 @@
         "DOTA_Tooltip_ability_ability_thdots_kagerou01_Description"	"向前跳跃，对跳跃到位置的地方进行一次斩击，造成范围伤害。\n天生强化：这个技能可以再次释放。\n范围：%damage_radius%\n伤害：%damage_const%  + （攻击*%damage_ratio%）"
 		"DOTA_Tooltip_ability_ability_thdots_kagerou01"	"天狼「高速猛扑」"
 		"DOTA_Tooltip_ability_ability_thdots_kagerouEx"	"「孤独的狼人」"
-		"DOTA_Tooltip_ability_ability_thdots_kagerouEx_Description"	"<h1>被动：</h1>影狼在早上时技能造成法术伤害，晚上时技能造成物理伤害，持续%trig_time%秒附近%trig_radius%码没有友方单位时进入孤独状态，孤独状态下可主动使用。\n<h1>主动：</h1>使得影狼下一个技能得到强化。\n\n持续时间：%hold_time%秒"
+		"DOTA_Tooltip_ability_ability_thdots_kagerouEx_Description"	"<h1>被动：</h1>影狼在早上时技能造成法术伤害，晚上时技能造成物理伤害，持续%trig_time%秒附近%trig_radius%码没有友方少女时进入孤独状态，孤独状态下可主动使用。\n<h1>主动：</h1>使得影狼下一个技能得到强化。\n\n持续时间：%hold_time%秒\n（<font color=\"#d9534f\">若陷入地形BUG可以输入“-zisha”重置</font>)"
 		"DOTA_Tooltip_modifier_kagerou_lonely"	"「孤独的狼人」"
 		"DOTA_Tooltip_modifier_kagerou_lonely_Description"	"影狼正处于独狼状态"
 		"DOTA_Tooltip_modifier_kagerou_lonely2"	"孤独状态强化"
@@ -3703,7 +3801,7 @@
 		"DOTA_Tooltip_ability_item_pomojinlingli_note0"	"沉默效果可以驱散。"
 		"DOTA_Tooltip_ability_item_recipe_yueyaomishi"	"月耀秘石制作书"
 		"DOTA_Tooltip_ability_item_yueyaomishi"	"月耀秘石"
-		"DOTA_Tooltip_ability_item_yueyaomishi_Description"	"<h1>主动：月耀祈祷</h1>持续施法 - 为周围友军提升%radiate_regen_mana%点/秒的魔法恢复，最多持续5秒。<br><br>作用范围：%radiate_radius%"
+		"DOTA_Tooltip_ability_item_yueyaomishi_Description"	"<h1>主动：月耀祈祷</h1>持续施法 - 为周围友军提升%radiate_regen_mana%点/秒的魔法恢复，持续%duration%秒。<br><br>作用范围：%radiate_radius%"
 		"DOTA_Tooltip_ability_item_yueyaomishi_bonus_mana"	"+$mana"
 		"DOTA_Tooltip_ability_item_yueyaomishi_bonus_health"	"+$hp_regen"
 		"DOTA_Tooltip_ability_item_yueyaomishi_bonus_mana_regen"	"+$mana_regen"
@@ -3711,7 +3809,7 @@
 		"DOTA_Tooltip_ability_item_yueyaomishi_bonus_armor"	"+$armor"
 		"DOTA_Tooltip_ability_item_yueyaomishi_note0"	"主动技能持续施法时为施法者添加一个月耀光环，该光环提供魔法恢复效果。<br><br>元素秘法石和月耀秘石施加的效果可以叠加。"
 		"DOTA_Tooltip_modifier_item_yueyaomishi_radiate_regen_mana""月耀充盈"
-		"DOTA_Tooltip_modifier_item_yueyaomishi_radiate_regen_mana_description""每秒恢复250点魔法"
+		"DOTA_Tooltip_modifier_item_yueyaomishi_radiate_regen_mana_description""每秒恢复大量魔法"
 		"DOTA_Tooltip_ability_item_recipe_yuetufensuijvren"	"月兔粉碎巨刃制作书"
 		"DOTA_Tooltip_ability_item_yuetufensuijvren"	"月兔粉碎巨刃"
 		"DOTA_Tooltip_ability_item_yuetufensuijvren_Description"	"<h1>主动：时停</h1>暂停目标时间，造成%pause_duration%秒的晕眩。<br><br>施法距离：%AbilityCastRange%\n<h1>被动：重击</h1>近战英雄的攻击有%stun_chance%%%的概率击晕目标%stun_duration_melee%秒。远程英雄的击晕时间为%stun_duration_ranged%秒。"

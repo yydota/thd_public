@@ -36,7 +36,7 @@ function lunasa01OnSpellStart(keys)
 		           }
 		local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_death_prophet/death_prophet_base_attack_explosion.vpcf", PATTACH_POINT, v)
 		ParticleManager:DestroyParticleSystem(effectIndex, false)
-		ApplyDamage(DamageTable)
+		UnitDamageTarget(DamageTable)
 		keys.ability:ApplyDataDrivenModifier(caster, v, "modifier_lunasa01", {Duration = keys.Duration})
  	end
  	--添加声效
@@ -194,7 +194,7 @@ function lunasa04OnSpellStart ( keys )
 		                damage = keys.damage + caster:GetIntellect()*0.6, 
 		                damage_type = keys.ability:GetAbilityDamageType()
 	           }
-	ApplyDamage(DamageTable)
+	UnitDamageTarget(DamageTable)
 	keys.ability:ApplyDataDrivenModifier(caster, target, "modifier_lunasa04", {})
 	local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_dark_seer/dark_seer_surge.vpcf", PATTACH_CUSTOMORIGIN, target)
 	ParticleManager:SetParticleControlEnt(effectIndex , 0, target, 5, "follow_origin", Vector(0,0,0), true)
@@ -215,7 +215,7 @@ function lunasa04End( keys )
 		                damage = keys.damage + caster:GetIntellect()*0.6, 
 		                damage_type = keys.ability:GetAbilityDamageType()
 	           }
-	ApplyDamage(DamageTable)
+	UnitDamageTarget(DamageTable)
 end
 
 function lunasaExOnCreated ( keys )

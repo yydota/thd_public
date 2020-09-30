@@ -1,0 +1,1368 @@
+"DOTAAbilities"
+{
+	"ability_thdots_suwako05"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.2"
+		"AOERadius"						"%suwakoex_radius"
+		"AbilityTextureName"	"touhoutd/thtd_suwako_01"
+		//"AbilityCastAnimation"	"SUWAKO_INNATE"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"		
+		"MaxLevel"				"1"	
+		//////"ID"	"30069"				
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+			"particle"			"particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
+			"particle"			"particles/units/heroes/hero_lina/lina_spell_light_strike_array_ray_team.vpcf"
+			"particle"			"particles/generic_gameplay/generic_stunned.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts"			
+			"soundfile"			"soundevents/thdots_hero_sounds/thdots_suwako_sounds.vsndevts"	
+			"particle"			"particles/econ/items/storm_spirit/strom_spirit_ti8/gold_storm_sprit_ti8_overload_discharge.vpcf"			
+		}
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"2.2"
+		"AbilityDuration"				"0.1"
+	
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"22"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"2"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"suwakoex_radius"	"200"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"int_multi"	"2.2"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"max_target"		"2"
+			}	
+			"30"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"show_cast_range"	"1"
+			}			
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				//"Target"	"TARGET"
+				"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+				"Function"	"suwakoexvoice"
+			}
+			"RunScript"
+			{
+				//"Target"	"TARGET"
+				"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+				"Function"	"OnsuwakoexSpellStart2"
+				"Target"	"POINT"				
+			}	
+		}
+	
+		"Modifiers"
+		{
+			"modifier_suwako_innate"
+			{
+				"Duration"		"0.1"			
+				"IsDebuff"	"1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"Target"	"TARGET"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+						"Function"	"OnsuwakoexSpellStart"
+						"intscale" "%int_multi"
+					}
+				}
+			}			
+			
+		}
+	}	
+	
+	"ability_thdots_suwako01"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"touhoutd/thtd_suwako_02"
+		"AbilityCastRange"	"%radius"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"		
+		//////"ID"	"30017"		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.25"
+		////"ID"	"30070"				
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"14 13 12 11"
+	
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"130 160 190 220"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"110 120 130 140"		
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"450"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"root_duration"				"1.1 1.4 1.7 2.0"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"debugdmgg"						"0"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"int_scale"						"2.2"
+			}			
+		}
+		
+		// Data driven
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_puck.vsndevts"
+			"particle"					"particles/units/heroes/hero_puck/puck_waning_rift.vpcf"			
+			"soundfile"					"soundevents/thdots_hero_sounds/thdots_mystia_sounds.vsndevts"
+			"particle_folder"			"particles/thd2/items"
+			"particle"					"particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"	
+			"soundfile"					"soundevents/thdots_hero_sounds/thdots_suwako_sounds.vsndevts"	
+			"particle"					"particles/units/heroes/hero_ursa/ursa_earthshock.vpcf"			
+		}
+		
+		"OnSpellStart"
+		{
+		
+			"FireEffect"
+			{
+				"Target"					"CASTER"
+				"EffectName"				"particles/units/heroes/hero_ursa/ursa_earthshock.vpcf"
+				"EffectAttachType"			"start_at_origin"
+				"EffectRadius"				"625"
+			}		
+			"Damage"
+			{
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+				}
+				"Type"		"DAMAGE_TYPE_PURE"
+				"Damage"	"%debugdmgg"
+			}
+			
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_suwako01"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Radius"	"%radius"
+					"Teams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				}
+				"Duration"		"%root_duration"
+			}
+			"RunScript"
+			{
+					"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+					"Function"		"suwako01soundeffect"								
+			}			
+		}
+		"Modifiers"
+		{
+			"modifier_suwako01"
+			{
+				"IsDebuff"			"1"
+				"IsPurgable"	"1"
+				"EffectName"	"particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"
+				"EffectAttachType"	"attach_hitloc"
+	
+				"States"
+				{
+					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED" 	
+					
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+						"Function"		"OnSuwako01SpellStart"	
+						"intscale" "%int_scale"							
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+						"Function"		"OnSuwako01SpellEnd"								
+					}
+				}				
+			}			
+		}
+	}	
+	
+	
+	"ability_thdots_suwako02"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"AbilityTextureName"			"custom/suwako/ability_thdots_suwako02"
+		"AbilityCastRange"	"%burn_damage_radius"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"	
+		//"AbilityCastAnimation"	"SUWAKO2"		
+		
+		//////"ID"	"30017"		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.45"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+	//	"AbilityCooldown"				"32 28 24 20"
+		"AbilityCooldown"				"22"
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"35 45 55 65"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"175"	
+		////"ID"	"30071"				
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"					"60"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"root_duration"				"1.1 1.4 1.7 2.0"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"debugdmgg"						"0"
+			}	
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"movement_speed_percent_bonus_suwako"	"22"
+			}	
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"burn_damage_radius"	"600"
+			}		
+			"06"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"ability_duration"	"4"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"slow_speed_percent_bonus_suwako"	"-15"
+			}	
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"slow_duration"	"0.5"
+			}
+			"09"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"int_scale"				"0.55"
+			}	
+			"10"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"intervals"				"0.5"
+			}			
+		}
+		
+		// Data driven
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_puck.vsndevts"
+			"particle"					"particles/units/heroes/hero_puck/puck_waning_rift.vpcf"			
+			"soundfile"					"soundevents/thdots_hero_sounds/thdots_mystia_sounds.vsndevts"
+			"particle_folder"	"particles/thd2/items"
+			"particle"			"particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"	
+			"model"		"models/new_thd/suwako/moriyahat.vmdl"	
+			"model"		"models/new_thd/suwako/moriya.vmdl"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_suwako_sounds.vsndevts"	
+			"particle"			"particles/econ/items/tidehunter/tidehunter_divinghelmet/tidehunter_gush_d_diving_helmet.vpcf"	
+			"particle"			"particles/econ/items/kunkka/kunkka_weapon_whaleblade_retro/kunkka_spell_torrent_retro_whaleblade_b.vpcf"					
+			"particle"			"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
+			"particle"			"particles/units/heroes/hero_slardar/slardar_crush_entity.vpcf"
+			"particle"			"particles/units/heroes/hero_centaur/centaur_warstomp.vpcf"	
+			"particle"			"particles/econ/events/ti7/shivas_guard_active_ti7.vpcf"		
+			"particle"			"particles/econ/events/ti7/shivas_guard_impact_ti7.vpcf"
+			"particle"			"particles/econ/events/ti7/shivas_guard_impact_ti7.vpcf"			
+			}
+		
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_slardar/slardar_crush.vpcf"
+				"EffectAttachType"	"attach_origin"
+				"Target"	"CASTER"
+	
+			}
+			"FireEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_slardar/slardar_crush_entity.vpcf"
+				"EffectAttachType" "attach_origin"
+				"Target"	"CASTER" 
+			}		
+
+			"RunScript"
+			{			
+				"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+				"Function"		"Suwako02cooldown"										
+			}	
+			"ApplyModifier"
+			{
+				"ModifierName"	"aura_suwako_02_checker"
+				"Target"	"CASTER"
+				"Duration"		"%ability_duration"					
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_suwako02_effects"
+				"Target"	"CASTER"
+				"Duration"		"%ability_duration"					
+			}			
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_suwako02_change"
+				"Target"	"CASTER"
+				"Duration"		"%ability_duration"					
+			}
+			
+		}
+		"Modifiers"
+		{
+			"modifier_suwako02_effects"
+			{	
+				"IsHidden"			"1"			
+				"Duration"		"%ability_duration"	
+				"ThinkInterval"	"0.5"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+						"Function"		"suwako02effectcheck"
+						"Caster"		"CASTER"
+						"radius" "%burn_damage_radius"
+						
+						//"Target"		"TARGET"
+					}					
+				}		
+			}	
+
+			"modifier_suwako02_slow"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"			
+				"IsDebuff"			"1"			
+			//	"Duration"		"%slow_duration"
+				"IsPurgable"	"1"				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow_speed_percent_bonus_suwako"				
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_speed_percent_bonus_suwako"
+				}
+			}				
+			"modifier_suwako02_change"
+			{
+				"IsHidden"		"1"
+				//"IsDebuff"			"1"
+				//"IsPurgable"	"1"
+				//"EffectName"	"particles/units/heroes/hero_treant/treant_overgrowth_vines.vpcf"
+				//"EffectAttachType"	"attach_hitloc"					
+				"Duration"		"%ability_duration"				
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_SILENCED"	"MODIFIER_STATE_VALUE_ENABLED"				
+					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"	
+					"MODIFIER_STATE_MUTED"				"MODIFIER_STATE_VALUE_ENABLED"	
+					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"					
+					
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movement_speed_percent_bonus_suwako"
+				//	"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%movement_speed_percent_bonus_suwako"					
+				}
+
+				
+				"OnCreated"
+				{				
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+						"Function"		"OnSuwako02SpellStart"	
+						"model"			"models/new_thd/suwako/moriyahat.vmdl"						
+					}
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/abilities/abilitysuwako.lua"
+						"Function"			"HideWearables"
+					}						
+				}
+				
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+						"Function"		"OnSuwako02SpellEnd"	
+						"model2"		"models/new_thd/suwako/moriya.vmdl"						
+					}
+					
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+						"Function"		"ShowWearables"
+					}					
+					
+				}
+				//"ThinkInterval"	"0.1"
+				//"OnIntervalThink"
+				//{
+					//"RunScript"
+					//{
+					//	"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+					//	"Function"		"suwako02modelcheck"
+					//	"Caster"		"CASTER"
+					//	"model"			"models/new_thd/suwako/moriyahat.vmdl"							
+						//"Target"		"TARGET"
+					//}
+				//}				
+			}
+			"aura_suwako_02_checker"
+			{
+				"Duration"		"%ability_duration"			
+				"Aura"	"aura_suwako_02"
+				"Aura_Radius"	"%burn_damage_radius"
+				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				"Aura_ApplyToCaster"	"0"
+			}
+			"aura_suwako_02"
+			{	
+				"IsHidden"		"1"
+				"ThinkInterval"	"%intervals"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+						"Function"		"suwako02damage"
+						"Caster"		"CASTER"
+						"Target"		"TARGET"
+						"SlowDuration"	"%slow_duration"
+					}
+				}
+			}						
+		}
+	}	
+
+	"ability_thdots_suwako03"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		//"AbilityTextureName"			"medusa_mana_shield"
+		"AbilityTextureName"			"custom/suwako/ability_thdots_suwako03"
+		////"ID"	"30072"				
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+			"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+			"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield_cast.vpcf"
+			"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield_end.vpcf"
+			"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield_impact.vpcf"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_per_mana"		"1.2 1.3 1.4 1.5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"absorption_tooltip"		"60"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tooltip_manareturn"		"6 8 10 12"
+			}
+			
+		}
+	
+		"OnToggleOn"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Medusa.ManaShield.On" 
+				"Target" 		"CASTER"
+			}
+	
+			"FireEffect"
+			{
+				"EffectName"        "particles/units/heroes/hero_medusa/medusa_mana_shield_cast.vpcf"
+				"EffectAttachType"  "follow_origin"
+				"Target"            "CASTER"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_mana_shield_datadriven"
+				"Target" 		"CASTER"
+			}
+		}
+	
+		"OnToggleOff"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Medusa.ManaShield.Off"
+				"Target" 		"CASTER"
+			}
+	
+			"FireEffect"
+			{
+				"EffectName"        "particles/units/heroes/hero_medusa/medusa_mana_shield_end.vpcf"
+				"EffectAttachType"  "follow_origin"
+				"Target"            "CASTER"
+			}
+	
+			"RemoveModifier"
+			{
+				"ModifierName"	"modifier_mana_shield_datadriven"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Flags" 	"DOTA_UNIT_TARGET_FLAG_DEAD"
+				}
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_mana_shield_datadriven"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"0"
+		
+				"EffectName"		"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+				"EffectAttachType"	"follow_origin"
+		
+				"OnTakeDamage"
+				// "%attack_damage" is set to the damage value after mitigation
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Medusa.ManaShield.Proc"
+						"Target" 		"UNIT"
+					}
+	
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/hero_medusa/mana_shield.lua"
+						"Function"		"ManaShield"
+						"Damage"		"%attack_damage"
+					}
+				}
+	
+				"ThinkInterval"  "0.03"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/hero_medusa/mana_shield.lua"
+						"Function"		"ManaShieldHealth"
+					}
+				}
+			}
+		}
+	}	
+	
+	
+	
+	
+	
+	"ability_thdots_suwako03z"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		//"AbilityTextureName"			"medusa_mana_shield"
+		"AbilityTextureName"			"medusa_mana_shield"
+		"AbilityCooldown"				"5"		
+		"AbilityManaCost"				"22"		
+		//////"ID"	"30072"				
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+			"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+			"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield_cast.vpcf"
+			"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield_end.vpcf"
+			"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield_impact.vpcf"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+			//	"damage_per_mana"		"1.2 1.3 1.4 1.5"
+				"damage_per_mana"		"0.6 0.8 1.0 1.2"				
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"absorption_tooltip"		"60.1"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tooltip_manareturn"		"6.0 8.0 10.0 12.0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"		"5"
+			}			
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_reduction"		"-50"
+			}			
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_cost"		"10"
+			}			
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"max_target"		"2"
+			}			
+			
+			
+		}
+	
+		"OnToggleOn"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Medusa.ManaShield.On" 
+				"Target" 		"CASTER"
+			}
+	
+			"FireEffect"
+			{
+				"EffectName"        "particles/units/heroes/hero_medusa/medusa_mana_shield_cast.vpcf"
+				"EffectAttachType"  "follow_origin"
+				"Target"            "CASTER"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_suwako03shield"
+				"Target" 		"CASTER"
+			}
+			//"RunScript"
+			//{			
+			//	"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+			//	"Function"		"suwako03manacost"	
+			//	"manacost" "%mana_cost"				
+			//}			
+		}
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"	"modifier_suwako03shield"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Flags" 	"DOTA_UNIT_TARGET_FLAG_DEAD"
+				}
+			}
+			"RunScript"
+			{			
+				"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+				"Function"		"suwako03toggleoff"				
+			}				
+		}		
+		"Modifiers"
+		{
+			"modifier_suwako03shield"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"0"
+				//"Duration"			"%duration"				
+		
+				"EffectName"		"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+				"EffectAttachType"	"follow_origin"
+		
+				"OnTakeDamage"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Medusa.ManaShield.Proc"
+						"Target" 		"CASTER"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+						"Function"	"OnSuwako03TakeDamage"
+						"DamageTaken"	"%attack_damage"
+						"Manaabsorb" "%damage_per_mana"
+					}					
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"	"%damage_reduction"
+				}
+				"OnDestroy"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Medusa.ManaShield.Off"
+						"Target" 		"CASTER"
+					}
+	
+					"FireEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_medusa/medusa_mana_shield_end.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "CASTER"
+					}					
+				}				
+			}
+			"modifier_suwako03shield_manacheck"
+			{			
+				//"Passive"	"1"
+				"IsBuff"	"1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"Target"	"CASTER"
+						"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+						"Function"	"suwako03check"
+						"manacost" "%mana_cost"
+					}
+				}
+				"ThinkInterval"	"0.03"
+				"IsHidden"	"1"	
+			}
+			"modifier_suwako03_return_mana"
+			{			
+				"Passive"	"1"
+				"IsBuff"	"1"
+				"OnDealDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+						"Function"	"OnSuwako03DealDamage"
+						"DealDamage"	"%attack_damage"
+						"Manareturn" "%tooltip_manareturn"
+					}
+				}
+				"IsHidden"	"0"	
+			}			
+		}
+	}	
+	
+	
+	"ability_thdotsr_suwako03"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		//"AbilityTextureName"			"medusa_mana_shield"
+		"AbilityTextureName"			"custom/suwako/ability_thdots_suwako03"
+		"AbilityCooldown"				"5"		
+		"AbilityManaCost"				"22"		
+		//////"ID"	"30072"				
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+			"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+			"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield_cast.vpcf"
+			"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield_end.vpcf"
+			"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield_impact.vpcf"
+		}
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_per_mana"		"0.6 0.8 1.0 1.2"				
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"absorption_tooltip"		"60.1"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"tooltip_manareturn"		"6.0 8.0 10.0 12.0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"		"5"
+			}			
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_reduction"		"-50"
+			}			
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_cost"		"10"
+			}			
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"max_target"		"2"
+			}			
+			
+			
+		}
+	
+		"OnToggleOn"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Medusa.ManaShield.On" 
+				"Target" 		"CASTER"
+			}
+	
+			"FireEffect"
+			{
+				"EffectName"        "particles/units/heroes/hero_medusa/medusa_mana_shield_cast.vpcf"
+				"EffectAttachType"  "follow_origin"
+				"Target"            "CASTER"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_suwako03shield_new"
+				"Target" 		"CASTER"
+			}		
+		}
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"	"modifier_suwako03shield_new"
+				"Target"
+				{
+					"Center"	"CASTER"
+					"Flags" 	"DOTA_UNIT_TARGET_FLAG_DEAD"
+				}
+			}
+			"RunScript"
+			{			
+				"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+				"Function"		"suwako03toggleoff"				
+			}				
+		}		
+		"Modifiers"
+		{
+			"modifier_suwako03shield_new"
+			{
+				"Passive"			"0"
+				"IsHidden"			"0"
+				"IsDebuff"			"0"
+				//"Duration"			"%duration"				
+		
+				"EffectName"		"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+				"EffectAttachType"	"follow_origin"
+
+				"OnDestroy"
+				{
+					"FireSound"
+					{
+						"EffectName"	"Hero_Medusa.ManaShield.Off"
+						"Target" 		"CASTER"
+					}
+					"FireEffect"
+					{
+						"EffectName"        "particles/units/heroes/hero_medusa/medusa_mana_shield_end.vpcf"
+						"EffectAttachType"  "follow_origin"
+						"Target"            "CASTER"
+					}					
+				}				
+			}
+			"modifier_suwako03_return_mana_new"
+			{			
+				"Passive"	"1"
+				"IsBuff"	"1"
+				"OnDealDamage"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+						"Function"	"OnSuwako03DealDamage"
+						"DealDamage"	"%attack_damage"
+						"Manareturn" "%tooltip_manareturn"
+					}
+				}
+				"IsHidden"	"0"	
+			}			
+		}
+	}	
+   "ability_thdots_suwako04"
+   {
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTargetTeam"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityTargetType"				"DOTA_UNIT_TARGET_HERO"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"FightRecapLevel"				"2"
+	"AbilityTextureName"			"treant_overgrowth"
+	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+	////"ID"	"30073"			
+	"precache"
+		{
+		"soundfile"				"soundevents/thdots_hero_sounds/thdots_tenshiEX_sounds.vsndevts"
+		"particle"			"particles/econ/items/kunkka/kunkka_weapon_whaleblade_retro/kunkka_spell_torrent_retro_whaleblade_b.vpcf"
+		"soundfile"	"soundevents/thdots_hero_sounds/thdots_suwako_sounds.vsndevts"		
+		"particle"			"particles/econ/events/ti7/shivas_guard_impact_ti7.vpcf"
+		}
+
+	
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0.3"
+	
+	// Damage.
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityDamage"					"150 250 350"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"100"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"222"
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"stun_duration"		"1.0 1.25 1.5"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"air_time"			"0.7"
+		}	
+		"03"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"int_scale"			"2.2"
+		}		
+	}
+	
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"
+			{
+				"Center"  				"CASTER"
+				"Radius" 				"GLOBAL"
+				"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types" 				"DOTA_UNIT_TARGET_HERO" 
+			}
+			"ModifierName"		"modifier_suwako04check"	
+		}
+		"RunScript"
+		{			
+			"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+			"Function"		"Suwako04voice"										
+		}	
+	}
+	
+	"Modifiers"
+	{	
+		"modifier_suwako04check"
+		{
+			"Duration"	"0.25"	
+			"IsHidden" "1"			
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+					"Function"		"Onsuwako04check"
+				}	
+			}
+		}
+	
+		"OnSpellStart"
+		{
+
+			"RunScript"
+			{			
+				"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+				"Function"		"Suwako04voice"										
+			}	
+		}
+		"modifier_suwako04"
+		{
+			"Duration"	"%0.1"
+			"IsDebuff"	"1"
+			
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+					"Function"		"Onsuwako04start"
+				}
+				"Knockback"
+				{
+					"Target"	"TARGET"
+					"Center"	"CASTER"
+					"Distance"	"0"
+					"Duration"	"0.7"
+					"Height"	"250"
+					"IsFixedDistance"	"1"
+				}												
+			}						
+		}
+		"modifier_suwako04_stun"
+		{
+			"Duration"	"%stun_duration"
+			"IsDebuff"	"1"
+			"IsPurgable"	"1"			
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}			
+		}		
+	}	
+	
+	
+}
+
+	"ability_thdots_suwako04new"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTargetTeam"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityTargetType"				"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"2"
+		"AbilityTextureName"			"touhoutd/thtd_suwako_03"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		////"ID"	"30073"			
+		"precache"
+		{
+			"soundfile"				"soundevents/thdots_hero_sounds/thdots_tenshiEX_sounds.vsndevts"
+			"particle"			"particles/econ/items/kunkka/kunkka_weapon_whaleblade_retro/kunkka_spell_torrent_retro_whaleblade_b.vpcf"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_suwako_sounds.vsndevts"		
+			"particle"			"particles/econ/events/ti7/shivas_guard_impact_ti7.vpcf"
+		}
+
+	
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.3"
+	
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"120 160 220"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"120 100 80"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"222"
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+			//	"stun_duration"		"1.0 1.25 1.5"
+				"stun_duration"		"1.5"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"air_time"			"0.7"
+			}	
+			"03"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"int_scale"			"2.2"
+			}		
+		}
+
+		"OnSpellStart"
+		{
+
+			"RunScript"
+			{			
+				"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+				"Function"		"OnSuwako04SpellStartNew"										
+			}	
+		}
+	
+		"Modifiers"
+		{	
+
+			"modifier_suwako04"
+			{
+				"Duration"	"0.22"
+				"IsDebuff"	"1"
+				"IsHidden"	"1"
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilitysuwako.lua"
+						"Function"		"OnSuwako04ModifierCheckDestroyedNew"
+					}
+					"Knockback"
+					{
+						"Target"	"TARGET"
+						"Center"	"CASTER"
+						"Distance"	"0"
+						"Duration"	"0.7"
+						"Height"	"250"
+						"IsFixedDistance"	"1"
+					}												
+				}						
+			}
+			"modifier_suwako04_stun"
+			{
+				"Duration"	"%stun_duration"
+				"IsDebuff"	"1"
+				"IsPurgable"	"1"			
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}			
+			}		
+		}	
+	}
+	"special_bonus_unique_suwako_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"ID"							"40200"	
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"50"
+			}
+		}
+	}
+	"special_bonus_unique_suwako_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"ID"							"40201"			
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"13"
+			}
+		}
+	}
+	"special_bonus_unique_suwako_3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"ID"							"40202"			
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"30"
+			}
+		}
+	}	
+	"special_bonus_unique_suwako_4"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"special_bonus_undefined"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"ID"							"40203"			
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"value"						"350"
+			}
+		}
+	}	
+}

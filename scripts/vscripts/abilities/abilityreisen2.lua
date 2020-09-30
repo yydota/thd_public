@@ -109,7 +109,7 @@ function modifier_mark_target:OnAttackLanded(keys)
             damage_flags    = hability:GetAbilityTargetFlags(),
             ability= hability
         }
-        ApplyDamage(damage_table)
+        UnitDamageTarget(damage_table)
     end
 
 end
@@ -350,7 +350,7 @@ function modifier_ability_thdots_reisen2_02_buff_damageReduction:GetModifierInco
         ParticleManager:SetParticleControlEnt(effectIndex, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
         ParticleManager:SetParticleControlEnt(effectIndex, 1, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)
         ParticleManager:ReleaseParticleIndex(effectIndex)
-        ApplyDamage(damage_table)
+        UnitDamageTarget(damage_table)
     end
     return ability:GetSpecialValueFor("reduction")
 end
@@ -546,7 +546,7 @@ function modifier_ability_thdots_reisen2_03_attack_buff:OnAttackLanded(keys)
             ability= self:GetAbility()
         }
         if not enemy:IsBuilding() then 
-            ApplyDamage(damage_table)
+            UnitDamageTarget(damage_table)
             --治疗
             local heal=total_damage*(ability:GetSpecialValueFor("heal_percent")/100)
             caster:Heal(heal,caster)

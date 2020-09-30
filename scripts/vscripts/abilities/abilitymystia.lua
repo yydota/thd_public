@@ -30,7 +30,7 @@ function Mystia01OnSpellStart(keys)
                            damage = keys.damage + agi * 1.5 , 
                            damage_type = keys.ability:GetAbilityDamageType()
                   }
-       ApplyDamage(DamageTable)
+       UnitDamageTarget(DamageTable)
        if GameRules:IsDaytime() then
         keys.ability:ApplyDataDrivenModifier(caster, v, "modifier_mystia01", {Duration = duration + FindTelentValue(caster,"special_bonus_unique_mystia_1")})
        else
@@ -265,7 +265,7 @@ function Mystia04OnSpellStart(keys)
                            damage = keys.damage ,
                            damage_type = keys.ability:GetAbilityDamageType()
                   }
-       ApplyDamage(DamageTable)
+       UnitDamageTarget(DamageTable)
        keys.ability:ApplyDataDrivenModifier(caster, v, "modifier_mystia04_1", {Duration = duration})
 
 

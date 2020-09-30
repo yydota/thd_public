@@ -54,6 +54,7 @@ function OnGetCollection(Collection,Hero)
 			end
 		end
 	end
+	Hero:EmitSound("THD_GetPower")
 	Collection:RemoveSelf()
 end
 

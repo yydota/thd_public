@@ -515,6 +515,18 @@ function THDOTSGameMode:OnPlayerSay( keys )
 		THD_RANK(plyid,plyhd)
 	elseif text == "ruozhitaidao" then --gtmdtd(这里是大鸽加的, 而且本来是空的)
 		HostSay("gtmdtd")  --这个是我加的 XD
+	elseif text == "-zisha" then --影狼BUG自杀指令
+		local hero = plyhd:GetAssignedHero()
+		local time = RandomInt(20, 40)
+		print(hero:GetName())
+		if hero:GetName() == "npc_dota_hero_lycan" then
+			Say(plyhd, "30秒后重置", true)
+			hero:SetContextThink("kagerou_kill", 
+				function()
+				hero:ForceKill(true)
+			end,
+			time)
+		end
 	end
 	
 	if text == "getnum" then
@@ -1167,6 +1179,14 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 		abilityEx = hero:FindAbilityByName("ability_thdots_sunnyEx")
 		abilityEx:SetLevel(1)
 		abilityEx = hero:FindAbilityByName("ability_thdots_sunny05")
+		abilityEx:SetLevel(1)
+	elseif (heroName == "npc_dota_hero_terrorblade") then
+		abilityEx = hero:FindAbilityByName("ability_thdots_chenEx")
+		abilityEx:SetLevel(1)
+		abilityEx = hero:FindAbilityByName("ability_thdots_chen04")
+		abilityEx:SetLevel(1)
+	elseif (heroName == "npc_dota_hero_ogre_magi") then
+		abilityEx = hero:FindAbilityByName("ability_thdots_suwako05")
 		abilityEx:SetLevel(1)
 	end
 end

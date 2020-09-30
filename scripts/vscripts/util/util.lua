@@ -234,3 +234,16 @@ function DeleteDummy(targets)
         end
     end
 end
+
+function DecideMaxRange(caster,point,max_range)
+    local targetPoint = point
+    local vecCaster = caster:GetOrigin()
+    local maxRange = max_range
+    local pointRad = GetRadBetweenTwoVec2D(vecCaster,targetPoint)
+    if(GetDistanceBetweenTwoVec2D(vecCaster,targetPoint)<=maxRange)then
+        return targetPoint
+    else
+        local blinkVector = Vector(math.cos(pointRad)*maxRange,math.sin(pointRad)*maxRange,0) + vecCaster
+        return blinkVector
+    end
+end

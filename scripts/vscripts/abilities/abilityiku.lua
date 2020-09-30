@@ -91,6 +91,36 @@ function OnIku02Knockback( unit,caster_face,unit_abs,distance,speed )
 		end, 0)
 end
 
+function OnIku03Knockback( unit,caster_face,unit_abs,distance,speed )
+	local len = 0
+	EmitSoundOn("Hero_Zuus.ArcLightning.Cast", unit)
+
+	if(unit:GetClassname()=="npc_dota_roshan")then
+		return
+	end
+	
+	unit.is_Iku_02_knock = true
+	
+	GameRules:GetGameModeEntity():SetContextThink(DoUniqueString("OnIku02Knockback"), 
+		function( )
+			if GameRules:IsGamePaused() then return 0.03 end
+
+			len = len + speed
+			if len<distance then
+				local vec = caster_face * len
+				if unit:HasModifier("modifier_item_dragon_star_buff") 
+					or unit:HasModifier("modifier_meirin02_buff") then
+				else
+					unit:SetAbsOrigin(unit_abs + vec)
+				end
+				return 0.05
+			end
+			unit:AddNewModifier(nil, nil, "modifier_phased", {duration=0.1})
+			unit.is_Iku_02_knock = false
+			return nil
+		end, 0)
+end
+
 --雷云棘鱼
 function OnIku02SpellStart( keys )
 	local caster = EntIndexToHScript(keys.caster_entindex)
@@ -133,7 +163,7 @@ function OnIku02SpellStart( keys )
 							attacker=caster,
 							damage_type=keys.ability:GetAbilityDamageType(),
 							damage=light_damage}
-		ApplyDamage(damageTable)
+		UnitDamageTarget(damageTable)
 
 		local unit_abs = unit:GetAbsOrigin()
 		OnIku02Knockback(unit,(unit_abs - caster_abs):Normalized(),unit_abs,distance,50)
@@ -181,10 +211,10 @@ function OnIku03AttackLight( keys,caster,unit,lastUnit,caster_abs,time )
 								attacker=caster,
 								damage_type=keys.ability:GetAbilityDamageType(),
 								damage=light_damage}
-			ApplyDamage(damageTable)
+			UnitDamageTarget(damageTable)
 
 			local unit_abs = unit:GetAbsOrigin()
-			OnIku02Knockback(unit,(caster_abs - unit_abs):Normalized(),unit_abs,distance,10)
+			OnIku03Knockback(unit,(caster_abs - unit_abs):Normalized(),unit_abs,distance,10)
 
 		end, time)	
 end
@@ -346,7 +376,7 @@ function OnIku04SpellStart( keys )
 								attacker=caster,
 								damage_type=keys.ability:GetAbilityDamageType(),
 								damage=light_damage}
-			ApplyDamage(damageTable)
+			UnitDamageTarget(damageTable)
 		end
 	end
 end

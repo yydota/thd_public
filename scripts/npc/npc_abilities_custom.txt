@@ -15,6 +15,8 @@
 #base "heroes/star/npc_abilities_star.txt"  
 #base "heroes/yorihime/npc_abilities_yorihime.txt"  
 #base "heroes/sunny/npc_abilities_sunny.txt"  
+#base "heroes/chen/npc_abilities_chen.txt"
+#base "heroes/suwako/npc_abilities_suwako.txt"
 
 "DOTAAbilities"
 {
@@ -1347,7 +1349,7 @@
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_3"
-		"AbilityCooldown"	"115"
+		"AbilityCooldown"	"115 100 85"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityManaCost"	"200 300 400"
@@ -1987,7 +1989,6 @@
 		}
 		"AbilityDamage"	"360 540 720"
 	}
-
 	"ability_thdots_youmuEx"
 	{
 		"BaseClass"           	    "ability_datadriven"
@@ -4793,14 +4794,14 @@
 						}
 					}
 				}
-				"OnKill"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/abilities/abilityFlandre.lua"
-						"Function"		"Onflandre04Kill"
-					}
-				}
+				// "OnKill"
+				// {
+				// 	"RunScript"
+				// 	{
+				// 		"ScriptFile"	"scripts/vscripts/abilities/abilityFlandre.lua"
+				// 		"Function"		"Onflandre04Kill"
+				// 	}
+				// }
 			}
 			"modifier_thdots_flandre_04_multi"
 			{
@@ -4862,18 +4863,18 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"30"
 				}
 			}
-			"modifier_thdots_flandre_04_speed"
-			{
-				"IsHidden" "0"
-				"IsBuff"	"1"
-				"RemoveOnDeath"	"1"
-				"IsPurgable" "1"
-				"Duration" "%ability_speed_duration"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"30"
-				}
-			}
+			// "modifier_thdots_flandre_04_speed"
+			// {
+			// 	"IsHidden" "0"
+			// 	"IsBuff"	"1"
+			// 	"RemoveOnDeath"	"1"
+			// 	"IsPurgable" "1"
+			// 	"Duration" "%ability_speed_duration"
+			// 	"Properties"
+			// 	{
+			// 		"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"30"
+			// 	}
+			// }
 		}
 		"AbilitySpecial"
 		{
@@ -4892,11 +4893,11 @@
 				"var_type"	"FIELD_FLOAT"
 				"ability_chance_base"	"0"
 			}
-			"04"
-			{
-				"var_type"	"FIELD_FLOAT"
-				"ability_speed_duration"	"3 4 5"
-			}
+			// "04"
+			// {
+			// 	"var_type"	"FIELD_FLOAT"
+			// 	"ability_speed_duration"	"3 4 5"
+			// }
 		}
 	}
 
@@ -6967,6 +6968,23 @@
 					}
 				}
 			}
+			// "modifier_ability_thdots_iku03_target"
+			// {
+			// 	"IsHidden"		"0"				
+			// 	"IsPurgable"	"1"	
+			// 	"IsDebuff"		"1"
+			// 	"RemoveOnDeath"	"1"
+			// 	"ThinkInterval"	"0.03"
+			// 	"OnIntervalThink"
+			// 	{
+			// 		"RunScript"
+			// 		{
+			// 			"ScriptFile"	"scripts/vscripts/abilities/abilityIku.lua"
+			// 			"Target"	"UNIT"
+			// 			"Function"	"OnIku03Attack_target"
+			// 		}
+			// 	}
+			// }
 		}
 		"AbilitySpecial"
 		{
@@ -7014,7 +7032,7 @@
 		"AbilityCastPoint"	"0.0 0.0 0.0 0.0"
 		"AbilityCastAnimation"	"ACT_DOTA_ATTACK"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_4"
-		"AbilityCooldown"	"100"
+		"AbilityCooldown"	"100 90 80"
 		"AbilityManaCost"	"150 250 350"
 		"AbilityCastRange"	"700"
 		"ID"	"2046"
@@ -8591,7 +8609,7 @@
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_4"
-		"AbilityCooldown"	"140 120 100"
+		"AbilityCooldown"	"140"
 		"AbilityManaCost"	"0"
 		// Stats
 		// ----------------------------------------------------------------
@@ -12134,7 +12152,7 @@
 				"damage_int_mult"	"0.3"
 			}
 		}
-		"AbilityDamage"	"70 100 130 160"
+		"AbilityDamage"	"80 100 120 140"
 	}
 
 	"ability_thdots_yumemi02"
@@ -14418,7 +14436,7 @@
 			"05"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"int_bonus"			"1.2"
+				"int_bonus"			"0.8"
 			}
 		}
 		"AbilityDamage"	"120 150 180 210"
@@ -15158,7 +15176,7 @@
 		
 		// Stats
 		//----------------------------------------------------------------
-		"AbilityManaCost"           "90 100 110 120"
+		"AbilityManaCost"           "110 120 130 140"
 		"AbilityCastPoint"          "0.2"
 		"AbilityCooldown"           "15 14 13 12"
 		"AOERadius"                 "%radius"
@@ -17115,7 +17133,8 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"				"4"
-		"AbilityCastPoint"		"1.0"
+		"AbilityCastPoint"		"0.5"
+		"AnimationPlaybackRate"	"2"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityCooldown"		"9 8 7 6"
 		"AbilityManaCost"		"80 90 100 110"
@@ -17247,6 +17266,7 @@
 		"AbilityCastPoint"		"2.0"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCooldown"		"120 105 90"
+		// "AbilityChannelTime"	"2.0"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityCastRange"		"99999"
@@ -17473,7 +17493,7 @@
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		// Stats
 		// ----------------------------------------------------------------
-		"AbilityDamage"			"100 140 180 220"
+		"AbilityDamage"			"90 120 150 180"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 
 		"precache"
@@ -17616,7 +17636,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"lifesteal_percent"	 "20"
+				"lifesteal_percent"	 "12"
 			}
 		}
 	}
@@ -17743,7 +17763,7 @@
 		// Stats
 		//----------------------------------------------------------------
 		"AbilityManaCost"           "100"
-		"AbilityCooldown"           "60.0"
+		"AbilityCooldown"           "60"
 		"AbilityCastPoint"          "0.2"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"AbilityCastRange"			"300"
@@ -17819,7 +17839,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration"				"7 11 15"
+				"duration"				"6 9 12"
 			}
 			"02"
 			{
@@ -23978,14 +23998,14 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"touhoutd/thtd_toramaru_02"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
-		"AbilityCastPoint"	"0.2"
-		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
-		"AnimationPlaybackRate"	"2.5"
-		"AbilityCooldown"	"14 13 12 11"
+		// "AbilityCastPoint"	"0.1"
+		// "AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+		// "AnimationPlaybackRate"	"4"
+		"AbilityCooldown"	"14 12 10 8"
 		"AbilityManaCost"	"80 100 120 140"
 		"precache"
 		{
@@ -24118,7 +24138,7 @@
 		"AOERadius"	"120"
 		"AbilityCooldown"	"6 5 4 3"
 		"AbilityManaCost"	"35 60 65 80"
-		"AbilityCastRange"	"525"
+		"AbilityCastRange"	"650"
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_stormspirit.vsndevts"
@@ -24344,7 +24364,7 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"MaxLevel"	"3"
-		"AbilityCooldown"	"120"
+		"AbilityCooldown"	"120 110 100"
 		"AbilityManaCost"	"200 250 300"
 		"AbilityCastRange"	"550"
 		"precache"
@@ -24782,7 +24802,7 @@
 		"AnimationPlaybackRate"	"2"
 		"MaxLevel"	"3"
 		"AbilityCastPoint"	"0.2"
-		"AbilityCooldown"	"120 100 80"
+		"AbilityCooldown"	"100 80 60"
 		"AbilityCastRange"	"99999"
 		"precache"
 		{

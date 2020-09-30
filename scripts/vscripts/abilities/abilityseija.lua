@@ -72,7 +72,7 @@ function ability_thdots_seija01:OnProjectileHitHandle(hTarget, vLocation, iProje
 						attacker = caster,
 						ability = ability
 						}
-	local damage_dealt = ApplyDamage(damageTable)
+	local damage_dealt = UnitDamageTarget(damageTable)
 	ProjectileManager:DestroyLinearProjectile(iProjectileHandle)
 end
 
@@ -338,7 +338,7 @@ function ability_thdots_seija02:OnProjectileHitHandle(hTarget, vLocation, iProje
 						}
 	target:EmitSound("Voice_Thdots_Suika.AbilitySeija02_2")
 	target:AddNewModifier(caster,ability, "modifier_ability_thdots_seija02_debuff",{duration = self.duration_slow})
-	local damage_dealt = ApplyDamage(damageTable)
+	local damage_dealt = UnitDamageTarget(damageTable)
 	for i = 1,#self.projectile_table do
 		if self.projectile_table[i].barrage == iProjectileHandle then
 			self.projectile_table[i].damage_reduce = self.projectile_table[i].damage_reduce + self.damage_reduce

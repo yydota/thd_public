@@ -12,6 +12,7 @@
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_nitori_sounds.vsndevts"
 			"particle"  "particles/units/heroes/hero_spirit_breaker/spirit_breaker_charge.vpcf"
 		}
 		"Modifiers"

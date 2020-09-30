@@ -138,7 +138,7 @@ end
 function sunny02_effect(caster,radius)
 	local direct = math.acos(caster:GetForwardVector().x)
 
-	local dummy = CreateUnitByName("npc_dummy_unit", 
+	local dummy = CreateUnitByName("npc_no_vision_dummy_unit", 
 	    	                        caster:GetOrigin(), 
 									false, 
 								    caster, 
@@ -163,7 +163,7 @@ function sunny02_effect(caster,radius)
 	
 	for k=0,4 do
 		local rad = Vector(math.cos(direct+math.pi/2.5*k),math.sin(direct+math.pi/2.5*k),0) --五个方向
-		local dummy_kid = CreateUnitByName("npc_dummy_unit", 
+		local dummy_kid = CreateUnitByName("npc_no_vision_dummy_unit", 
 	    	                        caster:GetAbsOrigin()+ rad * radius, 
 									false, 
 								    caster, 
@@ -208,9 +208,9 @@ function ability_thdots_sunny03:OnSpellStart()
 	damage = damage + caster:GetIntellect() * int_bonus
 	--特效音效
 	local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_tinker/tinker_laser.vpcf", PATTACH_CUSTOMORIGIN,caster)
-	ParticleManager:SetParticleControlEnt(effectIndex , 0, caster, 5, "attach_hitloc", Vector(0,0,0), true)
+	ParticleManager:SetParticleControlEnt(effectIndex , 0, caster, 5, "attach_attack2", Vector(0,0,0), true)
 	ParticleManager:SetParticleControlEnt(effectIndex , 1, target, 5, "attach_hitloc", Vector(0,0,0), true)
-	ParticleManager:SetParticleControlEnt(effectIndex , 9, caster, 5, "attach_hitloc", Vector(0,0,0), true)
+	ParticleManager:SetParticleControlEnt(effectIndex , 9, caster, 5, "attach_attack2", Vector(0,0,0), true)
 	target:EmitSound("Hero_Tinker.LaserImpact")
 
 	target:AddNewModifier(caster,self, "modifier_ability_thdots_sunny03_debuff", {duration = duration})
@@ -331,7 +331,7 @@ function modifier_ability_thdots_sunny04:OnCreated()
 	--特效音效
 	-- local count  = math.floor(self.duration/4)
 	self.sun = CreateUnitByName("npc_dummy_unit", 
-    	                        self.caster:GetAbsOrigin(), 
+    	                        Vector(99999,-99999,0), 
 								false, 
 							    self.caster, 
 								self.caster, 

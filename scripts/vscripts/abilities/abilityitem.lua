@@ -509,6 +509,23 @@ function ItemAbility_ModifierTarget(keys)
 	ItemAbility:ApplyDataDrivenModifier(Caster,Target,keys.ModifierName,{})
 end
 
+function Item_yukkuri_stick_ModifierTarget(keys)
+	local ItemAbility = keys.ability
+	local Caster = keys.Caster or keys.caster
+	local Target = keys.Target or keys.target
+	if Caster and Target and Caster:GetTeam()~=Target:GetTeam() then
+		if keys.Blockable==1 and is_spell_blocked_by_hakurei_amulet(Target) then
+			return
+		elseif (not keys.ApplyToTower or keys.ApplyToTower==0) and Target:IsBuilding() then
+			return
+		end
+	end
+	Target:EmitSound("Hero_Lion.Voodoo")
+	local yukkuri_stick_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW,Target)
+	ParticleManager:ReleaseParticleIndex(yukkuri_stick_particle)
+	ItemAbility:ApplyDataDrivenModifier(Caster,Target,keys.ModifierName,{})
+end
+
 function Item_frozen_frog_Ability_ModifierTarget(keys)
 	local ItemAbility = keys.ability
 	local Caster = keys.Caster or keys.caster
