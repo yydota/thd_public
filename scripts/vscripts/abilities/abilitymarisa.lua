@@ -310,17 +310,32 @@ function AbilityMarisa:OnMarisa03Start(keys)
 		end
 		ParticleManager:SetParticleControlEnt(effectIndex , 0, unit, 5, "follow_origin", Vector(0,0,0), true)
 
-		Timer.Wait 'ability_marisa03_star_release' (duration,
-			function()
-				unit:ForceKill(true)
-				unit:AddNoDraw()
-				caster:RemoveModifierByName("modifier_thdots_marisa03_think_interval")
-			end
-	    )
+		-- Timer.Wait 'ability_marisa03_star_release' (duration,
+		-- 	function()
+		-- 		unit:ForceKill(true)
+		-- 		unit:AddNoDraw()
+		-- 		caster:RemoveModifierByName("modifier_thdots_marisa03_think_interval")
+		-- 	end
+		--    )
+		unit:AddNewModifier(caster,keys.ability,"modifier_thdots_marisa03_unit_death",{duration = duration})
 		table.insert(self.Marisa03Stars,unit)
 	end
 	keys.ability:ApplyDataDrivenModifier(caster, caster, "modifier_thdots_marisa03_think_interval", {Duration = duration})
 end
+
+modifier_thdots_marisa03_unit_death = {}
+LinkLuaModifier("modifier_thdots_marisa03_unit_death","scripts/vscripts/abilities/abilityMarisa.lua",LUA_MODIFIER_MOTION_NONE)
+function modifier_thdots_marisa03_unit_death:IsHidden() 		return false end
+function modifier_thdots_marisa03_unit_death:IsPurgable()		return false end
+function modifier_thdots_marisa03_unit_death:RemoveOnDeath() 	return true end
+function modifier_thdots_marisa03_unit_death:IsDebuff()		return false end
+function modifier_thdots_marisa03_unit_death:OnDestroy()
+	if not IsServer() then return end
+	self:GetParent():ForceKill(true)
+	self:GetParent():AddNoDraw()
+end
+
+
 
 function AbilityMarisa:OnMarisa03Think(keys)
 	local caster = EntIndexToHScript(keys.caster_entindex)

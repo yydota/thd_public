@@ -138,7 +138,7 @@ end
 
 function modifier_ability_thdots_yorihime_01_move:OnIntervalThink()
 	if not IsServer() then return end
-	if not self.target:IsAlive() then
+	if not self.target:IsAlive() or self.target == nil then
 		local targets = FindUnitsInRadius(self.caster:GetTeam(), self.target:GetAbsOrigin(),nil,1000,
 			self.ability:GetAbilityTargetTeam(),self.ability:GetAbilityTargetType(),DOTA_UNIT_TARGET_FLAG_NO_INVIS,FIND_CLOSEST, false)
 		DeleteDummy(targets)

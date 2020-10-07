@@ -116,6 +116,7 @@
 		"item"		"item_darkred_umbrella"
 		"item"		"item_bone_flute"
 		"item"		"item_donation_box"
+		"item"		"item_shanbibu"
 	}
 	
 	"magics"

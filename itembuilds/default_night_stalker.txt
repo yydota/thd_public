@@ -6,35 +6,52 @@
 	
 	"Items"	
         {		
-		"#DOTA_Item_Build_Starting_Items"//出门装备
+		"#DOTA_Item_Build_Starting_Items"//鲁枚脙脜脳掳卤赂
 		{
-                        "item"                "item_clarity"
-                        "item"                "item_mushroom_kebab"
+                        "item"                "item_mushroom_pie"
                         "item"                "item_flask"
-                        "item"                "item_card_good_man"
+                        "item"                "item_flask"
+                        "item"                "item_card_worse_man"
 		}
 		
-		"#DOTA_Item_Build_Early_Game"//前期装备
+		"#DOTA_Item_Build_Early_Game"//脟掳脝脷脳掳卤赂
 		{				
                         "item"                "item_best_lunchbox"
+                        "item"                "item_mushroom_pie"
+                        "item"                "item_mushroom_pie"
                         "item"                "item_donation_box"
                         "item"                "item_9ball"
+                        "item"                "item_horse_green_active"
                         "item"                "item_card_worse_man"
-                        "item"                "item_phoenix_wing"
+                        "item"                "item_wind_gun"
 		}
 
-		"#DOTA_Item_Build_Mid_Items"//中期装备
+		"#DOTA_Item_Build_Mid_Items"//脰脨脝脷脳掳卤赂
 		{
-                        "item"                "item_qijizhixing"
-                        "item"                "item_zun_glasses_active"
-                        "item"                "item_xuenvdeweijin"
-		}
-
-		"#DOTA_Item_Build_Late_Items"//后期装备
-		{
-                        "item"                "item_zaiezhizhurenxing"
-                        "item"                "item_tuzhushen"
+                        "item"                "item_zuzhoumujian"
                         "item"                "item_tingshiyice"
+                        "item"                "item_gem"
+                        "item"                "item_wanmeitiaoyuezhuangzhi"
+                        "item"                "item_mr_yang"
+                        "item"                "item_tentacle"
+                        "item"                "item_dragon_star"
+                        "item"                "item_darkred_umbrella"
+                        "item"                "item_hakurei_ticket"
+		}
+
+		"#DOTA_Item_Build_Late_Items"//潞贸脝脷脳掳卤赂
+		{
+                        "item"                "item_xuenvdeweijin"
+                        "item"                "item_UFO"
+                        "item"                "item_tingshiyice"
+                        "item"                "item_rapier"
+                        "item"                "item_yukkuri_stick"
+                        "item"                "item_frock"
+                        "item"                "item_verity"
+                        "item"                "item_tsundere"
+                        "item"                "item_dragon_star"
+                        "item"                "item_bone_flute"
+                        "item"                "item_tuzhushen_effect"
 		}
 	}
 }

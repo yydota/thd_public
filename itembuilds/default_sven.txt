@@ -1,0 +1,69 @@
+"itembuilds"
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_sven"
+	"Title"			"Recommended items for Sven"
+	
+	"Items"
+	{		
+		"#DOTA_Item_Build_Starting_Items"//³öÃÅ×°±¸
+		{
+                        "item"		"item_mushroom_kebab"
+                        "item"		"item_clarity"
+                        "item"		"item_clarity"
+	        "item"		"item_flask"
+                        "item"		"item_card_love_man"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"//Ç°ÆÚ×°±¸
+		{	
+                        "item"		"item_9ball"
+                        "item"		"item_best_lunchbox"
+	        "item"		"item_donation_box"
+	        "item"		"mushroom_kebab"
+	        "item"		"mushroom_kebab"
+                        "item"                              "item_present_box"
+
+		}
+
+		"#DOTA_Item_Build_Mid_Items"//ÖÐÆÚ×°±¸
+		{			
+	        "item"		"item_shizijia"
+	        "item"		"item_hakurei_ticket"
+	        "item"		"item_ghost_balloon"
+	        "item"		"item_hetongtuijinzhuangzhi"
+	        "item"		"item_green_dam"
+	        "item"		"item_phoenix_wing"
+	        "item"		"item_zun_glasses_active"
+
+		}
+
+		"#DOTA_Item_Build_Late_Items"//ºóÆÚ×°±¸
+		{
+	        "item"                             "item_bone_flute"
+	        "item"                             "item_tuzhushen_effect"
+                        "item"                             "item_frock"
+	        "item"                             "item_xuenvdeweijin"
+	        "item"                             "item_horse_king"
+	        "item"                             "item_loneliness"
+                        "item"                             "item_dragon_star"
+                        "item"                             "item_teeth"
+		}
+
+		"#DOTA_Item_Build_Other_Items"//³£ÓÃ×°±¸
+		{
+	        "item"		"item_flask"
+	        "item"		"item_clarity"
+	        "item"		"item_tpscroll"
+          	        "item"		"item_card_good_man"
+	        "item"		"item_card_bad_man"
+	        "item"		"item_card_worse_man"
+	        "item"		"item_card_love_man"
+	        "item"		"item_gem"
+      	        "item"		"item_courier"
+	        "item"		"item_flying_courier"	
+	        "item"                              "item_ward_observer"
+	        "item"                              "item_ward_sentry"	
+		}
+	}
+}

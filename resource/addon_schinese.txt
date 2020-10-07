@@ -1816,7 +1816,7 @@
 		"DOTA_Tooltip_ability_item_recipe_mr_yang"	"光龙雷云钻制作书"
 		"DOTA_Tooltip_ability_item_mr_yang"	"光龙雷云钻"
 		"DOTA_Tooltip_ability_item_mr_yang"	"光龙雷云钻"
-		"DOTA_Tooltip_ability_item_mr_yang_Description"	"<h1>主动：电疗</h1>对目标敌方英雄进行电击治疗，降低其最大法力值%decline_mana%点，持续%decline_intellect_duration%秒。<br>同时将其移动速度降至最低，移动速度会逐渐恢复至正常，持续%slowdown_duration%秒。<br>使用时驱散目标单位身上的正面状态<br><br>施法距离：%AbilityCastRange%<br>\n<h1>被动：压制</h1>对非英雄单位进行物理攻击会造成额外%physical_damage%点伤害。"
+		"DOTA_Tooltip_ability_item_mr_yang_Description"	"<h1>主动：电疗</h1>对目标敌方英雄进行电击治疗，降低其最大法力值%decline_mana%点，持续%decline_intellect_duration%秒。<br>同时将其移动速度降至最低，移动速度会逐渐恢复至正常，持续%slowdown_duration%秒。<br>使用时持续驱散目标单位身上的正面状态<br><br>施法距离：%AbilityCastRange%<br>\n<h1>被动：压制</h1>对非英雄单位进行物理攻击会造成额外%physical_damage%点伤害。"
 		"DOTA_Tooltip_ability_item_mr_yang_note0"   "效果可以驱散。"
 		"DOTA_Tooltip_ability_item_mr_yang_bonus_strength"	"+$str"
 		"DOTA_Tooltip_ability_item_mr_yang_bonus_agility"	"+$agi"
@@ -1833,7 +1833,7 @@
 		"DOTA_Tooltip_ability_item_three_dimension_Note0"			"如果在开启期间进入技能免疫状态，幽灵效果将会中止。如果在技能免疫状态下开启物品将不会拥有幽灵效果。<br><br>效果可以驱散。<br>效果被标记为debuff，故只能被对友军释放的驱散技能驱散。"
 		"DOTA_Tooltip_ability_item_ghostspoon"	"幽灵木勺"
 		"DOTA_Tooltip_ability_item_ghostspoon_Description"	"<h1>主动：幽灵形态</h1> 进入幽灵形态，持续%debuff_duration%秒，期间降低%debuff_slowdown_movespeed_percent%%%移动速度，无法进行普通攻击也不会受到物理伤害，但会受到%debuff_mgical_resistance_decrepify%%%的额外魔法伤害。"
-		"DOTA_Tooltip_ability_item_ghostspoon_bonus_strength"	"+$str"
+		"DOTA_Tooltip_ability_item_ghostspoon_bonus_all_stats"	"+$all"
 		"DOTA_Tooltip_ability_item_ghostspoon_Note0"			"如果在开启期间进入技能免疫状态，幽灵效果将会中止。如果在技能免疫状态下开启物品将不会拥有幽灵效果。<br><br>效果无法驱散。"
 		"DOTA_Tooltip_ability_item_recipe_peach"	"天上的桃子制作书"
 		// ************************
@@ -2753,13 +2753,15 @@
 		"DOTA_Tooltip_ability_ability_thdots_seija03"	"逆符「Evil in the Mirror」"
 		"DOTA_Tooltip_ability_ability_thdots_seija03_Description"	"<h1>被动：</h1>当被攻击的少女的攻击力高于自身时会对目标少女造成一定数值的物理伤害。当被攻击的少女的智力高于自身时,会对目标少女造成一定数值的魔法伤害\n<font color=\"#d9534f\">物理加成</font>：目标攻击-自身攻击\n<font color=\"#337ab7\">魔法加成</font>：目标智力-自身智力\n<h1>主动：</h1>将指定少女的攻击力与智力数值互换"
 		"DOTA_Tooltip_ability_ability_thdots_seija03_duration"	"持续时间："
+		"DOTA_Tooltip_ability_ability_thdots_seija03_cast_range"	"施法距离："
+		"DOTA_Tooltip_ability_ability_thdots_seija03_cast_range"	"施法距离："
 		"DOTA_Tooltip_modifier_ability_thdots_seija03"	"「Evil in the Mirror」"
 		"DOTA_Tooltip_modifier_ability_thdots_seija03_Description"	"攻击力与智力数值互换"
 		"DOTA_Tooltip_modifier_ability_thdots_seija03_passive"	"「Evil in the Mirror」"
 		"DOTA_Tooltip_modifier_ability_thdots_seija03_passive_Description"	"根据双方的攻击力与智力差距造成物理伤害以及魔法伤害"
 		"DOTA_Tooltip_ability_ability_thdots_seija04_Description"	"以目标点或目标英雄为中心,旋转周围的单位至以中心对称的位置\n当释放点为<font color=\"#5cb85c\">地面</font>或<font color=\"#5cb85c\">视角正常</font>的单位,则旋转只作用于<font color=\"#5cb85c\">视角反转</font>的单位\n当释放点是<font color=\"#f0ad4e\">视角反转</font>的单位,则旋转只作用于<font color=\"#f0ad4e\">视角正常</font>的单位"
 		"DOTA_Tooltip_ability_ability_thdots_seija04"	"逆转「Reverse Hierarchy」"
-		"DOTA_Tooltip_ability_ability_thdots_seija04_radius"	"影响距离："
+		"DOTA_Tooltip_ability_ability_thdots_seija04_radius"	"影响范围："
 		"DOTA_Tooltip_modifier_ability_thdots_seija04"	"「Reverse Hierarchy」"
 		"DOTA_Tooltip_modifier_ability_thdots_seija04_Description"	"被旋转了！"
 		"DOTA_Tooltip_ability_ability_thdots_seija04_Note0"	"目标视角正常时顺时针旋转，目标视角反转时逆时针旋转"
@@ -2965,7 +2967,7 @@
 
 		
 		"DOTA_Tooltip_ability_ability_thdots_suwako02"						"「岩浆的两栖类」"		
-		"DOTA_Tooltip_ability_ability_thdots_suwako02_Description"			"诹访子钻入地下不能被攻击,制造一个水涡并对区域内造成伤害.\n增加 %movement_speed_percent_bonus_suwako%% 移速,并减少敌方 %slow_speed_percent_bonus_suwako%% 移速\n施法期间不能攻击,使用技能和物品\n智力加成：%int_scale%"					
+		"DOTA_Tooltip_ability_ability_thdots_suwako02_Description"			"诹访子钻入地下不能被攻击,制造一个水涡并对区域内造成伤害.\n增加 %movement_speed_percent_bonus_suwako%% 移速,并减少敌方 %slow_speed_percent_bonus_suwako%% 移速和%slow_speed_percent_bonus_suwako%攻速\n施法期间不能攻击,使用技能和物品\n智力加成：%int_scale%"					
 		"DOTA_Tooltip_ability_ability_thdots_suwako02_ability_duration"		"持续时间： "	
 		"DOTA_Tooltip_ability_ability_thdots_suwako02_burn_damage_radius"	"影响范围： "		
 		"DOTA_Tooltip_modifier_suwako02_slow" 								"「岩浆的两栖类」"
@@ -3929,6 +3931,11 @@
 		"DOTA_Tooltip_ability_item_wanmeitiaoyuezhuangzhi_bonus_mana"	"+$mana"
 		"DOTA_Tooltip_ability_item_wanmeitiaoyuezhuangzhi_note0" "不会被伤害打断，不会被缠绕禁止。<br>PS by 白薯"
 
-			
+		"DOTA_Tooltip_ability_item_shanbibu"	"轻飘飘的布"
+		"DOTA_Tooltip_ability_item_shanbibu_Description"	"<h1>主动：遮蔽</h1>经过0.6秒延迟后,自身或者友方目标单位进入幽灵形态同时隐身，持续%duration%秒。期间降低%debuff_slowdown_movespeed_percent%%%移动速度，无法进行普通攻击也不会受到物理伤害，但会受到%debuff_mgical_resistance_decrepify%%%的额外魔法伤害。"
+		"DOTA_Tooltip_ability_item_shanbibu_Note0"	"期间攻击和施法动作都会中断遮蔽"
+		"DOTA_Tooltip_ability_item_shanbibu_bonus_all_stats"	"+$all"
+		"DOTA_Tooltip_modifier_item_shanbibu_active"	"轻飘飘的布"
+		"DOTA_Tooltip_modifier_item_shanbibu_active_Description"	"进入幽灵形态同时隐身，无法进行普通攻击也不会受到物理伤害，但会受到额外魔法伤害。"
 	}
 }

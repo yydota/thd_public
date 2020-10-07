@@ -208,9 +208,8 @@ function IsNotLunchbox_ability(ability)  --御币不能充能的技能
         or ability:GetName() == "ability_thdots_patchouli_water"
         or ability:GetName() == "ability_thdots_patchouli_wood"
         or ability:GetName() == "ability_thdots_patchouli_metal"
-        or ability:GetName() == "ability_thdots_patchouli_earth" then
-            return true
-        end
+        or ability:GetName() == "ability_thdots_patchouli_earth" 
+        then return true end
         if ability:IsToggle() or ability:GetAbilityType() == 3 then  --GetAbilityType() == 3 是HIDDEN技能，一般是天生，不触发
             return true
         end

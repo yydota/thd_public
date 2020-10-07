@@ -447,6 +447,10 @@ function ability_thdots_seija03:GetIntrinsicModifierName()
 	return "modifier_ability_thdots_seija03_passive"
 end
 
+function ability_thdots_seija03:GetCastRange(vLocation, hTarget)
+	return self:GetSpecialValueFor("cast_range")
+end
+
 function ability_thdots_seija03:OnSpellStart()
 	if not IsServer() then return end
 	local caster 				= self:GetCaster()

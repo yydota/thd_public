@@ -23283,7 +23283,7 @@
 			"modifier_skewer_disable_caster"
 			{
 				"IsHidden"	"0"
-				"IsPurgable"	"1"
+				"IsPurgable"	"0"
 				"IsDebuff"	"0"
 				"RemoveOnDeath"	"1"
 				"EffectName"	"particles/units/heroes/hero_magnataur/magnataur_skewer.vpcf"

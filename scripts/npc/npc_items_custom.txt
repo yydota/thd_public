@@ -6777,7 +6777,7 @@
 		"ItemResult"	"item_guilty_mask"
 		"ItemRequirements"
 		{
-			"01"	"item_paper_mask;item_pant"
+			"01"	"item_cherry_leaf;item_pant"
 		}
 		"Model"	"models/props_gameplay/recipe.mdl"
 	}
@@ -6797,7 +6797,7 @@
 		"ItemQuality"	"component"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"1650"
+		"ItemCost"	"1100"
 		"ItemDroppable"	"1"
 		"ItemSellable"	"1"
 		"ItemShopTags"	"str;magic_resist"
@@ -6833,7 +6833,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_strength"	"9"
+				"bonus_strength"	"6"
 			}
 			"02"
 			{
@@ -6862,7 +6862,7 @@
 		"ID"	"8096"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"700"
+		"ItemCost"	"450"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
@@ -6967,11 +6967,11 @@
 		"ItemQuality"	"component"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"3000"
+		"ItemCost"	"2500"
 		"ItemDroppable"	"1"
 		"ItemSellable"	"1"
 		"ItemShopTags"	"str;magic_resist;armor;regen_health"
-		"AbilityCooldown"		"35"
+		"AbilityCooldown"		"45"
 		"precache"
 		{
 			"particle"						"particles/items2_fx/pipe_of_insight.vpcf"
@@ -6987,7 +6987,7 @@
 			"02"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"bonus_strength"				"10"
+				"bonus_strength"				"6"
 			}
 			"03"
 			{
@@ -10975,15 +10975,15 @@
 				{
 					"MODIFIER_STATE_CANNOT_MISS"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
-				// "ThinkInterval"	"0.03"
-				// "OnIntervalThink"
-				// {
-				// 	"RunScript"
-				// 	{
-				// 		"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
-				// 		"Function"	"ItemAbility_MrYang_OnIntervalThink"
-				// 	}
-				// }
+				"ThinkInterval"	"0.03"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
+						"Function"	"ItemAbility_MrYang_OnIntervalThink"
+					}
+				}
 			}
 			"modifier_item_mr_yang_slowdown_debuff"
 			{
@@ -14472,6 +14472,82 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"blink_damage_cooldown"	"3"
+			}
+		}
+	}
+	"item_recipe_shanbibu"
+	{
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_sample_item"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"	"8203"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"800"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_shanbibu"
+		"ItemRequirements"
+		{
+			"01"	"item_ghostspoon"
+		}
+		"Model"	"models/props_gameplay/recipe.mdl"
+	}
+	"item_shanbibu"
+	{
+		"BaseClass"	"item_lua"
+		"AbilityTextureName"	"item_shanbibu"
+		"ScriptFile"                    "items/item_shanbibu"
+		"ItemDeclarations"        "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		// Stats
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.0"
+		"AbilityCooldown"	"30"
+		"AbilityManaCost"	"0"
+		"AbilityCastRange"	"600"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"	"8204"
+		"ItemQuality"	"component"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"2300"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShopTags"	"armor;str;agi;int"
+		"precache"
+		{
+			// "soundfile"	"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_all_stats"	"8"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"4.0"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"debuff_mgical_resistance_decrepify"	"-44"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"debuff_slowdown_movespeed_percent"	"-35"
 			}
 		}
 	}

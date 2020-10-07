@@ -441,9 +441,14 @@ function ability_thdots_sunny05:OnInventoryContentsChanged()
 			local illusion = FindUnitsInRadius(self:GetCaster():GetTeam(),self:GetCaster():GetAbsOrigin(),nil,99999,DOTA_UNIT_TARGET_TEAM_FRIENDLY,
 				DOTA_UNIT_TARGET_BASIC+ DOTA_UNIT_TARGET_HERO,0,0,false)
 			for _,v in pairs(illusion) do
-				if v:HasModifier("modifier_ability_thdots_sunny05") then
-					v:ForceKill(true)
-				end
+				self:GetCaster():SetContextThink("sunny05_delay",--延迟，不然对自己使用会瞬间消失
+					function()
+						if v:HasModifier("modifier_ability_thdots_sunny05") then
+							v:ForceKill(true)
+							print("2")
+						end
+					end,
+				0.03)
 			end
 			self:SetHidden(true)
 		end
@@ -463,6 +468,7 @@ function ability_thdots_sunny05:OnSpellStart()
 		DOTA_UNIT_TARGET_BASIC+ DOTA_UNIT_TARGET_HERO,0,0,false)
 	for _,v in pairs(illusion) do
 		if v:HasModifier("modifier_ability_thdots_sunny05") then
+			print("1")
 			v:ForceKill(true)
 		end
 	end
@@ -504,6 +510,7 @@ function modifier_ability_thdots_sunny05:OnIntervalThink()
 	if self.illusion.hero:IsAlive() then
 		self.illusion:SetHealth(self.illusion:GetMaxHealth()*percent)
 	else
+		print("3")
 		self:GetParent():ForceKill(true)
 		self:Destroy()
 	end
@@ -530,7 +537,7 @@ function create_illusion(self, illusion_origin, illusion_incoming_damage, illusi
 	--Set the illusion's available skill points to 0 and teach it the abilities the caster has.
 	illusion:SetAbilityPoints(0)
 	for ability_slot = 0, 15 do
-		local individual_ability = self.caster:GetAbilityByIndex(ability_slot)
+		local individual_ability = self.target:GetAbilityByIndex(ability_slot)
 		if individual_ability ~= nil then 
 			local illusion_ability = illusion:FindAbilityByName(individual_ability:GetAbilityName())
 			if illusion_ability ~= nil then

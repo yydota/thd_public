@@ -572,7 +572,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"trig_radius"	"350"
+				"trig_radius"	"500"
 			}
 		}
 	}
