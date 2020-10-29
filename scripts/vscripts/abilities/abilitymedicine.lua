@@ -9,6 +9,9 @@ function modifier_ability_thdots_medicine00_talent:RemoveOnDeath() return false 
 function modifier_ability_thdots_medicine00_talent:IsHidden()  return true end 
 
 function ability_thdots_medicine00:GetBehavior()
+	if GetMapName() == "dota" then
+		return self.BaseClass.GetBehavior(self)
+	end
 	if self:GetCaster():HasModifier("modifier_ability_thdots_medicine00_talent") then
 		return DOTA_ABILITY_BEHAVIOR_NO_TARGET + DOTA_ABILITY_BEHAVIOR_AUTOCAST + DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING
 	else
