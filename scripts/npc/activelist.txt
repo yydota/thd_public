@@ -95,7 +95,7 @@
 
 	"npc_dota_hero_weaver" "1"
 	//"npc_dota_hero_windrunner" "1"
-	//"npc_dota_hero_witch_doctor" "1"
+	"npc_dota_hero_witch_doctor" "1"
 
 	"npc_dota_hero_zuus" "1"
 
@@ -143,7 +143,7 @@
 	"npc_dota_hero_rubick" "1"
 
 	"npc_dota_hero_luna" "1"
-	"npc_dota_hero_wisp" "1"
+	//"npc_dota_hero_wisp" "1"
 	//"npc_dota_hero_disruptor" "1"
 	//"npc_dota_hero_undying" "1"
 
@@ -184,4 +184,5 @@
 	//"npc_dota_hero_pangolier" 	"1"
 	//"npc_dota_hero_void_spirit"  "1"
 	"npc_dota_hero_phantom_lancer" "1"
+	"npc_dota_hero_bane"		"1"
 }

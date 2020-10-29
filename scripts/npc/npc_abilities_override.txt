@@ -691,7 +691,8 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"5514"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-		"AbilityTextureName"	"custom/ability_thdots_yugi02"
+		//"AbilityTextureName"	"custom/ability_thdots_yugi02"
+		"AbilityTextureName"	"touhoutd/thtd_yuugi_01"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"

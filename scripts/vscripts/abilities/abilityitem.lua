@@ -293,7 +293,7 @@ function ForceHorizontal( keys )
 		ability.forced_traveled = ability.forced_traveled + (ability.forced_direction * ability.forced_speed):Length2D()
 	else
 		target:SetContextThink("clear_space",function ()
-			FindClearSpaceForUnit(target, target:GetAbsOrigin(), true)
+			ResolveNPCPositions(target:GetAbsOrigin(), 128)
 			end,
 			0.03)
 		target:InterruptMotionControllers(true)
@@ -2024,6 +2024,11 @@ function ItemAbility_Morenjingjuan_Antiblink_OnSpellStart(keys)
 	    0.03
 	)
 
+end
+
+function ItemAbility_Morenjingjuan_Antiblink_OnDestroy(keys)
+	local target = keys.target
+	FindClearSpaceForUnit(target,target:GetOrigin(),true)
 end
 
 function ItemAbility_yuemianzhinu_range(keys)

@@ -378,7 +378,7 @@ function AbilityReimu:OnReimu04Think(keys)
                     end, keys.Ability_Duration)
             end
         else
-            if FindTelentValue(Caster, "special_bonus_unique_lina_3") == 1 then
+            if FindTelentValue(Caster, "special_bonus_unique_lina_1") == 1 then
                 keys.ability:ApplyDataDrivenModifier(caster, v,
                                                      "modifier_thdots_reimu04_root",
                                                      {Duration = keys.Duration})

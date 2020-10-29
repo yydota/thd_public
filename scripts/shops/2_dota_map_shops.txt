@@ -7,6 +7,8 @@
 		"item"		"item_card_bad_man"
 		"item"		"item_card_worse_man"
 		"item"		"item_card_love_man"
+		"item"		"item_card_eat_man"
+		"item"		"item_card_kid_man"
 		"item"		"item_flask"
 		"item"		"item_clarity"
 		"item"		"item_tpscroll"

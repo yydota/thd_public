@@ -246,3 +246,13 @@ function DecideMaxRange(caster,point,max_range)
         return blinkVector
     end
 end
+
+function IsTHDImmune(target) --THD的魔免BUFF，如龙星，彩光风铃等
+    if target:HasModifier("modifier_item_dragon_star_buff") --道具:龙星
+        or target:HasModifier("modifier_meirin02_buff") --红美铃：彩光风铃
+        then 
+        return true
+    else
+        return false
+    end
+end

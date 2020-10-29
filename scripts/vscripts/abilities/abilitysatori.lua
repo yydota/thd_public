@@ -835,7 +835,7 @@ function OnSatori01SpellStart(keys)
 			i = 2
 		end
 	end
-	if TargetName == "npc_dota_hero_wisp" then
+	if TargetName == "npc_dota_hero_witch_doctor" then
 		if caster:GetLevel() >= 6 then
 			RandomNumber = RandomInt(1,100)
 		else 
@@ -993,6 +993,24 @@ function OnSatori01SpellStart(keys)
 			AbilityStolenName = "ability_thdots_suwako03z"
 		elseif RandomNumber > 75 and RandomNumber <= 100 then
 			AbilityStolenName = "ability_thdots_suwako04new"
+			i = 2
+		end
+	end
+
+	if TargetName == "npc_dota_hero_bane" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,100)
+		else 
+			RandomNumber = RandomInt(1,75)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "ability_thdots_shinki_01"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "ability_thdots_shinki_02"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "ability_thdots_shinki_03"
+		elseif RandomNumber > 75 and RandomNumber <= 100 then
+			AbilityStolenName = "ability_thdots_shinki_ultimate"
 			i = 2
 		end
 	end

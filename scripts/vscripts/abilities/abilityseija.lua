@@ -65,7 +65,7 @@ function ability_thdots_seija01:OnProjectileHitHandle(hTarget, vLocation, iProje
 	local target = hTarget
 	local ability = self
 	local damage = self.damage + self.int_bonus * caster:GetIntellect()
-	StartSoundEventFromPosition("Voice_Thdots_Suika.AbilitySeija01_4",vLocation)
+	StartSoundEventFromPosition("Voice_Thdots_Seija.AbilitySeija01_4",vLocation)
 	local damageTable = {victim = target,
 						damage = damage,
 						damage_type = ability:GetAbilityDamageType(),
@@ -120,7 +120,7 @@ function modifier_ability_thdots_seija01_point:OnIntervalThink()
 		qangle = QAngle(0, -self.angle, 0)
 		clone_qangle = QAngle(0, self.angle, 0)
 	end
-	-- caster:EmitSound("Voice_Thdots_Suika.AbilitySeija01_1")
+	-- caster:EmitSound("Voice_Thdots_Seija.AbilitySeija01_1")
 	self.line_position 			= RotatePosition(caster:GetAbsOrigin(), qangle, self.line_position)
 	self.clone_line_position	= RotatePosition(caster:GetAbsOrigin(), clone_qangle, self.clone_line_position)
 	Seija01CreateProjectile(caster,ability,caster:GetAbsOrigin(),self.line_position)
@@ -190,7 +190,7 @@ function Seija01CreateProjectile(caster,ability,start_position,end_position)
 	if caster:HasModifier("modifier_ability_thdots_seija01_target") then
 		distance = distance + distance
 	end
-	StartSoundEventFromPosition("Voice_Thdots_Suika.AbilitySeija01_1",start_position)
+	StartSoundEventFromPosition("Voice_Thdots_Seija.AbilitySeija01_1",start_position)
 	local particle 			= "particles/heroes/seija/seija01.vpcf"
 	local barrage = ProjectileManager:CreateLinearProjectile({
 				Source = caster,
@@ -336,7 +336,7 @@ function ability_thdots_seija02:OnProjectileHitHandle(hTarget, vLocation, iProje
 						attacker = caster,
 						ability = ability
 						}
-	target:EmitSound("Voice_Thdots_Suika.AbilitySeija02_2")
+	target:EmitSound("Voice_Thdots_Seija.AbilitySeija02_2")
 	target:AddNewModifier(caster,ability, "modifier_ability_thdots_seija02_debuff",{duration = self.duration_slow})
 	local damage_dealt = UnitDamageTarget(damageTable)
 	for i = 1,#self.projectile_table do
@@ -374,7 +374,7 @@ function Seija02CreateProjectile(caster,ability,start_position,direction,damage_
 	if count ~= 1 then
 		direction = RotatePosition(Vector(0,0,0), QAngle(0, RandomInt(-5,5), 0), direction)
 	end
-	StartSoundEventFromPosition("Voice_Thdots_Suika.AbilitySeija02_1",start_position)
+	StartSoundEventFromPosition("Voice_Thdots_Seija.AbilitySeija02_1",start_position)
 	local barrage = ProjectileManager:CreateLinearProjectile({
 				Source = caster,
 				Ability = ability,
@@ -466,7 +466,7 @@ function ability_thdots_seija03:OnSpellStart()
 		end
 	end
 	target:AddNewModifier(caster, self, "modifier_ability_thdots_seija03",{duration = duration})
-	target:EmitSound("Voice_Thdots_Suika.AbilitySeija03_1")
+	target:EmitSound("Voice_Thdots_Seija.AbilitySeija03_1")
 end
 
 modifier_ability_thdots_seija03 = {}
@@ -719,7 +719,7 @@ function ability_thdots_seija04:OnSpellStart()
 	if self.target ~= nil then
 		self.target:RemoveModifierByName("modifier_ability_thdots_seija04")
 	end
-	StartSoundEventFromPosition("Voice_Thdots_Suika.AbilitySeija04_1",self.center)
+	StartSoundEventFromPosition("Voice_Thdots_Seija.AbilitySeija04_1",self.center)
 end
 
 function modifier_ability_thdots_seija04:OnCreated()
@@ -732,6 +732,11 @@ function modifier_ability_thdots_seija04:OnCreated()
 		self.speed = -10
 	end
 	self.limit 		= 0
+	self:StartIntervalThink(0.03)
+end
+
+function modifier_ability_thdots_seija04:OnIntervalThink()
+	if not IsServer() then return end
 	if self.parent:HasModifier("modifier_thdots_yugi04_think_interval") then --判定红三大招
 		self:Destroy()
 		return
@@ -740,15 +745,12 @@ function modifier_ability_thdots_seija04:OnCreated()
 		self:Destroy()
 		return
 	end
-	if self.parent:GetName() == "npc_dota_roshan" then --判定肉山
-		self:Destroy()
-		return
+																	--判定肉山和超级兵
+	if self.parent:GetName() == "npc_dota_roshan" 
+		or self.parent:GetUnitName() == "npc_thd_goodguys_super_siege" 
+		or self.parent:GetUnitName() == "npc_thd_badguys_super_siege" 
+		then self:Destroy() return
 	end
-	self:StartIntervalThink(0.03)
-end
-
-function modifier_ability_thdots_seija04:OnIntervalThink()
-	if not IsServer() then return end
 	local position = self.parent:GetAbsOrigin()
 	local qangle = QAngle(0, self.speed, 0)
 	local end_position = RotatePosition(self.center, qangle, position)
@@ -804,6 +806,7 @@ end
 function modifier_ability_thdots_seijaEx:OnCreated()
 	if not IsServer() then return end
 	self.parent 			= self:GetParent()
+	if not self.parent:IsRealHero() then return end
 	if self.parent:HasModifier("modifier_ability_thdots_seijaEx_passive") then
 		set_camera_yaw(self.parent,0)
 	else
@@ -813,6 +816,7 @@ end
 
 function modifier_ability_thdots_seijaEx:OnDestroy()
 	if not IsServer() then return end
+	if not self.parent:IsRealHero() then return end
 	self.parent 			= self:GetParent()
 	if self.parent:HasModifier("modifier_ability_thdots_seijaEx_passive") then
 		set_camera_yaw(self.parent,180)
@@ -868,6 +872,12 @@ function modifier_ability_thdots_seijaEx_passive:OnCreated()
 	self.num 	= 3
 	self.parent:SetContextThink("delay", 
 		function ()
+			local plyid = self:GetParent():GetPlayerID()
+			local hero = PlayerResource:GetPlayer(plyid):GetAssignedHero()
+			if hero:GetName() ~= "npc_dota_hero_batrider" then
+				return
+			end
+
 		self:StartIntervalThink(0.03)
 		end, 
 		3)

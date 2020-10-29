@@ -1,0 +1,277 @@
+// Dota2 Editor
+// Get latest version: https://github.com/zombieJ/nw-dota2editor
+
+"DOTAAbilities"
+{
+	"Version"		"1"
+
+	"ability_thdots_shinki_01"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"leshrac_lightning_storm"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityshinki.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"HotKeyOverride"	"q"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0.3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		"AnimationPlaybackRate"	"2.0"
+		"AbilityCooldown"	"7 6 5 4"
+		"AbilityManaCost"	"70"
+		"AbilityCastRange"	"400 450 500 550"
+		"AOERadius"	"400 450 500 550"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"
+			"particle"	"particles/units/heroes/hero_leshrac/leshrac_lightning_bolt.vpcf"
+			"particle"	"particles/units/heroes/hero_ursa/ursa_earthshock_modifier.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"400 450 500 550"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"slow_amount"	"-10 -20 -30 -40"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"40 70 100 130"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"1 1.5 2 2.5"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"percentage"	"4 6 8 10"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"int_bonus"	"1"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+	}
+
+	"ability_thdots_shinki_02"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"abyssal_underlord_cancel_dark_rift"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityshinki.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"HotKeyOverride"	"w"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"1"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+		"AnimationPlaybackRate"	"1.5"
+		"AbilityCooldown"	"160 140 120 100"
+		"AbilityManaCost"	"200"
+		"AbilityCastRange"	"600"
+		"AOERadius"	"600"
+		"precache"
+		{
+			"particle"	"particles/econ/items/terrorblade/terrorblade_back_ti8/terrorblade_sunder_ti8.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_nevermore.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+			"particle"	"particles/econ/items/terrorblade/terrorblade_back_ti8/terrorblade_back_ambient_ti8.vpcf"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform_end.vpcf"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_base_attack.vpcf"
+			"particle"	"particles/dev/library/base_follow_absorigin_instant.vpcf"
+			"particle"	"particles/units/heroes/heroes_underlord/abbysal_underlord_darkrift_ambient.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"02_duration"	"55"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"02_radius"	"600"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"02_debuff_duration"	"1"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"02_debuff_magicial"	"-15 -20 -25 -30"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"02_debuff_armor"	"-4 -6 -8 -10"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"02_healthbonus"	"250 500 750 1000"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"02_movespeed"	"20 30 40 50"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+	}
+
+	"ability_thdots_shinki_03"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"abyssal_underlord_firestorm"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityshinki.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
+		"HotKeyOverride"	"e"
+		"MaxLevel"	"4"
+		"RequiredLevel"	"1"
+		"LevelsBetweenUpgrades"	"2"
+		"AbilityCastPoint"	"0.3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		"AnimationPlaybackRate"	"1.5"
+		"AbilityCooldown"	"14"
+		"AbilityManaCost"	"140"
+		"AbilityCastRange"	"750"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_abyssal_underlord.vsndevts"
+			"particle"	"particles/units/heroes/heroes_underlord/abyssal_underlord_firestorm_wave_burn.vpcf"
+			"particle"	"particles/units/heroes/heroes_underlord/abyssal_underlord_firestorm_wave.vpcf"
+			"particle"	"particles/units/heroes/heroes_underlord/underlord_firestorm_pre.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"03_radius"	"550"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wave_count"	"10"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wave_interval"	"1.0"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wave_damage"	"20 35 50 65"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"slow_duration"	"1.0"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attackslow"	"-30 -50 -70 -90"
+			}
+		}
+		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
+	}
+
+	"ability_thdots_shinki_ultimate"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"terrorblade_reflection"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityshinki.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCastPoint"	"0.3"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"2.0"
+		"AbilityCooldown"	"30 24 18"
+		"AbilityManaCost"	"150"
+		"AbilityCastRange"	"600"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+			"particle"	"particles/status_fx/status_effect_terrorblade_reflection.vpcf"
+			"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_reflection_slow.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"30"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"show_incoming"	"200 150 100"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"show_outgoing"	"70 100 130"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"incoming_damage"	"100 50 0"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"outgoing_damage"	"-30 0 30"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"building_damage"	"10"
+			}
+		}
+	}
+	"special_bonus_unique_shinki_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"		"300"
+			}
+		}
+	}
+}

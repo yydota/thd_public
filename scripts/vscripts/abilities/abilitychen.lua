@@ -124,7 +124,8 @@ function modifier_ability_thdots_chen01:OnIntervalThink()
 	local vec = (self.point - self.caster:GetAbsOrigin()):Normalized()
 	local velocity = 40 -- 速度
 	if (self.caster:GetOrigin() - self.point):Length2D() <= 21 then
-		FindClearSpaceForUnit(self.caster,self.caster:GetOrigin(),true)
+		-- FindClearSpaceForUnit(self.caster,self.caster:GetOrigin(),true)
+		ResolveNPCPositions(self:GetParent():GetAbsOrigin(), 128)
 		self:Destroy()
 	else
 		self.caster:SetAbsOrigin(self.caster:GetAbsOrigin() + vec * velocity) 
@@ -137,7 +138,8 @@ function modifier_ability_thdots_chen01:OnDestroy()
 		self.caster:RemoveGesture(ACT_DOTA_CAST_ABILITY_1)
 	end
 	self.caster:AddNewModifier(self.caster, self:GetAbility(), "modifier_ability_thdots_chen01_buff",{duration = self.duration})
-	FindClearSpaceForUnit(self.caster,self.caster:GetAbsOrigin(),true)
+	-- FindClearSpaceForUnit(self.caster,self.caster:GetAbsOrigin(),true)
+	ResolveNPCPositions(self:GetParent():GetAbsOrigin(), 128)
 	if self.caster:HasModifier("modifier_ability_thdots_chen03") then
 		local ability 						= self.caster:FindAbilityByName("ability_thdots_chen03")
 		local damage 						= ability:GetSpecialValueFor("damage")

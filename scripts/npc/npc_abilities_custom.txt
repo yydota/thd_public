@@ -17,6 +17,7 @@
 #base "heroes/sunny/npc_abilities_sunny.txt"  
 #base "heroes/chen/npc_abilities_chen.txt"
 #base "heroes/suwako/npc_abilities_suwako.txt"
+#base "heroes/shinki/npc_abilities_shinki.txt"
 
 "DOTAAbilities"
 {
@@ -3504,6 +3505,7 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_2"
+		"AnimationPlaybackRate"	"2.0"
 		"AbilityCooldown"	"8 7 6 5"
 		"AbilityManaCost"	"0"
 		"HasScepterUpgrade"	"1"
@@ -3547,6 +3549,7 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_3"
+		"AnimationPlaybackRate"	"1.5"
 		"AbilityCooldown"	"17 16 15 14"
 		"AbilityManaCost"	"100"
 		// Stats
@@ -3720,6 +3723,7 @@
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityCastAnimation"      "Act_DOTA_CAST_ABILITY_3"
+		"AnimationPlaybackRate"		"1.8"
 		"AbilityType"				"DOTA_ABILITY_TYPE_ULTIMATE"
 		"MaxLevel"					"3"		
 		// Stats
@@ -5316,7 +5320,8 @@
 	"ability_thdots_yugi03"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/ability_thdots_yugi03"
+		// "AbilityTextureName"	"custom/ability_thdots_yugi03"
+		"AbilityTextureName"	"touhoutd/thtd_yuugi_02"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		// Stats
@@ -7066,6 +7071,8 @@
 			"modifier_ability_thdots_iku04"
 			{
 				"IsHidden"	"1"
+				"IsDebuff"	"1"
+				"IsPurgable" "1"
 				"Duration"	"%duration"
 				"States"
 				{

@@ -400,6 +400,7 @@
 		{
 			"modifier_ability_thdots_kogasa04"
 			{
+				"IsHidden"	"1"
 				"IsBuff"	"0"
 				"OnIntervalThink"
 				{
@@ -448,7 +449,6 @@
 						"Function"	"Kogasa04OnDestroy"
 					}
 				}
-				"IsHidden"	"1"
 			}
 			"modifier_ability_thdots_kogasa04_movespeed"
 			{
@@ -466,6 +466,7 @@
 				{
 					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"		"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"IsBuff"	"1"
 				"IsHidden"	"0"

@@ -70,6 +70,7 @@ function modifier_item_shanbibu_active:DeclareFunctions()
 	return {
 		MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE,
 		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE,
+		MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL,
 	}
 end
 
@@ -78,6 +79,9 @@ function modifier_item_shanbibu_active:GetModifierMagicalResistanceDecrepifyUniq
 end
 function modifier_item_shanbibu_active:GetModifierMoveSpeedBonus_Percentage()
 	return self:GetAbility():GetSpecialValueFor("debuff_slowdown_movespeed_percent")
+end
+function modifier_item_shanbibu_active:GetAbsoluteNoDamagePhysical()
+	return 1
 end
 
 modifier_item_shanbibu_active_delay = {}

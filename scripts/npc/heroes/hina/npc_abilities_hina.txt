@@ -225,6 +225,7 @@
 			"particle"	"particles/units/heroes/hero_nevermore/nevermore_requiemofsouls_a.vpcf"
 			"particle"	"particles/units/heroes/hero_nevermore/nevermore_requiemofsouls.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_hina_sounds.vsndevts"
 			"particle"	"particles/heroes/hina/hina04.vpcf"
 			"particle"	"particles/heroes/hina/hina04_text.vpcf"
 		}

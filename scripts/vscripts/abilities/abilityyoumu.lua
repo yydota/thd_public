@@ -26,7 +26,7 @@ function OnYoumu02SpellStartDamage(keys)
 			    damage_type = keys.ability:GetAbilityDamageType(), 
 	    	    damage_flags = keys.ability:GetAbilityTargetFlags()
 	}
-	if FindTelentValue(caster,"special_bonus_unique_youmu_2") ~= 0 then
+	if FindTelentValue(caster,"special_bonus_unique_youmu_2") ~= 0 and caster:IsRealHero() then
 		damage_table.damage = target:GetMaxHealth() * 0.06
 		damage_table.damage_type = DAMAGE_TYPE_PURE
 		SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,target,damage_table.damage,nil)

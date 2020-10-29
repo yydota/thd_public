@@ -9863,6 +9863,7 @@
 		"ItemStockInitial"	"2"
 		"ItemStockTime"	"120.0"
 	}
+	
 
 	// =================================================================================================================
 	// Jinkela
@@ -10629,7 +10630,7 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"60"
+		"AbilityCooldown"	"40"
 		"AbilityManaCost"	"0"
 		// Stats
 		// -------------------------------------------------------------------------------------------------------------
@@ -12312,7 +12313,7 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"50"
+		"AbilityCooldown"	"40"
 		"AbilityManaCost"	"0"
 		// Stats
 		// -------------------------------------------------------------------------------------------------------------
@@ -13629,6 +13630,14 @@
 						"Target"	"TARGET"
 					}
 				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/abilities/abilityItem.lua"
+						"Function"			"ItemAbility_Morenjingjuan_Antiblink_OnDestroy"
+					}
+				}
 			}
 			"modifier_item_morenjingjuan_buff"
 			{
@@ -13988,6 +13997,7 @@
 			"modifier_item_yueyaomishi_radiate_regen_mana_aura"
 			{
 				"IsHidden"	"1"
+				"IsPurgable" "1"
 				"Aura"	"modifier_item_yueyaomishi_radiate_regen_mana"
 				"Aura_Radius"	"%radiate_radius"
 				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -14092,7 +14102,7 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityCastPoint"	"0.0"
-		"AbilityCooldown"	"50"
+		"AbilityCooldown"	"30"
 		"AbilityManaCost"	"0"
 		// Stats
 		// -------------------------------------------------------------------------------------------------------------
@@ -14500,7 +14510,7 @@
 	"item_shanbibu"
 	{
 		"BaseClass"	"item_lua"
-		"AbilityTextureName"	"item_shanbibu"
+		"AbilityTextureName"	"item_shanbibu"	//图标By 橘橘子
 		"ScriptFile"                    "items/item_shanbibu"
 		"ItemDeclarations"        "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
@@ -14550,5 +14560,130 @@
 				"debuff_slowdown_movespeed_percent"	"-35"
 			}
 		}
+	}
+	// =================================================================================================================
+	// Card Eat Mam
+	// =================================================================================================================
+	"item_card_eat_man"
+	{
+		"BaseClass"	"item_lua"
+		"ScriptFile"                    "items/item_card"
+		"AbilityTextureName"	"item_card_eat_man"			//图标By 橘橘子
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCooldown"	"90"
+		"ItemIsNeutralDrop"		"1"
+		// Stats
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"600"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"	"8205"
+		"ItemQuality"	"consumables"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"70"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES"
+		"ItemPermanent"	"0"
+		"ItemInitialCharges"	"1"
+		"ItemStackable"	"1"
+		"ItemShopTags"	"consumables"
+		"precache"
+		{
+			"particle_folder"	"particles/thd2/items"
+			"particle"	"particles/units/heroes/hero_clinkz/clinkz_death_pact.vpcf"
+			"soundevents"	"soundevents/game_sounds_heroes/game_sounds_clinkz.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"level_limit"	"10"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"radius"	"325"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"per_level"	"10"
+			}
+		}
+		"AbilitySharedCooldown"	"item_card"
+		"ItemStockMax"	"2"
+		"ItemStockInitial"	"2"
+		"ItemStockTime"	"120.0"
+	}
+	"item_card_kid_man"
+	{
+		"BaseClass"	"item_lua"
+		"ScriptFile"                    "items/item_card"
+		"AbilityTextureName"	"item_card_kid_man"	//图标By 橘橘子
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityCastPoint"	"0.0"
+		"AbilityCooldown"	"90"
+		"ItemIsNeutralDrop"		"1"
+		// Stats
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"	"600"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"	"8206"
+		"ItemQuality"	"consumables"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"70"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShareability"	"ITEM_FULLY_SHAREABLE"
+		"ItemDeclarations"	"DECLARE_PURCHASES_TO_TEAMMATES"
+		"ItemPermanent"	"0"
+		"ItemInitialCharges"	"1"
+		"ItemStackable"	"1"
+		"ItemShopTags"	"consumables"
+		"precache"
+		{
+			"particle_folder"	"particles/thd2/items"
+			"particle"	"particles/units/heroes/hero_clinkz/clinkz_death_pact.vpcf"
+			"soundevents"	"soundevents/game_sounds_heroes/game_sounds_clinkz.vsndevts"
+		}
+		// Special
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"      "FIELD_INTEGER"
+				"push_speed"    "50"
+			}
+			"02"
+			{
+				"var_type"      "FIELD_FLOAT"
+				"push_duration" "0.2"
+			}
+			"03"
+			{
+				"var_type"    "FIELD_INTEGER"
+				"tree_radius" "80"
+			}
+		}
+		"AbilitySharedCooldown"	"item_card"
+		"ItemStockMax"	"2"
+		"ItemStockInitial"	"2"
+		"ItemStockTime"	"120.0"
 	}
 }

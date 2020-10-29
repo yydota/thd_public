@@ -39,9 +39,14 @@ function OnYugi04SpellStart(keys)
 	local ability_duration = keys.ability:GetSpecialValueFor("ability_duration")
 	target:SetContextNum("ability_yugi04_point_x",vecTarget.x,0)
 	target:SetContextNum("ability_yugi04_point_y",vecTarget.y,0)
-	if target:IsHero() then
-		-- caster:EmitSound("Voice_Thdots_Yugi.AbilityYugi04_1")
-		caster:EmitSound("Voice_Thdots_Yugi.AbilityYugi04")
+	keys.ability.Iscandan = false
+	if target:IsHero() and caster:GetName() == "npc_dota_hero_centaur" then
+		if RollPercentage(2) then
+			caster:EmitSound("Voice_Thdots_Yugi.AbilityYugi04_1")
+			keys.ability.Iscandan = true
+		else
+			caster:EmitSound("Voice_Thdots_Yugi.AbilityYugi04")
+		end
 	end
 	--以下是特效
 	local coil_thinker = CreateModifierThinker(
@@ -115,9 +120,10 @@ function OnYugi04SpellThink(keys)
 		end
 		
 		target:EmitSound("Ability.SandKing_CausticFinale")
-		-- if target:IsHero() then
-		-- 	target:EmitSound("Voice_Thdots_Yugi.AbilityYugi04_2")
-		-- end
+		if target:IsRealHero() and keys.ability.Iscandan == true then
+			target:EmitSound("Voice_Thdots_Yugi.AbilityYugi04_2")
+			keys.ability.Iscandan = false
+		end
 		local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_earthshaker/earthshaker_echoslam_start_fallback_mid.vpcf", PATTACH_CUSTOMORIGIN, caster)
 		ParticleManager:SetParticleControl(effectIndex, 0, target:GetOrigin())
 		ParticleManager:DestroyParticleSystem(effectIndex,false)

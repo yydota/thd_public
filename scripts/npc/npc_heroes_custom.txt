@@ -15,6 +15,7 @@
 #base heroes/sunny/hero.txt
 #base heroes/chen/hero.txt
 #base heroes/suwako/hero.txt
+#base heroes/shinki/hero.txt
 
 "DOTAHeroes"
 {

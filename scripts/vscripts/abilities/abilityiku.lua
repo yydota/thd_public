@@ -381,6 +381,7 @@ function OnIku04SpellStart( keys )
 	end
 end
 
+
 function OnIku04Attack( keys )
 	local caster = keys.caster
 	local target = keys.target

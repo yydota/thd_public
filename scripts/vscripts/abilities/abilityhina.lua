@@ -700,6 +700,9 @@ function modifier_ability_thdots_hina04:OnCreated()
 	EmitSoundOn("Hero_Wisp.Spirits.Loop", self.caster )
 	EmitSoundOn("Hero_Wisp.Relocate.Arc", self.caster )
 	EmitSoundOn("Hero_Wisp.ReturnCounter", self.caster )
+	if self.caster:GetName() == "npc_dota_hero_witch_doctor" then
+		self.caster:EmitSound("Voice_Thdots_Hine.AbilityHina04_1")
+	end
 	self:StartIntervalThink(0.03)
 	self.caster:StartGestureWithPlaybackRate(ACT_DOTA_IDLE,10)
 	local pfx_name = "particles/heroes/hina/hina04.vpcf"
@@ -720,7 +723,7 @@ function modifier_ability_thdots_hina04:OnIntervalThink()
 		local vec = v:GetAbsOrigin()
 		local distance = ( caster:GetAbsOrigin() - vec):Length2D()
 		local direct = ( caster:GetAbsOrigin() - vec):Normalized() * speed
-		if not v:IsInvulnerable() then
+		if not v:IsInvulnerable() and not IsTHDImmune(v) then
 			FindClearSpaceForUnit(v,v:GetAbsOrigin() + direct, true)
 		end
 	end
@@ -770,6 +773,9 @@ function modifier_ability_thdots_hina04:OnDestroy()
 	caster:StopSound("Hero_Wisp.Spirits.Loop")
 	caster:StopSound("Hero_Wisp.ReturnCounter")
 	caster:EmitSound("Hero_Nevermore.RequiemOfSouls")
+	if caster:GetName() == "npc_dota_hero_witch_doctor" and caster:IsAlive() then
+		caster:EmitSound("Voice_Thdots_Hine.AbilityHina04_2")
+	end
 	UtilStun:UnitStunTarget(caster,caster,end_stun_time)
 	
 	local line_position = self.caster:GetAbsOrigin() + self.caster:GetForwardVector() * 1000
@@ -849,6 +855,12 @@ function modifier_ability_thdots_hina04:OnTakeDamage(keys)
 			unit:SetHealth(unit:GetHealth() - keys.damage + absorb)
 		end
 		self:GetAbility().absorb_damage = self:GetAbility().absorb_damage + absorb
+		--特效
+		local particle_drain = "particles/econ/items/lion/lion_demon_drain/lion_spell_mana_drain_demon.vpcf"
+		local particle_drain_fx = ParticleManager:CreateParticle(particle_drain, PATTACH_CUSTOMORIGIN_FOLLOW, unit)
+		ParticleManager:SetParticleControlEnt(particle_drain_fx, 0, unit, PATTACH_POINT_FOLLOW, "attach_hitloc", unit:GetAbsOrigin(), true)        
+		ParticleManager:SetParticleControlEnt(particle_drain_fx, 1, caster, PATTACH_POINT_FOLLOW, "attach_mouth", caster:GetAbsOrigin(), true)        
+		ParticleManager:DestroyParticleSystemTime(particle_drain_fx,0.2)
 		-- print(self:GetAbility().absorb_damage)
 	end
 end

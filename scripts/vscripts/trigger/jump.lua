@@ -13,6 +13,11 @@ function ThdotsJumpTrigger( data )
 	if target:HasModifier("modifier_ability_thdots_yorihime_01_move") --一鸡冲刺
 		or target:HasModifier("modifier_ability_thdots_chen01") --橙滚球
 		or target:HasModifier("modifier_kagerou_moving") --影狼跳
+		or target:HasModifier("modifier_thdots_aya04_blink") --文文大招
+		or target:HasModifier("modifier_ability_thdots_nitori01") --河童飞
+		or target:HasModifier("modifier_thdots_Suika_04") --西瓜大招
+		or target:HasModifier("modifier_mystiaEx_fly") --小碎骨天生
+		or target:HasFlyMovementCapability()
 		then 
 		return
 	end

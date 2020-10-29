@@ -29,6 +29,7 @@
                         "item"                "item_feixiangjian"
                         "item"                "item_fox_mask"
                         "item"                "item_brother_sharp"
+                        "item"                "item_wanbaochui"
 		}
 
 		"#DOTA_Item_Build_Late_Items"//后期装备
@@ -37,6 +38,7 @@
                         "item"                "item_UFO"
                         "item"                "item_UFO"
                         "item"                "item_smash_stick"
+                        "item"                "item_rapier"
 
 		}
 	}
