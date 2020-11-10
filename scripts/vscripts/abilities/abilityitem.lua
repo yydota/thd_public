@@ -6,30 +6,51 @@ DEBUG FUNCTIONS
 
 --ITEM_DEBUG=true
 
+function ItemAbility_wanbaochui02_SelfDestroy(keys)
+	local caster = keys.caster
+	--print('ok')
+	for i=0, 5, 1 do  --Search for Aghanim's Scepters in the player's inventory.
+		local current_item = keys.caster:GetItemInSlot(i)
+		if current_item ~= nil then
+			local item_name = current_item:GetName()
+			
+			if item_name == "item_wanbaochui2" then
+				caster:RemoveItem(current_item)
+			end
+		end
+	end
+
+end
 
 function ItemAbility_wanbaochui02_OnSpellStart(keys)
 	local ItemAbility = keys.ability
 	local caster = keys.caster
 	local target = keys.target
-	local TargetName = target:GetClassname()
-	print(caster:GetUnitName())
-	print(target:GetUnitName())
-	print(caster:IsHero())
-	if target ~= caster or not target:IsRealHero() then 
+	if target ~= caster and target:IsRealHero() == false then 
 		print("No")
 		return 
 	else
+		-- 非永久万宝槌的遗留buff(如果有)应当被清除
+		if keys.caster:HasModifier("modifier_item_wanbaochui") and
+			keys.caster:GetModifierStackCount("modifier_item_wanbaochui",ItemAbility) ~= 99
+		then
+			keys.caster:RemoveModifierByName("modifier_item_wanbaochui")
+		end
+		-- 添加永久万宝槌的标记(with stack 99)
 		keys.ability:ApplyDataDrivenModifier(caster, caster, "modifier_item_wanbaochui", {})
-		if (ItemAbility:IsItem()) then
-			caster:RemoveItem(ItemAbility)
-		end	
-		if TargetName == "npc_dota_hero_chaos_knight" then
+		caster:SetModifierStackCount("modifier_item_wanbaochui",ItemAbility,99)
+		
+		local TargetName = target:GetClassname()
+	    if TargetName == "npc_dota_hero_chaos_knight" then
 			return
 		end
 		if TargetName == "npc_dota_hero_clinkz" then
 			return
 		end
-		keys.caster:AddNewModifier(keys.caster, nil, "modifier_item_ultimate_scepter", {duration = -1})
+		
+		if not caster:HasModifier("modifier_item_ultimate_scepter") then
+			keys.caster:AddNewModifier(keys.caster, nil, "modifier_item_ultimate_scepter", {duration = -1})
+		end
 	end	
 end
 
@@ -43,22 +64,33 @@ end
 ================================================================================================================= ]]
 
 function modifier_item_ultimate_scepter_datadriven_on_created(keys)
+	if not keys.caster:HasModifier("modifier_item_wanbaochui") then
+		keys.ability:ApplyDataDrivenModifier(keys.caster, keys.caster, "modifier_item_wanbaochui", {})
+		keys.caster:SetModifierStackCount("modifier_item_wanbaochui",ItemAbility,1)
+	end
+	
+	local TargetName = keys.caster:GetClassname()
+	if TargetName == "npc_dota_hero_chaos_knight" then
+		return
+	end
+	if TargetName == "npc_dota_hero_clinkz" then
+		return
+	end
+		
 	if not keys.caster:HasModifier("modifier_item_ultimate_scepter") then
-		local target = keys.caster
-	    local TargetName = target:GetClassname()
-	    if TargetName == "npc_dota_hero_chaos_knight" then
-			return
-		end
-		if TargetName == "npc_dota_hero_clinkz" then
-			return
-		end
 		keys.caster:AddNewModifier(keys.caster, nil, "modifier_item_ultimate_scepter", {duration = -1})
 	end
 end
 
 function modifier_item_ultimate_scepter_datadriven_on_destroy(keys)
 	local num_scepters_in_inventory = 0
-
+	
+	-- 永久万宝槌不再进一步处理
+	if keys.caster:HasModifier("modifier_item_wanbaochui") and
+		keys.caster:GetModifierStackCount("modifier_item_wanbaochui",ItemAbility) == 99
+	then
+		return
+	end
 
 	for i=0, 5, 1 do  --Search for Aghanim's Scepters in the player's inventory.
 		local current_item = keys.caster:GetItemInSlot(i)
@@ -71,10 +103,14 @@ function modifier_item_ultimate_scepter_datadriven_on_destroy(keys)
 		end
 	end
 
-	if keys.caster:HasModifier("modifier_item_wanbaochui") then
-		--has wanbaochui buff.
+	if keys.caster:HasModifier("modifier_item_wanbaochui_stat") then
 		return
 	end
+	
+	if keys.caster:HasModifier("modifier_item_wanbaochui") then
+		keys.caster:RemoveModifierByName("modifier_item_wanbaochui")
+	end
+	
 
 	--Remove the stock Aghanim's Scepter modifier if the player no longer has a scepter in their inventory.
 	if num_scepters_in_inventory == 0 and keys.caster:HasModifier("modifier_item_ultimate_scepter") then
