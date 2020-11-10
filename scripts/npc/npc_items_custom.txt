@@ -69,11 +69,20 @@
 
 				"IsBuff" "1"
 				"RemoveOnDeath" "0"	
-				"Properties"
+				
+				"ThinkInterval"  "0.03"
+				"OnIntervalThink"
 				{
-					"MODIFIER_PROPERTY_IS_SCEPTER" "1"
-				}			
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
+						"Function"	"ItemAbility_wanbaochui02_SelfDestroy"
+					}		
+
+				}
+
 			}
+			
 		}
 		// Special
 		// -------------------------------------------------------------------------------------------------------------
@@ -96,7 +105,6 @@
 		"AbilityTextureName"	"item_sample_item"
 		"ItemRecipe"	"1"
 		"ItemResult"	"item_wanbaochui"
-		// "InvalidHeroes"	"npc_dota_hero_chaos_knight"
 		"ItemRequirements"
 		{
 			"01"	"item_cat_foot;item_paper_mask;item_rocket_diagram;item_zun_hat"
@@ -127,6 +135,16 @@
 		{
 			"modifier_item_wanbaochui"
 			{
+				"IsBuff" "1"
+				"RemoveOnDeath" "0"	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_IS_SCEPTER" "1"
+				}		
+
+			}
+			"modifier_item_wanbaochui_stat"
+			{
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Passive"	"1"
 				"IsHidden"	"1"
@@ -138,7 +156,6 @@
 					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" "%bonus_intellect"
 					"MODIFIER_PROPERTY_HEALTH_BONUS"	"%bonus_health"
 					"MODIFIER_PROPERTY_MANA_BONUS"	"%bonus_mana"
-					"MODIFIER_PROPERTY_IS_SCEPTER" "1"
 				}
 			}
 			"modifier_item_ultimate_scepter_datadriven"
