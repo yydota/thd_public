@@ -25,6 +25,7 @@
 		{
                         "item"                "item_moon_bow"
                         "item"                "item_morenjingjuan"
+                        "item"                "item_yueyaomishi"
 		}
 
 		"#DOTA_Item_Build_Late_Items"//ºóÆÚ×°±¸

@@ -153,7 +153,7 @@ function OnRumiaDead(keys)
 	local caster = EntIndexToHScript(keys.caster_entindex)
 	if caster ~= nil then
 		local Rumia_Strength_Up = caster:GetContext("Rumia04_Strength_Up")
-		if ( Rumia_Strength_Up <= 0 or Rumia_Strength_Up == nil ) then return end	
+		if ( Rumia_Strength_Up == nil or Rumia_Strength_Up <= 0 ) then return end	
 		local strengthDown = Rumia_Strength_Up*keys.LostStrength
 		Rumia_Strength_Up = Rumia_Strength_Up - strengthDown
 		caster:SetContextNum("Rumia04_Strength_Up",Rumia_Strength_Up,0)

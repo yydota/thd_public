@@ -16,6 +16,7 @@
 #base heroes/chen/hero.txt
 #base heroes/suwako/hero.txt
 #base heroes/shinki/hero.txt
+#base heroes/sumireko/hero.txt
 
 "DOTAHeroes"
 {
@@ -3980,6 +3981,7 @@
 		"Ability16"	"special_bonus_unique_mars_gods_rebuke_extra_crit"
 		"Ability17"	"special_bonus_unique_mars_arena_of_blood_hp_regen"
 		"override_hero"	"npc_dota_hero_mars"
+		"VoiceFile" ""
 		"Model"	"models/thd_hero/toramarushou/toramarushou.vmdl"
 		"ModelScale"	"1.6"
 		"AttackRange"	"180"

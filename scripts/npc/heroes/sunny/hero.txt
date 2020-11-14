@@ -20,6 +20,7 @@
 		"Ability16"	"special_bonus_hp_regen_50"
 		"Ability17"	"special_bonus_cooldown_reduction_25"
 		"override_hero"	"npc_dota_hero_rattletrap"
+		"VoiceFile" ""
 		"ModelScale"	"1.2"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AbilityLayout"	"7"

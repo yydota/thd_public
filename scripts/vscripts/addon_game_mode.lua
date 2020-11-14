@@ -1188,6 +1188,9 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 	elseif (heroName == "npc_dota_hero_ogre_magi") then
 		abilityEx = hero:FindAbilityByName("ability_thdots_suwako05")
 		abilityEx:SetLevel(1)
+	elseif (heroName == "npc_dota_hero_skywrath_mage") then
+		abilityEx = hero:FindAbilityByName("ability_thdots_sumirekoEx")
+		abilityEx:SetLevel(1)
 	end
 end
 

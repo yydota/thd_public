@@ -23,6 +23,16 @@ function Ran01_OnSpellStart(keys)
 		local pos=flag_unit:GetOrigin()
 		flag_unit:SetOrigin(caster:GetOrigin())
 		FindClearSpaceForUnit(caster,pos,true)
+		
+		-- Play caster particle
+		local caster_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_vengeful/vengeful_nether_swap.vpcf", PATTACH_ABSORIGIN, caster)
+		ParticleManager:SetParticleControlEnt(caster_pfx, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
+		ParticleManager:SetParticleControlEnt(caster_pfx, 1, flag_unit, PATTACH_POINT_FOLLOW, "attach_hitloc", flag_unit:GetAbsOrigin(), true)
+
+		-- Play target particle
+		local target_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_vengeful/vengeful_nether_swap_target.vpcf", PATTACH_ABSORIGIN, flag_unit)
+		ParticleManager:SetParticleControlEnt(target_pfx, 0, flag_unit, PATTACH_POINT_FOLLOW, "attach_hitloc", flag_unit:GetAbsOrigin(), true)
+		ParticleManager:SetParticleControlEnt(target_pfx, 1, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
 	else
 		caster:EmitSound("Hero_Techies.Sign")
 		-- create flag unit

@@ -18,6 +18,7 @@
 #base "heroes/chen/npc_abilities_chen.txt"
 #base "heroes/suwako/npc_abilities_suwako.txt"
 #base "heroes/shinki/npc_abilities_shinki.txt"
+#base "heroes/sumireko/npc_abilities_sumireko.txt"
 
 "DOTAAbilities"
 {
@@ -14768,7 +14769,7 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/ability_thdots_RanEx"
 		"AbilityTextureName"	"custom/ability_thdots_RanEx"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"MaxLevel"	"1"
 		// Stats
 		// ----------------------------------------------------------------

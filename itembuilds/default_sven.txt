@@ -19,21 +19,21 @@
 		{	
                         "item"		"item_9ball"
                         "item"		"item_best_lunchbox"
-	        "item"		"item_donation_box"
-	        "item"		"mushroom_kebab"
-	        "item"		"mushroom_kebab"
-                        "item"                              "item_present_box"
+	       				"item"		"item_donation_box"
+	       				"item"		"mushroom_kebab"
+	       				"item"		"mushroom_kebab"
+                        "item"      "item_present_box"
 
 		}
 
 		"#DOTA_Item_Build_Mid_Items"//ÖÐÆÚ×°±¸
 		{			
+	        "item"		"item_phoenix_wing"
 	        "item"		"item_shizijia"
 	        "item"		"item_hakurei_ticket"
 	        "item"		"item_ghost_balloon"
 	        "item"		"item_hetongtuijinzhuangzhi"
 	        "item"		"item_green_dam"
-	        "item"		"item_phoenix_wing"
 	        "item"		"item_zun_glasses_active"
 
 		}
@@ -42,7 +42,7 @@
 		{
 	        "item"                             "item_bone_flute"
 	        "item"                             "item_tuzhushen_effect"
-                        "item"                             "item_frock"
+             "item"                            "item_frock"
 	        "item"                             "item_xuenvdeweijin"
 	        "item"                             "item_horse_king"
 	        "item"                             "item_loneliness"

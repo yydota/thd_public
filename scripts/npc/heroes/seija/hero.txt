@@ -37,6 +37,7 @@
 		// "Role"			"Carry,Support,Nuker,Disabler,Jungler,Durable,Escape,LaneSupport,Pusher,Initiator"
 		"Role"	"Carry,Disabler,Support,LaneSupport,Jungler"
 		"Rolelevels"	"3,1,2,2,2"
+		"VoiceFile" ""
 		"AttackRange"	"550"
 		// 攻击距离
 		"ArmorPhysical"	"1"

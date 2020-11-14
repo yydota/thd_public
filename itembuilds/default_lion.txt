@@ -22,24 +22,16 @@
 			"item"		"item_broom"
 			"item"		"item_ward_observer"
 			"item"		"item_ward_sentry"
-		}
-		
-		"#DOTA_Item_Build_Core_Items"
-		{
 			"item"		"item_qijizhixing"
 			"item"		"item_hakurei_ticket"			
 		}
 		
-		"#DOTA_Item_Build_Luxury"
+		"#DOTA_Item_Build_Core_Items"
 		{
-			"item"		"item_9ball"
-			"item"		"item_darkred_umbrella"
-			"item"		"item_travel_boots"
-			"item"		"item_tsundere"
-			"item"		"item_cyclone"
-			"item"		"item_yukkuri_stick"
-			"item"		"item_rocket"
-			"item"		"item_moon_bow"
+			"item"		"item_wanbaochui"
+			"item"		"item_bagua"
+			"item"		"item_yukkuri_stick"			
+			"item"		"item_tsundere"			
 		}
 	}
 }

@@ -4,39 +4,43 @@
 	"hero"			"npc_dota_hero_lich"
 	"Title"			"Recommended items for Lich"
 	
-	"Items"
+	"Items"//智力大哥
 	{		
-		"#DOTA_Item_Build_Starting_Items"//³öÃÅ×°±¸
+		"#DOTA_Item_Build_Starting_Items"
 		{
-                        "item"                "item_broom"
-                        "item"                "item_wind_lace"
-                        "item"                "item_card_love_man"
-                        "item"                "item_flask"
-     	}
+			"item"		"item_mushroom_soup"
+			"item"		"item_card_love_man"
+			"item"		"item_card_worse_man"
+			"item"		"item_flask"
+			"item"		"item_clarity"
+			"item"		"item_clarity"
+			"item"		"item_ward_observer"
+		}
 		
-		"#DOTA_Item_Build_Early_Game"//Ç°ÆÚ×°±¸
-		{				
-						"item"                "item_donation_box"
-                        "item"                "item_9ball"
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_donation_box"
+			"item"		"item_donation_gem"
+			"item"		"item_broom"
+			"item"		"item_good_lunchbox"
 		}
-
-		"#DOTA_Item_Build_Mid_Items"//ÖÐÆÚ×°±¸
+		"#DOTA_Item_Build_Late_Items"
 		{
-                        "item"                "item_yukkuri_stick"
-                        "item"                "item_bagua"
+            "item"       "item_wanbaochui"
+            "item"       "item_bagua"
+            "item"       "item_yukkuri_stick"
+            "item"       "item_rocket_5"
+            "item"       "item_tsundere"
+            "item"       "item_dragon_star"
+            "item"       "item_three_dimension"
+            "item"       "item_nuclear_stick"
 		}
-
-		"#DOTA_Item_Build_Late_Items"//ºóÆÚ×°±¸
+		
+		"#DOTA_Item_Build_Core_Items"
 		{
-						"item"                "item_nuclear_stick"
-                        "item"                "item_pomojinlingli"
-		}
-
-		"#DOTA_Item_Build_Luxury"//³£ÓÃ×°±¸
-		{
-			"item"		"item_wanbaochui"
-			"item"		"item_tsundere"
-            "item"      "item_hakurei_amulet"
+			"item"		"item_bagua"
+			"item"		"item_yukkuri_stick"			
+			"item"		"item_tsundere"			
 		}
 	}
 }

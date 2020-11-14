@@ -27,6 +27,7 @@
     		"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
     		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
     		"ArmorPhysical"	"2"
+            "VoiceFile" ""
     		"MagicalResistance"	"25"
     		"MovementSpeed"	"300"
     		"AttributeBaseStrength"	"19"

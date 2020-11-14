@@ -1,0 +1,384 @@
+"DOTAAbilities"
+{
+	// "ability_thdots_sumirekoEx"
+	// {
+	// 	"BaseClass"	"ability_lua"
+	// 	"ScriptFile"	"scripts/vscripts/abilities/abilitysumireko.lua"
+	// 	"AbilityTextureName"	"touhoutd/close_star"
+	// 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+	// 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+	// 	"MaxLevel"	"1"
+	// 	"AbilityCastPoint"	"0.3"
+	// 	"AbilityCastAnimation"	"ACT_DOTA_SPAWN"
+	// 	"AnimationPlaybackRate"	"4"
+	// 	"AbilityCooldown"	"45"
+	// 	"AbilityManaCost"	"5"
+	// 	"precache"
+	// 	{
+	// 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
+	// 	}
+	// 	"AbilitySpecial"
+	// 	{
+	// 		"01"
+	// 		{
+	// 			"var_type"	"FIELD_FLOAT"
+	// 			"range"	"325"
+	// 		}
+	// 	}
+	// }
+	"ability_thdots_sumirekoEx"
+	{
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitysumireko.lua"
+		"AbilityTextureName"	"touhoutd/close_star"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT |
+		 DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"MaxLevel"	"1"
+		"AbilityCastPoint"				"0.2"
+		"AbilityChannelTime"			"%duration"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"5"
+		"AbilityCooldown"	"15"
+		"AbilityManaCost"	"5"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_puck.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"2"
+			}
+		}
+	}
+
+	"ability_thdots_sumireko01"
+	{
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitysumireko.lua"
+		"AbilityTextureName"     	"custom/sumireko/ability_thdots_sumireko01"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+		"AnimationPlaybackRate"	"1.5"
+		"AbilityCooldown"	"8 7.5 7 6.5"
+		"AbilityManaCost"	"35 40 45 50"
+		"AbilityCastRange"	"%cast_range"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_mars.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"110 180 250 320"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"speed"	"700"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"45"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"range"	"800 1200 1600 2000"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"num"	"5"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cast_range"	"800 1200 1600 2000"
+			}
+		}
+	}
+
+	"ability_thdots_sumireko02"
+	{
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitysumireko.lua"
+		"AbilityTextureName"     	"custom/sumireko/ability_thdots_sumireko02"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		"AnimationPlaybackRate"	"2"
+		"AbilityCooldown"	"14 13 12 11"
+		"AbilityManaCost"	"90"
+		"AbilityCastRange"	"800"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_sniper.vsndevts"
+			"particle"	"particles/units/heroes/hero_sniper/sniper_assassinate.vpcf"
+			"particle"	"particles/units/heroes/hero_sniper/sniper_crosshair.vpcf"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"75 125 175 225"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"1.2 1.4 1.6 1.8"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"block_distance"	"75"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cast_range"	"800"
+			}
+		}
+	}
+
+	"ability_thdots_sumireko03"
+	{
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitysumireko.lua"
+		"AbilityTextureName"     	"custom/sumireko/ability_thdots_sumireko03"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"	"0.5"
+		"AbilityCooldown"	"22 18 15 13"
+		"AbilityManaCost"	"75 125 225 375"
+		"AbilityCastRange"	"%cast_range"
+		"precache"
+		{
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_sumireko_sounds.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"200 340 480 620"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_duration"	"2"
+				"LinkedSpecialBonus"	"special_bonus_unique_sumireko_3"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"delay_time"	"2.5"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"length"	"650"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"width"	"150"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cast_range"	"925 1125 1425 1825"
+			}
+		}
+	}
+
+	"ability_thdots_sumireko03_release"
+	{
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitysumireko.lua"
+		"AbilityTextureName"     	"custom/sumireko/ability_thdots_sumireko03_release"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"	"1"
+	}
+
+	"ability_thdots_sumireko04"
+	{
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilitysumireko.lua"
+		"AbilityTextureName"     	"skywrath_mage_mystic_flare"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCastPoint"	"0.5"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCooldown"	"120 100 80"
+		"AbilityManaCost"	"120 150 180"
+		"AbilityCastRange"	"%cast_range"
+		"HasScepterUpgrade"	"1"
+		"Modifiers"
+		{
+			"modifier_ability_thdots_sumireko04"	{}
+			"modifier_ability_thdots_sumireko04_debuff"	{}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"120 180 240"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"5"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"illusion_damage"	"3 4 5"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"mana_damage"	"0.2"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"mana_limit"	"1000"
+				"RequiresScepter"		"1"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"slow"	"0"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"miss"	"0 40 80"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"225"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"int_bonus"	"6"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius_talent"	"300"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cast_range"	"575 825 975"
+			}
+		}
+	}
+
+	"special_bonus_unique_sumireko_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"75"
+			}
+		}
+	}
+
+	"special_bonus_unique_sumireko_2"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1.5"
+			}
+		}
+	}
+
+	"special_bonus_unique_sumireko_3"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"2"
+			}
+		}
+	}
+
+	"special_bonus_unique_sumireko_4"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"50"
+			}
+		}
+	}
+
+	"special_bonus_unique_sumireko_5"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1"
+			}
+		}
+	}
+}

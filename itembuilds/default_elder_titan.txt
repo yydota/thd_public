@@ -32,13 +32,15 @@
 		{
 			"item"      "item_morenjingjuan"
 			"item"      "item_xuenvdeweijin"
+			"item"      "item_peach"
+			"item"      "item_anchor"
+			"item"      "item_loneliness"
+			"item"		"item_camera"			
 		}
-
-		"#DOTA_Item_Build_Luxury"//³£ÓÃ×°±¸
+		"#DOTA_Item_Build_Core_Items"
 		{
-			"item"		"item_phoenix_wing"
-			"item"		"item_frock"
-            "item"      "item_god_lunchbox"
+			"item"		"item_wanbaochui"
+			"item"		"item_dragon_star"			
 		}
 	}
 }

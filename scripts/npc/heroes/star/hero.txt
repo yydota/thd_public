@@ -29,7 +29,7 @@
 		//"Pusher"			"推进"
 		//"Initiator"		"先手"
 		//"Role"			"Carry,Support,Nuker,Disabler,Jungler,Durable,Escape,LaneSupport,Pusher,Initiator"
-
+		"VoiceFile" ""
 		"Role"				"Carry,Nuker,Disabler,Jungler,Escape,Pusher,Initiator,Support"
 		"Rolelevels"		"1,3,3,0,0,0,3,3"
 		"SoundSet"			"Hero_Phoenix"

@@ -21,7 +21,7 @@
 		"Ability15"				"special_bonus_unique_lily_2"
 		"Ability16"				"special_bonus_spell_amplify_15"
 		"Ability17"				"special_bonus_unique_lily_1"
-		
+		"VoiceFile" ""
 		"Role"					"Carry,Nuker,Disabler,Jungler,Escape,Pusher,Initiator,support"
 		"Rolelevels"			"0,3,3,0,0,0,3,0"			
 		"AttackRate"	"1.6"

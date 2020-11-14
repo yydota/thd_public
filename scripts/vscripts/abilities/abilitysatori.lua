@@ -1008,9 +1008,26 @@ function OnSatori01SpellStart(keys)
 		elseif RandomNumber > 25 and RandomNumber <= 50 then
 			AbilityStolenName = "ability_thdots_shinki_02"
 		elseif RandomNumber > 50 and RandomNumber <= 75 then
-			AbilityStolenName = "ability_thdots_shinki_03"
+			AbilityStolenName = "ability_thdots_shinki_01"
 		elseif RandomNumber > 75 and RandomNumber <= 100 then
 			AbilityStolenName = "ability_thdots_shinki_ultimate"
+			i = 2
+		end
+	end
+	if TargetName == "npc_dota_hero_skywrath_mage" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,100)
+		else 
+			RandomNumber = RandomInt(1,75)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "ability_thdots_sumireko01"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "ability_thdots_sumireko02"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "ability_thdots_sumireko03"
+		elseif RandomNumber > 75 and RandomNumber <= 100 then
+			AbilityStolenName = "ability_thdots_sumireko04"
 			i = 2
 		end
 	end

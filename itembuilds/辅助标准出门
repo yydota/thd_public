@@ -1,0 +1,53 @@
+"itembuilds" //辅助标准出门
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_lion"
+	"Title"			"Recommended items for Lion"
+	
+	"Items"//远程智力辅助
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_cherry_leaf"
+			"item"		"item_card_love_man"
+			"item"		"item_courier"
+			"item"		"item_flask"
+			"item"		"item_ward_observer"
+			"item"		"item_ward_sentry"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_present_box"
+			"item"		"item_broom"
+			"item"		"item_ward_observer"
+			"item"		"item_ward_sentry"
+			"item"		"item_good_lunchbox"
+		}
+		"#DOTA_Item_Build_Mid_Items"
+		{
+            "item"       "item_hetongtuijinzhuangzhi"
+            "item"       "item_pocket_watch"
+            "item"       "item_ghostspoon"
+            "item"       "item_donation_box"
+            "item"       "item_qijizhixing"
+            "item"       "item_cyclone"
+            "item"       "item_tentacle"
+            "item"       "item_shanbibu"
+		}
+		"#DOTA_Item_Build_Late_Items"
+		{
+            "item"       "item_wanbaochui"
+            "item"       "item_three_dimension"
+            "item"       "item_bagua"
+            "item"       "item_smash_stick"
+            "item"       "item_bone_flute"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_qijizhixing"
+			"item"		"item_hakurei_ticket"			
+		}
+	}
+}

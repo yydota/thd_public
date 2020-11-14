@@ -1,0 +1,45 @@
+"itembuilds" //物理大哥出装
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_phantom_lancer"
+	"Title"			"Recommended items for Reisen02"
+	
+	"Items"//敏捷物理大哥
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_mushroom_pie"
+			"item"		"item_card_love_man"
+			"item"		"item_card_worse_man"
+			"item"		"item_flask"
+			"item"		"item_flask"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_mushroom_pie"
+			"item"		"item_donation_box"
+			"item"		"item_donation_gem"
+			"item"		"item_broom"
+			"item"		"item_ward_observer"
+			"item"		"item_good_lunchbox"
+		}
+		"#DOTA_Item_Build_Late_Items"
+		{
+			"item"		 "item_sampan"
+			"item"		 "item_ganggenier"
+			"item"		 "item_cirno_claymore"
+			"item"		 "item_feixiangjian"
+			"item"		 "item_anchor"
+			"item"		 "item_yuetufensuijvren"
+			"item"		 "item_rapier"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_camera"
+			"item"		"item_teeth"			
+			"item"		"item_dragon_star"			
+		}
+	}
+}

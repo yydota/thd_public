@@ -4,50 +4,52 @@
 	"hero"			"npc_dota_hero_bounty_hunter"
 	"Title"			"Recommended items for Bounty Hunter"
 	
-	"Items"
+	"Items"//杩滅▼鏅哄姏杈呭姪
 	{		
-		"#DOTA_Item_Build_Starting_Items"//出门装备
+		"#DOTA_Item_Build_Starting_Items"
 		{
-                        "item"                "item_clarity"
-                        "item"                "item_cherry_leaf"
-                        "item"                "item_flask"
-                        "item"                "item_card_worse_man"
+			"item"		"item_cherry_leaf"
+			"item"		"item_card_love_man"
+			"item"		"item_courier"
+			"item"		"item_flask"
+			"item"		"item_ward_observer"
+			"item"		"item_ward_sentry"
 		}
 		
-		"#DOTA_Item_Build_Early_Game"//前期装备
-		{				
-                        "item"                "item_recipe_present_box"
-                        "item"                "item_9ball"
-                        "item"                "item_card_worse_man"
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_present_box"
+			"item"		"item_broom"
+			"item"		"item_ward_observer"
+			"item"		"item_ward_sentry"
+			"item"		"item_good_lunchbox"
+			"item"		"item_rocket"
 		}
-
-		"#DOTA_Item_Build_Mid_Items"//中期装备
+		"#DOTA_Item_Build_Mid_Items"
 		{
-                        "item"                "item_rocket"
-                        "item"                "item_moon_bow"
-
+            "item"       "item_hetongtuijinzhuangzhi"
+            "item"       "item_pocket_watch"
+            "item"       "item_ghostspoon"
+            "item"       "item_donation_box"
+            "item"       "item_qijizhixing"
+            "item"       "item_cyclone"
+            "item"       "item_tentacle"
+            "item"       "item_shanbibu"
 		}
-
-		"#DOTA_Item_Build_Late_Items"//后期装备
+		"#DOTA_Item_Build_Late_Items"
 		{
-						"item"                "item_bagua"
-                        "item"                "item_yukkuri_stick"
-                        "item"                "item_tsundere"
-                        "item"                "item_morenjingjuan"
-                        "item"                "item_frozen_frog"
+            "item"       "item_wanbaochui"
+            "item"       "item_rocket_5"
+            "item"       "item_three_dimension"
+            "item"       "item_bagua"
+            "item"       "item_smash_stick"
+            "item"       "item_bone_flute"
 		}
-
-		"#DOTA_Item_Build_Other_Items"//常用装备
+		
+		"#DOTA_Item_Build_Core_Items"
 		{
-			"item"		"item_flask"
-			"item"		"item_clarity"
-			"item"		"item_tpscroll"
-			"item"		"item_jinkela"
-			"item"		"item_gem"
-			"item"		"item_courier"
-			"item"		"item_flying_courier"	
-			"item"          "item_ward_observer"
-			"item"          "item_ward_sentry"	
+			"item"		"item_qijizhixing"
+			"item"		"item_hakurei_ticket"			
 		}
 	}
 }

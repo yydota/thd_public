@@ -22,7 +22,7 @@
 		"Ability15"				"special_bonus_movement_speed_40"
 		"Ability16"				"special_bonus_hp_350"
 		"Ability17"				"special_bonus_unique_suwako_4"
-		
+		"VoiceFile" ""
 		"Role"					"Carry,Nuker,Disabler,Jungler,Escape,Pusher,Initiator,support"
 		"Rolelevels"			"0,3,3,0,0,0,3,0"			
 		"AttributeBaseStrength"		"20"

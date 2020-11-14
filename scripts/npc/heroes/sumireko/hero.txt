@@ -1,0 +1,83 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_sumireko"
+	{
+		"Ability1"	"ability_thdots_sumireko01"
+		"Ability2"	"ability_thdots_sumireko02"
+		"Ability3"	"ability_thdots_sumireko03"
+		"Ability4"	"ability_thdots_sumirekoEx"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"ability_thdots_sumireko04"
+		"Ability7"	"ability_thdots_sumireko03_release"
+		"Ability8"	"generic_hidden"
+		"Ability9"	"generic_hidden"
+		"Ability10"	"special_bonus_cast_range_75"
+		"Ability11"	"special_bonus_unique_sumireko_1"
+		"Ability12"	"special_bonus_all_stats_10"
+		"Ability13"	"special_bonus_unique_sumireko_2"
+		"Ability14"	"special_bonus_spell_amplify_15"
+		"Ability15"	"special_bonus_unique_sumireko_3"
+		"Ability16"	"special_bonus_unique_sumireko_4"
+		"Ability17"	"special_bonus_unique_sumireko_5"
+		"override_hero"	"npc_dota_hero_skywrath_mage"
+		"Model"	"models/sumireko/sumireko.vmdl"
+		"SoundSet"	"Hero_Oracle"
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AbilityLayout"	"6"
+		"VoiceFile" ""
+		"DisableWearables"	"1"
+		// "Carry"			"核心"
+		// "Support"			"辅助"
+		// "Nuker"			"爆发"
+		// "Disabler"		"控制"
+		// "Jungler"			"打野"
+		// "Durable"			"耐久"
+		// "Escape"			"逃生"
+		// "LaneSupport"		"对线辅助"
+		// "Pusher"			"推进"
+		// "Initiator"		"先手"
+		// "Role"			"Carry,Support,Nuker,Disabler,Jungler,Durable,Escape,LaneSupport,Pusher,Initiator"
+		"Role"	"Carry,Disabler,Support,LaneSupport,Jungler"
+		"Rolelevels"	"3,1,2,2,2"
+		"AttackRange"	"550"
+		// 攻击距离
+		"ArmorPhysical"	"1"
+		// 攻击前摇
+		"AttackRate"	"1.9"
+		// 攻击速度
+		"AttackDamageMin"	"29"
+		// 最大攻击力
+		"AttackDamageMax"	"30"
+		// 最小攻击力
+		"AttributeBaseStrength"	"17"
+		// 基础力量
+		"AttributeStrengthGain"	"2.1"
+		// 每级增加的力量，力量成长
+		"AttributeBaseAgility"	"20"
+		// 基础敏捷
+		"AttributeAgilityGain"	"1.4"
+		// 每级增加的敏捷，敏捷成长
+		"AttributeBaseIntelligence"	"29"
+		// 基础智力
+		"AttributeIntelligenceGain"	"3.9"
+		// 每级增加的智力，智力成长
+		"MovementSpeed"	"290"
+		// 基础移动速度
+		"MovementTurnRate"	"1.2"
+		// 转身速度
+		"StatusHealth"	"200"
+		// 基础生命值
+		"StatusHealthRegen"	"1.2"
+		// 基础生命恢复
+		"StatusMana"	"70"
+		// 基础魔法值
+		"StatusManaRegen"	"0.6"
+		// 基础魔法恢复
+		"VisionDaytimeRange"	"1050"
+		// 白天视野大小
+		"VisionNighttimeRange"	"700"
+		"ModelScale"	"1.2"
+		"ProjectileModel"	"particles/units/heroes/hero_oracle/oracle_base_attack.vpcf"
+		"ProjectileSpeed"	"1200"
+	}
+}

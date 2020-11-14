@@ -33,6 +33,7 @@
 		// "Pusher"			"推进"
 		// "Initiator"		"先手"
 		// "Role"			"Carry,Support,Nuker,Disabler,Jungler,Durable,Escape,LaneSupport,Pusher,Initiator"
+		"VoiceFile" ""
 		"Role"	"Carry,Nuker,Disabler,Jungler,Escape,Pusher,Initiator"
 		"Rolelevels"	"3,2,1,3,2,1,1"
 		"Model"	"models/reisen02/reisen02.vmdl"

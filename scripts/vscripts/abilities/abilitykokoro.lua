@@ -711,7 +711,9 @@ function modifier_ability_thdots_kokoro04_caster_wanbaochui:OnIntervalThink()
 		local next_point = self.target:GetAbsOrigin() + RandomVector(128)
 		local vec = self.target:GetOrigin() - self.caster:GetOrigin()
 		vec.z = 0
-		self.caster:SetForwardVector(vec:Normalized())
+		if self.target:GetOrigin() ~= self.caster:GetOrigin() then
+			self.caster:SetForwardVector(vec:Normalized())
+		end
 		local trail_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_juggernaut/juggernaut_omni_slash_trail.vpcf", PATTACH_CUSTOMORIGIN, self.caster)
 		ParticleManager:SetParticleControl(trail_pfx, 0, Vector(next_point.x, next_point.y, next_point.z))
 		ParticleManager:SetParticleControl(trail_pfx, 1, self:GetCaster():GetAbsOrigin())
@@ -919,7 +921,10 @@ function modifier_ability_thdots_kokoro04_caster:OnIntervalThink()
 	end
 	local vec = self.target:GetAbsOrigin() - self.caster:GetAbsOrigin()
 	vec.z = 0
-	self.caster:SetForwardVector(vec:Normalized())
+	if vec.x == 0 and vec.y == 0 then
+	else
+		self.caster:SetForwardVector(vec:Normalized())
+	end
 end
 
 function modifier_ability_thdots_kokoro04_caster:OnDestroy()

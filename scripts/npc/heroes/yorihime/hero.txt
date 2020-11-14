@@ -20,6 +20,7 @@
 		"Ability16"	"special_bonus_radius_99999"
 		"Ability17"	"special_bonus_stun_time"
 		"override_hero"	"npc_dota_hero_sven"
+		"VoiceFile" ""
 		"Model"	"models/yorihime/yorihime.vmdl"
 		"ModelScale"	"1.0"
 		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
