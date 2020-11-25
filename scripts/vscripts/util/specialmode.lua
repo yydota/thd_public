@@ -4,6 +4,7 @@ G_IsFastCDMode = false
 G_IsFastRespawnMode = false
 G_IsCloneMode = false
 G_IsFCloneMode = false
+local team_hero = {}
 Bot_Mode = false
 -- look at precache, if map == "dota" then enable for default
 
@@ -28,16 +29,19 @@ function GetValidConnectedCount()
 	return ret
 end
 
+function THD2_SetTeamHero(team_id,val) team_hero[team_id] = val end
 function THD2_SetBotMode(val) Bot_Mode = val end
 function THD2_SetFCDMode(val) G_IsFastCDMode = val end
 function THD2_SetFRSMode(val) G_IsFastRespawnMode = val end
 function THD2_SetFRSTime(val) fast_respawn_val = val end
 function THD2_SetPlayerPerTeam(val)
 	if GetMapName()=="dota" and 
-		cur_bot_heros_size + GetValidConnectedCount() < val * 2 
+		cur_bot_heros_size + GetValidConnectedCount() < val * 2 and
+		not G_IsCloneMode
 		then
 		val = math.floor((cur_bot_heros_size + GetValidConnectedCount())/2.0)
 	end
+	--if val > 20 then val=20 end
 	player_per_team = val
 	GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_GOODGUYS, val )
 	GameRules:SetCustomGameTeamMaxPlayers( DOTA_TEAM_BADGUYS, val )
@@ -49,7 +53,7 @@ function THD2_SetBotThinking(val)
 end
 function THD2_SetCloneMode(val)
 	G_IsCloneMode = val
-	if val ~= true then G_IsFCloneMode = false end
+	if val == false then G_IsFCloneMode = false end
 	GameRules:SetSameHeroSelectionEnabled(val)
 end
 function THD2_SetFCloneMode(val)
@@ -65,6 +69,8 @@ function THD2_GetBotDiff() return cur_bot_dif end
 function THD2_GetBotDiffName() return G_Bot_Diff_Text[cur_bot_dif] end
 function THD2_GetBotThinking(val) G_IsAIMode = val end
 function THD2_GetPlayerPerTeam(val) return player_per_team end
+function THD2_GetCloneMode() return G_IsCloneMode end
+function THD2_GetFCloneMode() return G_IsFCloneMode end
 
 
 --to ban some girls(which is not work done XD)
@@ -202,6 +208,15 @@ G_Bots_Ability_Add = {
 	{1,2,3,2,2,  6,2,1,1,10,  1,6,3,3,13, 3,0,6,0,15,  0,0,0,0,16,  0,0,0,0,0  }, --medicine
 }
 
+function check_H_name(H_name)
+	for i=1,tot_bot_heros_size do
+		if G_Bot_Random_Hero[i] == H_name then
+			return not G_BOT_USED[i]
+		end
+	end
+	return false
+end
+
 function THD2_BotUpGradeAbility(hero)
 	print("THDOTSGameMode:BotUpGradeAbility")
 	
@@ -276,6 +291,16 @@ function THD2_ChangeBotDifficulty( player, dif )
 	]]--
 end
 
+function get_usable_bot_hero()
+	
+	local int = RandomInt(1, tot_bot_heros_size)
+	while(G_BOT_USED[int])
+	do
+		int = RandomInt(1, tot_bot_heros_size)
+	end
+	return int
+end
+			
 function THD2_AddBot()
 
 			print("changing to bot mod...")
@@ -323,7 +348,12 @@ function THD2_AddBot()
 			local goodcnt = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
 			local badcnt = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)
 			
+			-- will check inside
+			THD2_ForceClone()
+			
+			local player_hero_table = {}
 			--清除玩家选择的英雄
+			if not G_IsCloneMode then
 				for i=0,233 do
 					ply = PlayerResource:GetPlayer(i)
 					if ply ~= nil then
@@ -339,7 +369,17 @@ function THD2_AddBot()
 						end
 					end
 				end
-				
+			else
+				-- record player hero and make null
+				for i=0,233 do
+					ply = PlayerResource:GetPlayer(i)
+					if ply ~= nil then
+						local tHeroName = PlayerResource:GetSelectedHeroName(i)
+						player_hero_table[i] = tHeroName
+						THD2_ForcePlayerRepick(i,'npc_dota_hero_monkey_king')
+					end
+				end
+			end
 			-- 创建bot
 			
 			for i=0,233 do
@@ -353,14 +393,23 @@ function THD2_AddBot()
 				end
 				
 				if ply == nil then
-					local int = RandomInt(1, tot_bot_heros_size)
-					while(G_BOT_USED[int])
-					do
-						int = RandomInt(1, tot_bot_heros_size)
-					end
 					bot_team = true
+					local H_name=team_hero[2]
 					if goodcnt >= player_per_team then
 						bot_team = false
+						H_name=team_hero[3]
+					end
+					local H_id = nil
+					if (not G_IsFCloneMode) or (not check_H_name(H_name)) then
+						H_id = get_usable_bot_hero()
+						H_name = G_Bot_Random_Hero[H_id]
+						if G_IsFCloneMode then
+							if bot_team then
+								team_hero[2] = H_name
+							else
+								team_hero[3] = H_name
+							end
+						end
 					end
 					if bot_team == true then
 						goodcnt = goodcnt + 1
@@ -368,14 +417,29 @@ function THD2_AddBot()
 						badcnt = badcnt + 1
 					end
 					--table.insert(G_Bot_List,i)
-					Tutorial:AddBot(G_Bot_Random_Hero[int],'','',bot_team)
-					G_BOT_USED[int]=true
+					print(H_name)
+					-- hero name, line('top','mid','bottom'), diff, team 
+					Tutorial:AddBot(H_name,'','',bot_team)
+					-- clear it temporary
+					for i=0,233 do
+						if PlayerResource:GetPlayer(i) ~= nil and
+							PlayerResource:GetConnectionState(i) == 1 and
+							not player_hero_table[i]
+							then
+							player_hero_table[i] = PlayerResource:GetSelectedHeroName(i)
+							THD2_ForcePlayerRepick(i,'npc_dota_hero_monkey_king')
+						end
+					end
+					if not G_IsCloneMode then G_BOT_USED[H_id]=true end
 					
 				end
 			end
 			
+			print('bbbbb')
+			
 			for i=0,233 do
-				if PlayerResource:GetPlayer(i) ~= nil and PlayerResource:GetConnectionState(i) == 1 then
+				ply = PlayerResource:GetPlayer(i)
+				if ply ~= nil and PlayerResource:GetConnectionState(i) == 1 then
 					table.insert(G_Bot_List,i)
 					print(i)
 				end
@@ -404,6 +468,13 @@ function THD2_AddBot()
 			--Say(nil, "Bot Spawned...",false)
 			print("Bot Spawned...") --debug
 			
+			-- formated remake,restore player hero
+			for i=0,233 do
+				if player_hero_table[i] then
+					THD2_ForcePlayerRepick(i,player_hero_table[i])
+				end
+			end
+			
 end
 
 function THD2_FirstAddBuff( hero )
@@ -419,6 +490,7 @@ function THD2_FirstAddBuff( hero )
 							bot_buff_ability:SetLevel(cur_bot_dif) -- bot's default difficulty
 						end
 						hero:SetBotDifficulty(cur_bot_dif)
+						G_Bot_Level[hero:GetPlayerOwnerID()] = nil
 						THD2_BotUpGradeAbility(hero) -- init abilities
 						--[[
 						for i=0,16 do
@@ -490,18 +562,22 @@ function THD2_ForcePlayerRepick( plyid , heroname )
 	local plyhd = PlayerResource:GetPlayer(plyid)
 	if PlayerResource:HasSelectedHero(plyid) == false then return end
 	local tmp = plyhd:GetAssignedHero();
-	if GameRules:State_Get() <= 5 then
-		CreateHeroForPlayer(heroname, plyhd):RemoveSelf();
-	else
-		CreateHeroForPlayer(heroname, plyhd);
-	end
 	if tmp~=nil then tmp:RemoveSelf() end
+	if GameRules:State_Get() <= 5 then
+		local tmp2=CreateHeroForPlayer(heroname, plyhd);
+		plyhd:SetAssignedHeroEntity(tmp2);
+		tmp2:RemoveSelf();
+	else
+		plyhd:SetAssignedHeroEntity(CreateHeroForPlayer(heroname, plyhd));
+	end
+	plyhd:SetSelectedHero(heroname)
 end
 
 function THD2_ForceClone()
 
 	print('!!!')
-	if G_IsAIMode or not G_IsFCloneMode then return end
+	if not G_IsFCloneMode then return end
+	print('???')
 	
 	local H_table = {}
 	
@@ -537,7 +613,21 @@ function THD2_ForceClone()
 			
 		end
 	end
-
+	
+	for i=2, 3 do
+		if team_hero[i] then
+			H_result[i] = team_hero[i]
+		else
+			team_hero[i] = H_result[i]
+		end
+		if team_hero[i] == nil then
+			local H_id = get_usable_bot_hero()
+			team_hero[i] = G_Bot_Random_Hero[H_id]
+			H_result[i] = team_hero[i]
+			--G_BOT_USED[team_hero[H_id]] = true
+		end
+	end
+	
 	for playerId = 0, 233 do
 		if PlayerResource:IsValidTeamPlayerID(playerId) then
 			local team = PlayerResource:GetTeam(playerId)
