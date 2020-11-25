@@ -429,6 +429,11 @@ function THDOTSGameMode:OnPlayerSay( keys )
 				local res = THD2_SetPlayerPerTeam(tonumber(ss[2]))
 				Say(plyhd,"Max player(per team) set to "..tostring(res),false)
 			end
+		elseif ss[1] == "-setteamhero" then --设置队伍英雄(仅限强制复选)
+			if GameRules:State_Get() <= 2 and THD2_GetFCloneMode() then 
+				THD2_SetTeamHero(tonumber(ss[2]),ss[3])
+				Say(plyhd,"Team " .. ss[2] .. " set to " .. ss[3],false)
+			end
 		elseif text == "-allowsame" then  --允许选择相同少女
 			THD2_SetCloneMode(true)
 			Say(plyhd, "Allowsame Mode ON...",false)
@@ -1291,6 +1296,8 @@ function THDOTSGameMode:OnGameRulesStateChange(keys)
 			end
 		end
 		
+		THD2_ForceClone(); --will check at inside
+		
 		if THD2_GetBotMode() == true then
 		
 			HostSay("You're in bot mode.")
@@ -1301,7 +1308,7 @@ function THDOTSGameMode:OnGameRulesStateChange(keys)
 			
 			THD2_AddBot()
 			
-        end
+		end
 		
 		THD2_ForceClone(); --will check at inside
 		
