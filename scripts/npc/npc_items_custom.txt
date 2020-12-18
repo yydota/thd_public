@@ -4578,7 +4578,7 @@
 		"ID"	"8061"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"700"
+		"ItemCost"	"200"
 		"ItemRecipe"	"1"
 		"ItemResult"	"item_cirno_claymore"
 		"ItemRequirements"
@@ -4935,6 +4935,7 @@
 		"precache"
 		{
 			"particle"	"particles/thd2/items/item_rocket.vpcf"
+			"soundevents"	"soundevents/game_sounds_custom.vsndevts"
 		}
 		"OnSpellStart"
 		{
@@ -5049,9 +5050,15 @@
 		"precache"
 		{
 			"particle"	"particles/thd2/items/item_rocket.vpcf"
+			"soundevents"	"soundevents/game_sounds_custom.vsndevts"
 		}
 		"OnSpellStart"
 		{
+			"FireSound"
+			{
+				"EffectName"	"THD_ITEM.Rocket_Fire"
+				"Target"		"CASTER"
+			}
 			"TrackingProjectile"
 			{
 				"Target"	"TARGET"
@@ -5158,9 +5165,15 @@
 		"precache"
 		{
 			"particle"	"particles/thd2/items/item_rocket.vpcf"
+			"soundevents"	"soundevents/game_sounds_custom.vsndevts"
 		}
 		"OnSpellStart"
 		{
+			"FireSound"
+			{
+				"EffectName"	"THD_ITEM.Rocket_Fire"
+				"Target"		"CASTER"
+			}
 			"TrackingProjectile"
 			{
 				"Target"	"TARGET"
@@ -5267,9 +5280,15 @@
 		"precache"
 		{
 			"particle"	"particles/thd2/items/item_rocket.vpcf"
+			"soundevents"	"soundevents/game_sounds_custom.vsndevts"
 		}
 		"OnSpellStart"
 		{
+			"FireSound"
+			{
+				"EffectName"	"THD_ITEM.Rocket_Fire"
+				"Target"		"CASTER"
+			}
 			"TrackingProjectile"
 			{
 				"Target"	"TARGET"
@@ -5376,9 +5395,15 @@
 		"precache"
 		{
 			"particle"	"particles/thd2/items/item_rocket.vpcf"
+			"soundevents"	"soundevents/game_sounds_custom.vsndevts"
 		}
 		"OnSpellStart"
 		{
+			"FireSound"
+			{
+				"EffectName"	"THD_ITEM.Rocket_Fire"
+				"Target"		"CASTER"
+			}
 			"TrackingProjectile"
 			{
 				"Target"	"TARGET"
@@ -6879,7 +6904,7 @@
 		"ID"	"8096"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"450"
+		"ItemCost"	"150"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
@@ -6907,7 +6932,7 @@
 	// 	"ItemQuality"	"component"
 	// 	// Item Info
 	// 	// -------------------------------------------------------------------------------------------------------------
-	// 	"ItemCost"	"3000"
+	// 	"ItemCost"	"2200"
 	// 	"ItemDroppable"	"1"
 	// 	"ItemSellable"	"1"
 	// 	"ItemShopTags"	"str;magic_resist;armor;regen_health"
@@ -11875,7 +11900,7 @@
 		"ID"	"8165"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"1600"
+		"ItemCost"	"1100"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
@@ -12882,7 +12907,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_damage_percentage"	"30"
+				"bonus_damage_percentage"	"25"
 			}
 		}
 	}
@@ -14513,14 +14538,14 @@
 		"ID"	"8203"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"800"
+		"ItemCost"	"1500"
 		// Recipe
 		// -------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"	"1"
 		"ItemResult"	"item_shanbibu"
 		"ItemRequirements"
 		{
-			"01"	"item_ghostspoon"
+			"01"	"item_guilty_mask"
 		}
 		"Model"	"models/props_gameplay/recipe.mdl"
 	}
@@ -14530,7 +14555,7 @@
 		"AbilityTextureName"	"item_shanbibu"	//图标By 橘橘子
 		"ScriptFile"                    "items/item_shanbibu"
 		"ItemDeclarations"        "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		// Stats
@@ -14546,10 +14571,10 @@
 		"ItemQuality"	"component"
 		// Item Info
 		// -------------------------------------------------------------------------------------------------------------
-		"ItemCost"	"2300"
+		"ItemCost"	"2600"
 		"ItemDroppable"	"1"
 		"ItemSellable"	"1"
-		"ItemShopTags"	"armor;str;agi;int"
+		"ItemShopTags"	"armor;str"
 		"precache"
 		{
 			// "soundfile"	"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
@@ -14559,22 +14584,27 @@
 			"01"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"bonus_all_stats"	"8"
+				"bonus_strength"	"10"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"duration"	"4.0"
+				"duration"	"5.0"
 			}
 			"03"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"debuff_mgical_resistance_decrepify"	"-44"
+				"mgical_resistance"	"15"
 			}
 			"04"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"debuff_slowdown_movespeed_percent"	"-35"
+				"active_mgical_resistance"	"45"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"react_time"	"0.6"
 			}
 		}
 	}
@@ -14702,5 +14732,86 @@
 		"ItemStockMax"	"2"
 		"ItemStockInitial"	"2"
 		"ItemStockTime"	"120.0"
+	}
+	"item_recipe_fan"
+	{
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_sample_item"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"	"8207"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"0"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_fan"
+		"ItemRequirements"
+		{
+			"01"	"item_gran_grimoire;item_cherry_branch;item_cherry_branch;item_cherry_branch"
+		}
+		"Model"	"models/props_gameplay/recipe.mdl"
+	}
+	"item_fan"
+	{
+		"BaseClass"	"item_lua"
+		"AbilityTextureName"	"item_fan"	//图标By 橘橘子
+		"ScriptFile"                    "items/item_fan"
+		"ItemDeclarations"        "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		// Stats
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.0"
+		"AbilityCooldown"	"15"
+		"AbilityManaCost"	"80"
+		"AbilityCastRange"	"975"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"	"8208"
+		"ItemQuality"	"secret_shop"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"2450"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShopTags"	"int;damage"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"bonus_strength"	"9"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"bonus_intellect"	"19"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage"	"200"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"damage_bonus_time"	"4"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"cast_range"	"975"
+			}
+		}
 	}
 }

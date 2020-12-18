@@ -1142,7 +1142,7 @@ function modifier_ability_thdots_kokoroEx:OnTakeDamage(keys)
 					ability 		= self:GetAbility()
 				}
 			UnitDamageTarget(damage_tabel)
-			SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,keys.unit,pure_damage,nil)
+			-- SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,keys.unit,pure_damage,nil)
 			self:SetStackCount(0)
 		end
 	end

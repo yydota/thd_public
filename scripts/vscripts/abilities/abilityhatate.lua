@@ -121,7 +121,7 @@ function Hatate02OnSpellStart( keys )
 						damage_flags = 0
 					}
 		UnitDamageTarget(damage_table)
-		SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,v,keys.damage*3,nil)
+		-- SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,v,keys.damage*3,nil)
 	end
 end
 

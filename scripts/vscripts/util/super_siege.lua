@@ -48,11 +48,17 @@ end
 function siege_start_interval()
 	if GetMapName() ~= "1_thdots_map" then return end
 	local siege_time = 0
+	local say = true
 	GameRules:GetGameModeEntity():SetContextThink("siege_time", 
 		function()
 			if GameRules:IsGamePaused() then return 0.03 end
 			if math.floor(GameRules:GetDOTATime(false, false)) >= START_TIME then
 				START_TIME = START_TIME + INTERVAL_TIME
+				if say then
+					GameRules:SendCustomMessage("<font color='#00FFFF'>游戏已经超过40分钟，双方每过2分钟派出一个超级兵进攻</font>", 0, 0)
+					GameRules:SendCustomMessage("<font color='#00FFFF'>杀死超级兵获得500经验，500金币</font>", 0, 0)
+					say = false
+				end
 				CreateSiege_Hakurei()
 				CreateSiege_Moriya()
 			end

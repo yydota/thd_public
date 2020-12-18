@@ -146,6 +146,7 @@ function sunny02_effect(caster,radius)
 									caster:GetTeamNumber()
 									)
 	local top = dummy:GetOrigin()
+	dummy:FindAbilityByName("ability_dummy_unit"):SetLevel(1)
 	dummy:SetAbsOrigin(Vector(top.x,top.y,top.z+500))
 	local time = 2
 	dummy:SetContextThink("dummy_kill",
@@ -171,6 +172,7 @@ function sunny02_effect(caster,radius)
 									caster:GetTeamNumber()
 									)
 		local time = 2
+		dummy_kid:FindAbilityByName("ability_dummy_unit"):SetLevel(1)
 		dummy_kid:SetContextThink("dummy_kill",
 			function ( )
 				time = time - 0.03

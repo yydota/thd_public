@@ -1,0 +1,73 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_yamame"
+	{
+		"Ability1"	"broodmother_spin_web"
+		"Ability2"	"ability_thdots_yamame02"
+		"Ability3"	"ability_thdots_yamame03"
+		"Ability4"	"ability_thdots_yamameEx"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"ability_thdots_yamame04"
+		"Ability7"	"generic_hidden"
+		"Ability8"	"generic_hidden"
+		"Ability9"	"generic_hidden"
+		"Ability7"	"generic_hidden"
+		"Ability8"	"generic_hidden"
+		"Ability9"	"generic_hidden"
+		"Ability10"	"special_bonus_attack_damage_25"
+		"Ability11"	"special_bonus_unique_yamame_1"
+		"Ability12"	"special_bonus_strength_15"
+		"Ability13"	"special_bonus_unique_yamame_2"
+		"Ability14"	"special_bonus_attack_speed_50"
+		"Ability15"	"special_bonus_cooldown_reduction_20"
+		"Ability16"	"special_bonus_unique_yamame_3"
+		"Ability17"	"special_bonus_unique_yamame_4"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		// "Role"			"Carry,Support,Nuker,Disabler,Jungler,Durable,Escape,LaneSupport,Pusher,Initiator"
+		"Role"	"Carry,Nuker,Disabler,Jungler,Escape,Pusher,Initiator"
+		"Rolelevels"	"3,3,1,3,3,1,1"
+		"override_hero"	"npc_dota_hero_broodmother"
+		"Model"	"models/thd_hero/yamame/yamame.vmdl"
+		"VoiceFile"	""
+		"AttackRange"	"125"
+		"AttackAnimationPoint"	"0.3"
+		// 攻击前摇
+		"AttackRate"	"1.6"
+		// 攻击速度
+		"ArmorPhysical"	"2"
+		// 物理护甲
+		"AttackDamageMin"	"30"
+		// 最大攻击力
+		"AttackDamageMax"	"35"
+		// 最小攻击力
+		"AttributeBaseStrength"	"21"
+		// 基础力量
+		"AttributeStrengthGain"	"2.3"
+		// 每级增加的力量，力量成长
+		"AttributeBaseAgility"	"23"
+		// 基础敏捷
+		"AttributeAgilityGain"	"2.2"
+		// 每级增加的敏捷，敏捷成长
+		"AttributeBaseIntelligence"	"16"
+		// 基础智力
+		"AttributeIntelligenceGain"	"1.7"
+		// 每级增加的智力，智力成长
+		"MovementSpeed"	"280"
+		// 基础移动速度
+		"MovementTurnRate"	"2.0"
+		// 转身速度
+		"StatusHealth"	"250"
+		// 基础生命值
+		"StatusHealthRegen"	"1.5"
+		// 基础生命恢复
+		"StatusMana"	"100"
+		// 基础魔法值
+		"StatusManaRegen"	"1.2"
+		// 基础魔法恢复
+		"VisionDaytimeRange"	"1050"
+		// 白天视野大小
+		"VisionNighttimeRange"	"700"
+		// 晚上视野大小
+		"DisableWearables"	"1"
+	}
+}

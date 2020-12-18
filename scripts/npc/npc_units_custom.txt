@@ -3526,7 +3526,7 @@
 	}
 	"npc_no_vision_dummy_unit"
 	{
-		"BaseClass"	"npc_dota_creep_neutral"
+		"BaseClass"	"npc_dota_base_additive"
 		"Model"	"models/development/invisiblebox.vmdl"
 		"SoundSet"	"Creep_Good_Range"
 		"Level"	"0"

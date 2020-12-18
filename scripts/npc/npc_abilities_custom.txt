@@ -19,6 +19,9 @@
 #base "heroes/suwako/npc_abilities_suwako.txt"
 #base "heroes/shinki/npc_abilities_shinki.txt"
 #base "heroes/sumireko/npc_abilities_sumireko.txt"
+#base "heroes/yamame/npc_abilities_yamame.txt"
+#base "heroes/daiyousei/npc_abilities_daiyousei.txt"
+#base "heroes/keine/npc_abilities_keine.txt"
 
 "DOTAAbilities"
 {
@@ -4983,6 +4986,7 @@
 			"particle"	"particles/heroes/mouko/ability_mokou_01_boom.vpcf"
 			"particle"	"particles/heroes/mouko/ability_mokou_01_boom_g.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_mokou_sounds.vsndevts"
 		}
 		"OnSpellStart"
 		{
@@ -7135,7 +7139,7 @@
 	"ability_thdots_Utsuho01"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/ability_thdots_Utsuho01"
+		"AbilityTextureName"	"touhoutd/thtd_utsuho_02"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET "
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
@@ -7266,7 +7270,7 @@
 	"ability_thdots_Utsuho02"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/ability_thdots_Utsuho02"
+		"AbilityTextureName"	"touhoutd/thtd_utsuho_01"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_TOGGLE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
@@ -7378,7 +7382,7 @@
 	"ability_thdots_Utsuho03"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/ability_thdots_Utsuho03"
+		"AbilityTextureName"	"touhoutd/thtd_patchouli_04"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
@@ -7488,7 +7492,7 @@
 	"ability_thdots_Utsuho04"
 	{
 		"BaseClass"	"ability_datadriven"
-		"AbilityTextureName"	"custom/ability_thdots_Utsuho04"
+		"AbilityTextureName"	"touhoutd/thtd_utsuho_03"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
@@ -17141,8 +17145,8 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"				"4"
-		"AbilityCastPoint"		"0.5"
-		"AnimationPlaybackRate"	"2"
+		"AbilityCastPoint"		"0.8"
+		"AnimationPlaybackRate"	"1.4"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityCooldown"		"9 8 7 6"
 		"AbilityManaCost"		"80 90 100 110"
@@ -24011,8 +24015,8 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		// "AbilityCastPoint"	"0.1"
-		// "AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
-		// "AnimationPlaybackRate"	"4"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_6"
+		"AnimationPlaybackRate"	"2"
 		"AbilityCooldown"	"14 12 10 8"
 		"AbilityManaCost"	"80 100 120 140"
 		"precache"
@@ -24142,7 +24146,8 @@
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityCastPoint"	"0.2"
-		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_5"
+		"AnimationPlaybackRate"	"1.5"
 		"AOERadius"	"120"
 		"AbilityCooldown"	"6 5 4 3"
 		"AbilityManaCost"	"35 60 65 80"
@@ -24298,7 +24303,7 @@
 			"06"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"amplify_gold"	"200"
+				"amplify_gold"	"100"
 				"RequiresScepter"			"1"
 			}
 		}
@@ -24966,7 +24971,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"touhoutd/thtd_mystia_02"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_CREEP"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
@@ -25050,8 +25055,8 @@
 			}
 			"02"
 			{
-				"var_type"	"FIELD_INTEGER"
-				"duration"	"2"
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"2.5 3 3.5 4"
 			}
 			"03"
 			{
@@ -25497,6 +25502,7 @@
 		{
 			"particle"	"particles/units/heroes/hero_dark_seer/dark_seer_surge.vpcf"
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_batrider.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
 		}
 		"OnSpellStart"
 		{

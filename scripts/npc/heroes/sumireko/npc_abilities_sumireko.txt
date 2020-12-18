@@ -35,8 +35,7 @@
 		 DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"MaxLevel"	"1"
-		"AbilityCastPoint"				"0.2"
-		"AbilityChannelTime"			"%duration"
+		"AbilityCastPoint"				"0"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
 		"AnimationPlaybackRate"	"5"
 		"AbilityCooldown"	"15"
@@ -86,7 +85,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"speed"	"700"
+				"speed"	"1400"
 			}
 			"03"
 			{
@@ -181,7 +180,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"damage"	"200 340 480 620"
+				"damage"	"275 475 675 875"
 			}
 			"02"
 			{
@@ -235,7 +234,8 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
-		"AbilityCastPoint"	"0.5"
+		"AbilityCastPoint"	"0.2"
+		"AnimationPlaybackRate"	"2"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
 		"AbilityCooldown"	"120 100 80"
 		"AbilityManaCost"	"120 150 180"

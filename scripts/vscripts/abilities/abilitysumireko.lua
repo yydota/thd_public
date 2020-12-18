@@ -76,7 +76,7 @@ function ability_thdots_sumireko01:OnSpellStart()
 	if not IsServer() then return end
 	self.caster 						= self:GetCaster()
 	self.damage 						= self:GetSpecialValueFor("damage")
-	self.speed 							= 1400--self:GetSpecialValueFor("speed")
+	self.speed 							= self:GetSpecialValueFor("speed")
 	self.radius 						= self:GetSpecialValueFor("radius")
 	self.range 							= self:GetSpecialValueFor("range")
 	self.num 							= self:GetSpecialValueFor("num")
@@ -702,6 +702,10 @@ modifier_ability_thdots_sumirekoEx_handler = {}
 LinkLuaModifier("modifier_ability_thdots_sumirekoEx", "scripts/vscripts/abilities/abilitysumireko.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_ability_thdots_sumirekoEx_handler","scripts/vscripts/abilities/abilitysumireko.lua",LUA_MODIFIER_MOTION_NONE)
 
+function ability_thdots_sumirekoEx:GetChannelTime()
+	return self:GetSpecialValueFor("duration")
+end
+
 function ability_thdots_sumirekoEx:GetIntrinsicModifierName()
 	return "modifier_ability_thdots_sumirekoEx_handler"
 end
@@ -792,7 +796,7 @@ end
 
 --天赋判定modifier
 
-function modifier_ability_thdots_sumirekoEx_handler:IsHidden() 			return false end
+function modifier_ability_thdots_sumirekoEx_handler:IsHidden() 			return true end
 function modifier_ability_thdots_sumirekoEx_handler:IsPurgable()			return false end
 function modifier_ability_thdots_sumirekoEx_handler:RemoveOnDeath() 		return false end
 function modifier_ability_thdots_sumirekoEx_handler:IsDebuff()				return false end

@@ -1,0 +1,294 @@
+// Dota2 Editor
+// Get latest version: https://github.com/zombieJ/nw-dota2editor
+
+"DOTAAbilities"
+{
+	"Version"		"1"
+
+	"ability_thdots_yamameEx"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"broodmother_incapacitating_bite"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityyamame.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES"
+		"HasScepterUpgrade"	"1"
+		"MaxLevel"	"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"4"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"30"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"level_bonus"	"3"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_count"	"3"
+				"RequiresScepter"		"1"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_duration"	"1.5"
+				"RequiresScepter"		"1"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_slow"	"10"
+				"RequiresScepter"		"1"
+			}
+		}
+	}
+	"ability_thdots_yamame02"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"broodmother_spawn_spiderlings"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityyamame.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"2"
+		"AbilityCooldown"	"9 8 7 6"
+		"AbilityManaCost"	"45 60 75 90"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_weaver.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"6"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"600"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"passive_damage"	"6 9 12 15"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"80 140 200 260"
+				"LinkedSpecialBonus"	"special_bonus_unique_yamame_1"
+			}
+		}
+	}
+
+	"ability_thdots_yamame03"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"necrolyte_death_pulse"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityyamame.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"2"
+		"AbilityCooldown"	"15 13 11 9"
+		"AbilityManaCost"	"80"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cast_range"	"500"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"9"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"20 30 40 50"
+				"LinkedSpecialBonus"	"special_bonus_unique_yamame_3"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"450"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"num"	"2"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"regen_reduce"	"-30"
+			}
+		}
+	}
+
+	"ability_thdots_yamame04"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"custom/yamame/ability_thdots_yamame04"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityyamame.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"SpellDispellableType" "SPELL_DISPELLABLE_YES"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"2"
+		"AbilityCooldown"	"1"
+		"AbilityCharges"	"2 3 4"
+		"AbilityChargeRestoreTime"	"30 25 20"
+		"AbilityManaCost"	"75 100 125"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_rattletrap.vsndevts"
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_yamame_sounds.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cast_range"	"1000 1500 2000"
+				"LinkedSpecialBonus"	"special_bonus_unique_yamame_4"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"90 150 210"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"0"
+				"LinkedSpecialBonus"	"special_bonus_unique_yamame_2"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"speed"	"2000 3000 4000"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"latch_radius"	"125"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_radius"	"1"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"razor_wind_radius"	"275"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"razor_wind_damage"	"50"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"hook_speed"	"2000 3000 4000"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"talent_range"	"3000 3500 4000"
+			}
+		}
+	}
+
+	"special_bonus_unique_yamame_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"50"
+			}
+		}
+	}
+
+	"special_bonus_unique_yamame_2"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"2"
+			}
+		}
+	}
+
+	"special_bonus_unique_yamame_3"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"60"
+			}
+		}
+	}
+
+	"special_bonus_unique_yamame_4"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"2000"
+			}
+		}
+	}
+}

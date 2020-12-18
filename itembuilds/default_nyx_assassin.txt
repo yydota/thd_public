@@ -1,0 +1,45 @@
+"itembuilds" //物理大哥出装
+{
+	"author"		"Valve"
+	"hero"			"npc_dota_hero_nyx_assassin"
+	"Title"			"Recommended items for Daiyousei"
+	
+	"Items"//敏捷物理大哥
+	{		
+		"#DOTA_Item_Build_Starting_Items"
+		{
+			"item"		"item_good_lunchbox"
+			"item"		"item_card_love_man"
+			"item"		"item_card_worse_man"
+			"item"		"item_cucumber"
+		}
+		
+		"#DOTA_Item_Build_Early_Game"
+		{	
+			"item"		"item_horse_blue"
+			"item"		"item_donation_box"
+			"item"		"item_best_lunchbox"
+			"item"		"item_ward_observer"
+			"item"		"item_ward_sentry"
+		}
+		"#DOTA_Item_Build_Late_Items"
+		{
+            //"item"       "item_wanbaochui"
+			"item"		 "item_cirno_claymore"
+			"item"		 "item_sampan"
+			"item"		 "item_ganggenier"
+			"item"		 "item_feixiangjian"
+			"item"		 "item_anchor"
+			"item"		 "item_yuetufensuijvren"
+			"item"		 "item_rapier"
+		}
+		
+		"#DOTA_Item_Build_Core_Items"
+		{
+			"item"		"item_cirno_claymore"
+			"item"		"item_sampan"		
+			"item"		"item_camera"
+			"item"		"item_dragon_star"			
+		}
+	}
+}

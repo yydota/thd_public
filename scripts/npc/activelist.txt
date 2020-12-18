@@ -99,7 +99,7 @@
 
 	"npc_dota_hero_zuus" "1"
 
-	//"npc_dota_hero_broodmother" "1"
+	"npc_dota_hero_broodmother" "1"
 	//"npc_dota_hero_skeleton_king" "1"
 	//"npc_dota_hero_queenofpain" "1"
 
@@ -151,7 +151,7 @@
 	"npc_dota_hero_templar_assassin" "1"
 	"npc_dota_hero_naga_siren" "1"
 
-	//"npc_dota_hero_nyx_assassin" "1"
+	"npc_dota_hero_nyx_assassin" "1"
 	"npc_dota_hero_keeper_of_the_light" "1"
 
 	"npc_dota_hero_visage" "1"
@@ -182,7 +182,7 @@
 	//"npc_dota_hero_techies" "1"
 	"npc_dota_hero_mars" 		"1"
 	//"npc_dota_hero_pangolier" 	"1"
-	//"npc_dota_hero_void_spirit"  "1"
+	"npc_dota_hero_void_spirit"  "1"
 	"npc_dota_hero_phantom_lancer" "1"
 	"npc_dota_hero_bane"		"1"
 }

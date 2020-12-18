@@ -1196,6 +1196,15 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 	elseif (heroName == "npc_dota_hero_skywrath_mage") then
 		abilityEx = hero:FindAbilityByName("ability_thdots_sumirekoEx")
 		abilityEx:SetLevel(1)
+	elseif (heroName == "npc_dota_hero_broodmother") then
+		abilityEx = hero:FindAbilityByName("ability_thdots_yamameEx")
+		abilityEx:SetLevel(1)
+	elseif (heroName == "npc_dota_hero_nyx_assassin") then
+		abilityEx = hero:FindAbilityByName("ability_thdots_daiyouseiEx")
+		abilityEx:SetLevel(1)
+	elseif (heroName == "npc_dota_hero_void_spirit") then
+		abilityEx = hero:FindAbilityByName("ability_thdots_keineEx")
+		abilityEx:SetLevel(1)
 	end
 end
 
@@ -1506,6 +1515,9 @@ function THDOTSGameMode:OnTHDOTSDamageFilter(keys)
 			target.HasAegis = false
 			-- print(target.HasAegis)
 		end
+	end
+	if keys.damagetype_const == 2 and keys.damage >= 50 then
+		SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,target,keys.damage,nil)
 	end
 	if unit ~= nil and unit:IsNull() == false and target ~= nil and target:IsNull() == false then
 		--提琴伤害监听

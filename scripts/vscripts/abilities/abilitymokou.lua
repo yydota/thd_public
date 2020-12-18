@@ -74,7 +74,7 @@ function OnMokou01SpellMove(keys)
 
 		caster:RemoveModifierByName("modifier_thdots_Mokou01_think_interval")
 		keys.ability.ability_Mokou01_Distance = 120
-		caster:EmitSound("Hero_Phoenix.SuperNova.Explode") 
+		caster:EmitSound("Voice_Thdots_Mokou.AbilityMokou01") 
 	else
 		local distance = keys.ability.ability_Mokou01_Distance
 		distance = distance - keys.MoveSpeed/50

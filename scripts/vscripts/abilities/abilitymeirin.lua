@@ -46,7 +46,7 @@ function OnMeirinexDamage(keys)
 			local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_lich/lich_frost_nova_flash_b.vpcf", PATTACH_CUSTOMORIGIN, caster)
 			ParticleManager:SetParticleControl(effectIndex, 0, target:GetOrigin())		
 			ParticleManager:DestroyParticleSystem(effectIndex,false)
-			SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,target,Damage,nil)
+			-- SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,target,Damage,nil)
 			modifier:DecrementStackCount()
 		end
 	end 

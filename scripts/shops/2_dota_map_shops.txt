@@ -131,6 +131,7 @@
 		"item"		"item_cyclone"
 		"item"		"item_pomojinlingli"
 		"item"		"item_three_dimension"
+		"item"		"item_fan"
 		"item"		"item_yuri"
 		"item"		"item_rocket"
 		"item"		"item_moon_bow"

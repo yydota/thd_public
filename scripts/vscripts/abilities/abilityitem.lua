@@ -778,7 +778,7 @@ function ItemAbility_CardWorseMan_OnSpellStart(keys)
 				damage_type = DAMAGE_TYPE_PURE,
 				Blockable=0
 			})
-		SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,Target,keys.AbsorbDamage,nil)
+		-- SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,Target,keys.AbsorbDamage,nil)
 --	end
 	ItemAbility_SpendItem(keys)
 end
@@ -978,7 +978,7 @@ function ItemAbility_Kafziel_OnAttack(keys)
 				damage_flags = 1
 			}
 			UnitDamageTarget(damage_table)
-			SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,Target,damage_to_deal,nil)
+			-- SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,Target,damage_to_deal,nil)
 			
 			--PrintTable(damage_table)
 			DebugPrint("ItemAbility_Kafziel_OnAttack| Damage:"..damage_to_deal)
@@ -1661,6 +1661,7 @@ function ItemAbility_Yuri_create_line(caster,target)
 end
 
 function ItemAbility_Pad_Physical_Block(keys)
+	print_r(keys)
 	local Caster = keys.caster
 	local AttackCapability=Caster:GetAttackCapability()
 	local IsMelee=false
@@ -1738,7 +1739,7 @@ function ItemAbility_MoonBow_OnHit(keys)
 			UnitDamageTarget(damage_table)
 			
 			
-			SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,Target,damage_to_deal,nil)
+			-- SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,Target,damage_to_deal,nil)
 		end
 	--end
 end

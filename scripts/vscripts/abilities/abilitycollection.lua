@@ -29,7 +29,7 @@ function OnGetCollection(Collection,Hero)
 		local playerId = ply:GetPlayerID()
 		local modifyGold = PlayerResource:GetReliableGold(playerId) + 35
 		PlayerResource:SetGold(playerId, modifyGold, true)
-		SendOverheadEventMessage(Hero:GetOwner(),OVERHEAD_ALERT_GOLD,Hero,35,nil)
+		-- SendOverheadEventMessage(Hero:GetOwner(),OVERHEAD_ALERT_GOLD,Hero,35,nil)
 	elseif(Collection:GetUnitName()=="npc_power_up_unit")then
 		local powerCount = Hero:GetContext("hero_bouns_stat_power_count")
 		if(powerCount==nil)then

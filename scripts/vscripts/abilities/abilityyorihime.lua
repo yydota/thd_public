@@ -50,7 +50,7 @@ function ability_thdots_yorihime_01:OnSpellStart()
 	if caster:HasModifier("modifier_ability_thdots_yorihime_01_move") then
         caster:RemoveModifierByName("modifier_ability_thdots_yorihime_01_move")
     end
-	caster:AddNewModifier(caster, self, "modifier_ability_thdots_yorihime_01_move", {})
+	caster:AddNewModifier(caster, self, "modifier_ability_thdots_yorihime_01_move", {duration = 60})
 
  
 end
@@ -138,7 +138,7 @@ end
 
 function modifier_ability_thdots_yorihime_01_move:OnIntervalThink()
 	if not IsServer() then return end
-	if not self.target:IsAlive() or self.target == nil then
+	if self.target == nil or not self.target:IsAlive() then
 		local targets = FindUnitsInRadius(self.caster:GetTeam(), self.target:GetAbsOrigin(),nil,1000,
 			self.ability:GetAbilityTargetTeam(),self.ability:GetAbilityTargetType(),DOTA_UNIT_TARGET_FLAG_NO_INVIS,FIND_CLOSEST, false)
 		DeleteDummy(targets)

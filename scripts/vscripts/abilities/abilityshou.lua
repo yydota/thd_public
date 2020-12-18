@@ -241,13 +241,14 @@ end
 function modifier_ability_thdots_shou_wanbaochui:OnCreated()
 	if not IsServer() then return end
 	self.caster = self:GetParent()
+	self.amplify_gold = self:GetAbility():GetSpecialValueFor("amplify_gold")
 	self.amplify = 0
 	self:StartIntervalThink(0.03)
 end
 
 function modifier_ability_thdots_shou_wanbaochui:OnIntervalThink()
 	if not IsServer() then return end
-	self.amplify = math.floor(self.caster:GetGold()/200)
+	self.amplify = math.floor(self.caster:GetGold()/self.amplify_gold)
 	self:SetStackCount(self.amplify)
 end
 
@@ -308,7 +309,7 @@ end
 function Shou04OnSpellStart( keys )
 	-- body
 	local caster = keys.caster
-	caster:StartGestureWithPlaybackRate(ACT_DOTA_CAST_ABILITY_4,0.4)
+	caster:StartGestureWithPlaybackRate(ACT_DOTA_CAST_ABILITY_6,0.17)
 	caster.point = keys.ability:GetCursorPosition()
 end
 
@@ -316,7 +317,7 @@ function Shou04DelayedAction( keys )
 	-- body
 	local caster = keys.caster
 	if not caster:IsAlive() then return end 
-	caster:RemoveGesture(ACT_DOTA_CAST_ABILITY_4)
+	caster:RemoveGesture(ACT_DOTA_CAST_ABILITY_6)
 	keys.ability:ApplyDataDrivenModifier(caster, caster, "modifier_ability_thdots_shou04", {Duration = 2})
 	THDReduceCooldown(keys.ability,FindTelentValue(caster,"special_bonus_unique_mars_arena_of_blood_hp_regen"))
 	local targetPoint = caster.point

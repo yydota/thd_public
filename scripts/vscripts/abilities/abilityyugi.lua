@@ -177,7 +177,7 @@ function OnYugi04wanbaochui(keys)
 			nil,					
 			350,		
 			DOTA_UNIT_TARGET_TEAM_ENEMY,
-			keys.ability:GetAbilityTargetType(),
+			DOTA_UNIT_TARGET_HERO,
 			0,
 			FIND_CLOSEST,
 			false

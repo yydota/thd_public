@@ -405,7 +405,7 @@ function Cirnowanbaochui(keys)
 					damage_flags = 1
 			}
 			UnitDamageTarget(damage_table)	
-			SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,target,dealdamage,nil)
+			-- SendOverheadEventMessage(nil,OVERHEAD_ALERT_BONUS_SPELL_DAMAGE,target,dealdamage,nil)
 		else
 			UtilStun:UnitStunTarget(caster,target,1.9)
 			target:RemoveModifierByName("Cirno_wanbaochui_debuff")

@@ -2875,4 +2875,54 @@
 			"item_rapier"	"1"
 		}
 	}
+	"npc_dota_hero_mars"
+	{
+		"popular_items"
+		{
+			"item_donation_box"		"1"
+			"item_donation_gem"	"1"
+			"item_present_box"	"1"
+			"item_lifu"	"1"
+			"item_best_lunchbox"	"1"
+			"item_wanbaochui"	"1"
+			"item_yukkuri_stick"	"1"
+			"item_9ball"	"1"
+			"item_rocket_5"	"1"
+			"item_tsundere"	"1"
+			"item_dragon_star"	"1"
+			"item_travel_boots"	"1"
+			"item_hakurei_amulet"	"1"
+			"item_wanmeitiaoyuezhuangzhi"	"1"
+			"item_gem"	"1"
+			"item_bagua" "1"
+			"item_camera" "1"
+			"item_loneliness" "1"
+			"item_rapier"	"1"
+		}
+	}
+	"npc_dota_hero_void_spirit"
+	{
+		"popular_items"
+		{
+			"item_donation_box"		"1"
+			"item_donation_gem"	"1"
+			"item_present_box"	"1"
+			"item_lifu"	"1"
+			"item_best_lunchbox"	"1"
+			"item_wanbaochui"	"1"
+			"item_yukkuri_stick"	"1"
+			"item_9ball"	"1"
+			"item_rocket_5"	"1"
+			"item_tsundere"	"1"
+			"item_dragon_star"	"1"
+			"item_travel_boots"	"1"
+			"item_hakurei_amulet"	"1"
+			"item_wanmeitiaoyuezhuangzhi"	"1"
+			"item_gem"	"1"
+			"item_bagua" "1"
+			"item_camera" "1"
+			"item_loneliness" "1"
+			"item_rapier"	"1"
+		}
+	}
 }

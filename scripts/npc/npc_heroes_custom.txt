@@ -17,6 +17,9 @@
 #base heroes/suwako/hero.txt
 #base heroes/shinki/hero.txt
 #base heroes/sumireko/hero.txt
+#base heroes/yamame/hero.txt
+#base heroes/daiyousei/hero.txt
+#base heroes/keine/hero.txt
 
 "DOTAHeroes"
 {
@@ -3977,17 +3980,17 @@
 		"Ability12"	"special_bonus_spell_amplify_15"
 		"Ability13"	"special_bonus_movement_speed_50"
 		"Ability14"	"special_bonus_unique_mars_spear_bonus_damage"
-		"Ability15"	"special_bonus_cast_range_200"
+		"Ability15"	"special_bonus_attack_speed_80"
 		"Ability16"	"special_bonus_unique_mars_gods_rebuke_extra_crit"
 		"Ability17"	"special_bonus_unique_mars_arena_of_blood_hp_regen"
 		"override_hero"	"npc_dota_hero_mars"
 		"VoiceFile" ""
-		"Model"	"models/thd_hero/toramarushou/toramarushou.vmdl"
-		"ModelScale"	"1.6"
+		"Model"	"models/new_thd/shou/shou.vmdl"
+		"ModelScale"	"1.1"
 		"AttackRange"	"180"
 		"AttackAnimationPoint"	"0.3"
 		// 攻击前摇
-		"AttackRate"	"1.75"
+		"AttackRate"	"1.6"
 		// 攻击速度
 		"ArmorPhysical"	"1"
 		// 物理护甲
@@ -4128,8 +4131,9 @@
 		"Ability16"	"special_bonus_cooldown_reduction_25"
 		"Ability17"	"special_bonus_unique_mystia_1"
 		"override_hero"	"npc_dota_hero_night_stalker"
-		"Model"	"models\thd_hero\mystia\mystia.vmdl"
+		"Model"	"models/new_thd/mystia/mystia.vmdl"
 		"ModelScale"	"1.2"
+		"SoundSet"		"Hero_Terrorblade"
 		"AbilityLayout"	"6"
 		"Role"	"Carry,Nuker,Disabler,Jungler,Escape,Pusher,Initiator"
 		"Rolelevels"	"1,3,3,0,1,0,1"
@@ -4144,7 +4148,7 @@
 		"AttackDamageMin"	"31"
 		"AttackDamageMax"	"32"
 		"AttackRate"	"1.6"
-		"AttackAnimationPoint"	"0.6"
+		"AttackAnimationPoint"	"0.4"
 		"ArmorPhysical"	"0"
 		"MovementSpeed"	"300"
 		"MovementTurnRate"	"1.8"

@@ -61,6 +61,7 @@ function OnSatori01SpellStart(keys)
 	caster:RemoveModifierByName("modifier_ability_thdots_kagerou03")
 	caster:RemoveModifierByName("modifier_ability_thdots_chen03")
 	caster:RemoveModifierByName("modifier_suwako03_return_mana")
+	caster:RemoveModifierByName("modifier_ability_thdots_keine03_passive")
 	----------------------------------------------------下面是DOTA2的BUFF
 	caster:RemoveModifierByName("modifier_medusa_mana_shield")
 	caster:RemoveModifierByName("modifier_leshrac_pulse_nova")
@@ -1028,6 +1029,57 @@ function OnSatori01SpellStart(keys)
 			AbilityStolenName = "ability_thdots_sumireko03"
 		elseif RandomNumber > 75 and RandomNumber <= 100 then
 			AbilityStolenName = "ability_thdots_sumireko04"
+			i = 2
+		end
+	end
+	if TargetName == "npc_dota_hero_broodmother" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,100)
+		else 
+			RandomNumber = RandomInt(1,75)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "ability_thdots_yamame03"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "ability_thdots_yamame03"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "ability_thdots_yamame03"
+		elseif RandomNumber > 75 and RandomNumber <= 100 then
+			AbilityStolenName = "ability_thdots_yamame04"
+			i = 2
+		end
+	end
+	if TargetName == "npc_dota_hero_nyx_assassin" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,100)
+		else 
+			RandomNumber = RandomInt(1,75)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "ability_thdots_daiyousei01"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "ability_thdots_daiyousei02"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "ability_thdots_daiyousei03"
+		elseif RandomNumber > 75 and RandomNumber <= 100 then
+			AbilityStolenName = "ability_thdots_daiyousei04"
+			i = 2
+		end
+	end
+	if TargetName == "npc_dota_hero_void_spirit" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,100)
+		else 
+			RandomNumber = RandomInt(1,75)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "ability_thdots_keine01"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "ability_thdots_keine02"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "ability_thdots_keine03"
+		elseif RandomNumber > 75 and RandomNumber <= 100 then
+			AbilityStolenName = "ability_thdots_keine04"
 			i = 2
 		end
 	end

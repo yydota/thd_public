@@ -116,6 +116,9 @@
 				victim:RemoveModifierByName("modifier_item_green_dam_barrier")
 			end
 		end
+		if dDamage.damage_type == DAMAGE_TYPE_PURE and dDamage.damage >= 100 then
+			SendOverheadEventMessage(nil,OVERHEAD_ALERT_DAMAGE,victim,dDamage.damage,nil)
+		end
 		return ApplyDamage(dDamage)
 	end
 

@@ -704,7 +704,7 @@ function modifier_ability_thdots_hina04:OnCreated()
 		self.caster:EmitSound("Voice_Thdots_Hine.AbilityHina04_1")
 	end
 	self:StartIntervalThink(0.03)
-	self.caster:StartGestureWithPlaybackRate(ACT_DOTA_IDLE,10)
+	self.caster:StartGestureWithPlaybackRate(ACT_DOTA_CAST_ABILITY_4,10)
 	local pfx_name = "particles/heroes/hina/hina04.vpcf"
 	self.particle = ParticleManager:CreateParticle(pfx_name, PATTACH_ABSORIGIN_FOLLOW, self.caster)
 	ParticleManager:SetParticleControl(self.particle, 0, Vector(self:GetParent():GetAbsOrigin().x,self:GetParent():GetAbsOrigin().y,self:GetParent():GetAbsOrigin().z+64))
@@ -768,7 +768,8 @@ function modifier_ability_thdots_hina04:OnDestroy()
 	local caster = self.caster
 	ParticleManager:DestroyParticle(self.particle, false)
 	ParticleManager:ReleaseParticleIndex(self.particle)
-	caster:RemoveGesture(ACT_DOTA_IDLE)
+	caster:RemoveGesture(ACT_DOTA_CAST_ABILITY_4)
+	caster:StartGestureWithPlaybackRate(ACT_DOTA_CAST_ABILITY_4_END,0.9)
 	local end_stun_time = self:GetAbility():GetSpecialValueFor("end_stun_time")
 	caster:StopSound("Hero_Wisp.Spirits.Loop")
 	caster:StopSound("Hero_Wisp.ReturnCounter")
