@@ -140,6 +140,7 @@
 		"AbilityCooldown"	"15 14 13 12"
 		"AbilityManaCost"	"100"
 		"AbilityCastRange"	"250"
+		"HasScepterUpgrade"			"1"
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"

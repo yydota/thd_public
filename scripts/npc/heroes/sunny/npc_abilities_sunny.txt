@@ -191,7 +191,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"MaxLevel"	"1"
-		"HasScepterUpgrade"	"1"
 		"Modifiers"
 		{
 			"modifier_ability_thdots_sunnyEx"	{}
@@ -228,6 +227,9 @@
 		"AbilityCooldown"	"40"
 		"AbilityCastRange"	"800"
 		"MaxLevel"	"1"
+		"HasScepterUpgrade"			"1"
+		"IsGrantedByScepter"			"1"
+
 		"Modifiers"
 		{
 			"modifier_ability_thdots_sunny05"	{}

@@ -217,6 +217,7 @@
 		"AbilityCooldown"	"90 75 60"
 		"AbilityManaCost"	"100 175 250"
 		"AbilityCastRange"	"500"
+		"HasScepterUpgrade"			"1"
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
