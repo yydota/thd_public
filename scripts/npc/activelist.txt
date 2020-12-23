@@ -152,7 +152,7 @@
 	"npc_dota_hero_naga_siren" "1"
 
 	"npc_dota_hero_nyx_assassin" "1"
-	"npc_dota_hero_keeper_of_the_light" "1"
+	//"npc_dota_hero_keeper_of_the_light" "1"
 
 	"npc_dota_hero_visage" "1"
 	//"npc_dota_hero_meepo" "1"
@@ -185,4 +185,5 @@
 	"npc_dota_hero_void_spirit"  "1"
 	"npc_dota_hero_phantom_lancer" "1"
 	"npc_dota_hero_bane"		"1"
+	"npc_dota_hero_oracle"		"1"
 }

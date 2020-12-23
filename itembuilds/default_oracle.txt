@@ -1,7 +1,7 @@
 "itembuilds" //辅助标准出门
 {
 	"author"		"Valve"
-	"hero"			"npc_dota_hero_keeper_of_the_light"
+	"hero"			"npc_dota_hero_oracle"
 	"Title"			"Recommended items for Star"
 	
 	"Items"//远程智力辅助

@@ -19,6 +19,7 @@
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_ursa.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_sandking.vsndevts"
 		}
 		"AbilitySpecial"
 		{

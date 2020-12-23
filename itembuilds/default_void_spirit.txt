@@ -26,12 +26,13 @@
 		}
 		"#DOTA_Item_Build_Late_Items"
 		{
-            //"item"       "item_wanbaochui"
+            "item"       "item_rocket_5"
+            "item"       "item_wanbaochui"
             "item"       "item_anchor"
+            "item"       "item_peach"
             "item"       "item_smash_stick"
 			"item"		"item_brother_sharp"
             "item"       "item_yukkuri_stick"
-            "item"       "item_rocket_5"
             "item"       "item_tsundere"
             "item"       "item_yuetufensuijvren"
             "item"       "item_nuclear_stick"

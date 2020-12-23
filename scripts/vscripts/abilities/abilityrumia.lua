@@ -145,7 +145,18 @@ function OnRumia04Start(keys)
 	    	else
 	    		caster:SetHealth(caster:GetHealth() + keys.ability:GetAbilityDamage()*keys.StealHealth)
 	    	end
-	    	UnitDamageTarget(DamageTable)
+	    	--特效
+	    	caster:EmitSound("Hero_LifeStealer.Infest")
+	    	local infest_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_life_stealer/life_stealer_infest_cast.vpcf", PATTACH_POINT, caster)
+			ParticleManager:SetParticleControl(infest_particle, 0, target:GetAbsOrigin())
+			ParticleManager:SetParticleControlEnt(infest_particle, 1, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetAbsOrigin(), true)
+			ParticleManager:ReleaseParticleIndex(infest_particle)
+
+	    	if DamageTable.damage == 99999 then
+	    		target:Kill(keys.ability,caster)
+    		else
+	    		UnitDamageTarget(DamageTable)
+	    	end
 	    end
 	end
 end

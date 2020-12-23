@@ -61,7 +61,7 @@ function OnShou02SpellStart( keys )
 	local cooldown = ability:GetCooldown(ability:GetLevel() - 1)
 	local targetPoint =keys.ability:GetCursorPosition()
 	local distance = targetPoint - caster:GetAbsOrigin()
-	local cooldown = ability:GetCooldown(ability:GetLevel() - 1)
+	local cooldown = ability:GetCooldown(ability:GetLevel() - 1) --自制的charge系统，现已经被Dota2的AbilityCharge取代。
 	local count = caster:GetModifierStackCount("modifier_ability_thdots_shou02", caster)
 	if count > 1 then
 		--充能大于1，CD好，层数减一
@@ -290,7 +290,21 @@ function ShouExThink( keys )
 	if count >= keys.max then
 		SHOUEX_COUNT = 0
 	end
+	--天赋监听
+	-- if FindTelentValue(caster,"special_bonus_unique_mars_spear_bonus_damage") ~= 0 and not caster:HasModifier("modifier_ability_thdots_shouEx_talent1") then
+	-- 	print("shou02")
+	-- 	caster:AddNewModifier(caster,ability,"modifier_ability_thdots_shouEx_talent1",{})
+	-- 	-- caster:FindAbilityByName("ability_thdots_shou02"):SetCurrentAbilityCharges(FindTelentValue(caster,"special_bonus_unique_mars_spear_bonus_damage"))
+	-- 	caster:FindAbilityByName("ability_thdots_shou02"):SetCurrentAbilityCharges(4)
+	-- end
 end
+
+-- modifier_ability_thdots_shouEx_talent1 = {}  --天赋监听
+-- LinkLuaModifier("modifier_ability_thdots_shouEx_talent1","scripts/vscripts/abilities/abilityshou.lua",LUA_MODIFIER_MOTION_NONE)
+-- function modifier_ability_thdots_shouEx_talent1:IsHidden() 		return true end
+-- function modifier_ability_thdots_shouEx_talent1:IsPurgable()		return false end
+-- function modifier_ability_thdots_shouEx_talent1:RemoveOnDeath() 	return false end
+-- function modifier_ability_thdots_shouEx_talent1:IsDebuff()		return false end
 
 function ShouExOnSpellStart( keys )
 	-- body

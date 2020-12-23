@@ -17,6 +17,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
 		"FightRecapLevel"				"1"
+		"HasShardUpgrade"               "0"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -1748,6 +1749,12 @@
 	"item_urn_of_shadows"			"REMOVE"
 	"item_recipe_headdress"			"REMOVE"
 	"item_headdress"			"REMOVE"
+	"item_orb_of_corrosion"			"REMOVE"
+	"item_recipe_falcon_blade"			"REMOVE"
+	"item_falcon_blade"			"REMOVE"
+	"item_fluffy_hat"			"REMOVE"
+	"item_aghanims_shard"			"REMOVE"
+	"item_wind_waker"			"REMOVE"
 	//=================================================================================================================
 	// Recipe: Sheepstick
 	//=================================================================================================================

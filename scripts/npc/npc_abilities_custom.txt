@@ -17512,6 +17512,8 @@
 		{
 			"particle"				"particles/heroes/komachi/ability_komachi_02.vpcf"
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_void_spirit.vsndevts"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
 		}
 		"Modifiers"
 		{
@@ -24149,6 +24151,8 @@
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_5"
 		"AnimationPlaybackRate"	"1.5"
 		"AOERadius"	"120"
+		// "AbilityCharges"				"2"
+		// "AbilityChargeRestoreTime"		"6 5 4 3"
 		"AbilityCooldown"	"6 5 4 3"
 		"AbilityManaCost"	"35 60 65 80"
 		"AbilityCastRange"	"650"

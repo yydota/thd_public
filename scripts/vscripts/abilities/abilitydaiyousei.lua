@@ -80,8 +80,8 @@ function modifier_ability_thdots_daiyouseiEx_passive:OnIntervalThink()
 		AddFOWViewer(caster:GetTeamNumber(), tree:GetOrigin(), radius,self.time + FrameTime(), false)
 	end
 	--天赋监听
-	if FindTelentValue(self:GetCaster(),"special_bonus_unique_daiyousei_3") ~= 0 and not self:GetCaster():HasModifier("modifier_ability_thdots_daiyouseiEx_talent3") then
-		self:GetCaster():AddNewModifier(self:GetCaster(),self:GetAbility(),"modifier_ability_thdots_daiyouseiEx_talent3",{})
+	if FindTelentValue(self:GetCaster(),"special_bonus_unique_daiyousei_1") ~= 0 and not self:GetCaster():HasModifier("modifier_ability_thdots_daiyouseiEx_talent1") then
+		self:GetCaster():AddNewModifier(self:GetCaster(),self:GetAbility(),"modifier_ability_thdots_daiyouseiEx_talent1",{})
 	end
 	if FindTelentValue(self:GetCaster(),"special_bonus_unique_daiyousei_4") ~= 0 and not self:GetCaster():HasModifier("modifier_ability_thdots_daiyouseiEx_talent4") then
 		self:GetCaster():AddNewModifier(self:GetCaster(),self:GetAbility(),"modifier_ability_thdots_daiyouseiEx_talent4",{})
@@ -107,28 +107,28 @@ function modifier_ability_thdots_daiyouseiEx_attack:OnCreated()
 	self.attackspeed_bonus 				= self:GetAbility():GetSpecialValueFor("attackspeed_bonus")
 end
 
-modifier_ability_thdots_daiyouseiEx_talent3 = modifier_ability_thdots_daiyouseiEx_talent3 or {}  --天赋监听
-LinkLuaModifier("modifier_ability_thdots_daiyouseiEx_talent3","scripts/vscripts/abilities/abilitydaiyousei.lua",LUA_MODIFIER_MOTION_NONE)
-function modifier_ability_thdots_daiyouseiEx_talent3:IsHidden() 		return true end
-function modifier_ability_thdots_daiyouseiEx_talent3:IsPurgable()		return false end
-function modifier_ability_thdots_daiyouseiEx_talent3:RemoveOnDeath() 	return false end
-function modifier_ability_thdots_daiyouseiEx_talent3:IsDebuff()		return false end
+modifier_ability_thdots_daiyouseiEx_talent1 = {}  --天赋监听
+LinkLuaModifier("modifier_ability_thdots_daiyouseiEx_talent1","scripts/vscripts/abilities/abilitydaiyousei.lua",LUA_MODIFIER_MOTION_NONE)
+function modifier_ability_thdots_daiyouseiEx_talent1:IsHidden() 		return true end
+function modifier_ability_thdots_daiyouseiEx_talent1:IsPurgable()		return false end
+function modifier_ability_thdots_daiyouseiEx_talent1:RemoveOnDeath() 	return false end
+function modifier_ability_thdots_daiyouseiEx_talent1:IsDebuff()		return false end
 
-modifier_ability_thdots_daiyouseiEx_talent4 = modifier_ability_thdots_daiyouseiEx_talent4 or {}  --天赋监听
+modifier_ability_thdots_daiyouseiEx_talent4 = {}  --天赋监听
 LinkLuaModifier("modifier_ability_thdots_daiyouseiEx_talent4","scripts/vscripts/abilities/abilitydaiyousei.lua",LUA_MODIFIER_MOTION_NONE)
 function modifier_ability_thdots_daiyouseiEx_talent4:IsHidden() 		return true end
 function modifier_ability_thdots_daiyouseiEx_talent4:IsPurgable()		return false end
 function modifier_ability_thdots_daiyouseiEx_talent4:RemoveOnDeath() 	return false end
 function modifier_ability_thdots_daiyouseiEx_talent4:IsDebuff()		return false end
 
-modifier_ability_thdots_daiyouseiEx_talent5 = modifier_ability_thdots_daiyouseiEx_talent5 or {}  --天赋监听
+modifier_ability_thdots_daiyouseiEx_talent5 = {}  --天赋监听
 LinkLuaModifier("modifier_ability_thdots_daiyouseiEx_talent5","scripts/vscripts/abilities/abilitydaiyousei.lua",LUA_MODIFIER_MOTION_NONE)
 function modifier_ability_thdots_daiyouseiEx_talent5:IsHidden() 		return true end
 function modifier_ability_thdots_daiyouseiEx_talent5:IsPurgable()		return false end
 function modifier_ability_thdots_daiyouseiEx_talent5:RemoveOnDeath() 	return false end
 function modifier_ability_thdots_daiyouseiEx_talent5:IsDebuff()		return false end
 
-modifier_ability_thdots_daiyouseiEx_talent6 = modifier_ability_thdots_daiyouseiEx_talent6 or {}  --天赋监听
+modifier_ability_thdots_daiyouseiEx_talent6 = {}  --天赋监听
 LinkLuaModifier("modifier_ability_thdots_daiyouseiEx_talent6","scripts/vscripts/abilities/abilitydaiyousei.lua",LUA_MODIFIER_MOTION_NONE)
 function modifier_ability_thdots_daiyouseiEx_talent6:IsHidden() 		return true end
 function modifier_ability_thdots_daiyouseiEx_talent6:IsPurgable()		return false end
@@ -321,7 +321,7 @@ function ability_thdots_daiyousei03:GetCooldown(level)
 end
 
 function ability_thdots_daiyousei03:GetCastRange(vLocation, hTarget)
-	if self:GetCaster():HasModifier("modifier_ability_thdots_daiyouseiEx_talent3") then
+	if self:GetCaster():HasModifier("modifier_ability_thdots_daiyouseiEx_talent1") then
 		return 0
 	else
 		return self:GetSpecialValueFor("cast_range")
@@ -425,8 +425,7 @@ function ability_thdots_daiyousei04:OnSpellStart()
 		}
 		ProjectileManager:CreateTrackingProjectile(info)
 	end
-
-
+	GetAllModifierName(caster)
 	--暴击参数
 	local item = nil
 	self.crit_mult = 100
@@ -521,11 +520,31 @@ function modifier_ability_thdots_daiyousei04_invis:GetStatusEffectName()
 	return "particles/status_fx/status_effect_slark_shadow_dance.vpcf"
 end
 
+
+function modifier_ability_thdots_daiyousei04_invis:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_INVISIBILITY_LEVEL,
+		MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS
+	}
+end
+
 function modifier_ability_thdots_daiyousei04_invis:CheckState()
 	return {
-		[MODIFIER_STATE_INVISIBLE]			= true,
-		[MODIFIER_STATE_TRUESIGHT_IMMUNE]	= true
+		[MODIFIER_STATE_INVISIBLE]				= true,
+		[MODIFIER_STATE_TRUESIGHT_IMMUNE]		= true,
+		[MODIFIER_STATE_NO_HEALTH_BAR]			= true,
+		[MODIFIER_STATE_NO_UNIT_COLLISION]		= true,
+		[MODIFIER_STATE_INVULNERABLE]			= true,
+		[MODIFIER_STATE_LOW_ATTACK_PRIORITY]	= true,
+		[MODIFIER_STATE_UNSELECTABLE]			= true,
+		[MODIFIER_STATE_UNTARGETABLE]			= true,
+		[MODIFIER_STATE_NOT_ON_MINIMAP]			= true
 	}
+end
+
+
+function modifier_ability_thdots_daiyousei04_invis:GetModifierInvisibilityLevel() --没用的level，会被显影之尘看到
+	return 1
 end
 
 function modifier_ability_thdots_daiyousei04_invis:OnCreated()
@@ -554,7 +573,10 @@ end
 function modifier_ability_thdots_daiyousei04_invis:OnIntervalThink()
 	if not IsServer() then return end
 	self.dummy:SetOrigin(self:GetParent():GetOrigin())
-	-- if not self:GetParent():HasModifier("modifier_invisible")then
-	-- self:GetParent():AddNewModifier(self:GetCaster(),self:GetAbility(),"modifier_invisible", {duration = self:GetRemainingTime()})
+	-- if self:GetParent():HasModifier("modifier_item_dustofappearance") then --驱散显影之尘
+	-- 	self:GetParent():RemoveModifierByName("modifier_item_dustofappearance")
+	-- end
+	-- if self:GetParent():HasModifier("modifier_thdots_aya02_buff") then --驱散文文2技能
+	-- 	self:GetParent():RemoveModifierByName("modifier_thdots_aya02_buff")
 	-- end
 end

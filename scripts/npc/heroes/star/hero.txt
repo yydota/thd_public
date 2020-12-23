@@ -1,6 +1,6 @@
 "DOTAHeroes"
 {
-	"npc_dota_hero_keeper_of_the_light"
+	"npc_dota_hero_star"
 	{
 		"BaseAttackSpeed"		"100"
 		"AttributePrimary"	"DOTA_ATTRIBUTE_INTELLECT"
@@ -33,7 +33,7 @@
 		"Role"				"Carry,Nuker,Disabler,Jungler,Escape,Pusher,Initiator,Support"
 		"Rolelevels"		"1,3,3,0,0,0,3,3"
 		"SoundSet"			"Hero_Phoenix"
-
+		"override_hero"		"npc_dota_hero_oracle"
 		"Model"	"models/new_thd/starsapphire/starsapphire.vmdl"
 		"ProjectileModel"	"particles/units/heroes/hero_keeper_of_the_light/keeper_base_attack.vpcf"		
 		"ProjectileSpeed"	"1000"

@@ -12,6 +12,11 @@
 		"ScriptFile"	"scripts/vscripts/abilities/abilitykeine.lua"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"MaxLevel"	"1"
+		"HasScepterUpgrade"			"1"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_faceless_void.vsndevts"
+		}
 		"AbilitySpecial"
 		{
 			"01"
@@ -23,6 +28,11 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"percent_time"	"50"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_range"	"99999"
 			}
 		}
 	}
@@ -141,12 +151,13 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"cast_range"	"500 570 640 710"
+				"change"	"20"
+				"LinkedSpecialBonus"	"special_bonus_unique_keine_1"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"change"	"20"
+				"cast_range"	"500 570 640 710"
 			}
 			"03"
 			{
@@ -239,6 +250,20 @@
 	}
 
 	"special_bonus_unique_keine_3"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1"
+			}
+		}
+	}
+	"special_bonus_unique_keine_4"
 	{
 		"BaseClass"	"special_bonus_undefined"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"

@@ -256,3 +256,23 @@ function IsTHDImmune(target) --THD的魔免BUFF，如龙星，彩光风铃等
         return false
     end
 end
+
+function GetAllModifierName(caster)
+    print("--------------",caster:GetName(),"modifier list :--------------")
+    for i=0,8 do
+         if caster:GetModifierNameByIndex(i) ~= "" then
+             print(caster:GetModifierNameByIndex(i))
+         end
+    end
+    print("---------------end------------")
+end
+
+function GetAllAbilityName(caster)
+    print("--------------",caster:GetName(),"ability list :--------------")
+     for i=0,8 do 
+         if caster:GetModifierNameByIndex(i) ~= "" then
+             print(caster:GetModifierNameByIndex(i))
+         end
+     end
+    print("---------------end------------")
+end

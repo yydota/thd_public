@@ -10725,7 +10725,7 @@
 	}
 	"npc_ability_hina01_doll"
 	{
-		"model"	"models/thd_hero/hina/hina.vmdl"
+		"model"	"models/new_thd/hina/hina.vmdl"
 		"BaseClass"	"npc_dota_creature"
 		"ModelScale"	"0.5"
 		"Ability1"	""

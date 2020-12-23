@@ -14,6 +14,14 @@ function modifier_ability_thdots_keineEx_passive:IsPurgable()		return false end
 function modifier_ability_thdots_keineEx_passive:RemoveOnDeath() 	return false end
 function modifier_ability_thdots_keineEx_passive:IsDebuff()		return false end
 
+function modifier_ability_thdots_keineEx_passive:GetAuraRadius() return self:GetAbility():GetSpecialValueFor("wanbaochui_range") end -- global
+function modifier_ability_thdots_keineEx_passive:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_INVULNERABLE end
+function modifier_ability_thdots_keineEx_passive:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
+function modifier_ability_thdots_keineEx_passive:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO end
+function modifier_ability_thdots_keineEx_passive:GetModifierAura() return "modifier_ability_thdots_keineEx_passive_aura" end
+function modifier_ability_thdots_keineEx_passive:IsAura() return self:GetCaster():HasModifier("modifier_item_wanbaochui") end
+function modifier_ability_thdots_keineEx_passive:GetAuraEntityReject(target) return target == self:GetCaster() end
+
 function modifier_ability_thdots_keineEx_passive:DeclareFunctions()
 	return
 	{
@@ -85,6 +93,41 @@ function modifier_ability_thdots_keineEx_talent3:IsPurgable()		return false end
 function modifier_ability_thdots_keineEx_talent3:RemoveOnDeath() 	return false end
 function modifier_ability_thdots_keineEx_talent3:IsDebuff()		return false end
 
+--万宝槌光环
+modifier_ability_thdots_keineEx_passive_aura = {}
+LinkLuaModifier("modifier_ability_thdots_keineEx_passive_aura","scripts/vscripts/abilities/abilitykeine.lua",LUA_MODIFIER_MOTION_NONE)
+
+function modifier_ability_thdots_keineEx_passive_aura:IsPurgable()		return false end
+function modifier_ability_thdots_keineEx_passive_aura:RemoveOnDeath() 	return false end
+function modifier_ability_thdots_keineEx_passive_aura:IsDebuff()		return false end
+
+function modifier_ability_thdots_keineEx_passive_aura:DeclareFunctions()
+	return
+	{
+		MODIFIER_EVENT_ON_DEATH,
+		MODIFIER_PROPERTY_RESPAWNTIME,
+		MODIFIER_PROPERTY_RESPAWNTIME_PERCENTAGE
+	}
+end
+
+function modifier_ability_thdots_keineEx_passive_aura:GetModifierConstantRespawnTime()
+	--正数增加，负数减少
+	if not self:GetCaster():HasModifier("modifier_ability_thdots_keineEx_talent3") then
+		return self:GetAbility():GetSpecialValueFor("keine_time")
+	else
+		return 0
+	end
+end
+
+function modifier_ability_thdots_keineEx_passive_aura:GetModifierPercentageRespawnTime()
+	--百分比复活时间， 正数减少，负数增加。0.5表示减少50%复活时间
+	if self:GetCaster():HasModifier("modifier_ability_thdots_keineEx_talent3") then
+		return self:GetAbility():GetSpecialValueFor("percent_time") / 100
+	else
+		return 0
+	end
+end
+
 --------------------------------------------------------
 --产灵「初始的历史鸿流」
 --------------------------------------------------------
@@ -101,7 +144,8 @@ function ability_thdots_keine01:OnSpellStart()
 	local target 				= self:GetCursorTarget()
 	local duration  			= self:GetSpecialValueFor("duration")
 	if is_spell_blocked(target,caster) then return end
-	caster:RemoveModifierByName("modifier_ability_thdots_keine01")
+
+
 	if target:IsHero() then --若是英雄则记录生命值
 		if caster:HasModifier("modifier_ability_thdots_keine04") then --狂月状态
 			target:AddNewModifier(caster, self, "modifier_ability_thdots_keine01_sawa",{duration = duration})
@@ -166,6 +210,7 @@ end
 function modifier_ability_thdots_keine01:OnDestroy()
 	if not IsServer() then return end
 	if self:GetParent():IsAlive() then
+		print("do it ")
 		print(self:GetRemainingTime())
 		if self:GetRemainingTime() < 0 then --被驱散就不生效
 			if self:GetParent():GetHealthPercent() <= self.health then --特效
@@ -279,6 +324,10 @@ function ability_thdots_keine02:OnSpellStart()
 	local debuff_duration = self:GetSpecialValueFor("debuff_duration")
 	local health = caster:GetHealth() * percent_health / 100 --扣除当前生命值的百分比
 	caster:SetHealth(caster:GetHealth() - health)
+	if caster:GetTeamNumber() ~= target:GetTeamNumber() and FindTelentValue(caster,"special_bonus_unique_keine_4") ~= 0 then --扣除目标当前生命值的百分比
+		local target_health = target:GetHealth() * percent_health / 100
+		target:SetHealth(target:GetHealth() - target_health)
+	end
 
 	caster:AddNewModifier(caster, self, "modifier_ability_thdots_keine02_invincible",{duration = invincible_duration})
 	if target:GetTeamNumber() == caster:GetTeamNumber() then
@@ -420,6 +469,14 @@ function ability_thdots_keine03:GetCastRange(vLocation, hTarget)
 	return self:GetSpecialValueFor("cast_range")
 end
 
+function ability_thdots_keine03:GetCastPoint()
+	if not self:GetCaster():HasModifier("modifier_ability_thdots_keine04") then
+		return self.BaseClass.GetCastPoint(self)
+	else
+		return 0
+	end
+end
+
 function ability_thdots_keine03:OnSpellStart()
 	if not IsServer() then return end
 	local caster = self:GetCaster()
@@ -524,7 +581,11 @@ function modifier_ability_thdots_keine04:GetModifierBonusStats_Strength()
 end
 
 function modifier_ability_thdots_keine04:GetModifierMoveSpeedBonus_Constant()
-	return self:GetAbility():GetSpecialValueFor("movement")
+	if self:GetParent():HasModifier("modifier_ability_thdots_keineEx_talent2") then
+		return self:GetAbility():GetSpecialValueFor("movement") * 2
+	else
+		return self:GetAbility():GetSpecialValueFor("movement")
+	end
 end
 
 function modifier_ability_thdots_keine04:OnCreated()

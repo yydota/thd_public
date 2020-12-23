@@ -919,7 +919,7 @@ function OnSatori01SpellStart(keys)
 			i = 2
 		end
 	end
-	if TargetName == "npc_dota_hero_keeper_of_the_light" then
+	if TargetName == "npc_dota_hero_oracle" then
 		RandomNumber = RandomInt(1,75)
 		if RandomNumber <= 25 then
 			AbilityStolenName = "ability_thdotsr_star01"

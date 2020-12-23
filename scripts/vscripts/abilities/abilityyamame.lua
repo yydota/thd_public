@@ -510,6 +510,7 @@ function ability_thdots_yamame04:OnSpellStart()
 	self.caster:EmitSound("Voice_Thdots_Yamame.AbilityYamame04_1")
 	if FindTelentValue(self.caster,"special_bonus_unique_yamame_4") ~= 0 then
 		self.hook_speed = self.hook_speed + self.speed
+		self:RefreshCharges()
 	end
 	self.direction = (self:GetCursorPosition() - self:GetCaster():GetAbsOrigin()):Normalized()
 	self.direction.z = 0

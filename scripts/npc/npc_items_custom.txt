@@ -24,7 +24,7 @@
 		{
 			"01"	"item_wanbaochui"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -109,7 +109,7 @@
 		{
 			"01"	"item_cat_foot;item_paper_mask;item_rocket_diagram;item_zun_hat"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -235,7 +235,7 @@
 		{
 			"01"	"item_huanyingzhifeng;item_huanyingzhifeng"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -383,7 +383,7 @@
 		{
 			"01"	"item_pad;item_ghost_balloon"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	"item_xuenvdeweijin"
@@ -621,7 +621,7 @@
 		{
 			"01"	"item_zuzhoumujian"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 
@@ -821,7 +821,7 @@
 		{
 			"01"	"item_luna_chip;item_paper_mask"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 
@@ -950,7 +950,7 @@
 		{
 			"01"	"item_rocket_diagram;item_cake"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 
@@ -1135,7 +1135,7 @@
 		{
 			"01"	"item_zuzhoumujian;item_candle"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 
@@ -1327,7 +1327,7 @@
 		{
 			"01"	"item_better_lunchbox;item_qijizhixing"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -1655,7 +1655,7 @@
 				"bonus_all_stats"	"1"
 			}
 		}
-		"Model"	"models/props_gameplay/branch.mdl"
+		"Model"	"models/props_gameplay/branch.vmdl"
 	}
 	
 	// =================================================================================================================
@@ -1901,7 +1901,7 @@
 				"bonus_movement_speed"	"35"
 			}
 		}
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Model"	"models/props_gameplay/boots_of_speed.vmdl"
 	}
 
 	// =================================================================================================================
@@ -2181,7 +2181,7 @@
 				"bonus_all_stats"	"1"
 			}
 		}
-		"Model"	"models/props_gameplay/branch.mdl"
+		"Model"	"models/props_gameplay/branch.vmdl"
 	}
 
 	// =================================================================================================================
@@ -2229,7 +2229,7 @@
 				"bonus_all_stats"	"2"
 			}
 		}
-		"Model"	"models/props_gameplay/branch.mdl"
+		"Model"	"models/props_gameplay/branch.vmdl"
 	}
 
 	// =================================================================================================================
@@ -2277,7 +2277,7 @@
 				"bonus_all_stats"	"9"
 			}
 		}
-		"Model"	"models/props_gameplay/branch.mdl"
+		"Model"	"models/props_gameplay/branch.vmdl"
 	}
 
 	// =================================================================================================================
@@ -3303,7 +3303,7 @@
 				"block_chance"	"40"
 			}
 		}
-		"Model"	"models/props_gameplay/stout_shield.mdl"
+		"Model"	"models/props_gameplay/stout_shield.vmdl"
 	}
 
 	// =================================================================================================================
@@ -3461,7 +3461,7 @@
 		{
 			"01"	"item_tengu_fan;item_tengu_fan"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -3581,7 +3581,7 @@
 		{
 			"01"	"item_mushroom;item_cherry_branch"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -3679,7 +3679,7 @@
 		{
 			"01"	"item_mushroom;item_catnip"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -3778,7 +3778,7 @@
 		{
 			"01"	"item_mushroom;item_cookbook"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -3877,7 +3877,7 @@
 		{
 			"01"	"item_mushroom;item_mushroom"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -3964,7 +3964,7 @@
 		{
 			"01"	"item_baozi;item_sake"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -4043,7 +4043,7 @@
 		{
 			"01"	"item_cat_ear;item_sailor_suit;item_quelling_blade"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -4142,7 +4142,7 @@
 		{
 			"01"	"item_wind_amulet;item_wind_amulet"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -4267,7 +4267,7 @@
 		{
 			"01"	"item_luna_chip"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -4371,7 +4371,7 @@
 			"02"	"item_hammer;item_mushroom_pie"
 			"03"	"item_hammer;item_mushroom_soup"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -4479,7 +4479,7 @@
 		{
 			"01"	"item_knife"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -4585,7 +4585,7 @@
 		{
 			"01"	"item_watermelon;item_screw_driver"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -4691,7 +4691,7 @@
 		{
 			"01"	"item_hammer;item_cherry_branch"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -4808,7 +4808,7 @@
 		{
 			"01"	"item_knife;item_rocket_diagram"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	"item_recipe_rocket_2"
@@ -4831,7 +4831,7 @@
 		{
 			"02"	"item_rocket;item_recipe_rocket"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	"item_recipe_rocket_3"
@@ -4854,7 +4854,7 @@
 		{
 			"02"	"item_rocket_2;item_recipe_rocket"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	"item_recipe_rocket_4"
@@ -4877,7 +4877,7 @@
 		{
 			"02"	"item_rocket_3;item_recipe_rocket"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	"item_recipe_rocket_5"
@@ -4900,7 +4900,7 @@
 		{
 			"02"	"item_rocket_4;item_recipe_rocket"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -5502,7 +5502,7 @@
 		{
 			"01"	"item_silver_knife;item_luna_chip"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -5691,7 +5691,7 @@
 		{
 			"01"	"item_broom;item_wind_amulet"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -5794,7 +5794,7 @@
 				"duration"	"10"
 			}
 		}
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Model"	"models/props_gameplay/boots_of_speed.vmdl"
 	}
 
 	// =================================================================================================================
@@ -5821,7 +5821,7 @@
 		{
 			"01"	"item_broom;item_wind_amulet"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -5915,7 +5915,7 @@
 				"duration"		"5"
 			}
 		}
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Model"	"models/props_gameplay/boots_of_speed.vmdl"
 	}
 
 	// =================================================================================================================
@@ -5942,7 +5942,7 @@
 		{
 			"01"	"item_broom;item_wind_amulet"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -6046,7 +6046,7 @@
 				"duration"	"10"
 			}
 		}
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Model"	"models/props_gameplay/boots_of_speed.vmdl"
 	}
 
 	// =================================================================================================================
@@ -6073,7 +6073,7 @@
 		{
 			"01"	"item_horse_red;item_horse_green;item_horse_blue"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -6217,7 +6217,7 @@
 				"onopen_spend_mana_percent"	"3.0"
 			}
 		}
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Model"	"models/props_gameplay/boots_of_speed.vmdl"
 	}
 
 	// =================================================================================================================
@@ -6244,7 +6244,7 @@
 		{
 			"01"	"item_broom"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -6317,7 +6317,7 @@
 				"blink_range_max"	"700.0"
 			}
 		}
-		"Model"	"models/props_gameplay/boots_of_speed.mdl"
+		"Model"	"models/props_gameplay/boots_of_speed.vmdl"
 	}
 
 	// =================================================================================================================
@@ -6343,7 +6343,7 @@
 		{
 			"01"	"item_sailor_suit;item_swimming_suit"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -6497,7 +6497,7 @@
 			"02"	"item_wind_lace;item_sailor_suit;item_mushroom_pie"
 			"03"	"item_wind_lace;item_sailor_suit;item_mushroom_soup"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 	//"01"	"item_catnip;item_cat_ear;item_cat_foot"
 
@@ -6666,7 +6666,7 @@
 		{
 			"01"	"item_frog;item_ice_block;item_ice_block"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -6821,7 +6821,7 @@
 		{
 			"01"	"item_cherry_leaf;item_pant"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -6913,7 +6913,7 @@
 		{
 			"01"	"item_guilty_mask;item_hunting_cap"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -7076,7 +7076,7 @@
 		{
 			"01"	"item_zun_hat;item_glue;item_bird"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -7161,7 +7161,7 @@
 		{
 			"01"	"item_touhou_banana;item_fox_mask"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -7302,7 +7302,7 @@
 		{
 			"01"	"item_god_hand;item_god_hand"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -7399,7 +7399,7 @@
 		{
 			"01"	"item_wing;item_swimming_suit"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -7520,7 +7520,7 @@
 		{
 			"01"	"item_cake;item_cake;item_scissors;item_god_hand"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -7702,7 +7702,7 @@
 		{
 			"01"	"item_wrench;item_cat_foot;item_wind_amulet"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -7834,7 +7834,7 @@
 		{
 			"01"	"item_bird;item_glue;item_hammer;item_sailor_suit"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -7960,7 +7960,7 @@
 		{
 			"01"	"item_bird;item_zun_hat;item_picnic_basket"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -8126,7 +8126,7 @@
 		{
 			"01"	"item_ice_block;item_god_hand;item_sailor_suit"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -8293,7 +8293,7 @@
 		{
 			"01"	"item_cake;item_juice"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -8428,7 +8428,7 @@
 		{
 			"01"	"item_good_lunchbox;item_cucumber;item_cucumber"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -8570,7 +8570,7 @@
 		{
 			"01"	"item_better_lunchbox;item_cucumber;item_cucumber"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -8710,7 +8710,7 @@
 		{
 			"01"	"item_glue;item_best_lunchbox"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -8887,7 +8887,7 @@
 		{
 			"01"	"item_bird;item_juice;item_aunt_clothes"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -9025,7 +9025,7 @@
 		{
 			"01"	"item_wind_amulet;item_magic_guide_book"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -9178,7 +9178,7 @@
 		{
 			"01"	"item_doctor_doll;item_cat_foot;item_frog"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -9333,7 +9333,7 @@
 		{
 			"01"	"item_ice_block;item_gran_grimoire;item_knife"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -9487,7 +9487,7 @@
 		{
 			"01"	"item_cherry_branch;item_cherry_leaf;item_paper_mask"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -10037,7 +10037,7 @@
 		{
 			"01"	"item_zun_hat;item_zun_hat"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -10146,7 +10146,7 @@
 		{
 			"01"	"item_hj_bug;item_bird"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -10279,7 +10279,7 @@
 		{
 			"01"	"item_best_lunchbox;item_knife;item_aunt_clothes"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -10417,7 +10417,7 @@
 		{
 			"01"	"item_ice_block;item_knife"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -10540,7 +10540,7 @@
 		{
 			"01"	"item_cherry_leaf;item_juice"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -10658,7 +10658,7 @@
 		{
 			"01"	"item_cookbook;item_magic_guide_book;item_rocket_diagram"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -10786,7 +10786,7 @@
 		{
 			"01"	"item_paper_mask;item_paper_mask"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -10927,7 +10927,7 @@
 		{
 			"01"	"item_wind_gun;item_paper_mask;item_screw_driver"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -11150,7 +11150,7 @@
 		{
 			"01"	"item_ghostspoon;item_sake;item_rocket_diagram"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -11311,7 +11311,7 @@
 		{
 			"01"	"item_candle;item_mushroom"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -11445,7 +11445,7 @@
 		{
 			"01"	"item_zun_hat;item_magic_guide_book;item_cherry_leaf"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -11628,7 +11628,7 @@
 		{
 			"01"	"item_knife;item_luna_chip;item_rocket_diagram;item_doctor_doll"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -11783,7 +11783,7 @@
 		{
 			"01"	"item_knife;item_scissors"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -11909,7 +11909,7 @@
 		{
 			"01"	"item_quant;item_wrench"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -12046,7 +12046,7 @@
 		{
 			"01"	"item_quant;item_touhou_banana"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -12220,7 +12220,7 @@
 		{
 			"01"	"item_ice_block;item_picnic_basket"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -12341,7 +12341,7 @@
 		{
 			"01"	"item_sake;item_magic_guide_book;item_gran_grimoire"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -12506,7 +12506,7 @@
 		{
 			"01"	"item_bra;item_baozi;item_glue"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -12607,7 +12607,7 @@
 				"bonus_health"	"250"
 			}
 		}
-		"Model"	"models/props_gameplay/stout_shield.mdl"
+		"Model"	"models/props_gameplay/stout_shield.vmdl"
 	}
 
 	// =================================================================================================================
@@ -12634,7 +12634,7 @@
 		{
 			"01"	"item_screw_driver;item_frog;item_luna_chip"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -12807,7 +12807,7 @@
 				"cannon_damage_radius"	"150"
 			}
 		}
-		"Model"	"models/props_gameplay/stout_shield.mdl"
+		"Model"	"models/props_gameplay/stout_shield.vmdl"
 	}
 
 	// =================================================================================================================
@@ -12830,7 +12830,7 @@
 		{
 			"01"	"item_gran_grimoire;item_gran_grimoire"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -12932,7 +12932,7 @@
 		{
 			"01"	"item_baozi;item_zun_hat;item_pant"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -13062,7 +13062,7 @@
 			// "01"	"item_candle;item_glue;item_scissors" //更改合成公式，十字架面向酱油，不再提供+20攻击力
 			"01"	"item_candle;item_glue"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -13192,7 +13192,7 @@
 		{
 			"01"	"item_silver_knife;item_paper_mask;item_cat_foot"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -13339,7 +13339,7 @@
 		{
 			"01"	"item_present_box;item_paper_mask"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -13454,7 +13454,7 @@
 		{
 			"01"	"item_watermelon;item_god_hand"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -13594,7 +13594,7 @@
 		{
 			"01"	"item_eyunzhifu;item_ice_block"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -13764,7 +13764,7 @@
 		{
 			"01"	"item_frog;item_juice;item_magic_guide_book"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -13850,7 +13850,7 @@
 		{
 			"01"	"item_eyunzhifu;item_gran_grimoire"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -13973,7 +13973,7 @@
 		{
 			"01"	"item_yatagarasu;item_sake;item_sake"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -14130,7 +14130,7 @@
 		{
 			"01"	"item_smash_stick;item_pocket_watch"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -14299,7 +14299,7 @@
 		{
 			"01"	"item_jiao_shou;item_wing"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 
 	// =================================================================================================================
@@ -14444,7 +14444,7 @@
 		{
 			"01"	"item_ice_block;item_9ball"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 	"item_wanmeitiaoyuezhuangzhi"
 	{
@@ -14547,7 +14547,7 @@
 		{
 			"01"	"item_guilty_mask"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 	"item_shanbibu"
 	{
@@ -14753,7 +14753,7 @@
 		{
 			"01"	"item_gran_grimoire;item_cherry_branch;item_cherry_branch;item_cherry_branch"
 		}
-		"Model"	"models/props_gameplay/recipe.mdl"
+		"Model"	"models/props_gameplay/recipe.vmdl"
 	}
 	"item_fan"
 	{
