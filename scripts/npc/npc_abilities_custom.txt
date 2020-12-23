@@ -3822,6 +3822,7 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		// "AbilityCooldown"           "0"
+		"HasScepterUpgrade"	"1"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastPoint"	"2.0"
@@ -4314,6 +4315,7 @@
 		"AbilityCastPoint"	"0"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_4"
 		"AnimationPlaybackRate"	"5"
+		"HasScepterUpgrade"			"1"
 		"AbilityCooldown"	"120 100 80"
 		// Stats
 		// ----------------------------------------------------------------
@@ -4573,6 +4575,7 @@
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"HasScepterUpgrade"			"1"
 		"MaxLevel"	"4"
 		"ID"	"2028"
 		"precache"
@@ -4917,6 +4920,7 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"MaxLevel"	"1"
+		"HasScepterUpgrade"			"1"
 		"AbilityCastPoint"	"0"
 		"AbilityCooldown"	"100"
 		// Stats
@@ -5426,6 +5430,7 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastPoint"	"0.5"
+		"HasScepterUpgrade"			"1"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_4"
 		"AbilityCooldown"	"40 40 40"
 		"AbilityManaCost"	"120 180 240"
@@ -5944,6 +5949,7 @@
 		"AbilityCharges"				"2"
 		"AbilityChargeRestoreTime"		"50"
 		"AbilityCooldown"	"2"
+		"HasScepterUpgrade"			"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityManaCost"	"75 125 175"
@@ -6406,6 +6412,7 @@
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_PLAYER_CONTROLLED | DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
 		// Stats---------------------------------------------------------------
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"HasScepterUpgrade"			"1"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"MaxLevel"	"3"
 		"AbilityCastPoint"	"0.3"
@@ -6510,6 +6517,7 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityCastPoint"	"0.45"
+		"HasScepterUpgrade"			"1"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_2"
 		"AbilityCooldown"	"60"
 		"AbilityManaCost"	"250"
@@ -6579,6 +6587,7 @@
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_2"
 		"AbilityCooldown"	"40"
 		"AbilityManaCost"	"70"
+		"HasScepterUpgrade"			"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityCastRange"	"99999"
@@ -7498,6 +7507,7 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastPoint"	"0.1"
+		"HasScepterUpgrade"			"1"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_4"
 		"AbilityCooldown"	"120"
 		"AbilityManaCost"	"100 150 200"
@@ -7801,6 +7811,7 @@
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_2"
 		"AbilityCooldown"	"20.0"
 		"AbilityManaCost"	"75 90 105 120"
+		"HasScepterUpgrade"			"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityCastRange"	"3000"
@@ -8778,6 +8789,7 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"4"
 		"AbilityCastPoint"	"0.1"
+		"HasScepterUpgrade"			"1"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_2"
 		"AbilityCooldown"	"13 12 11 10"
 		"AbilityManaCost"	"90 100 110 120"
@@ -10054,6 +10066,7 @@
 		"AbilityCastPoint"	"0.1"
 		// "AbilityCastAnimation"	"ACT_DOTA_CHANNEL_ABILITY_2"
 		"AnimationPlaybackRate" "5"
+		"HasScepterUpgrade"			"1"
 		"AbilityCooldown"	"40 30 20 10"
 		// Stats
 		// ----------------------------------------------------------------
@@ -10650,6 +10663,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"HasScepterUpgrade"			"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
@@ -10942,6 +10956,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityCastPoint"	"0.1"
+		"HasScepterUpgrade"			"1"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_1"
 		"AbilityCooldown"	"40"
 		// Stats
@@ -11333,6 +11348,7 @@
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/ability_thdots_wriggle04"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"HasScepterUpgrade"			"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
@@ -11642,6 +11658,7 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PHYSICAL"
+		"HasScepterUpgrade"			"1"
 
 		"precache"
 		{
@@ -12026,6 +12043,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_INVULNERABLE | DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		// "AbilityType"	"DOTA_ABILITY_TYPE_HIDDEN"
+		"HasScepterUpgrade"			"1"
 		"MaxLevel"	"1"
 		"precache"
 		{
@@ -12275,6 +12293,7 @@
 		"MaxLevel"	"4"
 		"AbilityCastPoint"	"0.1"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_3"
+		"HasScepterUpgrade"			"1"
 		// "AbilityCharges"				"2"
 		// "AbilityChargeRestoreTime"		"13 10 7 4"
 		// "AbilityCooldown"	"0.1"
@@ -12679,6 +12698,7 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastPoint"	"0.2"
+		"HasScepterUpgrade"			"1"
 		// "AbilityCooldown"	"120 110 100"
 		"AbilityCooldown"	"90 75 60"
 		// Stats
@@ -13121,6 +13141,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/ability_thdots_yasaka03"
+		"HasScepterUpgrade"			"1"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BUILDING"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
@@ -13606,6 +13627,7 @@
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		"AbilityCastPoint"	"0.2"
+		"HasScepterUpgrade"			"1"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_3"
 		"AbilityCooldown"	"18"
 		"AbilityManaCost"	"100"
@@ -13762,6 +13784,7 @@
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_1"
 		"AbilityCooldown"	"18 16 14 12"
+		"HasScepterUpgrade"			"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityManaCost"	"100"
@@ -15010,6 +15033,7 @@
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_3"
 		"AbilityCooldown"	"10"
 		"AbilityManaCost"	"90 100 110 120"
+		"HasScepterUpgrade"			"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityCastRange"	"700"
@@ -15742,6 +15766,7 @@
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityCastRange"	"700 1100"
+		"HasScepterUpgrade"			"1"
 		"precache"
 		{
 			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts"
@@ -15916,6 +15941,7 @@
         "AbilityTextureName"	"custom/ability_thdots_Margatroid02"
     	"AbilityCastAnimation"     "Act_DOTA_CAST_ABILITY_2"
         "MaxLevel"                 "4"
+        "HasScepterUpgrade"			"1"
 
         // Stats 
         //----------------------------------------------------------------
@@ -16745,6 +16771,7 @@
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_2"
 		"AbilityCooldown"		"36"
 		"AbilityManaCost"		"75"
+		"HasScepterUpgrade"			"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityCastRange"	"500"
@@ -17150,6 +17177,7 @@
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
 		"AbilityCooldown"		"9 8 7 6"
 		"AbilityManaCost"		"80 90 100 110"
+		"HasScepterUpgrade"			"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityCastRange"		"680 960 1240 1540"
@@ -20037,6 +20065,7 @@
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"		
 		"AbilityCastAnimation"      "Act_DOTA_CAST_ABILITY_1"
+		"HasScepterUpgrade"			"1"
 		// Stats
 		//----------------------------------------------------------------
 		"AbilityManaCost"           "50"
@@ -20654,6 +20683,7 @@
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"AbilityTextureName"			"custom/ability_thdots_medicine01"
+		"HasScepterUpgrade"			"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -20840,6 +20870,7 @@
 		"FightRecapLevel"				"1"
 		"AbilityCastRange"				"700"
 		"AbilityCastPoint"				"0.1"
+		"HasScepterUpgrade"			"1"
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"2"
@@ -21251,6 +21282,7 @@
 		"AbilityCastAnimation"      "Act_DOTA_CAST_ABILITY_1"
 		"AbilityUnitDamageType"		"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"					"4"
+		"HasScepterUpgrade"			"1"
 		// Stats
 		//----------------------------------------------------------------
 		"AbilityManaCost"           "75"
@@ -22297,6 +22329,7 @@
 		"AbilityBehavior"   	    "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
 		"AbilityTextureName"		"custom/ability_thdots_koakuma04"
+		"HasScepterUpgrade"			"1"
 		"AbilityCastAnimation"      "Act_DOTA_CAST_ABILITY_3"
 		"AbilityType"				"DOTA_ABILITY_TYPE_ULTIMATE"
 		"MaxLevel"	"3"
@@ -22588,7 +22621,6 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityType"	"DOTA_ABILITY_TYPE_BASIC"
 		"MaxLevel"	"4"
-		"HasScepterUpgrade"	"1"
 		"Modifiers"
 		{
 			"modifier_lunasa03"
@@ -22630,6 +22662,8 @@
 		"MaxLevel"						"1"
 		"AbilityCastPoint"				"0"
    		"AbilityCastAnimation"			"ACT_INVALID"
+   		"HasScepterUpgrade"			"1"
+		"IsGrantedByScepter"			"1"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
