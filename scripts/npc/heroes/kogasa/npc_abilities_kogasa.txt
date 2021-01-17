@@ -189,7 +189,10 @@
 				}
 				"EffectName"	"particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_blade_fury_disk.vpcf"
 				"EffectAttachType"	"follow_origin"
-				"Properties"	{}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"		"%decrease_damage"
+				}
 				"States"
 				{
 					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
@@ -280,6 +283,11 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"radius"	"250"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"decrease_damage"	"-25"
 			}
 		}
 	}

@@ -18,6 +18,7 @@ function modifier_ability_thdots_keineEx_passive:GetAuraRadius() return self:Get
 function modifier_ability_thdots_keineEx_passive:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_INVULNERABLE end
 function modifier_ability_thdots_keineEx_passive:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_FRIENDLY end
 function modifier_ability_thdots_keineEx_passive:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO end
+-- function modifier_ability_thdots_keineEx_passive:IsAuraActiveOnDeath()	return true	end  --是否死亡触发
 function modifier_ability_thdots_keineEx_passive:GetModifierAura() return "modifier_ability_thdots_keineEx_passive_aura" end
 function modifier_ability_thdots_keineEx_passive:IsAura() return self:GetCaster():HasModifier("modifier_item_wanbaochui") end
 function modifier_ability_thdots_keineEx_passive:GetAuraEntityReject(target) return target == self:GetCaster() end
@@ -144,9 +145,8 @@ function ability_thdots_keine01:OnSpellStart()
 	local target 				= self:GetCursorTarget()
 	local duration  			= self:GetSpecialValueFor("duration")
 	if is_spell_blocked(target,caster) then return end
-
-
-	if target:IsHero() then --若是英雄则记录生命值
+	
+	if target:IsHero() or target:GetUnitName() == "ability_minamitsu_04_ship" then --若是英雄则记录生命值 --以及村纱水蜜的船
 		if caster:HasModifier("modifier_ability_thdots_keine04") then --狂月状态
 			target:AddNewModifier(caster, self, "modifier_ability_thdots_keine01_sawa",{duration = duration})
 		else --慧音状态
@@ -241,14 +241,14 @@ end
 function modifier_ability_thdots_keine01_sawa:OnCreated()
 	if not IsServer() then return end
 	self.unit = self:GetParent()
-	self.health = self.unit:GetHealth()
+	self.health = self.unit:GetHealthPercent()
 	SendOverheadEventMessage(nil, OVERHEAD_ALERT_MAGICAL_BLOCK, self:GetParent(), self.health, nil)
 end
 
 function modifier_ability_thdots_keine01_sawa:OnDestroy()
 	if not IsServer() then return end
 	if self:GetParent():IsAlive() then
-		local total_health = self:GetParent():GetHealth()
+		local total_health = self:GetParent():GetHealthPercent()
 		if self:GetRemainingTime() < 0 then --被驱散就不生效
 			if total_health >= self.health then --特效
 				self.end_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_oracle/oracle_false_promise_heal.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
@@ -260,9 +260,10 @@ function modifier_ability_thdots_keine01_sawa:OnDestroy()
 				self:GetParent():EmitSound("Hero_Oracle.FalsePromise.Damaged")
 			end
 			local change_health = ( total_health - self.health ) * self:GetAbility():GetSpecialValueFor("extra")/100
-			change_health = total_health + change_health 
+			change_health = ( total_health + change_health ) / 100
+			print(change_health)
 			if change_health > 0 then
-				self.unit:SetHealth(change_health)
+				self.unit:SetHealth(self.unit:GetMaxHealth() * change_health)
 			else
 				self.unit:Kill(self:GetAbility(),self:GetCaster())
 			end
@@ -275,7 +276,7 @@ end
 modifier_ability_thdots_keine01_kill = {}
 LinkLuaModifier("modifier_ability_thdots_keine01_kill","scripts/vscripts/abilities/abilitykeine.lua",LUA_MODIFIER_MOTION_NONE)
 function modifier_ability_thdots_keine01_kill:IsHidden() 		return false end
-function modifier_ability_thdots_keine01_kill:IsPurgable()		return false end
+function modifier_ability_thdots_keine01_kill:IsPurgable()		return true end
 function modifier_ability_thdots_keine01_kill:RemoveOnDeath() 	return true end
 function modifier_ability_thdots_keine01_kill:IsDebuff()		return true end
 
@@ -374,10 +375,23 @@ function modifier_ability_thdots_keine02_invincible:GetEffectName() --无敌
 	return "particles/thd2/items/item_tsundere.vpcf"
 end
 
+function modifier_ability_thdots_keine02_invincible:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE,
+	}
+end
+
+function modifier_ability_thdots_keine02_invincible:GetModifierIncomingDamage_Percentage()
+	return -999
+end
+
 function modifier_ability_thdots_keine02_invincible:CheckState()
 	return {
-		[MODIFIER_STATE_INVULNERABLE] = true,
+		-- [MODIFIER_STATE_INVULNERABLE] = true,
 		-- [MODIFIER_STATE_UNSELECTABLE] = true,
+		[MODIFIER_STATE_ATTACK_IMMUNE] = true,
+		[MODIFIER_STATE_MAGIC_IMMUNE] = true,
+		[MODIFIER_STATE_STUNNED] = false,
 	}
 end
 
@@ -425,7 +439,7 @@ function modifier_ability_thdots_keine03_passive:OnAttackStart(keys)
 	if keys.attacker == self:GetParent() then
 		self.change = self:GetAbility():GetSpecialValueFor("change") + FindTelentValue(self:GetParent(),"special_bonus_unique_keine_1")
 		print(self.change)
-		if RollPercentage(self.change) then
+		if RollPercentage(self.change) and not keys.attacker:HasModifier("modifier_ability_thdots_keine03_disable") then
 			self.success = false
 			local speed = 170
 			self.success = true
@@ -441,7 +455,7 @@ function modifier_ability_thdots_keine03_passive:OnAttackLanded(keys)
 	if not (keys.attacker == self:GetParent()) then return end
 	if target:IsBuilding() or target:IsOther() or keys.target:GetTeamNumber() == keys.attacker:GetTeamNumber() then
 		return end
-	if self.success then
+	if self.success and not caster:HasModifier("modifier_ability_thdots_keine03_disable") then
 		self.success = false
 		self.damage = self:GetAbility():GetSpecialValueFor("damage")
 		self.attack_bonus = self:GetAbility():GetSpecialValueFor("attack_bonus")
@@ -485,10 +499,13 @@ function ability_thdots_keine03:OnSpellStart()
 	local damage = self:GetSpecialValueFor("damage")
 	local attack_bonus = self:GetSpecialValueFor("attack_bonus")
 	local act_stun = self:GetSpecialValueFor("act_stun")
+	local disable_time = self:GetSpecialValueFor("disable_time")
 	local start_point = caster:GetOrigin()
 	local forward = (target:GetOrigin() - caster:GetOrigin()):Normalized()
 	local point = target:GetOrigin() - forward * 100
 	FindClearSpaceForUnit(caster, point, true)
+
+	caster:AddNewModifier(caster, self, "modifier_ability_thdots_keine03_disable",{duration = disable_time})
 
 	--特效音效
 	if caster:HasModifier("modifier_ability_thdots_keine04") then
@@ -531,6 +548,13 @@ function ability_thdots_keine03:OnSpellStart()
 			end,
 		FrameTime())
 end
+
+modifier_ability_thdots_keine03_disable = {}
+LinkLuaModifier("modifier_ability_thdots_keine03_disable","scripts/vscripts/abilities/abilitykeine.lua",LUA_MODIFIER_MOTION_NONE)
+function modifier_ability_thdots_keine03_disable:IsHidden() 		return false end
+function modifier_ability_thdots_keine03_disable:IsPurgable()		return false end
+function modifier_ability_thdots_keine03_disable:RemoveOnDeath() 	return false end
+function modifier_ability_thdots_keine03_disable:IsDebuff()		return false end
 
 --------------------------------------------------------
 --满月「未来的创造狂月」

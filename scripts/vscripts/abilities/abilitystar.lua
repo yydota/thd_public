@@ -357,7 +357,21 @@ function OnStar03SpellStart(keys)
 	starWard:SetModifierStackCount("modifier_thdotsr_star03_ward", caster, attack_count)
 	starWard:AddNewModifier(caster, ability, "modifier_item_ward_true_sight", {duration = spell_duration,true_sight_range = true_sight_range})
 	starWard:AddNewModifier(caster, ability, "modifier_kill", {duration = spell_duration})
-	
+
+	-- ParticleManager:SetParticleControl(effectIndex, 61, Vector(1000,1000,1000))
+	starWard:SetContextThink("Star03_flash", function ()
+		-- body
+			if GameRules:IsGamePaused() then return 0.03 end
+			if starWard:IsAlive() then
+				local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_spirit_form_cast.vpcf",PATTACH_CUSTOMORIGIN_FOLLOW, starWard)
+				ParticleManager:SetParticleControlEnt(effectIndex , 0, starWard, 0, "attach_hitloc", Vector(0,0,0), true)
+				ParticleManager:ReleaseParticleIndex(effectIndex)
+				return 10
+			else
+				return 0
+			end
+		end, 
+	0.03)
 --	starWard:AddNewModifier(caster, ability, "modifier_item_buff_ward", {duration = spell_duration,vision_range = 1000})
 	
 end

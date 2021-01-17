@@ -142,6 +142,13 @@ function OnFlandreExDealDamage(keys)
 	UnitDamageTarget(damage_table)
 	caster.flandrelock = false
 	--keys.ability:ApplyDataDrivenModifier(caster, caster, "passive_flandreEx_damaged", nil)
+
+	--调整调换模型后的攻击前摇动画点
+	-- if caster:GetModelName() == "models/flandre_scarlet/flandre_scarlet.vmdl" then
+	-- 	caster:SetBaseAttackTime(0.35)
+	-- elseif caster:GetModelName() == "models/thd2/flandre/flandre_mmd.vmdl" then
+	-- 	caster:SetBaseAttackTime(0.444)
+	-- end
 end
 
 function OnFlandre02SpellStartUnit(keys)
@@ -237,7 +244,7 @@ function OnFlandre04SpellStart(keys)
 	)
 
 	for _,v in pairs(illusions) do
-		if(v:IsIllusion() and v:GetModelName() == "models/thd2/flandre/flandre_mmd.vmdl")then
+		if v:IsIllusion() and ( v:GetModelName() == "models/flandre_scarlet/flandre_scarlet.vmdl" or v:GetModelName() == "models/thd2/flandre/flandre_mmd.vmdl") then
 			count = count + 1
 			v:MoveToPosition(caster:GetOrigin())
 			v:SetThink(
@@ -251,7 +258,8 @@ function OnFlandre04SpellStart(keys)
 	end
 
 	local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_doom_bringer/doom_bringer_ambient.vpcf", PATTACH_CUSTOMORIGIN, caster) 
-	ParticleManager:SetParticleControlEnt(effectIndex , 0, caster, 5, "attach_attack1", Vector(0,0,0), true)
+	-- ParticleManager:SetParticleControlEnt(effectIndex , 0, caster, 5, "attach_attack1", Vector(0,0,0), true)
+	ParticleManager:SetParticleControlEnt(effectIndex , 0, caster, 5, "attach_sk1_fx", Vector(0,0,0), true)
 	ParticleManager:DestroyParticleSystemTime(effectIndex,keys.Duration)
 
 	keys.ability:SetContextNum("ability_flandre04_multi_count",count,0)

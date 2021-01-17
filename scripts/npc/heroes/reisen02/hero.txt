@@ -36,15 +36,15 @@
 		"VoiceFile" ""
 		"Role"	"Carry,Nuker,Disabler,Jungler,Escape,Pusher,Initiator"
 		"Rolelevels"	"3,2,1,3,2,1,1"
-		"Model"	"models/reisen02/reisen02.vmdl"
-		"ModelScale"	"1.4"
+		"Model"	"models/reisen2/reisen2.vmdl"
+		"ModelScale"	"1.0"
 		"ArmorPhysical"	"1"
 		// 物理护甲
 		"AttackDamageMin"	"34"
 		// 最大攻击力
 		"AttackDamageMax"	"37"
 		// 最小攻击力
-		"AttackAnimationPoint"	"0.3"
+		"AttackAnimationPoint"	"0.5"
 		// 攻击前摇
 		"AttackRate"	"1.4"
 		// 攻击速度

@@ -22,6 +22,10 @@ function OnMokou01SpellStart(keys)
 	local Mokou01Distance = GetDistanceBetweenTwoVec2D(caster:GetOrigin(),targetPoint)
 	keys.ability.ability_Mokou01_Rad = Mokou01rad
 	keys.ability.ability_Mokou01_Distance = Mokou01Distance
+	if caster:HasModifier("modifier_item_wanbaochui") then
+		local cooldown = keys.ability:GetCooldown(keys.ability:GetLevel())
+		THDReduceCooldown(keys.ability,4 - cooldown)
+	end
 end
 
 function OnMokou01SpellMove(keys)
@@ -36,6 +40,9 @@ function OnMokou01SpellMove(keys)
 	end
 	local damageenemy=(keys.ability:GetAbilityDamage()+FindTelentValue(caster,"special_bonus_unique_chaos_knight_3")) / MokouExDamage
 	local damageself=(keys.ability:GetAbilityDamage()+FindTelentValue(caster,"special_bonus_unique_chaos_knight_3")) * MokouExDamage
+	if caster:HasModifier("modifier_item_wanbaochui") then
+		damageself = caster:GetMaxHealth() * 0.5
+	end
 
 
 	
@@ -61,6 +68,7 @@ function OnMokou01SpellMove(keys)
 			damage_type = keys.ability:GetAbilityDamageType(), 
 			damage_flags = keys.ability:GetAbilityTargetFlags()
 		}
+		print(damageself)
 		UnitDamageTarget(damage_table)
 		caster:RemoveModifierByName("modifier_thdots_Mokou_ex")
 		local effectIndex = ParticleManager:CreateParticle("particles/heroes/mouko/ability_mokou_01_boom.vpcf", PATTACH_CUSTOMORIGIN, caster)

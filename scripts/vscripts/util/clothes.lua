@@ -96,6 +96,17 @@ Hero_Cloth =
 			1.15,
 			1.0
 		},
+	["npc_dota_hero_naga_siren"] = --二妹
+		{	
+			"models/flandre_scarlet/flandre_scarlet.vmdl",
+			"models/thd2/flandre/flandre_mmd.vmdl"
+		},
+
+	["npc_dota_hero_naga_siren_size"] =
+		{	
+			1.0,
+			1.0
+		},
 }
 
 function add_cloth( heroname, cloth_path, scale, cloth_id )

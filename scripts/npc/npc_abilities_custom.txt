@@ -22,6 +22,7 @@
 #base "heroes/yamame/npc_abilities_yamame.txt"
 #base "heroes/daiyousei/npc_abilities_daiyousei.txt"
 #base "heroes/keine/npc_abilities_keine.txt"
+#base "heroes/letty/npc_abilities_letty.txt"
 
 "DOTAAbilities"
 {
@@ -3554,6 +3555,7 @@
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_3"
 		"AnimationPlaybackRate"	"1.5"
+		"CastFilterRejectCaster"	"1"
 		"AbilityCooldown"	"17 16 15 14"
 		"AbilityManaCost"	"100"
 		// Stats
@@ -3806,7 +3808,14 @@
 		{
 			"modifier_thdots_yuyukoEx"
 			{
-				"Duration"	"10.0"				
+				"Duration"	"10.0"
+
+				// "AttachEffect"
+				// {
+				// 	"EffectName" "particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+				// 	"EffectAttachType"	"follow_origin"
+				// 	"Target"			"CASTER"
+				// }			
 			}
 		}
 		"AbilitySpecial"
@@ -3917,12 +3926,6 @@
 					}
 				}
 			}
-			
-
-			
-			
-			
-			
 		}
 		"AbilitySpecial"
 		{
@@ -4428,7 +4431,16 @@
 						"DealDamage"	"%attack_damage"
 						"IncreaseDamage"	"%increase_damage"
 					}
-				}				
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"	"models/flandre_scarlet/flandre_scarlet/flandre_ambient.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"	"CASTER"
+					}
+				}			
 			}
 		}
 		"AbilitySpecial"
@@ -4745,6 +4757,8 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
+		"AnimationPlaybackRate"	"1"
 		"AbilityCastPoint"	"0.2"
 		"AbilityCooldown"	"120 110 100"
 		// Stats
@@ -4980,6 +4994,7 @@
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_1"
 		"AbilityCooldown"	"14"
 		"AbilityManaCost"	"0"
+		"HasScepterUpgrade"			"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityCastRange"	"450 500 550 600"
@@ -8632,7 +8647,7 @@
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_4"
-		"AbilityCooldown"	"140"
+		"AbilityCooldown"	"140 130 120"
 		"AbilityManaCost"	"0"
 		// Stats
 		// ----------------------------------------------------------------
@@ -10462,6 +10477,7 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"4"
 		"AbilityCastPoint"	"0.2"
+		"AnimationPlaybackRate"	"1.5"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_1"
 		"AbilityCooldown"	"20 15 10 5"
 		"AbilityManaCost"	"50"
@@ -10590,6 +10606,7 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"4"
 		"AbilityCastPoint"	"0.2"
+		"AnimationPlaybackRate"	"3"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_2"
 		"AbilityCooldown"	"15 13 11 9"
 		"AbilityManaCost"	"100 115 130 145"
@@ -10703,10 +10720,24 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"damage_on_max_accusation"	"5 10 15 20"
+				"LinkedSpecialBonus" 	"special_bonus_unique_shikieiki_1"
 			}
 		}
 	}
-
+	"special_bonus_unique_shikieiki_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"15"
+			}
+		}
+	}
 	"ability_thdots_shikieiki04"
 	{
 		"BaseClass"	"ability_datadriven"
@@ -10718,6 +10749,7 @@
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"MaxLevel"	"3"
 		"AbilityCastPoint"	"0.3"
+		"AnimationPlaybackRate"	"2.5"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_4"
 		"AbilityCooldown"	"100"
 		"AbilityManaCost"	"140 280 420"
@@ -11498,7 +11530,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"value"	"-3"
+				"value"	"-4"
 			}
 		}
 	}
@@ -14036,10 +14068,10 @@
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"AbilityCastPoint"	"1.0"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_4"
-		"AbilityCooldown"	"120"
+		"AbilityCooldown"	"120 100 80"
 		// Stats
 		// ----------------------------------------------------------------
-		"AbilityManaCost"	"150 200 250"
+		"AbilityManaCost"	"150"
 		"precache"
 		{
 			"soundfile"	"soundevents/thdots_hero_sounds/thdots_minamitsu_sounds.vsndevts"
@@ -20338,10 +20370,15 @@
 				"var_type"			"FIELD_INTEGER"
 				"max_health"		"900 1000 1100 1200"
 			}
-			"02"
+			"03"
 			{
 				"var_type"			"FIELD_FLOAT"
 				"buff_duration"		"0.1"
+			}
+			"04"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"attack_bonus"		"15 30 45 60"
 			}
 		}
 	}
@@ -20468,7 +20505,62 @@
 			}
 		}
     }
-
+    "special_bonus_unique_satori_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"7"
+			}
+		}
+	}
+	"special_bonus_unique_satori_2"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"400"
+			}
+		}
+	}
+	"special_bonus_unique_satori_3"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"300"
+			}
+		}
+	}
+	"special_bonus_unique_satori_4"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"-18"
+			}
+		}
+	}
 	"ability_common_bot_buff"
 	{
 		// General
@@ -23362,7 +23454,7 @@
 			"modifier_skewer_disable_target"
 			{
 				"IsHidden"	"0"
-				"IsPurgable"	"1"
+				"IsPurgable"	"0"
 				"IsDebuff"	"1"
 				"OnCreated"
 				{
@@ -24335,7 +24427,7 @@
 			"05"
 			{
 				"var_type"	"FIELD_INTEGER"
-				"reduce_gold"	"-10"
+				"reduce_gold"	"-20"
 				"RequiresScepter"			"1"
 			}
 			"06"
@@ -26101,7 +26193,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AbilityCastPoint"	"0.2"
-		"AbilityCooldown"	"12"
+		"AbilityCooldown"	"14 12 10 8"
 		"AbilityManaCost"	"90"
 		"AbilityCastRange"	"99999"
 		"precache"

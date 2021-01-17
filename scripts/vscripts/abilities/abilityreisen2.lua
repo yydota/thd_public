@@ -22,6 +22,7 @@ function ability_thdots_reisen_2_01:OnSpellStart()
     --基础信息
     local caster=self:GetCaster()
     local target=self:GetCursorTarget()
+    if is_spell_blocked(target,caster) then return end
     local buff_duration=self:GetSpecialValueFor("default_buff_duration")
     --print(buff_duration)
     --print(self:GetSpecialValueFor("reduce_multiplier"))
@@ -241,6 +242,7 @@ function ability_thdots_reisen_2_02:OnSpellStart()
     
     for i=1, #names do
         self.particles[i]=ParticleManager:CreateParticle(names[i],PATTACH_ROOTBONE_FOLLOW, caster) 
+        ParticleManager:SetParticleControlEnt(self.particles[i],0,caster,PATTACH_POINT_FOLLOW,"attach_hitloc",Vector(0,0,0),true)
     end
 
 end
@@ -263,15 +265,41 @@ function modifier_ability_thdots_reisen2_02_buff_damageReduction:DeclareFunction
     return funcs
 end
 
+--modifier 创建
+function modifier_ability_thdots_reisen2_02_buff_damageReduction:OnCreated()
+    if not IsServer() then return end
+    local caster = self:GetCaster()
+    if caster:GetHealthPercent() <= 50 and RollPercentage(100 - caster:GetHealthPercent()) and caster:GetName() == "npc_dota_hero_phantom_lancer" then
+        local particle = ParticleManager:CreateParticle("particles/econ/items/phantom_lancer/phantom_lancer_fall20_immortal/phantom_lancer_fall20_immortal_doppelganger_aoe.vpcf",PATTACH_WORLDORIGIN,nil)
+        ParticleManager:SetParticleControl(particle, 0, caster:GetAbsOrigin())
+        ParticleManager:ReleaseParticleIndex(particle)
+        if caster.Reisen2_IsBlack == false then
+            print("w")
+            caster:SetMaterialGroup("3")
+        elseif caster.Reisen2_IsBlack == true then
+            print("b")
+            caster:SetMaterialGroup("2")
+        end
+    end
+end
+
 --modifier 消除事件
 function modifier_ability_thdots_reisen2_02_buff_damageReduction:OnDestroy()
     if not IsServer() then return end
-
+    local caster = self:GetCaster()
     --删除特效
     for i=1, #(self:GetAbility().particles) do
         ParticleManager:DestroyParticle(self:GetAbility().particles[i], true) 
     end
-
+    if caster:GetName() == "npc_dota_hero_phantom_lancer" then
+        if caster.Reisen2_IsBlack == false then
+            print("w")
+            caster:SetMaterialGroup("1")
+        elseif caster.Reisen2_IsBlack == true then
+            print("b")
+            caster:SetMaterialGroup("0")
+        end
+    end
 end
 
 --modifier 触发事件：收到伤害，使用减免函数时候
@@ -855,10 +883,14 @@ function modifier_ability_thdots_reisen2_04:OnCreated()
     if not IsServer() then end
     --如果不是4级
     --这是为了尝试取消thinker的
-    
+
     if self:GetAbility():GetLevel()~=4 then
         self:StartIntervalThink(1.0)
     end
+    --武器特效
+    local reisen2_weapon = ParticleManager:CreateParticle("particles/econ/items/phantom_lancer/phantom_lancer_sunwarrior/pl_sw_lance.vpcf", PATTACH_POINT_FOLLOW,self:GetCaster())
+    ParticleManager:SetParticleControlEnt(reisen2_weapon,0,self:GetCaster(),PATTACH_POINT_FOLLOW,"attach_attack1",Vector(0,0,0),true)
+    self:GetCaster().Reisen2_IsBlack = true
 end
 
 function modifier_ability_thdots_reisen2_04:OnIntervalThink()

@@ -179,7 +179,8 @@ function Shikieiki03_OnAttackLanded(keys)
 			ParticleManager:SetParticleControlEnt(effectIndex , 0, Target, 5, "follow_origin", Vector(0,0,0), true)
 		end
 	end
-	local Damage=keys.DamageOnMaxAccusation*GetAccusationCount(Caster,Target)
+	local Damage= ( keys.DamageOnMaxAccusation + FindTelentValue(Caster,"special_bonus_unique_shikieiki_1") ) * GetAccusationCount(Caster,Target)
+	print(Damage)
 	UnitDamageTarget{
 		ability = keys.ability,
 		victim = Target,

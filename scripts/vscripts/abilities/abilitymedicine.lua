@@ -340,7 +340,8 @@ function OnMedicine03TakeDamage(keys)
 	local unit = keys.unit
 	local Attacker = keys.attacker
 	local damage_to_deal = keys.TakenDamage * (keys.BackDamage + FindTelentValue(Caster,"special_bonus_unique_viper_2"))*0.01
-	if (Attacker:IsBuilding()==false) and Attacker ~= unit and Attacker:HasModifier("modifier_item_frock_OnTakeDamage") == false then
+	-- if (Attacker:IsBuilding()==false) and Attacker ~= unit and Attacker:HasModifier("modifier_item_frock_OnTakeDamage") == false then
+	if (Attacker:IsBuilding()==false) and Attacker ~= unit and not IsTHDReflect(Attacker) then
 		if (damage_to_deal>0 and damage_to_deal<=unit:GetMaxHealth()) then
 			local damage_table = {
 				ability = keys.ability,

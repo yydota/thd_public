@@ -1604,13 +1604,13 @@
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"0"
-		"ItemCost"						"30"
+		"ItemCost"						"0"
 		"ItemShopTags"					"consumable;tutorial"
 		"ItemQuality"					"consumable"
 		"ItemAliases"					"tp;town portal scroll"
-		"ItemStackable"					"1"
+		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-		"ItemPermanent"					"0"
+		"ItemPermanent"					"1"
 		"ItemInitialCharges"			"1"
 		"SideShop"						"1"
 		
@@ -5605,7 +5605,7 @@
 			"01"
 			{
 				"var_type"						"FIELD_INTEGER"
-				"value"				"-80"
+				"value"				"-60"
 			}
 		}
 	}
@@ -6052,7 +6052,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"heath_regen"			"3 5 7 9"
+				"heath_regen"			"6 8 10 12"
 			}
 			"04"
 			{

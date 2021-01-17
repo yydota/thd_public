@@ -38,6 +38,20 @@ function OnYuyuko04SpellStart(keys)
 		2.0)
 
 	keys.ability:SetContextNum("ability_yuyuko_04_time_count", keys.DamageCount, 0) 
+
+	-- local particle_death = "particles/units/heroes/hero_skeletonking/wraith_king_reincarnate.vpcf"
+	-- local particle_death_fx = ParticleManager:CreateParticle(particle_death, PATTACH_CUSTOMORIGIN, caster)
+	-- ParticleManager:SetParticleAlwaysSimulate(particle_death_fx)
+	-- ParticleManager:SetParticleControl(particle_death_fx, 0, caster:GetAbsOrigin())
+	-- ParticleManager:SetParticleControl(particle_death_fx, 1, Vector(3, 0, 0))
+	-- ParticleManager:SetParticleControl(particle_death_fx, 11, Vector(10, 0, 0))
+	-- ParticleManager:ReleaseParticleIndex(particle_death_fx)
+	-- local particle_death_2 = "particles/units/heroes/hero_necrolyte/necrolyte_spirit.vpcf"
+	-- local particle_death_fx_2 = ParticleManager:CreateParticle(particle_death_2, PATTACH_CUSTOMORIGIN, caster)
+	-- ParticleManager:SetParticleAlwaysSimulate(particle_death_fx_2)
+	-- ParticleManager:SetParticleControl(particle_death_fx_2, 0, caster:GetAbsOrigin())
+	-- ParticleManager:SetParticleControl(particle_death_fx_2, 2, Vector(500, 0, 0))
+	-- ParticleManager:ReleaseParticleIndex(particle_death_fx_2)
 end
 
 function OnYuyuko04SpellRemove(keys)

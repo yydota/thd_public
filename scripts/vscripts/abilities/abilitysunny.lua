@@ -76,8 +76,10 @@ function modifier_ability_thdots_sunny01:RemoveOnDeath() 	return true end
 function modifier_ability_thdots_sunny01:IsDebuff()		return false end
 
 function modifier_ability_thdots_sunny01:OnCreated()
-	self.movement_speed = self:GetAbility():GetSpecialValueFor("movement_speed")
 	if not IsServer() then return end
+	if FindTelentValue(self:GetCaster(),"special_bonus_unique_sunny_1") ~= 0 then
+		self:SetStackCount(FindTelentValue(self:GetCaster(),"special_bonus_unique_sunny_1"))
+	end
 	self:StartIntervalThink(0.03)
 end
 
@@ -94,7 +96,7 @@ function modifier_ability_thdots_sunny01:DeclareFunctions()
 end
 
 function modifier_ability_thdots_sunny01:GetModifierMoveSpeedBonus_Percentage()
-	return self.movement_speed
+	return self:GetAbility():GetSpecialValueFor("movement_speed") + self:GetStackCount()
 end
 
 --------------------------------------------------------
@@ -207,6 +209,8 @@ function ability_thdots_sunny03:OnSpellStart()
 	local regen_reduce  		= self:GetSpecialValueFor("regen_reduce")
 	local int_bonus  			= self:GetSpecialValueFor("int_bonus")
 	local radius  				= self:GetSpecialValueFor("radius")
+	local num 					= self:GetSpecialValueFor("num") + FindTelentValue(self:GetCaster(),"special_bonus_unique_sunny_2")
+	print(num)
 	damage = damage + caster:GetIntellect() * int_bonus
 	--特效音效
 	local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_tinker/tinker_laser.vpcf", PATTACH_CUSTOMORIGIN,caster)
@@ -216,6 +220,7 @@ function ability_thdots_sunny03:OnSpellStart()
 	target:EmitSound("Hero_Tinker.LaserImpact")
 
 	target:AddNewModifier(caster,self, "modifier_ability_thdots_sunny03_debuff", {duration = duration})
+	target:AddNewModifier(caster,self, "modifier_ability_thdots_sunny03_sign", {duration = 0.1})
 	local damage_table = {
 				ability = self,
 				victim = target,
@@ -225,36 +230,52 @@ function ability_thdots_sunny03:OnSpellStart()
 				damage_flags = 0
 		}
 	UnitDamageTarget(damage_table)
+	damage = damage * damage_bonus
+	for i=0,num do
+		local targets = FindUnitsInRadius(caster:GetTeam(), target:GetAbsOrigin(), nil, radius, self:GetAbilityTargetTeam(),
+										self:GetAbilityTargetType(),0,0,false)
+		DeleteDummy(targets)
+		for i,unit in pairs(targets) do
+			if unit == target then
+				table.remove(targets, i)
+			end
+		end
+		if #targets == 0 then return end
+		for _,v in pairs(targets) do
+			if num > 0 then
+				--特效音效
+				if not v:HasModifier("modifier_ability_thdots_sunny03_sign") then
+					local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_tinker/tinker_laser.vpcf", PATTACH_CUSTOMORIGIN,target)
+					ParticleManager:SetParticleControlEnt(effectIndex , 0, target, 5, "attach_hitloc", Vector(0,0,0), true)
+					ParticleManager:SetParticleControlEnt(effectIndex , 1, v, 5, "attach_hitloc", Vector(0,0,0), true)
+					ParticleManager:SetParticleControlEnt(effectIndex , 9, target, 5, "attach_hitloc", Vector(0,0,0), true)
+					v:EmitSound("Hero_Tinker.LaserImpact")
 
-	local targets = FindUnitsInRadius(caster:GetTeam(), target:GetAbsOrigin(), nil, radius, self:GetAbilityTargetTeam(),
-									self:GetAbilityTargetType(),0,0,false)
-	DeleteDummy(targets)
-	for i,unit in pairs(targets) do
-		if unit == target then
-			table.remove(targets, i)
+					v:AddNewModifier(caster,self, "modifier_ability_thdots_sunny03_debuff", {duration = duration})
+					v:AddNewModifier(caster,self, "modifier_ability_thdots_sunny03_sign", {duration = 0.1})
+					local damage_table = {
+							ability = self,
+							victim = v,
+							attacker = caster,
+							damage = damage,
+							damage_type = self:GetAbilityDamageType(), 
+							damage_flags = 0
+					}
+					UnitDamageTarget(damage_table)
+					damage = damage * damage_bonus
+					print(damage)
+					target = v
+					num = num - 1
+				end
+			else
+				break
+			end
 		end
 	end
-	if #targets == 0 then return end
-	for _,v in pairs(targets) do
-		--特效音效
-		local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_tinker/tinker_laser.vpcf", PATTACH_CUSTOMORIGIN,target)
-		ParticleManager:SetParticleControlEnt(effectIndex , 0, target, 5, "attach_hitloc", Vector(0,0,0), true)
-		ParticleManager:SetParticleControlEnt(effectIndex , 1, v, 5, "attach_hitloc", Vector(0,0,0), true)
-		ParticleManager:SetParticleControlEnt(effectIndex , 9, target, 5, "attach_hitloc", Vector(0,0,0), true)
-		v:EmitSound("Hero_Tinker.LaserImpact")
+end
 
-		v:AddNewModifier(caster,self, "modifier_ability_thdots_sunny03_debuff", {duration = duration})
-		local damage_table = {
-				ability = self,
-				victim = v,
-				attacker = caster,
-				damage = damage * damage_bonus,
-				damage_type = self:GetAbilityDamageType(), 
-				damage_flags = 0
-		}
-		UnitDamageTarget(damage_table)
-		break
-	end
+function ability_thdots_sunny03_damage(caster,targets)
+	-- body
 end
 
 modifier_ability_thdots_sunny03_debuff = {}
@@ -292,6 +313,13 @@ end
 function modifier_ability_thdots_sunny03_debuff:OnTooltip()
 	return self:GetAbility():GetSpecialValueFor("regen_reduce")
 end
+
+modifier_ability_thdots_sunny03_sign = {}
+LinkLuaModifier("modifier_ability_thdots_sunny03_sign","scripts/vscripts/abilities/abilitysunny.lua",LUA_MODIFIER_MOTION_NONE)
+function modifier_ability_thdots_sunny03_sign:IsHidden() 		return true end
+function modifier_ability_thdots_sunny03_sign:IsPurgable()		return false end
+function modifier_ability_thdots_sunny03_sign:RemoveOnDeath() 	return true end
+function modifier_ability_thdots_sunny03_sign:IsDebuff()		return false end
 
 --------------------------------------------------------
 --激光「太阳爆发」
@@ -377,7 +405,7 @@ function modifier_ability_thdots_sunny04:OnIntervalThink()
 		false		
 	)
 	
-	orb_thinker:EmitSound("Voice_Thdots_Suika.AbilitySeija01_1")
+	orb_thinker:EmitSound("Voice_Thdots_Seija.AbilitySeija01_1")
 	ProjectileManager:CreateLinearProjectile({
 				Ability = ability,
 				EffectName = "particles/econ/items/puck/puck_alliance_set/puck_illusory_orb_aproset.vpcf",

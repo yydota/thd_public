@@ -1,11 +1,47 @@
 ability_thdots_shinki_01 = class({})
 LinkLuaModifier( "modifiery_thdots_shinki_01_debuff", "scripts/vscripts/abilities/abilityshinki.lua",LUA_MODIFIER_MOTION_NONE )
+ability_thdots_shinki_01_wanbaochui = class({})
+LinkLuaModifier( "ability_thdots_shinki_01_wanbaochui", "scripts/vscripts/abilities/abilityshinki.lua",LUA_MODIFIER_MOTION_NONE )
 
 
 function ability_thdots_shinki_01:GetAOERadius()		
 	return self:GetSpecialValueFor("radius") 
 end
 
+function ability_thdots_shinki_01:GetIntrinsicModifierName()
+	return "ability_thdots_shinki_01_wanbaochui"	
+end
+
+function ability_thdots_shinki_01_wanbaochui:IsHidden() return true end
+function ability_thdots_shinki_01_wanbaochui:DeclareFunctions()
+	return {
+		MODIFIER_EVENT_ON_ATTACK_LANDED,
+	}
+end
+
+function ability_thdots_shinki_01_wanbaochui:OnAttackLanded(keys)
+	if not IsServer() then return end
+	if keys.attacker == self:GetCaster() and keys.attacker:GetTeamNumber() ~= keys.target:GetTeamNumber() and not keys.target:IsBuilding() then
+		local caster = keys.attacker
+		local target = keys.target
+		local ability = self:GetAbility()
+		local duration = ability:GetSpecialValueFor("duration")
+		local int_bonus = ability:GetSpecialValueFor("int_bonus")
+		if caster:HasModifier("modifiery_thdots_shinki_02_buff") and caster:HasModifier("modifier_item_wanbaochui") and caster:IsRealHero() then
+			local damage_table=
+			{
+				victim=target,
+				attacker=caster,
+				damage          = ability:GetSpecialValueFor("damage") + (caster:GetIntellect()*int_bonus) +(caster:GetMaxHealth() * (ability:GetSpecialValueFor("percentage")/100)) ,
+				damage_type     = ability:GetAbilityDamageType(),
+				damage_flags    = ability:GetAbilityTargetFlags(),
+				ability= ability
+			}
+			UnitDamageTarget(damage_table)	
+			target:AddNewModifier(caster, ability, "modifiery_thdots_shinki_01_debuff", {duration = duration})
+		end
+	end
+end
 
 function ability_thdots_shinki_01:OnSpellStart()
     if not IsServer() then return end
@@ -25,29 +61,29 @@ function ability_thdots_shinki_01:OnSpellStart()
 
 	for _,unit in pairs(enemy) do
 		if  caster:HasModifier("modifiery_thdots_shinki_02_buff")		then
-		local damage_table=
-		{
-			victim=unit,
-			attacker=caster,
-			damage          = self:GetSpecialValueFor("damage") + (caster:GetIntellect()*int_bonus) +(caster:GetMaxHealth() * (self:GetSpecialValueFor("percentage")/100)) ,
-			damage_type     = self:GetAbilityDamageType(),
-			damage_flags    = self:GetAbilityTargetFlags(),
-			ability= ability
-		}
-		UnitDamageTarget(damage_table)	
-		unit:AddNewModifier(caster, self, "modifiery_thdots_shinki_01_debuff", {duration = duration})
-	else
-		local damage_table=
-		{
-			victim=unit,
-			attacker=caster,
-			damage          = self:GetSpecialValueFor("damage") + (caster:GetIntellect()*int_bonus),
-			damage_type     = self:GetAbilityDamageType(),
-			damage_flags    = self:GetAbilityTargetFlags(),
-			ability= ability
-		}
-		UnitDamageTarget(damage_table)	
-		unit:AddNewModifier(caster, self, "modifiery_thdots_shinki_01_debuff", {duration = duration})
+			unit:AddNewModifier(caster, self, "modifiery_thdots_shinki_01_debuff", {duration = duration})
+			local damage_table=
+			{
+				victim=unit,
+				attacker=caster,
+				damage          = self:GetSpecialValueFor("damage") + (caster:GetIntellect()*int_bonus) +(caster:GetMaxHealth() * (self:GetSpecialValueFor("percentage")/100)) ,
+				damage_type     = self:GetAbilityDamageType(),
+				damage_flags    = self:GetAbilityTargetFlags(),
+				ability= ability
+			}
+			UnitDamageTarget(damage_table)	
+		else
+			unit:AddNewModifier(caster, self, "modifiery_thdots_shinki_01_debuff", {duration = duration})
+			local damage_table=
+			{
+				victim=unit,
+				attacker=caster,
+				damage          = self:GetSpecialValueFor("damage") + (caster:GetIntellect()*int_bonus),
+				damage_type     = self:GetAbilityDamageType(),
+				damage_flags    = self:GetAbilityTargetFlags(),
+				ability= ability
+			}
+			UnitDamageTarget(damage_table)	
 		end
 	end
 end
@@ -141,7 +177,8 @@ function modifiery_thdots_shinki_02_buff:IsDebuff()        return false end
 function modifiery_thdots_shinki_02_buff:DeclareFunctions()
 	local funcs = {
 		MODIFIER_PROPERTY_HEALTH_BONUS,
-		MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT,
+		MODIFIER_PROPERTY_ATTACK_RANGE_BONUS,
 	}
 	return funcs
 end
@@ -150,15 +187,32 @@ function modifiery_thdots_shinki_02_buff:GetModifierHealthBonus ()
 	return self:GetAbility():GetSpecialValueFor( "02_healthbonus" )
 end
 
+
+function modifiery_thdots_shinki_02_buff:GetModifierAttackRangeBonus ()
+	if self:GetParent():IsRangedAttacker() then
+		return self:GetStackCount()
+	else
+		return 0
+	end
+end
+
 function modifiery_thdots_shinki_02_buff:GetModifierMoveSpeedBonus_Constant () 	
 	return self:GetAbility():GetSpecialValueFor( "02_movespeed" )
 end
 
+function modifiery_thdots_shinki_02_buff:GetAuraRadius() return self:GetAbility():GetSpecialValueFor("02_radius") end -- global
+function modifiery_thdots_shinki_02_buff:GetAuraSearchFlags() return DOTA_UNIT_TARGET_FLAG_NONE end
+function modifiery_thdots_shinki_02_buff:GetAuraSearchTeam() return DOTA_UNIT_TARGET_TEAM_ENEMY end
+function modifiery_thdots_shinki_02_buff:GetAuraSearchType() return DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_CREEP end
+function modifiery_thdots_shinki_02_buff:GetModifierAura() return "modifiery_thdots_shinki_02_debuff" end
+function modifiery_thdots_shinki_02_buff:IsAura() return true end
 function modifiery_thdots_shinki_02_buff:OnCreated(keys)
 	if not IsServer() then return end
 	local 	ability = self:GetAbility()
 	local	caster  = ability:GetCaster()
-	
+	if FindTelentValue(caster,"special_bonus_unique_shinki_1") ~= 0 then
+		self:SetStackCount(FindTelentValue(caster,"special_bonus_unique_shinki_1"))
+	end
 	-- self.Metamorphosis= ParticleManager:CreateParticle("particles/econ/items/terrorblade/terrorblade_back_ti8/terrorblade_back_ambient_ti8.vpcf", PATTACH_ROOTBONE_FOLLOW, caster)
 	-- ParticleManager:SetParticleControlEnt(self.Metamorphosis, 0, caster, PATTACH_ROOTBONE_FOLLOW, "follow_rootbone", caster:GetAbsOrigin(), true)
 	-- ParticleManager:SetParticleControlEnt(self.Metamorphosis, 1, caster, PATTACH_ROOTBONE_FOLLOW, "follow_rootbone", caster:GetAbsOrigin(), true)
@@ -166,39 +220,41 @@ function modifiery_thdots_shinki_02_buff:OnCreated(keys)
 
 	local pfx_caster = ParticleManager:CreateParticle("particles/units/heroes/heroes_underlord/abbysal_underlord_darkrift_ambient.vpcf", PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
 	ParticleManager:SetParticleControlEnt(pfx_caster, 2, self:GetParent(), PATTACH_ABSORIGIN_FOLLOW, nil, self:GetParent():GetAbsOrigin(), true)
-	ParticleManager:SetParticleControl(pfx_caster, 1, Vector(0, 0, 0))
+	ParticleManager:SetParticleControl(pfx_caster, 1, Vector(self:GetAbility():GetSpecialValueFor("02_radius"), 0, 0))
+	ParticleManager:SetParticleControl(pfx_caster, 60, Vector(132,0,240))
+	ParticleManager:SetParticleControl(pfx_caster, 61, Vector(1,0,0))
 	self:AddParticle(pfx_caster, false, false, 15, false, false)
 
-	self:StartIntervalThink(0.03)
+	-- self:StartIntervalThink(0.03)
 end
 
-function modifiery_thdots_shinki_02_buff:OnIntervalThink()
-	if not IsServer() then return end
+-- function modifiery_thdots_shinki_02_buff:OnIntervalThink()
+-- 	if not IsServer() then return end
 
-	local 	ability = self:GetAbility()
-	local	caster  = ability:GetCaster()
-	local   radius 	= ability:GetSpecialValueFor("02_radius")
-	local	duration = ability:GetSpecialValueFor( "02_debuff_duration" )
-	local 	enemy 	= FindUnitsInRadius(caster:GetTeam(),
-			caster:GetAbsOrigin(),
-			nil,
-			radius,
-			DOTA_UNIT_TARGET_TEAM_ENEMY,
-			DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_CREEP,
-			DOTA_UNIT_TARGET_FLAG_NONE,
-			FIND_ANY_ORDER,
-			false)
+-- 	local 	ability = self:GetAbility()
+-- 	local	caster  = ability:GetCaster()
+-- 	local   radius 	= ability:GetSpecialValueFor("02_radius")
+-- 	local	duration = ability:GetSpecialValueFor( "02_debuff_duration" )
+-- 	local 	enemy 	= FindUnitsInRadius(caster:GetTeam(),
+-- 			caster:GetAbsOrigin(),
+-- 			nil,
+-- 			radius,
+-- 			DOTA_UNIT_TARGET_TEAM_ENEMY,
+-- 			DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_CREEP,
+-- 			DOTA_UNIT_TARGET_FLAG_NONE,
+-- 			FIND_ANY_ORDER,
+-- 			false)
 		
-	for _,unit in pairs(enemy) do
-		if not unit:HasModifier("modifiery_thdots_shinki_02_debuff")	then
-		unit:AddNewModifier(caster,ability,"modifiery_thdots_shinki_02_debuff",{duration = duration})
+-- 	for _,unit in pairs(enemy) do
+-- 		if not unit:HasModifier("modifiery_thdots_shinki_02_debuff")	then
+-- 		unit:AddNewModifier(caster,ability,"modifiery_thdots_shinki_02_debuff",{duration = duration})
 		
-		end
-	end
-	-- self.Metamorphosis= ParticleManager:CreateParticle("particles/econ/items/terrorblade/terrorblade_back_ti8/terrorblade_back_ambient_ti8.vpcf", PATTACH_ROOTBONE_FOLLOW, caster)
-	-- ParticleManager:SetParticleControlEnt(self.Metamorphosis, 0, caster, PATTACH_ROOTBONE_FOLLOW, "follow_rootbone", caster:GetAbsOrigin(), true)
-	-- ParticleManager:SetParticleControlEnt(self.Metamorphosis, 1, caster, PATTACH_ROOTBONE_FOLLOW, "follow_rootbone", caster:GetAbsOrigin(), true)
-end
+-- 		end
+-- 	end
+-- 	-- self.Metamorphosis= ParticleManager:CreateParticle("particles/econ/items/terrorblade/terrorblade_back_ti8/terrorblade_back_ambient_ti8.vpcf", PATTACH_ROOTBONE_FOLLOW, caster)
+-- 	-- ParticleManager:SetParticleControlEnt(self.Metamorphosis, 0, caster, PATTACH_ROOTBONE_FOLLOW, "follow_rootbone", caster:GetAbsOrigin(), true)
+-- 	-- ParticleManager:SetParticleControlEnt(self.Metamorphosis, 1, caster, PATTACH_ROOTBONE_FOLLOW, "follow_rootbone", caster:GetAbsOrigin(), true)
+-- end
 
 function modifiery_thdots_shinki_02_buff:OnDestroy()
     if not IsServer() then return end
@@ -244,7 +300,25 @@ ability_thdots_shinki_03 = class({})
 
 LinkLuaModifier("modifier_thdots_shinki_thinker", "scripts/vscripts/abilities/abilityshinki.lua", LUA_MODIFIER_MOTION_NONE)
 LinkLuaModifier("modifier_thdots_shinki_attackslow", "scripts/vscripts/abilities/abilityshinki.lua", LUA_MODIFIER_MOTION_NONE)
-function ability_thdots_shinki_03:GetAOERadius()			return self:GetSpecialValueFor("03_radius") end
+modifier_thdots_shinki_talent_range = {}
+LinkLuaModifier("modifier_thdots_shinki_talent_range", "scripts/vscripts/abilities/abilityshinki.lua", LUA_MODIFIER_MOTION_NONE)
+function modifier_thdots_shinki_talent_range:IsHidden() 		return false end
+
+function ability_thdots_shinki_03:GetAOERadius()
+	if self:GetCaster():HasModifier("modifier_thdots_shinki_talent_range") then
+		return self:GetSpecialValueFor("03_radius") + 500
+	else
+		return self:GetSpecialValueFor("03_radius")
+	end
+end
+
+function ability_thdots_shinki_03:GetCastRange(location, target)
+	if self:GetCaster():HasModifier("modifier_thdots_shinki_talent_range") then
+		return self:GetSpecialValueFor("03_radius") + 500
+	else
+		return self.BaseClass.GetCastRange(self, location, target)
+	end
+end
 
 function ability_thdots_shinki_03:OnAbilityPhaseStart()
 	local pos = self:GetCursorPosition()
@@ -252,7 +326,7 @@ function ability_thdots_shinki_03:OnAbilityPhaseStart()
 	caster:EmitSound("Hero_AbyssalUnderlord.Firestorm.Start")
 	self.pfx = ParticleManager:CreateParticle("particles/units/heroes/heroes_underlord/underlord_firestorm_pre.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(self.pfx, 0, pos)
-	ParticleManager:SetParticleControl(self.pfx, 1, Vector(self:GetSpecialValueFor("03_radius"), 1, 1))
+	ParticleManager:SetParticleControl(self.pfx, 1, Vector(self:GetSpecialValueFor("03_radius")+FindTelentValue(caster,"special_bonus_unique_shinki_2"), 1, 1))
 	return true
 end
 
@@ -271,6 +345,9 @@ function ability_thdots_shinki_03:OnSpellStart()
 	local pos = self:GetCursorPosition()
 	caster:EmitSound("Hero_AbyssalUnderlord.Firestorm.Cast")
 	CreateModifierThinker(caster, self, "modifier_thdots_shinki_thinker", {}, pos, caster:GetTeamNumber(), false)
+	if FindTelentValue(caster,"special_bonus_unique_shinki_2") ~= 0 then
+		caster:AddNewModifier(caster, self, "modifier_thdots_shinki_talent_range",{})
+	end
 end
 
 modifier_thdots_shinki_thinker = class({})
@@ -294,13 +371,32 @@ function modifier_thdots_shinki_thinker:OnIntervalThink()
 	local caster = self:GetCaster()
 	local thinker = self:GetParent()
 	local ability = self:GetAbility()
+	local radius = ability:GetSpecialValueFor("03_radius") + FindTelentValue(caster,"special_bonus_unique_shinki_2")
+	local particle_radius = radius + 200
 	thinker:EmitSound("Hero_AbyssalUnderlord.Firestorm")
 	local pfx = ParticleManager:CreateParticle("particles/units/heroes/heroes_underlord/abyssal_underlord_firestorm_wave.vpcf", PATTACH_CUSTOMORIGIN, nil)
 	ParticleManager:SetParticleControl(pfx, 0, thinker:GetAbsOrigin())
-	ParticleManager:SetParticleControl(pfx, 4, Vector(ability:GetSpecialValueFor("03_radius"), 1, 1))
+	ParticleManager:SetParticleControl(pfx, 4, Vector(particle_radius, 1, 1))
 	ParticleManager:SetParticleControl(pfx, 5, Vector(0, 0, 0))
 	ParticleManager:ReleaseParticleIndex(pfx)
-	local enemy = FindUnitsInRadius(caster:GetTeamNumber(), thinker:GetAbsOrigin(), nil, ability:GetSpecialValueFor("03_radius"), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
+	local pfx_2 = ParticleManager:CreateParticle("particles/units/heroes/heroes_underlord/abyssal_underlord_firestorm_wave.vpcf", PATTACH_CUSTOMORIGIN, nil)
+	ParticleManager:SetParticleControl(pfx_2, 0, thinker:GetAbsOrigin())
+	ParticleManager:SetParticleControl(pfx_2, 4, Vector(particle_radius, 1, 1))
+	ParticleManager:SetParticleControl(pfx_2, 5, Vector(0, 0, 0))
+	ParticleManager:ReleaseParticleIndex(pfx_2)
+	if FindTelentValue(caster,"special_bonus_unique_shinki_2") ~= 0 then
+		local pfx_3 = ParticleManager:CreateParticle("particles/units/heroes/heroes_underlord/abyssal_underlord_firestorm_wave.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		ParticleManager:SetParticleControl(pfx_3, 0, thinker:GetAbsOrigin())
+		ParticleManager:SetParticleControl(pfx_3, 4, Vector(particle_radius, 1, 1))
+		ParticleManager:SetParticleControl(pfx_3, 5, Vector(0, 0, 0))
+		ParticleManager:ReleaseParticleIndex(pfx_3)
+		local pfx_4 = ParticleManager:CreateParticle("particles/units/heroes/heroes_underlord/abyssal_underlord_firestorm_wave.vpcf", PATTACH_CUSTOMORIGIN, nil)
+		ParticleManager:SetParticleControl(pfx_4, 0, thinker:GetAbsOrigin())
+		ParticleManager:SetParticleControl(pfx_4, 4, Vector(particle_radius, 1, 1))
+		ParticleManager:SetParticleControl(pfx_4, 5, Vector(0, 0, 0))
+		ParticleManager:ReleaseParticleIndex(pfx_4)
+	end
+	local enemy = FindUnitsInRadius(caster:GetTeamNumber(), thinker:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_BUILDING, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false)
 	local dmg = ability:GetSpecialValueFor("wave_damage")
 	for i=1, #enemy do
 		enemy[i]:EmitSound("Hero_AbyssalUnderlord.Firestorm.Target")
@@ -338,6 +434,24 @@ function modifier_thdots_shinki_attackslow:GetModifierAttackSpeedBonus_Constant(
 	return self:GetAbility():GetSpecialValueFor( "attackslow" )
 end
 
+function modifier_thdots_shinki_attackslow:OnCreated()
+	if not IsServer() then return end
+	self:StartIntervalThink(1)
+end
+
+function modifier_thdots_shinki_attackslow:OnIntervalThink()
+	if not IsServer() then return end
+	local caster = self:GetCaster()
+	local target = self:GetParent()
+	local damage = target:GetMaxHealth() * self:GetAbility():GetSpecialValueFor("damage_percent") / 100
+	local damage_table = {victim = target, attacker = caster, damage = damage, damage_type = self:GetAbility():GetAbilityDamageType()}
+	if target:IsBuilding() then 
+		damage_table.damage = 0
+	end
+	print(damage)
+	UnitDamageTarget(damage_table)
+end
+
 
 
 ability_thdots_shinki_ultimate = class ({})
@@ -362,6 +476,11 @@ function ability_thdots_shinki_ultimate:OnSpellStart()
 			self.illusion = create_illusion(self,self.target:GetAbsOrigin(),incoming_damage,outgoing_damage,duration)
 			self.illusion:AddNewModifier(self.caster, self, "modifier_ability_thdots_shinki_ultimate", {})	
 			FindClearSpaceForUnit(self.illusion,self.illusion:GetOrigin(),true)
+			if self.caster:HasModifier("modifiery_thdots_shinki_02_buff") and FindTelentValue(self.caster,"special_bonus_unique_shinki_3") ~= 0 then
+				local buff_duration = self.caster:FindModifierByName("modifiery_thdots_shinki_02_buff"):GetRemainingTime()
+				local buff_ability = self.caster:FindAbilityByName("ability_thdots_shinki_02")
+				self.illusion:AddNewModifier(self.caster,buff_ability, "modifiery_thdots_shinki_02_buff", {duration = buff_duration})	
+			end
 		end,
 	0.03)
 end

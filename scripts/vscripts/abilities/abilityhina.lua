@@ -749,7 +749,7 @@ end
 -- function modifier_ability_thdots_hina04:OnDeath(keys)
 -- 	if not IsServer() then return end
 -- 	if keys.unit == self:GetParent() then
--- 		local caster = self.GetParent()
+-- 		local caster = self:GetParent()
 -- 		ParticleManager:DestroyParticle(self.particle, false)
 -- 		ParticleManager:ReleaseParticleIndex(self.particle)
 -- 		self.dummy = CreateUnitByName("npc_dummy_unit", 

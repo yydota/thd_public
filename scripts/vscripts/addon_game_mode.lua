@@ -520,6 +520,11 @@ function THDOTSGameMode:OnPlayerSay( keys )
 		THD_RANK(plyid,plyhd)
 	elseif text == "ruozhitaidao" then --gtmdtd(这里是大鸽加的, 而且本来是空的)
 		HostSay("gtmdtd")  --这个是我加的 XD
+		GameRules:SendCustomMessage("<font color='#00FFFF'>teamnumber is:</font>"..plyhd:GetTeamNumber(), 0, 0)
+		GameRules:SendCustomMessage("<font color='#00FFFF'>teamnumber is:</font>"..plyid:GetTeamNumber(), 0, 0)
+		if GetMapName() ~= "1_thdots_map" then
+			AddFOWViewer(plyhd:GetTeamNumber(),Vector(0,0,0),4000,5,false)
+		end
 	elseif text == "-zisha" then --影狼BUG自杀指令
 		local hero = plyhd:GetAssignedHero()
 		local time = RandomInt(20, 40)
@@ -531,6 +536,33 @@ function THDOTSGameMode:OnPlayerSay( keys )
 				hero:ForceKill(true)
 			end,
 			time)
+		end
+	elseif text == "-reisen2w" then --
+		local hero = plyhd:GetAssignedHero()
+		if hero:GetName() == "npc_dota_hero_phantom_lancer" then
+			hero:SetMaterialGroup("1")
+			hero.Reisen2_IsBlack = false
+		end
+	elseif text == "-reisen2b" then --
+		local hero = plyhd:GetAssignedHero()
+		if hero:GetName() == "npc_dota_hero_phantom_lancer" then
+			hero:SetMaterialGroup("0")
+			hero.Reisen2_IsBlack = true
+		end
+	elseif text == "-flandre01" then --
+		local hero = plyhd:GetAssignedHero()
+		if hero:GetName() == "npc_dota_hero_naga_siren" and hero:GetModelName() == "models/flandre_scarlet/flandre_scarlet.vmdl" then
+			hero:SetMaterialGroup("0")
+			ParticleManager:DestroyParticleSystem(hero.Flandre_effect,true)
+		end
+	elseif text == "-flandre02" then --
+		local hero = plyhd:GetAssignedHero()
+		if hero:GetName() == "npc_dota_hero_naga_siren" and hero:GetModelName() == "models/flandre_scarlet/flandre_scarlet.vmdl" then
+			hero:SetMaterialGroup("1")
+			hero.Flandre_effect = ParticleManager:CreateParticle("models/flandre_scarlet/flandre_scarlet/flandre_ambient.vpcf", PATTACH_CUSTOMORIGIN,hero)
+			ParticleManager:SetParticleControlEnt(hero.Flandre_effect , 0, hero, 5, "attach_hitloc", Vector(0,0,0), true)
+			ParticleManager:SetParticleControlEnt(hero.Flandre_effect , 1, hero, 5, "attach_hitloc", Vector(0,0,0), true)
+			ParticleManager:SetParticleControlEnt(hero.Flandre_effect , 5, hero, 5, "attach_hitloc", Vector(0,0,0), true)
 		end
 	end
 	
@@ -757,6 +789,10 @@ function THDOTSGameMode:OnEntityKilled( keys )
 	local killedUnit = EntIndexToHScript( keys.entindex_killed )
 	-- 储存杀手单位
 	local killerEntity = EntIndexToHScript( keys.entindex_attacker )
+
+	if killerEntity and killerEntity:GetTeam() == DOTA_TEAM_BADGUYS then--修复夜魇人头数量显示-1BUG
+        CustomGameEventManager:Send_ServerToAllClients('SetTopBarDireScore',{value = PlayerResource:GetTeamKills(DOTA_TEAM_BADGUYS)})
+    end
 
 	if killedUnit:IsHero() and not killedUnit.HasAegis and not killedUnit:IsIllusion() then --判断有无不朽盾，并BIU
  		killedUnit:EmitSound("THD_BIU")
@@ -1205,6 +1241,9 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 	elseif (heroName == "npc_dota_hero_void_spirit") then
 		abilityEx = hero:FindAbilityByName("ability_thdots_keineEx")
 		abilityEx:SetLevel(1)
+	elseif (heroName == "npc_dota_hero_winter_wyvern") then
+		abilityEx = hero:FindAbilityByName("ability_thdots_lettyEx")
+		abilityEx:SetLevel(1)
 	end
 end
 
@@ -1354,7 +1393,7 @@ function THDOTSGameMode:OnGameRulesStateChange(keys)
 	print(newState)
 	
 	if newState == 7 then
-		
+		AddObViews() --添加未分配玩家的观战视野
 		G_Player_sighted = {}
 		
 		GameRules:GetGameModeEntity():SetContextThink( "observe sight", function ( ... )

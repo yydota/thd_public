@@ -211,7 +211,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"berserker_call_duration"	"1.6 2.0 2.4"
+				"berserker_call_duration"	"1"
 			}
 			"02"
 			{

@@ -3,6 +3,10 @@
 --------------------------------------------------------
 ability_thdots_daiyouseiEx = {}
 
+function ability_thdots_daiyouseiEx:GetCastRange(vLocation, hTarget)
+	return self:GetSpecialValueFor("aura_radius")
+end
+
 function ability_thdots_daiyouseiEx:GetIntrinsicModifierName()
 	return "modifier_ability_thdots_daiyouseiEx_passive"
 end
@@ -39,14 +43,16 @@ function modifier_ability_thdots_daiyouseiEx_passive:GetBonusNightVision()
 end
 function modifier_ability_thdots_daiyouseiEx_passive:OnAbilityFullyCast(keys)
 	if not IsServer() then return end
-	if keys.unit:GetTeam() == self:GetParent():GetTeam() and keys.unit:IsRealHero() then
+	if keys.unit:GetTeam() == self:GetParent():GetTeam() and keys.unit:IsRealHero() and not keys.ability:IsItem() 
+		and (keys.unit:GetOrigin()-self:GetParent():GetOrigin()):Length2D() <= self:GetAbility():GetSpecialValueFor("aura_radius") then
 		self:SetStackCount(1)
 	end
 end
 
 function modifier_ability_thdots_daiyouseiEx_passive:OnAttackLanded(keys)
 	if not IsServer() then return end
-	if keys.attacker == self:GetParent() and self:GetStackCount() == 1 then
+	if keys.attacker == self:GetParent() and self:GetStackCount() == 1 and keys.attacker:GetTeamNumber() ~= keys.target:GetTeamNumber() 
+		and not keys.target:IsBuilding() then
 		print("attack")
 		self:SetStackCount(0)
 		local damage = keys.attacker:GetAverageTrueAttackDamage(keys.attacker) - keys.target:GetAverageTrueAttackDamage(keys.target)
@@ -172,6 +178,7 @@ function ability_thdots_daiyousei01:OnSpellStart()
 		THDReduceCooldown(self,-self:GetCooldown(self:GetLevel() - 1) * 0.5)
 	end
 
+	if target:GetName() == "" then return end
 	--暴击参数
 	local item = nil
 	self.crit_mult = 100
@@ -520,31 +527,18 @@ function modifier_ability_thdots_daiyousei04_invis:GetStatusEffectName()
 	return "particles/status_fx/status_effect_slark_shadow_dance.vpcf"
 end
 
-
-function modifier_ability_thdots_daiyousei04_invis:DeclareFunctions()
-	return {
-		MODIFIER_PROPERTY_INVISIBILITY_LEVEL,
-		MODIFIER_PROPERTY_TRANSLATE_ACTIVITY_MODIFIERS
-	}
-end
-
 function modifier_ability_thdots_daiyousei04_invis:CheckState()
 	return {
 		[MODIFIER_STATE_INVISIBLE]				= true,
 		[MODIFIER_STATE_TRUESIGHT_IMMUNE]		= true,
 		[MODIFIER_STATE_NO_HEALTH_BAR]			= true,
 		[MODIFIER_STATE_NO_UNIT_COLLISION]		= true,
-		[MODIFIER_STATE_INVULNERABLE]			= true,
+		-- [MODIFIER_STATE_INVULNERABLE]			= true,
 		[MODIFIER_STATE_LOW_ATTACK_PRIORITY]	= true,
 		[MODIFIER_STATE_UNSELECTABLE]			= true,
 		[MODIFIER_STATE_UNTARGETABLE]			= true,
 		[MODIFIER_STATE_NOT_ON_MINIMAP]			= true
 	}
-end
-
-
-function modifier_ability_thdots_daiyousei04_invis:GetModifierInvisibilityLevel() --没用的level，会被显影之尘看到
-	return 1
 end
 
 function modifier_ability_thdots_daiyousei04_invis:OnCreated()

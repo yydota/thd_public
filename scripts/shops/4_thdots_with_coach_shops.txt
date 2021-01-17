@@ -107,6 +107,7 @@
 	{
 		"item"		"item_present_box"
 		"item"		"item_lifu"
+		"item"		"item_harvest_cradle"
 		"item"		"item_yatagarasu"
 		"item"		"item_yueyaomishi"
 		"item"		"item_doctor_doll"
@@ -167,6 +168,7 @@
 		"item"		"item_xuenvdeweijin"
 		"item"		"item_guilty_mask"
 		"item"		"item_zun_glasses"
+		"item"		"item_third_eyes"
 		"item"		"item_hakurei_amulet"
 		"item"		"item_peach"
 		"item"		"item_phoenix_wing"

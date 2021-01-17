@@ -22,12 +22,13 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"duration"	"10 12 14 16"
+				"duration"	"20 25 30 35"
 			}
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"movement_speed"	"5 10 15 20"
+				"movement_speed"	"15 20 25 30"
+				"LinkedSpecialBonus"	"special_bonus_unique_sunny_1"
 			}
 		}
 	}
@@ -123,6 +124,12 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"radius"	"500"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"num"	"1"
+				"LinkedSpecialBonus"	"special_bonus_unique_sunny_2"
 			}
 		}
 	}
@@ -240,6 +247,34 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"duration"	"40"
+			}
+		}
+	}
+	"special_bonus_unique_sunny_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"30"
+			}
+		}
+	}
+	"special_bonus_unique_sunny_2"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"2"
 			}
 		}
 	}

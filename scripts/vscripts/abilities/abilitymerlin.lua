@@ -25,7 +25,6 @@ function Merlin01( keys )
 	local effectIndex = ParticleManager:CreateParticle("particles/thd2/heroes/merlin/merlin01.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW,target)
 	-- ParticleManager:SetParticleControl(effectIndex, 0, target:GetOrigin())		
 	ParticleManager:DestroyParticleSystemTime(effectIndex,keys.duration)
-
 	if target:IsHero() then
 		local damage_table = {
 			ability = keys.ability,
@@ -37,6 +36,8 @@ function Merlin01( keys )
 			}
 		UnitDamageTarget(damage_table) 
 		target:SetForceAttackTarget(caster)
+	elseif target:IsNeutralUnitType() and target:GetTeamNumber() == DOTA_TEAM_NEUTRALS then
+		target:Kill(keys.ability,caster)
 	else
 		local damage_table = {
 			ability = keys.ability,

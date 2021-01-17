@@ -3,7 +3,7 @@ abilityhatate = class({})
 
 function Hatate01OnSpellStart( keys )
 	local caster = keys.caster
-	THDReduceCooldown(keys.ability,FindTelentValue(caster,"special_bonus_unique_vengeful_spirit_2"))
+	-- THDReduceCooldown(keys.ability,FindTelentValue(caster,"special_bonus_unique_vengeful_spirit_2"))
 	local targetPoint = keys.target_points[1]
 	local vecCaster = caster:GetOrigin()
 	local maxRange = keys.range + FindTelentValue(caster,"special_bonus_unique_vengeful_spirit_1") + caster:GetCastRangeBonus()

@@ -133,6 +133,7 @@
 		"item"		"item_three_dimension"
 		"item"		"item_yuri"
 		"item"		"item_rocket"
+		"item"		"item_third_eye"
 		"item"		"item_moon_bow"
 		"item"		"item_yukkuri_stick"
 		"item"		"item_nuclear_stick"

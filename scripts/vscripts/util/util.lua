@@ -276,3 +276,14 @@ function GetAllAbilityName(caster)
      end
     print("---------------end------------")
 end
+
+function IsTHDReflect(target) --THD的反弹伤害BUG
+    if target:HasModifier("modifier_thdots_medicine03_OnTakeDamage") --毒人偶毒
+        or target:HasModifier("modifier_item_frock_OnTakeDamage") --毒裙
+        or target:HasModifier("OnMerlin04TakeDamage") --小号大
+        then 
+        return true
+    else
+        return false
+    end
+end

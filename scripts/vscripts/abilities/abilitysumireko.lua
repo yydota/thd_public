@@ -280,48 +280,96 @@ function ability_thdots_sumireko03:GetCastRange()
 	return self:GetSpecialValueFor("cast_range")
 end
 
-function ability_thdots_sumireko03:GetAssociatedSecondaryAbilities()	return "ability_thdots_sumireko03_release" end
-
-function ability_thdots_sumireko03:OnUpgrade()
-	if not self.release_ability then
-		self.release_ability = self:GetCaster():FindAbilityByName("ability_thdots_sumireko03_release")
-	end
-	
-	if self.release_ability and not self.release_ability:IsTrained() then
-		self.release_ability:SetLevel(1)
+function ability_thdots_sumireko03:GetAbilityTextureName()
+	if self:GetCaster():HasModifier("modifier_ability_thdots_sumireko03_release") then
+		return "custom/sumireko/ability_thdots_sumireko03"
+	else
+		return "custom/sumireko/ability_thdots_sumireko03_release"
 	end
 end
 
+function ability_thdots_sumireko03:GetCastPoint()
+	if not self:GetCaster():HasModifier("modifier_ability_thdots_sumireko03_release") then
+		return self.BaseClass.GetCastPoint(self)
+	else
+		return 0
+	end
+end
+
+function ability_thdots_sumireko03:GetManaCost(level)
+	if not self:GetCaster():HasModifier("modifier_ability_thdots_sumireko03_release") then
+		return self.BaseClass.GetManaCost(self, level)
+	else
+		return 0
+	end
+end
+
+
+function ability_thdots_sumireko03:GetBehavior()
+	if not self:GetCaster():HasModifier("modifier_ability_thdots_sumireko03_release") then
+		return self.BaseClass.GetBehavior(self)
+	else
+		return DOTA_ABILITY_BEHAVIOR_IMMEDIATE + DOTA_ABILITY_BEHAVIOR_POINT
+	end
+end
+
+-- function ability_thdots_sumireko03:GetAssociatedSecondaryAbilities()	return "ability_thdots_sumireko03_release" end
+
+-- function ability_thdots_sumireko03:OnUpgrade()
+-- 	if not self.release_ability then
+-- 		self.release_ability = self:GetCaster():FindAbilityByName("ability_thdots_sumireko03_release")
+-- 	end
+	
+-- 	if self.release_ability and not self.release_ability:IsTrained() then
+-- 		self.release_ability:SetLevel(1)
+-- 	end
+-- end
+
 function ability_thdots_sumireko03:OnSpellStart()
 	if not IsServer() then return end
-	self.caster 						= self:GetCaster()
-	self.delay_time 					= self:GetSpecialValueFor("delay_time")
-	self.length 						= self:GetSpecialValueFor("length")
-	local position = self:GetCursorPosition()
-	self.telekinesis = CreateUnitByName("npc_ability_sumireko03_telekinesis", 
-			position,
-			false,
-			self.caster,
-			self.caster,
-			self.caster:GetTeam()
-		)
-	if self.telekinesis:FindAbilityByName("ability_dummy_unit") ~= nil then
-		self.telekinesis:FindAbilityByName("ability_dummy_unit"):SetLevel(1)
+	if not self:GetCaster():HasModifier("modifier_ability_thdots_sumireko03_release") then
+		self.caster 						= self:GetCaster()
+		self.delay_time 					= self:GetSpecialValueFor("delay_time")
+		self.length 						= self:GetSpecialValueFor("length")
+		local position = self:GetCursorPosition()
+		self.telekinesis = CreateUnitByName("npc_ability_sumireko03_telekinesis", 
+				position,
+				false,
+				self.caster,
+				self.caster,
+				self.caster:GetTeam()
+			)
+		if self.telekinesis:FindAbilityByName("ability_dummy_unit") ~= nil then
+			self.telekinesis:FindAbilityByName("ability_dummy_unit"):SetLevel(1)
+		end
+		--获取砸的方向
+		self.telekinesis:SetForwardVector((self:GetCursorPosition() - self.caster:GetOrigin()):Normalized())
+		self.sumireko03_position = self.telekinesis:GetOrigin() + (self.telekinesis:GetOrigin() - self.caster:GetOrigin()):Normalized() * self.length
+		print("1")
+		-- if not self.release_ability then
+		-- 	self.release_ability = self:GetCaster():FindAbilityByName("ability_thdots_sumireko03_release")
+		-- 	print("2")
+		-- end	
+		-- if self.release_ability then
+		-- 	print("3")
+		-- 	self:GetCaster():SwapAbilities(self:GetName(), self.release_ability:GetName(), false,true)
+		-- 	self:GetCaster().IsSumireko03ChangeBack = false
+		-- end
+		self.caster:AddNewModifier(self.caster, self,"modifier_ability_thdots_sumireko03_release",{duration = 2})
+		self:EndCooldown()
+	else
+		-- if not self.sumireko03_ability then
+		-- 	self.sumireko03_ability	= self:GetCaster():FindAbilityByName("ability_thdots_sumireko03")
+		-- end
+		-- if self.sumireko03_ability then
+			-- self.sumireko03_ability.sumireko03_position	= self:GetCursorPosition()
+		-- end
+		-- self:GetCaster():SwapAbilities(self:GetName(), self.sumireko03_ability:GetName(), false, true)
+		-- self:GetCaster().IsSumireko03ChangeBack = true
+		self.sumireko03_position	= self:GetCursorPosition()
+		self:GetCaster():RemoveModifierByName("modifier_ability_thdots_sumireko03_release")
+		self:StartCooldown(self:GetCooldown(self:GetLevel()))
 	end
-	--获取砸的方向
-	self.telekinesis:SetForwardVector((self:GetCursorPosition() - self.caster:GetOrigin()):Normalized())
-	self.sumireko03_position = self.telekinesis:GetOrigin() + (self.telekinesis:GetOrigin() - self.caster:GetOrigin()):Normalized() * self.length
-	print("1")
-	if not self.release_ability then
-		self.release_ability = self:GetCaster():FindAbilityByName("ability_thdots_sumireko03_release")
-		print("2")
-	end	
-	if self.release_ability then
-		print("3")
-		self:GetCaster():SwapAbilities(self:GetName(), self.release_ability:GetName(), false,true)
-		self:GetCaster().IsSumireko03ChangeBack = false
-	end
-	self.caster:AddNewModifier(self.caster, self,"modifier_ability_thdots_sumireko03_release",{duration = 2})
 end
 --交换技能modifier
 modifier_ability_thdots_sumireko03_release = {}
@@ -334,13 +382,13 @@ function modifier_ability_thdots_sumireko03_release:IsDebuff()		return false end
 function modifier_ability_thdots_sumireko03_release:OnDestroy()
 	if not IsServer() then return end
 	local caster = self:GetCaster()
-	if not self:GetAbility().release_ability then
-		self:GetAbility().release_ability	= self:GetParent():FindAbilityByName("ability_thdots_sumireko03_release")
-	end
-	if not self:GetParent().IsSumireko03ChangeBack and self:GetAbility().release_ability ~= nil then
-		self:GetParent():SwapAbilities(self:GetAbility():GetName(), self:GetAbility().release_ability:GetName(), true,false)
-		self:GetParent().IsSumireko03ChangeBack = true
-	end
+	-- if not self:GetAbility().release_ability then
+	-- 	self:GetAbility().release_ability	= self:GetParent():FindAbilityByName("ability_thdots_sumireko03_release")
+	-- end
+	-- if not self:GetParent().IsSumireko03ChangeBack and self:GetAbility().release_ability ~= nil then
+		-- self:GetParent():SwapAbilities(self:GetAbility():GetName(), self:GetAbility().release_ability:GetName(), true,false)
+		-- self:GetParent().IsSumireko03ChangeBack = true
+	-- end
 	if caster:IsAlive() then
 		caster:AddNewModifier(caster, self:GetAbility(), "modifier_ability_thdots_sumireko03", {duration = self:GetAbility().delay_time})--倒下的时间
 	else
@@ -361,6 +409,7 @@ function modifier_ability_thdots_sumireko03:OnCreated()
 	--调方向
 	local telekinesis = self:GetAbility().telekinesis
 	if self:GetAbility().sumireko03_position ~= telekinesis:GetOrigin() then
+		self:GetAbility():StartCooldown(self:GetAbility():GetCooldown(self:GetAbility():GetLevel()))
 		telekinesis:SetForwardVector((self:GetAbility().sumireko03_position- telekinesis:GetOrigin()):Normalized())
 		local effectIndex = ParticleManager:CreateParticle("particles/econ/events/ti9/blink_dagger_ti9_start_lvl2.vpcf", PATTACH_POINT, telekinesis)
 		ParticleManager:SetParticleControl(effectIndex, 0, telekinesis:GetAbsOrigin())
@@ -368,7 +417,7 @@ function modifier_ability_thdots_sumireko03:OnCreated()
 	end
 	telekinesis:SetContextThink("telekinesis_donghua", 
 		function ()
-			telekinesis:StartGestureWithPlaybackRate(ACT_DOTA_CAST_ABILITY_1,0.6)
+			telekinesis:StartGestureWithPlaybackRate(ACT_DOTA_CAST_ABILITY_1,1)
 			telekinesis:EmitSound("Voice_Thdots_Sumireko.AbilitySumireko02_1")
 			-- telekinesis:StartGesture(ACT_DOTA_CAST_ABILITY_1)
 		-- print("do it")
@@ -385,6 +434,7 @@ function modifier_ability_thdots_sumireko03:OnDestroy()
 	self.length 						= self.ability:GetSpecialValueFor("length")
 	self.width 							= self.ability:GetSpecialValueFor("width")
 	local unit = self.ability.telekinesis
+	self.ability.telekinesis:StartGestureWithPlaybackRate(ACT_DOTA_CAST_ABILITY_2,1)
 	--position是砸下的落点
 	local position = unit:GetOrigin() + (self.ability.sumireko03_position - unit:GetOrigin()):Normalized() * self.ability.length --长度
 	local targets = FindUnitsInLine(caster:GetTeam(), unit:GetOrigin(), position, nil,100,self.ability:GetAbilityTargetTeam(),self.ability:GetAbilityTargetType(),0)
@@ -439,22 +489,22 @@ end
 
 
 --电线杆释放
-ability_thdots_sumireko03_release = {}
+-- ability_thdots_sumireko03_release = {}
 
-function ability_thdots_sumireko03_release:GetAssociatedPrimaryAbilities()	return "ability_thdots_kokoro03" end
+-- function ability_thdots_sumireko03_release:GetAssociatedPrimaryAbilities()	return "ability_thdots_kokoro03" end
 
-function ability_thdots_sumireko03_release:OnSpellStart()
-	if not IsServer() then return end
-	if not self.sumireko03_ability then
-		self.sumireko03_ability	= self:GetCaster():FindAbilityByName("ability_thdots_sumireko03")
-	end
-	if self.sumireko03_ability then
-		self.sumireko03_ability.sumireko03_position	= self:GetCursorPosition()
-	end
-	-- self:GetCaster():SwapAbilities(self:GetName(), self.sumireko03_ability:GetName(), false, true)
-	-- self:GetCaster().IsSumireko03ChangeBack = true
-	self:GetCaster():RemoveModifierByName("modifier_ability_thdots_sumireko03_release")
-end
+-- function ability_thdots_sumireko03_release:OnSpellStart()
+-- 	if not IsServer() then return end
+-- 	if not self.sumireko03_ability then
+-- 		self.sumireko03_ability	= self:GetCaster():FindAbilityByName("ability_thdots_sumireko03")
+-- 	end
+-- 	if self.sumireko03_ability then
+-- 		self.sumireko03_ability.sumireko03_position	= self:GetCursorPosition()
+-- 	end
+-- 	-- self:GetCaster():SwapAbilities(self:GetName(), self.sumireko03_ability:GetName(), false, true)
+-- 	-- self:GetCaster().IsSumireko03ChangeBack = true
+-- 	self:GetCaster():RemoveModifierByName("modifier_ability_thdots_sumireko03_release")
+-- end
 
 --------------------------------------------------------
 --＊幻视吧！目睹异世界的狂气＊
@@ -613,11 +663,11 @@ function modifier_ability_thdots_sumireko04:OnIntervalThink()
 	end
 	if num == 0 then return end
 	local damage = (self.damage + self.caster:GetIntellect() * self.int_bonus)/ num / (1/FrameTime())
+	print(damage)
+	if damage >= 99999 then --双保险，有时候num==0会把人秒了
+		return
+	end
 	for _,v in pairs(targets) do
-		--本来的伤害
-		if not v:IsRealHero() and v:GetUnitName() ~= "npc_dota_roshan" then
-			damage = damage * self.illusion_damage
-		end
 		local damage_tabel = {
 				victim 			= v,
 				damage 			= damage,
@@ -630,6 +680,10 @@ function modifier_ability_thdots_sumireko04:OnIntervalThink()
 			if not IsTHDImmune(v) then
 				UtilStun:UnitStunTarget(self.caster,v,0.5)
 			end
+		end
+		--本来的伤害
+		if not v:IsRealHero() and v:GetUnitName() ~= "npc_dota_roshan" then
+			damage_tabel.damage = damage * self.illusion_damage
 		end
 		UnitDamageTarget(damage_tabel)
 

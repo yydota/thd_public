@@ -25,6 +25,7 @@
 		"AnimationPlaybackRate"	"2.0"
 		"AbilityCooldown"	"7 6 5 4"
 		"AbilityManaCost"	"70"
+		"HasScepterUpgrade"	"1"
 		"AbilityCastRange"	"400 450 500 550"
 		"AOERadius"	"400 450 500 550"
 		"precache"
@@ -58,7 +59,7 @@
 			"05"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"percentage"	"4 6 8 10"
+				"percentage"	"2 3 4 5"
 			}
 			"06"
 			{
@@ -85,7 +86,7 @@
 		"AbilityCastPoint"	"1"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_4"
 		"AnimationPlaybackRate"	"1.5"
-		"AbilityCooldown"	"160 140 120 100"
+		"AbilityCooldown"	"150"
 		"AbilityManaCost"	"200"
 		"AbilityCastRange"	"600"
 		"AOERadius"	"600"
@@ -175,6 +176,7 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"03_radius"	"550"
+				"LinkedSpecialBonus"	"special_bonus_unique_shinki_2"
 			}
 			"02"
 			{
@@ -200,6 +202,11 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"attackslow"	"-30 -50 -70 -90"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_percent"	"1 2 3 4"
 			}
 		}
 		"SpellDispellableType"	"SPELL_DISPELLABLE_YES"
@@ -270,7 +277,35 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"value"		"300"
+				"value"		"251"
+			}
+		}
+	}
+	"special_bonus_unique_shinki_2"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"		"500"
+			}
+		}
+	}
+	"special_bonus_unique_shinki_3"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"		"1"
 			}
 		}
 	}

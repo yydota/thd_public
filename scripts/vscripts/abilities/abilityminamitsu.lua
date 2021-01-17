@@ -473,7 +473,7 @@ function OnMinamitsu04ShipDeath(keys)
 		local ability = hero:FindAbilityByName("ability_thdots_minamitsu04")
 		if ability ~= nil then
 			ability:EndCooldown()
-			ability:StartCooldown(120.0 + FindTelentValue(hero,"special_bonus_unique_kunkka"))
+			ability:StartCooldown(keys.ability:GetCooldown(keys.ability:GetLevel()-1) + FindTelentValue(hero,"special_bonus_unique_kunkka"))
 		end
 	end
 end

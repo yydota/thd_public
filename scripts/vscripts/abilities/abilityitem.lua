@@ -126,7 +126,7 @@ function ItemAbility_UFO_OnSpellStart(keys)
 		print("No")
 		return 
 	else
-		keys.ability:ApplyDataDrivenModifier(caster, caster, "modifier_item_UFO_attack_speed_bonus", {})
+		keys.ability:ApplyDataDrivenModifier(caster, target, "modifier_item_UFO_attack_speed_bonus", {})
 		if (ItemAbility:IsItem()) then
 			caster:RemoveItem(ItemAbility)
 		end	
@@ -750,8 +750,63 @@ function ItemAbility_CardGoodMan_OnSpellStart(keys)
 		ModifierName=keys.DebuffName,
 		Blockable=0
 	})
+	Caster.good_man_target = Target
 	ItemAbility_SpendItem(keys)
 end
+
+function ItemAbility_CardGoodMan_OnCreated(keys)
+	local ItemAbility = keys.ability
+	local Caster = keys.caster
+	local Target = keys.target
+	Caster.good_man_caster_modifier = Caster:AddNewModifier(Caster, ItemAbility, "modifier_item_card_good_man_kill", {duration = ItemAbility:GetSpecialValueFor("slowdown_duration")})
+end
+
+function ItemAbility_CardGoodMan_OnDestroy(keys)
+	local ItemAbility = keys.ability
+	local Caster = keys.caster
+	local Target = keys.target
+	Caster.good_man_caster_modifier:Destroy()
+end
+
+--好人卡击杀加钱机制
+modifier_item_card_good_man_kill = {}
+LinkLuaModifier("modifier_item_card_good_man_kill","scripts/vscripts/abilities/abilityItem.lua",LUA_MODIFIER_MOTION_NONE)
+function modifier_item_card_good_man_kill:IsHidden() 		return false end
+function modifier_item_card_good_man_kill:IsPurgable()		return false end
+function modifier_item_card_good_man_kill:RemoveOnDeath() 	return false end
+function modifier_item_card_good_man_kill:IsDebuff()		return false end
+
+function modifier_item_card_good_man_kill:DeclareFunctions()	
+	return {
+		MODIFIER_EVENT_ON_DEATH
+	}
+end
+
+function modifier_item_card_good_man_kill:OnDeath(keys)
+	if not IsServer() then return end
+	if keys.unit == self:GetCaster().good_man_target and keys.unit:IsRealHero() then
+		keys.unit:SetContextThink("HasAegis",
+		function()
+			if keys.unit:GetTimeUntilRespawn() > 5 then
+				local caster = self:GetCaster()
+				local PlayerID = caster:GetPlayerOwnerID()
+				local min_time = math.floor(GameRules:GetDOTATime(false, false) /60)
+				local totalgoldget = GetItemCost("item_card_good_man") + min_time * self:GetAbility():GetSpecialValueFor("min_gold")
+				print(totalgoldget)
+				PlayerResource:SetGold(PlayerID,PlayerResource:GetUnreliableGold(PlayerID) + totalgoldget,false)
+				local effectIndex = ParticleManager:CreateParticle("particles/thd2/items/item_donation_box.vpcf", PATTACH_CUSTOMORIGIN, caster)
+				ParticleManager:SetParticleControl(effectIndex, 0, caster:GetAbsOrigin())
+				ParticleManager:SetParticleControl(effectIndex, 1, caster:GetAbsOrigin())
+				ParticleManager:ReleaseParticleIndex(effectIndex)
+				caster:EmitSound("DOTA_Item.Hand_Of_Midas")
+				SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD,caster, totalgoldget, nil)
+			end
+		end
+		,
+		FrameTime())
+	end
+end
+
 function ItemAbility_CardBadMan_OnSpellStart(keys)
 	local ItemAbility = keys.ability
 	local Caster = keys.caster
@@ -929,7 +984,7 @@ function ItemAbility_Verity_OnAttack(keys)
 			--ItemAbility:StartCooldown(ItemAbility:GetCooldown(1))
 			ItemAbility:StartCooldown(GetCurrentCoolDown(ItemAbility,Caster))
 		end
-
+		Target:EmitSound("Hero_Antimage.ManaBreak")
 		local RemoveMana = Target:GetMaxMana()*keys.PenetrateRemoveManaPercent*0.01+keys.Basicremovemana
 		RemoveMana=min(RemoveMana,Target:GetMana())
 		Target:ReduceMana(RemoveMana)
@@ -1024,7 +1079,7 @@ function ItemAbility_Frock_Poison_TakeDamage(keys)
 	if Caster:GetContext("ability_yuyuko_Ex_deadflag")~=nil and keys.TakenDamage == Caster:GetMaxHealth() then
 		damage_to_deal = 0
 	end
-	if (Attacker:IsBuilding()==false) and Attacker ~= Caster and Attacker:HasModifier("modifier_item_frock_OnTakeDamage") == false then
+	if (Attacker:IsBuilding()==false) and Attacker ~= Caster and not IsTHDReflect(Attacker) then
 		if (damage_to_deal>0 and damage_to_deal<=Caster:GetMaxHealth()) then
 			local damage_table = {
 				ability = ItemAbility,
@@ -2096,6 +2151,23 @@ function ItemAbility_phoenix_wing_burn(keys)
 		damage = dealdamage,
 		damage_type = DAMAGE_TYPE_MAGICAL
 	})
+	ParticleManager:SetParticleControl(target.phoenix_wing_particle, 1, caster:GetAbsOrigin())
+end
+
+
+function ItemAbility_phoenix_wing_burn_created(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local particle_name = "particles/econ/events/ti10/radiance_ti10.vpcf"
+	target.phoenix_wing_particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, target)
+	ParticleManager:SetParticleControl(target.phoenix_wing_particle, 0, target:GetAbsOrigin())
+	ParticleManager:SetParticleControl(target.phoenix_wing_particle, 1, caster:GetAbsOrigin())
+end
+
+function ItemAbility_phoenix_wing_burn_destory(keys)
+	local target = keys.target
+	ParticleManager:DestroyParticle(target.phoenix_wing_particle, false)
+	-- ParticleManager:ReleaseParticleIndex(target.phoenix_wing_particle)
 end
 
 function OnZunGlasses_Take_Damage(keys)

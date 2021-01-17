@@ -6,7 +6,8 @@ function OnMinoriko01ProjectileHitUnit(keys)
 			return 
 		end
 	end
-
+	print(caster:GetPlayerOwner())
+	print(target:GetPlayerOwner())
 	if caster:GetTeam() ~= target:GetTeam() then
 		local exdamage=target:GetMaxHealth()*keys.heal_percent/100
 
@@ -47,6 +48,56 @@ function OnMinoriko01ProjectileHitUnit(keys)
 		ParticleManager:SetParticleControl(effectIndex , 0, target:GetOrigin())
 		ParticleManager:SetParticleControl(effectIndex , 1, target:GetOrigin())
 		
+	elseif target:GetUnitName() == "npc_thdots_unit_minoriko02_box" and caster:GetPlayerOwner() == target:GetPlayerOwner() and caster:FindAbilityByName("ability_thdots_minoriko02") ~= nil then --砸车
+		local minoriko02 = caster:FindAbilityByName("ability_thdots_minoriko02")
+		local box_damage = minoriko02:GetSpecialValueFor("heal_amount")
+		local minoriko02_radius = minoriko02:GetSpecialValueFor("aura_radius")
+		local minoriko01_box_particle = "particles/econ/items/lina/lina_ti7/lina_spell_light_strike_array_ti7_gold.vpcf"
+		local minoriko01_box_particle_fx = ParticleManager:CreateParticle(minoriko01_box_particle, PATTACH_ABSORIGIN,target)
+		ParticleManager:SetParticleControl(minoriko01_box_particle_fx, 0,target:GetAbsOrigin())
+		ParticleManager:SetParticleControl(minoriko01_box_particle_fx, 1, Vector(minoriko02_radius,1,1))
+		ParticleManager:ReleaseParticleIndex(minoriko01_box_particle_fx)
+		--对周围敌方造成伤害
+		local damage_targets = FindUnitsInRadius(
+				   caster:GetTeam(),		
+				   target:GetOrigin(),	
+				   nil,					
+				   minoriko02_radius,		
+				   DOTA_UNIT_TARGET_TEAM_ENEMY,
+				   keys.ability:GetAbilityTargetType(),
+				   0,
+				   FIND_CLOSEST,
+				   false
+			    )
+		for _,vic in pairs(damage_targets) do
+			local damage_table = {
+				ability = keys.ability,
+				victim = vic,
+				attacker = caster,
+				damage = box_damage,
+				damage_type = keys.ability:GetAbilityDamageType(), 
+			    damage_flags = keys.ability:GetAbilityTargetFlags()
+			}
+			UnitDamageTarget(damage_table) 
+		end
+		--对周围友军治疗
+		local heal_targets = FindUnitsInRadius(
+				   caster:GetTeam(),		
+				   target:GetOrigin(),	
+				   nil,					
+				   minoriko02_radius,		
+				   DOTA_UNIT_TARGET_TEAM_FRIENDLY,
+				   keys.ability:GetAbilityTargetType(),
+				   0,
+				   FIND_CLOSEST,
+				   false
+			    )
+		for _,vic in pairs(heal_targets) do
+			local minoriko02 = caster:FindAbilityByName("ability_thdots_minoriko02")
+			local box_heal = minoriko02:GetSpecialValueFor("heal_amount")
+			vic:Heal(box_heal, caster) 
+			SendOverheadEventMessage(nil,OVERHEAD_ALERT_HEAL,vic,box_heal,nil)
+		end
 	else
 		target:Heal(keys.heal_amount+target:GetMaxHealth()*keys.heal_percent/100, caster) 
 		SendOverheadEventMessage(nil,OVERHEAD_ALERT_HEAL,target,keys.heal_amount+target:GetMaxHealth()*keys.heal_percent/100,nil)

@@ -1083,6 +1083,23 @@ function OnSatori01SpellStart(keys)
 			i = 2
 		end
 	end
+	if TargetName == "npc_dota_hero_winter_wyvern" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,100)
+		else 
+			RandomNumber = RandomInt(1,75)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "ability_thdots_letty01"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "ability_thdots_letty02"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "ability_thdots_letty02"
+		elseif RandomNumber > 75 and RandomNumber <= 100 then
+			AbilityStolenName = "ability_thdots_letty04"
+			i = 2
+		end
+	end
 
 
 	abilityname[a] = AbilityStolenName
@@ -1172,7 +1189,7 @@ function OnSatori02SpellThink(keys)
 	local damage_target = {
 		victim = keys.target,
 		attacker = caster,
-		damage = (keys.ability:GetAbilityDamage() + FindTelentValue(caster,"special_bonus_unique_rubick_3"))/3,
+		damage = (keys.ability:GetAbilityDamage() + FindTelentValue(caster,"special_bonus_unique_satori_3"))/3,
 		damage_type = keys.ability:GetAbilityDamageType(), 
 	    damage_flags = 0
 	}
@@ -1195,7 +1212,7 @@ function OnSatori03SpellStart(keys)
 	end
 	local PetName = target:GetUnitName()
 	print(PetName)
-	if target:IsAncient()==true and FindTelentValue(caster,"special_bonus_unique_rubick")==0 then 
+	if target:IsAncient()==true and FindTelentValue(caster,"special_bonus_unique_satori_1")==0 then 
 		 keys.ability:EndCooldown()
 		 keys.ability:RefundManaCost()
 		 return
@@ -1231,6 +1248,10 @@ function OnSatori03SpellStart(keys)
 		 keys.ability:EndCooldown()
 		 keys.ability:RefundManaCost()
 		return
+	elseif target:GetUnitName() == "ability_star03_ward" then
+		 keys.ability:EndCooldown()
+		 keys.ability:RefundManaCost()
+		return
 	end
 	if target:GetOwner()==caster then 
 		target:SetHealth(target:GetMaxHealth())
@@ -1247,7 +1268,9 @@ function OnSatori03SpellStart(keys)
 		)
 	unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true) 
 	keys.ability:ApplyDataDrivenModifier(caster, unit, anti_bd_modifier_name, {})
-	keys.ability:ApplyDataDrivenModifier(caster, unit, "modifier_thdots_satori03_buff", {Duration = keys.Duration})
+	-- keys.ability:ApplyDataDrivenModifier(caster, unit, "modifier_thdots_satori03_buff", {Duration = keys.Duration})
+	unit:AddNewModifier(caster, keys.ability, "modifier_ability_thdots_satori03_attack_bonus",{})
+	ResolveNPCPositions(unit:GetAbsOrigin(), 128)
 	if unit:GetMaxHealth() < keys.MaxHealth then
 		unit:SetBaseMaxHealth(keys.MaxHealth)
 	end
@@ -1259,6 +1282,24 @@ function OnSatori03SpellStart(keys)
 		end
 	end
 	i=i+1
+end
+
+modifier_ability_thdots_satori03_attack_bonus = {}
+LinkLuaModifier("modifier_ability_thdots_satori03_attack_bonus","scripts/vscripts/abilities/abilitysatori.lua",LUA_MODIFIER_MOTION_NONE)
+function modifier_ability_thdots_satori03_attack_bonus:IsHidden() 		return true end
+function modifier_ability_thdots_satori03_attack_bonus:IsPurgable()		return false end
+function modifier_ability_thdots_satori03_attack_bonus:RemoveOnDeath() 	return true end
+function modifier_ability_thdots_satori03_attack_bonus:IsDebuff()		return false end
+
+function modifier_ability_thdots_satori03_attack_bonus:DeclareFunctions()
+	return {
+		MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE,
+	}
+end
+
+
+function modifier_ability_thdots_satori03_attack_bonus:GetModifierPreAttack_BonusDamage()
+	return self:GetAbility():GetSpecialValueFor("attack_bonus")
 end
 
 function OnSatori04SpellStart(keys)	
@@ -1285,12 +1326,12 @@ function OnSatori04Think(keys)
 	local distance = GetDistanceBetweenTwoVec2D(target:GetOrigin(),caster:GetOrigin())
 	if Satori04Count == nil then Satori04Count = 0 end
 	keys.ability:ApplyDataDrivenModifier(caster, target, "modifier_thdots_satori04_bonus_damage", {Duration = keys.Duration})
-	if distance <= keys.Radius + FindTelentValue(caster,"special_bonus_unique_rubick_2") then 
+	if distance <= keys.Radius + FindTelentValue(caster,"special_bonus_unique_satori_2") then 
 		Satori04Count = Satori04Count + 1 
 		local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf", PATTACH_CUSTOMORIGIN, nil)
 		ParticleManager:SetParticleControl(effectIndex, 0, caster:GetOrigin()+Vector(0, 0, 100))
 		ParticleManager:SetParticleControl(effectIndex, 1, target:GetOrigin()+Vector(0, 0, 100))
-		if FindTelentValue(caster,"special_bonus_unique_rubick_4")~=0 then
+		if FindTelentValue(caster,"special_bonus_unique_satori_4")~=0 then
 			local stealhp=target:GetMaxHealth()*0.06
 			local stealmana=target:GetMaxMana()*0.06
 			if target:GetHealth()>stealhp then

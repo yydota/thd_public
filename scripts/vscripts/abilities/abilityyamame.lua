@@ -515,7 +515,7 @@ function ability_thdots_yamame04:OnSpellStart()
 	self.direction = (self:GetCursorPosition() - self:GetCaster():GetAbsOrigin()):Normalized()
 	self.direction.z = 0
 	self.point = self:GetCursorPosition()
-	self:SetActivated(false)
+	-- self:SetActivated(false)
 
 	local hookshot_duration	= ((self.cast_range + self:GetCaster():GetCastRangeBonus()) / self.hook_speed)
 	local hookshot_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_rattletrap/rattletrap_hookshot.vpcf", PATTACH_CUSTOMORIGIN, nil)
@@ -606,7 +606,7 @@ function ability_thdots_yamame04:OnProjectileHit_ExtraData(hTarget, vLocation, E
 			end
 		end
 	else
-		self:SetActivated(true)
+		-- self:SetActivated(true)
 	end
 end
 
@@ -685,7 +685,7 @@ end
 
 function modifier_ability_thdots_yamame04_move:OnDestroy()
 	if not IsServer() then return end
-	self.ability:SetActivated(true)
+	-- self.ability:SetActivated(true)
 	ParticleManager:DestroyParticleSystem(self.effectIndex,true)
 	if self.dummy ~= nil then
 		self.dummy:RemoveSelf()

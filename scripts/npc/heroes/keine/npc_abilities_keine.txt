@@ -27,7 +27,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"percent_time"	"50"
+				"percent_time"	"40"
 			}
 			"03"
 			{
@@ -178,6 +178,11 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"act_stun"	"0.9 1.0 1.1 1.2"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"disable_time"	"1"
 			}
 		}
 	}

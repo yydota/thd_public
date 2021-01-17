@@ -10763,7 +10763,7 @@
 		"SoundSet"					"Hero_EmberSpirit"
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
 		"Level"						"1"
-		"ModelScale" 				"1.0"
+		"ModelScale" 				"0.5"
 	
 		// Abilities
 		//----------------------------------------------------------------
@@ -10800,7 +10800,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
-		"MovementSpeed"				"550"		// Speed.			
+		"MovementSpeed"				"0"		// Speed.			
 	
 		// Status
 		//----------------------------------------------------------------

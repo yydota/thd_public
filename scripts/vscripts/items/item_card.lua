@@ -38,8 +38,12 @@ function item_card_eat_man:OnSpellStart()
 	local caster = self:GetCaster()
 	local target = self:GetCursorTarget()
 	local radius = self:GetSpecialValueFor("radius")
-	local per_level = self:GetSpecialValueFor("per_level")
-	local eat_num = math.floor(caster:GetLevel()/per_level)
+	local per_min = self:GetSpecialValueFor("per_min")
+	local game_time = math.floor(GameRules:GetDOTATime(false, false) /60)
+	print("game_time")
+	print(game_time)
+	local eat_num = math.floor(game_time/per_min)
+	print(eat_num)
 	--特效音效
 	local particle_pact = "particles/units/heroes/hero_clinkz/clinkz_death_pact.vpcf"
 	local particle_pact_fx = ParticleManager:CreateParticle(particle_pact, PATTACH_ABSORIGIN_FOLLOW, caster)
@@ -132,6 +136,7 @@ function modifier_item_card_kid_man:OnCreated()
 	
 	local particle_name = "particles/items_fx/force_staff.vpcf"
 	self.push_speed = self:GetAbility():GetSpecialValueFor("push_speed")
+	self.push_speed = 60
 	print(self.push_speed)
 	self.pfx = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, self:GetParent())
 	self:GetParent():StartGesture(ACT_DOTA_FLAIL)
