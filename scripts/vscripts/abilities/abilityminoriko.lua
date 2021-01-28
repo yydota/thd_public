@@ -1,3 +1,191 @@
+ability_thdots_minoriko01 = {}
+
+function ability_thdots_minoriko01:GetAOERadius()
+	if self:GetCaster():HasModifier("modifier_item_wanbaochui") then
+		return self:GetSpecialValueFor("wanbaochui_radius")
+	else
+		return 0
+	end
+end
+
+function ability_thdots_minoriko01:GetBehavior()
+	if self:GetCaster():HasModifier("modifier_item_wanbaochui") then
+		return DOTA_ABILITY_BEHAVIOR_UNIT_TARGET + DOTA_ABILITY_BEHAVIOR_AOE
+	else
+		return self.BaseClass.GetBehavior(self)
+	end
+end
+
+function ability_thdots_minoriko01:OnSpellStart()
+	if not IsServer() then return end
+	local caster = self:GetCaster()
+	local target = self:GetCursorTarget()
+	if is_spell_blocked(target,caster) then return end
+	caster:EmitSound("Voice_Thdots_Minoriko.AbilityMinoriko01")
+	if not self:GetCaster():HasModifier("modifier_item_wanbaochui") then
+		local info = {
+			Source = self:GetCaster(),
+			Target = target,
+			Ability = self,
+			bDodgeable = true,
+			bProvidesVision		= true,
+			iVisionRadius = 100,
+			EffectName = "particles/heroes/minoriko/ability_minoriko_01.vpcf",
+			iMoveSpeed = 1000,
+			iSourceAttachment 	= DOTA_PROJECTILE_ATTACHMENT_ATTACK_1,
+		}
+		ProjectileManager:CreateTrackingProjectile(info)
+	else
+		local targets = FindUnitsInRadius(caster:GetTeam(), target:GetOrigin(),nil,400,self:GetAbilityTargetTeam(),
+		self:GetAbilityTargetType(),0,0,false)
+		DeleteDummy(targets)
+		print(#targets)
+		for _,v in pairs(targets) do
+			local info = {
+			Source = self:GetCaster(),
+			Target = v,
+			Ability = self,
+			bDodgeable = true,
+			bProvidesVision		= true,
+			iVisionRadius = 100,
+			EffectName = "particles/heroes/minoriko/ability_minoriko_01.vpcf",
+			iMoveSpeed = 1000,
+			iSourceAttachment 	= DOTA_PROJECTILE_ATTACHMENT_ATTACK_1,
+		}
+		ProjectileManager:CreateTrackingProjectile(info)
+		end
+	end
+end
+
+function ability_thdots_minoriko01:OnProjectileHit(hTarget, vLocation)
+	if not IsServer() then return end
+	if not hTarget then return end
+	local caster 				= self:GetCaster()
+	local target 				= hTarget
+	local damage  				= self:GetSpecialValueFor("damage")
+	local stun_duration  		= self:GetSpecialValueFor("stun_duration")
+	local duration  			= self:GetSpecialValueFor("duration")
+	local radius  				= self:GetSpecialValueFor("radius")
+	local aoe_damage  			= self:GetSpecialValueFor("aoe_damage")
+	local heal_amount  			= self:GetSpecialValueFor("heal_amount")
+	local heal_percent  		= self:GetSpecialValueFor("heal_percent")
+
+	target:EmitSound("Minoriko.AbilityMinoriko01")
+	local target = hTarget
+	if caster:GetTeam() ~= target:GetTeam() then
+		local exdamage=target:GetMaxHealth()*heal_percent/100
+
+		local damage_table = {
+			ability = self,
+			victim = target,
+			attacker = caster,
+			damage = aoe_damage,
+			damage_type = self:GetAbilityDamageType(), 
+		    damage_flags = self:GetAbilityTargetFlags()
+		}
+		UnitDamageTarget(damage_table) 
+		UtilStun:UnitStunTarget( caster,target,(stun_duration+FindTelentValue(caster,"special_bonus_unique_huskar_3")))
+		local targets = FindUnitsInRadius(
+				   caster:GetTeam(),		
+				   target:GetOrigin(),	
+				   nil,					
+				   radius,		
+				   DOTA_UNIT_TARGET_TEAM_ENEMY,
+				   self:GetAbilityTargetType(),
+				   0,
+				   FIND_CLOSEST,
+				   false
+			    )
+		for k,v in pairs(targets) do
+			v:AddNewModifier(caster, self, "modifier_ability_thdots_minoriko01_sign",{duration = 1})
+		end
+
+		local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_ogre_magi/ogre_magi_fireblast.vpcf", PATTACH_CUSTOMORIGIN, target)
+		ParticleManager:SetParticleControl(effectIndex , 0, target:GetOrigin())
+		ParticleManager:SetParticleControl(effectIndex , 1, target:GetOrigin())
+		
+	elseif target:GetUnitName() == "npc_thdots_unit_minoriko02_box" and caster:GetPlayerOwner() == target:GetPlayerOwner() and caster:FindAbilityByName("ability_thdots_minoriko02") ~= nil then --砸车
+		local minoriko02 = caster:FindAbilityByName("ability_thdots_minoriko02")
+		local box_damage = minoriko02:GetSpecialValueFor("heal_amount")
+		local minoriko02_radius = minoriko02:GetSpecialValueFor("aura_radius")
+		local minoriko01_box_particle = "particles/econ/items/lina/lina_ti7/lina_spell_light_strike_array_ti7_gold.vpcf"
+		local minoriko01_box_particle_fx = ParticleManager:CreateParticle(minoriko01_box_particle, PATTACH_ABSORIGIN,target)
+		ParticleManager:SetParticleControl(minoriko01_box_particle_fx, 0,target:GetAbsOrigin())
+		ParticleManager:SetParticleControl(minoriko01_box_particle_fx, 1, Vector(minoriko02_radius,1,1))
+		ParticleManager:ReleaseParticleIndex(minoriko01_box_particle_fx)
+		--对周围敌方造成伤害
+		local damage_targets = FindUnitsInRadius(
+				   caster:GetTeam(),		
+				   target:GetOrigin(),	
+				   nil,					
+				   minoriko02_radius,		
+				   DOTA_UNIT_TARGET_TEAM_ENEMY,
+				   self:GetAbilityTargetType(),
+				   0,
+				   FIND_CLOSEST,
+				   false
+			    )
+		for _,vic in pairs(damage_targets) do
+			local damage_table = {
+				ability = self,
+				victim = vic,
+				attacker = caster,
+				damage = box_damage,
+				damage_type = self:GetAbilityDamageType(), 
+			    damage_flags = self:GetAbilityTargetFlags()
+			}
+			UnitDamageTarget(damage_table) 
+		end
+		--对周围友军治疗
+		local heal_targets = FindUnitsInRadius(
+				   caster:GetTeam(),		
+				   target:GetOrigin(),	
+				   nil,					
+				   minoriko02_radius,		
+				   DOTA_UNIT_TARGET_TEAM_FRIENDLY,
+				   self:GetAbilityTargetType(),
+				   0,
+				   FIND_CLOSEST,
+				   false
+			    )
+		for _,vic in pairs(heal_targets) do
+			local minoriko02 = caster:FindAbilityByName("ability_thdots_minoriko02")
+			local box_heal = minoriko02:GetSpecialValueFor("heal_amount")
+			vic:Heal(box_heal, caster) 
+			SendOverheadEventMessage(nil,OVERHEAD_ALERT_HEAL,vic,box_heal,nil)
+		end
+	else
+		target:Heal(heal_amount+target:GetMaxHealth()*heal_percent/100, caster) 
+		SendOverheadEventMessage(nil,OVERHEAD_ALERT_HEAL,target,heal_amount+target:GetMaxHealth()*heal_percent/100,nil)
+		local effectIndex = ParticleManager:CreateParticle("particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf", PATTACH_CUSTOMORIGIN, target)
+		ParticleManager:SetParticleControl(effectIndex , 0, target:GetOrigin())
+		ParticleManager:DestroyParticleSystemTime(effectIndex,1.0)
+	end
+end
+
+modifier_ability_thdots_minoriko01_sign = {}
+LinkLuaModifier("modifier_ability_thdots_minoriko01_sign","scripts/vscripts/abilities/abilityMinoriko.lua",LUA_MODIFIER_MOTION_NONE)
+function modifier_ability_thdots_minoriko01_sign:IsHidden() return true end
+
+function modifier_ability_thdots_minoriko01_sign:OnCreated()
+	if not IsServer() then return end
+	local caster = self:GetCaster()
+	local target = self:GetParent()
+	local ability = self:GetAbility()
+	local damage = ability:GetSpecialValueFor("aoe_damage")
+
+	local damage_table = {
+			ability = ability,
+			victim = target,
+			attacker = caster,
+			damage = ability:GetAbilityDamage(),
+			damage_type = ability:GetAbilityDamageType(), 
+		    damage_flags = ability:GetAbilityTargetFlags()
+		}
+	UnitDamageTarget(damage_table)
+end
+
+
 function OnMinoriko01ProjectileHitUnit(keys)
 	local caster = EntIndexToHScript(keys.caster_entindex)
 	local target = keys.target
@@ -132,10 +320,10 @@ function OnMinoriko02SpellStart(keys)
 		,caster:GetTeam()
 	)
 	FindClearSpaceForUnit(minoriko02, targetPoint, false)
+	minoriko02:SetControllableByPlayer(caster:GetPlayerID(),false)
 	if caster:HasModifier("modifier_item_wanbaochui") then
 		minoriko02:SetBaseMaxHealth(2000)
-		minoriko02:SetBaseMoveSpeed(200)
-		minoriko02:SetControllableByPlayer(caster:GetPlayerID(),false)
+		minoriko02:SetBaseMoveSpeed(350)
 	end
 
 	minoriko02.box_regen_targets = {}

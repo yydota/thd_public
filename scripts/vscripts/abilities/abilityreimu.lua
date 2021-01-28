@@ -444,3 +444,63 @@ function AbilityReimu:OnReimu04Think(keys)
         end
     end
 end
+
+ability_dota2x_reimuEx = {}
+
+function ability_dota2x_reimuEx:GetIntrinsicModifierName()
+    return "ability_dota2x_reimuEx_passive"
+end
+
+ability_dota2x_reimuEx_passive = {}
+LinkLuaModifier("ability_dota2x_reimuEx_passive","scripts/vscripts/abilities/abilityReimu.lua",LUA_MODIFIER_MOTION_NONE)
+function ability_dota2x_reimuEx_passive:IsHidden()        return false end
+function ability_dota2x_reimuEx_passive:IsPurgable()      return false end
+function ability_dota2x_reimuEx_passive:RemoveOnDeath()   return false end
+function ability_dota2x_reimuEx_passive:IsDebuff()        return false end
+
+function ability_dota2x_reimuEx_passive:OnCreated()
+    if not IsServer() then return end
+    self.give_gold_amount           = self:GetAbility():GetSpecialValueFor("give_gold_amount")
+    self.give_gold_interval         = self:GetAbility():GetSpecialValueFor("give_gold_interval")
+    self.Kill_count =   PlayerResource:GetKills(self:GetParent():GetPlayerID())
+    self.Assists_count =   PlayerResource:GetAssists(self:GetParent():GetPlayerID())
+    self:StartIntervalThink(self.give_gold_interval)
+end
+
+function ability_dota2x_reimuEx_passive:OnIntervalThink()
+    if not IsServer() then return end
+    local Caster = self:GetParent()
+    local CasterPlayerID = Caster:GetPlayerOwnerID()
+    if GameRules:GetDOTATime(false, false) == 0 then return end
+    PlayerResource:SetGold(CasterPlayerID,PlayerResource:GetUnreliableGold(CasterPlayerID) + self.give_gold_amount,false)
+end
+
+
+function ability_dota2x_reimuEx_passive:DeclareFunctions()
+    return
+    {
+        MODIFIER_EVENT_ON_DEATH,
+    }
+end
+
+function ability_dota2x_reimuEx_passive:OnDeath(keys)
+    if not keys.unit:IsRealHero() then return end
+    local caster = self:GetParent()
+    if self.Kill_count ~= PlayerResource:GetKills(caster:GetPlayerID()) or self.Assists_count ~= PlayerResource:GetAssists(caster:GetPlayerID()) then
+        local totalgoldget = self:GetAbility():GetSpecialValueFor("give_gold_kill")
+        print("------------------------")
+        self.Kill_count = PlayerResource:GetKills(caster:GetPlayerID())
+        self.Assists_count = PlayerResource:GetAssists(caster:GetPlayerID())
+
+        local effectIndex = ParticleManager:CreateParticle("particles/thd2/items/item_donation_box.vpcf", PATTACH_CUSTOMORIGIN, caster)
+        ParticleManager:SetParticleControl(effectIndex, 0, caster:GetAbsOrigin())
+        ParticleManager:SetParticleControl(effectIndex, 1, caster:GetAbsOrigin())
+        ParticleManager:ReleaseParticleIndex(effectIndex)
+        caster:EmitSound("DOTA_Item.Hand_Of_Midas")
+        SendOverheadEventMessage(nil, OVERHEAD_ALERT_GOLD,caster, totalgoldget, nil)
+
+        local PlayerID = caster:GetPlayerOwnerID()
+        PlayerResource:SetGold(PlayerID,PlayerResource:GetUnreliableGold(PlayerID) + totalgoldget,false)
+        print(PlayerResource:GetNetWorth(caster:GetPlayerOwnerID()))
+    end
+end

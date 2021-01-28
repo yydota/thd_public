@@ -35,7 +35,8 @@ function item_fan:OnSpellStart()
 	local end_position = self:GetCursorPosition()
 	local direct = ((end_position - start_position) * Vector(1, 1, 0)):Normalized()
 	local particle = "particles/units/heroes/hero_death_prophet/death_prophet_carrion_swarm.vpcf"
-	caster:EmitSound("Hero_DeathProphet.CarrionSwarm")
+	-- caster:EmitSound("Hero_DeathProphet.CarrionSwarm")
+	caster:EmitSound("THD_ITEM.Fan_Cast")
 	local bo = ProjectileManager:CreateLinearProjectile({
 				Source = caster,
 				Ability = ability,
@@ -59,6 +60,7 @@ function item_fan:OnSpellStart()
 	ParticleManager:SetParticleControl(self.particle, 0, caster:GetAbsOrigin())
 	ParticleManager:SetParticleControl(self.particle, 1, Vector(direct.x*1500,direct.y*1500,0))
 	ParticleManager:SetParticleControl(self.particle, 2, Vector(200,200,200))
+	ParticleManager:DestroyParticleSystemTime(self.particle,0.7)
 end
 
 function item_fan:OnProjectileHit(hTarget, vLocation)
@@ -76,7 +78,5 @@ function item_fan:OnProjectileHit(hTarget, vLocation)
 							ability = ability
 							}
 		local damage_dealt = UnitDamageTarget(damageTable)
-	else
-		ParticleManager:DestroyParticleSystem(self.particle,true)
 	end
 end

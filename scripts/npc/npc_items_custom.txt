@@ -7238,6 +7238,24 @@
 				{
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
+				"OnCreated"	
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
+						"Function"		"ItemAbility_item_brother_sharp_created"
+						"Caster"		"CASTER"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/abilities/abilityItem.lua"
+						"Function"		"ItemAbility_item_brother_sharp_destory"
+						"Caster"		"CASTER"
+					}
+				}
 			}
 		}
 		// Special
@@ -14629,7 +14647,7 @@
 		"AbilityTextureName"	"item_shanbibu"	//图标By 橘橘子
 		"ScriptFile"                    "items/item_shanbibu"
 		"ItemDeclarations"        "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 		// Stats
@@ -15079,6 +15097,92 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"regen_mana_perlevel"	"9"
+			}
+		}
+	}
+	"item_recipe_fireflies_light"
+	{
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"	"item_datadriven"
+		"AbilityTextureName"	"item_sample_item"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"	"8215"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"1225"
+		// Recipe
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"	"1"
+		"ItemResult"	"item_fireflies_light"
+		"ItemRequirements"
+		{
+			"01"	"item_knife;item_juice"
+		}
+		"Model"	"models/props_gameplay/recipe.vmdl"
+	}
+	"item_fireflies_light"
+	{
+		"BaseClass"	"item_lua"
+		"AbilityTextureName"	"item_fireflies_light"	//图标By 橘橘子
+		"ScriptFile"                    "items/item_fireflies_light"
+		"ItemDeclarations"        "DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		// Stats
+		// -------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"	"0.0"
+		"AbilityCooldown"	"0"
+		"AbilityManaCost"	"0"
+		"AbilityCastRange"	"0"
+		// General
+		// -------------------------------------------------------------------------------------------------------------
+		// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"ID"	"8216"
+		"ItemQuality"	"component"
+		// Item Info
+		// -------------------------------------------------------------------------------------------------------------
+		"ItemCost"	"750"
+		"ItemDroppable"	"1"
+		"ItemSellable"	"1"
+		"ItemShopTags"	"health_pool;mana_pool"
+		"precache"
+		{
+			// "soundfile"	"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"bonus_mana_regen"	"1.3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"bonus_damage"	"14"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"debuff_decrease"	"35"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"kill_limit"	"15"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"per_damage"	"4"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"lost_ondeath"	"40"
 			}
 		}
 	}

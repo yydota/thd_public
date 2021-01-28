@@ -287,3 +287,26 @@ function IsTHDReflect(target) --THD的反弹伤害BUG
         return false
     end
 end
+
+function IsNoBugModifier(modifier)
+    if modifier ~= nil and modifier:GetName() ~= "" then
+        if modifier:GetName() == "modifier_scripted_motion_controller" then
+            return false
+        end
+        if modifier:GetName() == "modifier_skewer_disable_target" 
+            or modifier:GetName() == "modifier_skewer_datadriven"
+            or modifier:GetName() == "modifier_skewer_disable_caster"
+            or modifier:GetName() == "modifier_scripted_motion_controlleris"
+            then 
+                -- print("-----------------------------------")
+                -- print(modifier:GetName().." ：is Bug Modifier")
+                -- print(modifier.parsee01)
+                -- print("is Bug Modifier")
+                return false
+        else
+            print(modifier:GetName()..":is NO Modifier")
+                -- print(modifier.parsee01)
+            return true
+        end
+    end
+end

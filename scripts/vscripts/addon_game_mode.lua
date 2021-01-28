@@ -986,6 +986,8 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 	elseif(heroName == "npc_dota_hero_lina")then
 		require( 'abilities/abilityReimu' )
 		require( 'abilities/abilityReisen' )
+		abilityEx = hero:FindAbilityByName("ability_dota2x_reimuEx")
+		abilityEx:SetLevel(1)
 	elseif(heroName == "npc_dota_hero_juggernaut")then
 		require( 'abilities/abilityYoumu' )
 		abilityEx = hero:FindAbilityByName("ability_thdots_youmuEx")
@@ -1000,6 +1002,8 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 		abilityEx:SetLevel(1)
 	elseif(heroName == "npc_dota_hero_crystal_maiden")then
 		require( 'abilities/abilityMarisa' )
+		abilityEx = hero:FindAbilityByName("ability_thdots_marisaEx")
+		abilityEx:SetLevel(1)
 	elseif(heroName == "npc_dota_hero_furion")then
 		require( 'abilities/abilityKaguya' )	
 		abilityEx = hero:FindAbilityByName("ability_thdots_kaguyaEx")
@@ -1187,8 +1191,8 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 		abilityEx:SetLevel(1)
 		abilityEx = hero:FindAbilityByName("ability_thdots_kokoroEx_2")
 		abilityEx:SetLevel(1)
-		abilityEx = hero:FindAbilityByName("ability_thdots_kokoro03_release")
-		abilityEx:SetLevel(1)
+		-- abilityEx = hero:FindAbilityByName("ability_thdots_kokoro03_release")
+		-- abilityEx:SetLevel(1)
 	elseif (heroName == "npc_dota_hero_luna") then
 		abilityEx = hero:FindAbilityByName("ability_thdots_childEx")
 		abilityEx:SetLevel(1)
@@ -1243,6 +1247,9 @@ function THDOTSGameMode:PrecacheHeroResource(hero)
 		abilityEx:SetLevel(1)
 	elseif (heroName == "npc_dota_hero_winter_wyvern") then
 		abilityEx = hero:FindAbilityByName("ability_thdots_lettyEx")
+		abilityEx:SetLevel(1)
+	elseif (heroName == "npc_dota_hero_pugna") then
+		abilityEx = hero:FindAbilityByName("ability_thdots_parseeEx")
 		abilityEx:SetLevel(1)
 	end
 end

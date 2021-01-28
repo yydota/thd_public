@@ -1,0 +1,430 @@
+// Dota2 Editor
+// Get latest version: https://github.com/zombieJ/nw-dota2editor
+
+"DOTAAbilities"
+{
+	"Version"		"1"
+
+	"ability_thdots_parseeEx"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"custom/parsee/ability_thdots_parseeEx"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityparsee.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"CastFilterRejectCaster"	"0"
+		"MaxLevel"	"1"
+		"HasScepterUpgrade"	"1"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_2"
+		"AnimationPlaybackRate"	"2"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"limit_health"	"20"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"invin_time"	"1"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"inout_damage"	"100"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"20"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"100"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"lv_damage"	"25"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"400"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_cooldown"	"60"
+				"RequiresScepter"		"1"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_gold"	"4"
+				"RequiresScepter"		"1"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_cast_range"	"600"
+				"RequiresScepter"		"1"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_income_damage"	"30"
+				"RequiresScepter"		"1"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cooldown"	"120"
+			}
+		}
+	}
+
+	"ability_thdots_parsee01"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"pugna_nether_blast"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityparsee.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_ALERT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"	"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"2"
+		"AbilityCooldown"	"7"
+		"AbilityManaCost"	"60 70 80 90"
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cast_range"	"600 650 700 750"
+				"LinkedSpecialBonus"	"special_bonus_unique_parsee_4"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"100 160 220 280"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"passive_percent"	"2 3 4 5"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"passive_damage"	"8 12 16 20"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"number"	"2"
+			}
+		}
+	}
+
+	"ability_thdots_parsee02"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"techies_remote_mines"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityparsee.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastPoint"	"0.4"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"1"
+		"AbilityCooldown"	"8 7 6 5"
+		"AbilityManaCost"	"80 100 120 140"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cast_range"	"900"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"radius"	"225"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"50 80 110 140"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"number"	"3"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"slow_duration"	"1.2 1.4 1.6 1.8"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"slow_percent"	"40"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"slow_attack"	"40"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"return_mana"	"25"
+			}
+		}
+	}
+
+	"ability_thdots_parsee03"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"skeleton_king_hellfire_blast"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityparsee.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DONT_ALERT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastPoint"	"0.4"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"1"
+		"AbilityCooldown"	"12"
+		"AbilityManaCost"	"60 85 110 135"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"change"	"14"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"num"	"2 3 4 5"
+				"LinkedSpecialBonus"	"special_bonus_unique_parsee_3"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_time"	"0.3"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"5"
+			}
+			"05"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"phy_int"	"0.08"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"mag_int"	"0.16"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_range"	"400"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attack_interval"	"1.0"
+			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"movement"	"400"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"magic_damage"	"20"
+			}
+			"11"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"phy_damage"	"0"
+			}
+			"12"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"dummy_health"	"600"
+			}
+		}
+	}
+
+	"ability_thdots_parsee04"
+	{
+		"BaseClass"	"ability_lua"
+		"AbilityTextureName"	"pugna_nether_ward"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityparsee.lua"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCastPoint"	"0.2"
+		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_1"
+		"AnimationPlaybackRate"	"2"
+		"AbilityCooldown"	"60 50 40"
+		"AbilityManaCost"	"100 150 200"
+		"precache"
+		{
+			"soundfile"	"soundevents/thdots_hero_sounds/thdots_parsee_sounds.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"cast_range"	"500 700 900"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"health"	"400 550 700"
+				"LinkedSpecialBonus"	"special_bonus_unique_parsee_2"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"relive_range"	"600 800 1000"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage"	"300 450 600"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"duration"	"4.9"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"damage_bonus"	"1.5"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"stun_time"	"4"
+			}
+		}
+	}
+	"special_bonus_unique_parsee_1"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1.5"
+			}
+		}
+	}
+
+	"special_bonus_unique_parsee_2"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1000"
+			}
+		}
+	}
+
+	"special_bonus_unique_parsee_3"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"3"
+			}
+		}
+	}
+
+	"special_bonus_unique_parsee_4"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"200"
+			}
+		}
+	}
+
+	"special_bonus_unique_parsee_5"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1.5"
+			}
+		}
+	}
+
+	"special_bonus_unique_parsee_6"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"1"
+			}
+		}
+	}
+}

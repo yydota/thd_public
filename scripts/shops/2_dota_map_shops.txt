@@ -183,6 +183,7 @@
 	"artifacts"
 	{	
 		"item"		"item_wanbaochui"
+		"item"		"item_fireflies_light"
 		"item"		"item_dummy_doll1"
 		"item"		"item_brother_sharp"
 		"item"		"item_tentacle"

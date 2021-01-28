@@ -10,8 +10,9 @@
 		"BaseClass"	"ability_lua"
 		"AbilityTextureName"	"touhoutd/thtd_cirno_01"
 		"ScriptFile"	"scripts/vscripts/abilities/abilityletty.lua"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"SpellDispellableType" "SPELL_DISPELLABLE_NO"
+		"AbilityCooldown"	"3"
 		"MaxLevel"	"1"
 		"AbilitySpecial"
 		{
@@ -41,6 +42,11 @@
 				"var_type"	"FIELD_FLOAT"
 				"imcome_damage"	"25"
 			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"movement_decrease"		"-33"
+			}
 		}
 	}
 
@@ -68,7 +74,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"cast_range"	"700"
+				"cast_range"	"550 650 750 850"
 			}
 			"02"
 			{
@@ -78,8 +84,7 @@
 			"03"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"radius"	"300 350 400 450"
-				"LinkedSpecialBonus"	"special_bonus_unique_letty_1"
+				"radius"	"500 550 600 650"
 			}
 			"04"
 			{
@@ -92,9 +97,9 @@
 	"ability_thdots_letty02"
 	{
 		"BaseClass"	"ability_lua"
-		"AbilityTextureName"	"crystal_maiden_frostbite"
+		"AbilityTextureName"	"lich_chain_frost"
 		"ScriptFile"	"scripts/vscripts/abilities/abilityletty.lua"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
@@ -165,7 +170,7 @@
 			"02"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"duration"	"1"
+				"duration"	"2"
 			}
 			"03"
 			{
@@ -176,6 +181,12 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"decrease_speed"	"-15 -20 -25 -30"
+			}
+			"04"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"count_limit"	"2"
+				"LinkedSpecialBonus"	"special_bonus_unique_letty_6"
 			}
 		}
 	}
@@ -202,7 +213,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"radius"	"450 500 550"
+				"radius"	"650 750 850"
 			}
 			"02"
 			{
@@ -225,6 +236,18 @@
 				"wanbaochui_radius"		"99999"
 				"RequiresScepter"		"1"
 			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_damage"		"10"
+				"RequiresScepter"		"1"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_duration"		"4 6 8"
+				"RequiresScepter"		"1"
+			}
 		}
 	}
 
@@ -238,7 +261,7 @@
 			"01"
 			{
 				"var_type"	"FIELD_FLOAT"
-				"value"	"200"
+				"value"	"4"
 			}
 		}
 	}
@@ -299,6 +322,20 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"value"	"5"
+			}
+		}
+	}
+	"special_bonus_unique_letty_6"
+	{
+		"BaseClass"	"special_bonus_undefined"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"	"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"value"	"6"
 			}
 		}
 	}

@@ -152,9 +152,11 @@ function OnMinamitsu01Back(vecHook,target,rad,distance,effectIndex,keys)
 							UtilStun:UnitStunTarget( caster, target , 1.2 )
 						end
 						FindClearSpaceForUnit(target, vecHook - Vector(0,0,128), false)
-						if GridNav:CanFindPath(target:GetOrigin(),target:GetOrigin() + Vector(500,500,0)) == false then
-							UnitNoPathingfix(caster,target,5.0)
-						end
+						-- if GridNav:CanFindPath(target:GetOrigin(),target:GetOrigin() + Vector(500,500,0)) == false then
+						-- 	UnitNoPathingfix(caster,target,5.0)
+						-- end
+						--防止卡位
+						ResolveNPCPositions(target:GetAbsOrigin(), 128)
 					end
 					caster:EmitSound("Hero_Pudge.AttackHookRetract")
 					caster:EmitSound("Hero_Pudge.AttackHookRetractStop")

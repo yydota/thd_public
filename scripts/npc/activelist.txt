@@ -58,7 +58,7 @@
 
 	//"npc_dota_hero_pudge" "1"
 
-	//"npc_dota_hero_pugna" "1"
+	"npc_dota_hero_pugna" "1"
 	//"npc_dota_hero_grimstroke"	"1"
 
 	"npc_dota_hero_rattletrap" "1"

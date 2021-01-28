@@ -38,12 +38,19 @@ end
 function modifier_item_harvest_cradle_passive:OnIntervalThink()
 	if not IsServer() then return end
 	if self.level ~= self:GetCaster():GetLevel() then
-		local health_regen = self.regen_health + self:GetCaster():GetLevel() * self.regen_health_perlevel
-		local mana_regen = self.regen_mana + self:GetCaster():GetLevel() * self.regen_mana_perlevel
+
+		--固定回血回蓝
+		-- local health_regen = self.regen_health + self:GetCaster():GetLevel() * self.regen_health_perlevel
+		-- local mana_regen = self.regen_mana + self:GetCaster():GetLevel() * self.regen_mana_perlevel
+
+		--根据游戏时间和等级回蓝，具体为 （分钟数 + 英雄等级）%
+		local game_time = math.floor(GameRules:GetDOTATime(false, false) /60)
+		local health_regen = self.regen_health + (self:GetCaster():GetLevel() + game_time)/100 * self.caster:GetBaseMaxHealth()
+		local mana_regen = self.regen_mana + (self:GetCaster():GetLevel() + game_time)/100 * self.caster:GetMaxMana()
 		self.caster:Heal(health_regen, self.caster)
 		self.caster:SetMana(self.caster:GetMana() + mana_regen)
-		print(health_regen)
-		print(mana_regen)
+		print((self:GetCaster():GetLevel() + game_time)/100 * self.caster:GetBaseMaxHealth())
+		print((self:GetCaster():GetLevel() + game_time)/100 * self.caster:GetMaxMana())
 		SendOverheadEventMessage(nil,OVERHEAD_ALERT_HEAL,self.caster,health_regen,nil)
 		SendOverheadEventMessage(nil,OVERHEAD_ALERT_MANA_ADD,self.caster,mana_regen,nil)
 		self.level = self:GetCaster():GetLevel()

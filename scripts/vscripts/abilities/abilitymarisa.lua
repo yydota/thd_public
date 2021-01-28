@@ -61,6 +61,15 @@ end
 function OnMarisa04SpellStart(keys)
 	local caster = EntIndexToHScript(keys.caster_entindex)
 	local targetPoint = keys.target_points[1]
+
+print("do it")
+	local particle_name = "particles/units/heroes/hero_windrunner/windrunner_windrun_beam.vpcf"
+		-- local particle_name = "particles/econ/items/windrunner/windranger_arcana/windranger_arcana_debut_ambient_v2.vpcf"
+	local marisaEx_particle = ParticleManager:CreateParticle(particle_name, PATTACH_OVERHEAD_FOLLOW, caster)
+		-- marisaEx_particle = ParticleManager:CreateParticle(particle_name, PATTACH_CUSTOMORIGIN_FOLLOW, caster)
+		-- marisaEx_particle = ParticleManager:CreateParticle(particle_name, PATTACH_POINT_FOLLOW, caster)
+		-- ParticleManager:SetParticleControlEnt(marisaEx_particle , 0, caster, 5, "attach_hitloc", Vector(0,0,0), true)
+		ParticleManager:ReleaseParticleIndex(marisaEx_particle)
 	
 	THDReduceCooldown(keys.ability,FindTelentValue(caster,"special_bonus_unique_crystal_maiden_2"))
 
@@ -403,4 +412,79 @@ function OnMarisawanbaocuiExThink(keys)
 	end
 	caster:SetModifierStackCount("modifier_marisa_wanbaochui_buff", ability, stack_count)
 	
+end
+
+ability_thdots_marisaEx = {}
+
+function ability_thdots_marisaEx:GetIntrinsicModifierName()
+    return "ability_thdots_marisaEx_passive"
+end
+
+ability_thdots_marisaEx_passive = {}
+LinkLuaModifier("ability_thdots_marisaEx_passive","scripts/vscripts/abilities/abilityMarisa.lua",LUA_MODIFIER_MOTION_NONE)
+function ability_thdots_marisaEx_passive:IsHidden()
+	if self:GetStackCount() ~= 1 then
+		return false 
+	else
+		return true
+	end
+end
+function ability_thdots_marisaEx_passive:IsPurgable()      return false end
+function ability_thdots_marisaEx_passive:RemoveOnDeath()   return false end
+function ability_thdots_marisaEx_passive:IsDebuff()        return false end
+
+function ability_thdots_marisaEx_passive:OnCreated()
+    if not IsServer() then return end
+    self.caster 				= self:GetCaster()
+    self.ability 				= self:GetAbility()
+    self.refresh_interval		= self.ability:GetSpecialValueFor("refresh_interval")
+    self.refresh_time 			= self.ability:GetSpecialValueFor("refresh_time")
+    self.refresh_time_ult 		= self.ability:GetSpecialValueFor("refresh_time_ult")
+    self.react_time	= 0
+
+    self:SetStackCount(1)
+    self:StartIntervalThink(FrameTime())
+end
+
+function ability_thdots_marisaEx_passive:OnIntervalThink()
+    if not IsServer() then return end
+    if self.react_time <= self.refresh_interval and self:GetStackCount() ~= 0 then
+    	self.react_time = self.react_time + FrameTime()
+    elseif self.react_time > self.refresh_interval and self:GetStackCount() ~= 0 then
+    	self.caster:EmitSound("Voice_Thdots_Marisa.AbilityMarisaEx")
+    	local particle_name = "particles/units/heroes/hero_windrunner/windrunner_windrun_beam.vpcf"
+		local marisaEx_particle = ParticleManager:CreateParticle(particle_name, PATTACH_OVERHEAD_FOLLOW, self.caster)
+		ParticleManager:ReleaseParticleIndex(marisaEx_particle)
+    	self:SetStackCount(0)
+    end
+end
+
+function ability_thdots_marisaEx_passive:DeclareFunctions()
+	return {
+		MODIFIER_EVENT_ON_ABILITY_EXECUTED,
+	}
+end
+
+function ability_thdots_marisaEx_passive:OnAbilityExecuted(keys)
+	if not IsServer() then return end
+	local caster = self:GetParent()
+	local ability = keys.ability
+	if keys.unit ~= caster or ability:IsItem() then return end
+	
+	self.react_time = 0
+	if self:GetStackCount() ~= 1 then
+		print("do is")
+		if ability:GetAbilityType() == 1 then
+			caster:SetContextThink("marisaEx", function ()
+				THDReduceCooldown(ability,-self.refresh_time_ult)
+				print(ability:GetCooldownTimeRemaining())
+			end, FrameTime())
+		else
+			caster:SetContextThink("marisaEx", function ()
+				THDReduceCooldown(ability,-self.refresh_time)
+				print(ability:GetCooldownTimeRemaining())
+			end, FrameTime())
+		end
+		self:SetStackCount(1)
+	end
 end

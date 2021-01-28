@@ -284,6 +284,7 @@ function ability_thdotsr_star01:OnSpellStart()
 			ParticleManager:SetParticleControl(self.strike_particle_fx, 0, dummy:GetAbsOrigin())
 			ParticleManager:SetParticleControl(self.strike_particle_fx, 1, dummy:GetAbsOrigin())
 			ParticleManager:SetParticleControl(self.strike_particle_fx, 2, dummy:GetAbsOrigin())
+			ParticleManager:SetParticleControl(self.strike_particle_fx, 7, Vector(search_radius,0,0))
 
 
 			dummy:RemoveSelf()

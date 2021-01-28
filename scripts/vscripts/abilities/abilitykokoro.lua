@@ -27,6 +27,8 @@ function ability_thdots_kokoro01:OnSpellStart()
 	local you = nil
 	local nu = nil
 	local mask = 0
+
+
 	if caster:HasModifier("modifier_ability_thdots_kokoroEx_2") then
 		mask = caster:FindModifierByName("modifier_ability_thdots_kokoroEx_2"):GetStackCount()
 		if mask == 1 then --怒面具加伤害
@@ -300,6 +302,39 @@ end
 --------------------------------------------------------
 ability_thdots_kokoro03 = class({})
 
+function ability_thdots_kokoro03:GetAbilityTextureName()
+	if self:GetCaster():HasModifier("modifier_ability_thdots_kokoro03_release") then
+		return "custom/ability_thdots_kokoro03_release"
+	else
+		return "custom/ability_thdots_kokoro03"
+	end
+end
+
+function ability_thdots_kokoro03:GetCastPoint()
+	if not self:GetCaster():HasModifier("modifier_ability_thdots_kokoro03_release") then
+		return self.BaseClass.GetCastPoint(self)
+	else
+		return 0.2
+	end
+end
+
+function ability_thdots_kokoro03:GetManaCost(level)
+	if not self:GetCaster():HasModifier("modifier_ability_thdots_kokoro03_release") then
+		return self.BaseClass.GetManaCost(self, level)
+	else
+		return 0
+	end
+end
+
+
+function ability_thdots_kokoro03:GetBehavior()
+	if not self:GetCaster():HasModifier("modifier_ability_thdots_kokoro03_release") then
+		return self.BaseClass.GetBehavior(self)
+	else
+		return DOTA_ABILITY_BEHAVIOR_NO_TARGET + DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES
+	end
+end
+
 function ability_thdots_kokoro03:CastFilterResultTarget(hTarget)
 	if hTarget == self:GetCaster() or hTarget:IsMagicImmune() then
 		return UF_FAIL_CUSTOM
@@ -308,15 +343,15 @@ end
 
 function ability_thdots_kokoro03:GetAssociatedSecondaryAbilities()	return "ability_thdots_kokoro03_release" end
 
-function ability_thdots_kokoro03:OnUpgrade()
-	if not self.release_ability then
-		self.release_ability = self:GetCaster():FindAbilityByName("ability_thdots_kokoro03_release")
-	end
+-- function ability_thdots_kokoro03:OnUpgrade()
+-- 	if not self.release_ability then
+-- 		self.release_ability = self:GetCaster():FindAbilityByName("ability_thdots_kokoro03_release")
+-- 	end
 	
-	if self.release_ability and not self.release_ability:IsTrained() then
-		self.release_ability:SetLevel(1)
-	end
-end
+-- 	if self.release_ability and not self.release_ability:IsTrained() then
+-- 		self.release_ability:SetLevel(1)
+-- 	end
+-- end
 
 function ability_thdots_kokoro03:OnSpellStart()
 	if not IsServer() then return end
@@ -329,100 +364,113 @@ function ability_thdots_kokoro03:OnSpellStart()
 	local damage 				= self:GetSpecialValueFor("damage")
 	local blink_duration 		= self:GetSpecialValueFor("blink_duration")
 	local caster = self:GetCaster()
-	local target = self:GetCursorTarget() 
-	if is_spell_blocked(target,caster) then return end
-	if caster:GetTeam() == target:GetTeam() then
-		duration = knockback_duration
-	end
-	if target:HasModifier("modifier_thdots_yugi04_think_interval") then
-		duration = 0.1
-	end
-	if target:HasModifier("modifier_thdots_Suika_04") and target:HasModifier("modifier_thdots_Suika_04_telent") then
-		duration = 0.1
-	end
-	self:GetCaster().target = target
-	local mask = 0
-	local xi = nil
-	local you = nil
-	local nu = nil
-	if caster:HasModifier("modifier_ability_thdots_kokoroEx_2") then
-		mask = caster:FindModifierByName("modifier_ability_thdots_kokoroEx_2"):GetStackCount()
-		if mask == 1 then --怒面具加伤害
-			xi = true
-		else
-			xi = false
+	local target = self:GetCursorTarget() or caster.target
+
+	if not caster:HasModifier("modifier_ability_thdots_kokoro03_release") then
+		if is_spell_blocked(target,caster) then return end
+		self:EndCooldown()
+		if caster:GetTeam() == target:GetTeam() then
+			duration = knockback_duration
 		end
-		if mask == 2 then --喜面具加移速
-			you = true
-		else
-			you = false
+		if target:HasModifier("modifier_thdots_yugi04_think_interval") then
+			duration = 0.1
 		end
-		if mask == 3 then --忧面具锁闭时间
-			nu = true
-		else
-			nu = false
+		if target:HasModifier("modifier_thdots_Suika_04") and target:HasModifier("modifier_thdots_Suika_04_telent") then
+			duration = 0.1
 		end
-		if FindTelentValue(self:GetCaster(),"special_bonus_unique_kokoro_5") ~= 0 then
-			xi = true
-			you = true
-			nu = true
-		end
-		if xi == true then --怒面具加伤害和击飞距离
-			damage = damage * 2
-			knockback_distance = knockback_distance * 2
-		end
-		if you == true then --喜面具加移速
-			caster:AddNewModifier(caster, self, "modifier_ability_thdots_kokoro03_movespeed_buff", {duration = self:GetSpecialValueFor("movespeed_duraiton")})
-		end
-		if nu == true then --忧面具眩晕周围
-			local targets = FindUnitsInRadius(caster:GetTeam(),caster:GetOrigin(),nil,radius,DOTA_UNIT_TARGET_TEAM_ENEMY,
-	 								DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO,0,0,false)
-			for _,v in pairs(targets) do
-				UtilStun:UnitStunTarget(caster,v,you_stun_duration)
+		self:GetCaster().target = target
+		local mask = 0
+		local xi = nil
+		local you = nil
+		local nu = nil
+		if caster:HasModifier("modifier_ability_thdots_kokoroEx_2") then
+			mask = caster:FindModifierByName("modifier_ability_thdots_kokoroEx_2"):GetStackCount()
+			if mask == 1 then --怒面具加伤害
+				xi = true
+			else
+				xi = false
+			end
+			if mask == 2 then --喜面具加移速
+				you = true
+			else
+				you = false
+			end
+			if mask == 3 then --忧面具锁闭时间
+				nu = true
+			else
+				nu = false
+			end
+			if FindTelentValue(self:GetCaster(),"special_bonus_unique_kokoro_5") ~= 0 then
+				xi = true
+				you = true
+				nu = true
+			end
+			if xi == true then --怒面具加伤害和击飞距离
+				damage = damage * 2
+				knockback_distance = knockback_distance * 2
+			end
+			if you == true then --喜面具加移速
+				caster:AddNewModifier(caster, self, "modifier_ability_thdots_kokoro03_movespeed_buff", {duration = self:GetSpecialValueFor("movespeed_duraiton")})
+			end
+			if nu == true then --忧面具眩晕周围
+				local targets = FindUnitsInRadius(caster:GetTeam(),caster:GetOrigin(),nil,radius,DOTA_UNIT_TARGET_TEAM_ENEMY,
+		 								DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO,0,0,false)
+				for _,v in pairs(targets) do
+					UtilStun:UnitStunTarget(caster,v,you_stun_duration)
+				end
 			end
 		end
-	end
-	--这段代码是不打断的平移
-	-- target:AddNewModifier(self:GetCaster(), self, "modifier_ability_thdots_kokoro03_knockback", {duration = knockback_duration ,
-	-- 	 x = self:GetCaster():GetAbsOrigin().x, y = self:GetCaster():GetAbsOrigin().y,z = self:GetCaster():GetAbsOrigin().z})
-	local knockback_properties = {
-			 center_x 			= caster:GetOrigin().x,
-			 center_y 			= caster:GetOrigin().y,
-			 center_z 			= caster:GetOrigin().z,
-			 duration 			= duration ,
-			 knockback_duration = knockback_duration,
-			 knockback_distance = knockback_distance,
-			 knockback_height 	= knockback_height,
-		}
-	knockback_modifier = target:AddNewModifier(caster, self, "modifier_knockback", knockback_properties) --击飞
-	local bash_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_spirit_breaker/spirit_breaker_greater_bash.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-	ParticleManager:ReleaseParticleIndex(bash_particle)
-	target:EmitSound("Hero_Spirit_Breaker.GreaterBash")
-	if target:GetTeam() ~= caster:GetTeam() then
-		local damage_tabel = {
-					victim 			= target,
-					-- Damage starts ramping from when cast time starts, so just gonna simiulate the effects by adding the cast point
-					damage 			= damage,
-					damage_type		= self:GetAbilityDamageType(),
-					damage_flags 	= self:GetAbilityTargetFlags(),
-					attacker 		= caster,
-					ability 		= self
-				}
-		-- if target:HasModifier("modifier_ability_thdots_kokoroEx") then
-		-- 	damage_tabel.damage_type = DAMAGE_TYPE_PURE
+		--这段代码是不打断的平移
+		-- target:AddNewModifier(self:GetCaster(), self, "modifier_ability_thdots_kokoro03_knockback", {duration = knockback_duration ,
+		-- 	 x = self:GetCaster():GetAbsOrigin().x, y = self:GetCaster():GetAbsOrigin().y,z = self:GetCaster():GetAbsOrigin().z})
+		local knockback_properties = {
+				 center_x 			= caster:GetOrigin().x,
+				 center_y 			= caster:GetOrigin().y,
+				 center_z 			= caster:GetOrigin().z,
+				 duration 			= duration ,
+				 knockback_duration = knockback_duration,
+				 knockback_distance = knockback_distance,
+				 knockback_height 	= knockback_height,
+			}
+		knockback_modifier = target:AddNewModifier(caster, self, "modifier_knockback", knockback_properties) --击飞
+		local bash_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_spirit_breaker/spirit_breaker_greater_bash.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
+		ParticleManager:ReleaseParticleIndex(bash_particle)
+		target:EmitSound("Hero_Spirit_Breaker.GreaterBash")
+		if target:GetTeam() ~= caster:GetTeam() then
+			local damage_tabel = {
+						victim 			= target,
+						-- Damage starts ramping from when cast time starts, so just gonna simiulate the effects by adding the cast point
+						damage 			= damage,
+						damage_type		= self:GetAbilityDamageType(),
+						damage_flags 	= self:GetAbilityTargetFlags(),
+						attacker 		= caster,
+						ability 		= self
+					}
+			-- if target:HasModifier("modifier_ability_thdots_kokoroEx") then
+			-- 	damage_tabel.damage_type = DAMAGE_TYPE_PURE
+			-- end
+			UnitDamageTarget(damage_tabel)
+		end
+		-- if not self.release_ability then
+		-- 	self.release_ability = self:GetCaster():FindAbilityByName("ability_thdots_kokoro03_release")
+		-- end	
+		-- if self.release_ability then
+		-- 	self:GetCaster():SwapAbilities(self:GetName(), self.release_ability:GetName(), false,true)
+			self:GetCaster():AddNewModifier(self:GetCaster(), self,"modifier_ability_thdots_kokoro03_release",{duration = blink_duration})
+		-- 	self:GetCaster().IsChangeBack = false
 		-- end
-		UnitDamageTarget(damage_tabel)
-	end
-	if not self.release_ability then
-		self.release_ability = self:GetCaster():FindAbilityByName("ability_thdots_kokoro03_release")
-	end	
-	if self.release_ability then
-		self:GetCaster():SwapAbilities(self:GetName(), self.release_ability:GetName(), false,true)
-		self:GetCaster():AddNewModifier(self:GetCaster(), self,"modifier_ability_thdots_kokoro03_release",{duration = blink_duration})
-		self:GetCaster().IsChangeBack = false
-	end
-	if caster:HasModifier("modifier_ability_thdots_kokoroEx_2") then
-		caster:FindModifierByName("modifier_ability_thdots_kokoroEx_2"):SetStackCount(3)
+		if caster:HasModifier("modifier_ability_thdots_kokoroEx_2") then
+			caster:FindModifierByName("modifier_ability_thdots_kokoroEx_2"):SetStackCount(3)
+		end
+	else
+		local caster = self:GetCaster()
+		self:StartCooldown(self:GetCooldown(self:GetLevel()))
+		caster:RemoveModifierByName("modifier_ability_thdots_kokoro03_release")
+		local effectIndex = ParticleManager:CreateParticle("particles/econ/events/ti9/blink_dagger_ti9_start_lvl2.vpcf", PATTACH_POINT, caster)
+		ParticleManager:SetParticleControl(effectIndex, 0, caster:GetAbsOrigin())
+		ParticleManager:DestroyParticleSystem(effectIndex, false)
+		FindClearSpaceForUnit(caster,caster.target:GetOrigin(),true)
+		caster:EmitSound("DOTA_Item.BlinkDagger.Activate")
 	end
 end
 
@@ -450,21 +498,21 @@ end
 modifier_ability_thdots_kokoro03_release = {}
 LinkLuaModifier("modifier_ability_thdots_kokoro03_release","scripts/vscripts/abilities/abilitykokoro.lua",LUA_MODIFIER_MOTION_NONE)
 
-function modifier_ability_thdots_kokoro03_release:IsHidden() 		return true end
+function modifier_ability_thdots_kokoro03_release:IsHidden() 		return false end
 function modifier_ability_thdots_kokoro03_release:IsPurgable()		return false end
 function modifier_ability_thdots_kokoro03_release:RemoveOnDeath() 	return false end
 function modifier_ability_thdots_kokoro03_release:IsDebuff()		return false end
 
-function modifier_ability_thdots_kokoro03_release:OnDestroy()
-	if not IsServer() then return end
-	if not self:GetAbility().release_ability then
-		self:GetAbility().release_ability	= self:GetParent():FindAbilityByName("ability_thdots_kokoro03_release")
-	end
-	if not self:GetParent().IsChangeBack then
-		self:GetParent():SwapAbilities(self:GetAbility():GetName(), self:GetAbility().release_ability:GetName(), true,false)
-		self:GetParent().IsChangeBack = true
-	end
-end
+-- function modifier_ability_thdots_kokoro03_release:OnDestroy()
+-- 	if not IsServer() then return end
+-- 	if not self:GetAbility().release_ability then
+-- 		self:GetAbility().release_ability	= self:GetParent():FindAbilityByName("ability_thdots_kokoro03_release")
+-- 	end
+-- 	if not self:GetParent().IsChangeBack then
+-- 		self:GetParent():SwapAbilities(self:GetAbility():GetName(), self:GetAbility().release_ability:GetName(), true,false)
+-- 		self:GetParent().IsChangeBack = true
+-- 	end
+-- end
 
 -- modifier_ability_thdots_kokoro03_knockback = class({})  --不打断的平移
 -- LinkLuaModifier("modifier_ability_thdots_kokoro03_knockback","scripts/vscripts/abilities/abilitykokoro.lua",LUA_MODIFIER_MOTION_HORIZONTAL)
@@ -714,6 +762,7 @@ function modifier_ability_thdots_kokoro04_caster_wanbaochui:OnIntervalThink()
 		if self.target:GetOrigin() ~= self.caster:GetOrigin() then
 			self.caster:SetForwardVector(vec:Normalized())
 		end
+
 		local trail_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_juggernaut/juggernaut_omni_slash_trail.vpcf", PATTACH_CUSTOMORIGIN, self.caster)
 		ParticleManager:SetParticleControl(trail_pfx, 0, Vector(next_point.x, next_point.y, next_point.z))
 		ParticleManager:SetParticleControl(trail_pfx, 1, self:GetCaster():GetAbsOrigin())
@@ -746,6 +795,13 @@ function modifier_ability_thdots_kokoro04_caster_wanbaochui:OnIntervalThink()
 		if self.target:GetContext("ability_yuyuko_Ex_deadflag") == 0 then --判定UUZ是否死亡
 			yuyuko_dead_flag = true
 		end
+
+		local kokoro04_attack = "particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_omni_slash_tgt_bladekeeper.vpcf"
+		local trail_pfx = ParticleManager:CreateParticle(kokoro04_attack, PATTACH_CUSTOMORIGIN, self.target)
+		ParticleManager:SetParticleControl(trail_pfx, 0, self.target:GetOrigin())
+		ParticleManager:SetParticleControl(trail_pfx, 1, self.target:GetOrigin())
+		ParticleManager:ReleaseParticleIndex(trail_pfx)
+		self.caster:EmitSound("Voice_Thdots_Kokoro.AbilityKokoro04_attack")
 		self.caster:PerformAttack(self.target, true, true, true, true, false, false, false)
 		--若UUZ被此伤害击杀，则附带刷新判定buff
 		if self.target:GetClassname()=="npc_dota_hero_necrolyte" and self.target:GetContext("ability_yuyuko_Ex_deadflag") == 1 and self.target:IsRealHero() and yuyuko_dead_flag == true then
@@ -808,6 +864,7 @@ function modifier_ability_thdots_kokoro04_caster_wanbaochui:OnDeath(keys)
 	if keys.attacker == self:GetCaster() then
 		local caster = keys.attacker
 		if FindTelentValue(self:GetCaster(),"special_bonus_unique_kokoro_6") ~= 0 then --刷新所有技能
+			kokoro04_refresh_effect(caster)
 			self:GetAbility():EndCooldown()
 			if caster:FindAbilityByName("ability_thdots_kokoro01") then
 				caster:FindAbilityByName("ability_thdots_kokoro01"):EndCooldown()
@@ -861,6 +918,7 @@ function modifier_ability_thdots_kokoro04_target:OnDeath(keys)
 	if keys.attacker == self:GetCaster() then
 		local caster = keys.attacker
 		if FindTelentValue(self:GetCaster(),"special_bonus_unique_kokoro_6") ~= 0 then --刷新所有技能
+			kokoro04_refresh_effect(caster)
 			self:GetAbility():EndCooldown()
 			if caster:FindAbilityByName("ability_thdots_kokoro01") then
 				caster:FindAbilityByName("ability_thdots_kokoro01"):EndCooldown()
@@ -988,6 +1046,13 @@ function modifier_ability_thdots_kokoro04_caster:OnDestroy()
 	ParticleManager:SetParticleControl(coup_pfx, 1, target:GetAbsOrigin())
 	ParticleManager:SetParticleControlOrientation(coup_pfx, 1, self:GetParent():GetForwardVector() * (-1), self:GetParent():GetRightVector(), self:GetParent():GetUpVector())
 	ParticleManager:ReleaseParticleIndex(coup_pfx)
+
+	local kokoro04_kill = ParticleManager:CreateParticle("particles/econ/items/phantom_assassin/phantom_assassin_arcana_elder_smith/phantom_assassin_crit_impact_dagger_arcana.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+	ParticleManager:SetParticleControlEnt(kokoro04_kill, 0, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
+	ParticleManager:SetParticleControl(kokoro04_kill, 1, target:GetAbsOrigin())
+	ParticleManager:SetParticleControlOrientation(kokoro04_kill, 1, caster:GetForwardVector() * (-1), caster:GetRightVector(), caster:GetUpVector())
+	ParticleManager:ReleaseParticleIndex(kokoro04_kill)
+
 	local ability = self:GetAbility()
 	ProjectileManager:CreateLinearProjectile({
 				Ability = ability,
@@ -1036,6 +1101,7 @@ function modifier_ability_thdots_kokoro04_caster:OnDestroy()
 		end
 		if FindTelentValue(self:GetCaster(),"special_bonus_unique_kokoro_6") ~= 0 then --刷新所有技能
 			print("shuaxin")
+			kokoro04_refresh_effect(caster)
 			self:GetAbility():EndCooldown()
 			if caster:FindAbilityByName("ability_thdots_kokoro01") then
 				caster:FindAbilityByName("ability_thdots_kokoro01"):EndCooldown()
@@ -1059,6 +1125,16 @@ function modifier_ability_thdots_kokoro04_caster:OnDestroy()
 	end
 end
 
+function kokoro04_refresh_effect(caster)
+	caster:EmitSound("Voice_Thdots_Kokoro.AbilityKokoro04_kill")
+	local kokoro04_attack = "particles/econ/items/juggernaut/jugg_arcana/juggernaut_arcana_v2_trigger.vpcf"
+	local trail_pfx = ParticleManager:CreateParticle(kokoro04_attack, PATTACH_CUSTOMORIGIN, caster)
+	-- ParticleManager:SetParticleControl(trail_pfx, 0, caster:GetOrigin())
+	ParticleManager:SetParticleControlEnt(trail_pfx , 0, caster, 5, "attach_hitloc", Vector(0,0,0), true)
+	ParticleManager:SetParticleControlEnt(trail_pfx , 1, caster, 5, "attach_hitloc", Vector(0,0,0), true)
+	ParticleManager:SetParticleControlEnt(trail_pfx , 2, caster, 5, "attach_hitloc", Vector(0,0,0), true)
+	ParticleManager:ReleaseParticleIndex(trail_pfx)
+end
 --------------------------------------------------------
 --凭依「喜怒哀乐Possession」
 --------------------------------------------------------

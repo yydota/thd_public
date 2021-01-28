@@ -23,6 +23,7 @@
 #base "heroes/daiyousei/npc_abilities_daiyousei.txt"
 #base "heroes/keine/npc_abilities_keine.txt"
 #base "heroes/letty/npc_abilities_letty.txt"
+#base "heroes/parsee/npc_abilities_parsee.txt"
 
 "DOTAAbilities"
 {
@@ -1507,6 +1508,72 @@
 		}
 		"AbilityDamage"	"240 320 400"
 	}
+
+	"ability_dota2x_reimuEx"
+	{
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityReimu.lua"
+		"AbilityTextureName"	"alchemist_goblins_greed"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// Stats
+		// ----------------------------------------------------------------
+		"MaxLevel"	"1"	
+		"precache"
+		{
+			"particle"	"particles/econ/items/windrunner/windrunner_cape_cascade/windrunner_windrun_cascade.vpcf"
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"give_gold_interval"	"12"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"give_gold_amount"		"4"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"give_gold_kill"		"50"
+			}
+		}
+	}
+	"ability_thdots_marisaEx"
+	{
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityMarisa.lua"
+		"AbilityTextureName"	"touhoutd/thtd_marisa_02"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// Stats
+		// ----------------------------------------------------------------
+		"MaxLevel"	"1"	
+		"precache"
+		{
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"refresh_interval"	"10"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"refresh_time"		"6"
+			}
+			"03"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"refresh_time_ult"		"25"
+			}
+		}
+	}	
 
 	"ability_thdots_marisa01"
 	{
@@ -10988,7 +11055,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityCastPoint"	"0.1"
-		"HasScepterUpgrade"			"1"
+		// "HasScepterUpgrade"			"1"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_1"
 		"AbilityCooldown"	"40"
 		// Stats
@@ -11045,7 +11112,7 @@
 	{
 		"BaseClass"	"ability_datadriven"
 		"AbilityTextureName"	"custom/ability_thdots_momiji02"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityCastPoint"	"0.3"
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_2"
@@ -11127,15 +11194,63 @@
 		}
 	}
 
+	// "ability_thdots_momiji03"
+	// {
+	// 	"BaseClass"	"ability_datadriven"
+	// 	"AbilityTextureName"	"custom/ability_thdots_momiji03"
+	// 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	// 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	// 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	// 	"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+	// 	"MaxLevel"	"4"
+	// 	"AbilityCastPoint"	"0.1"
+	// 	"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
+	// 	"AbilityCooldown"	"11 10 9 8"
+	// 	"AbilityManaCost"	"50"
+	// 	// Stats
+	// 	// ----------------------------------------------------------------
+	// 	"AbilityCastRange"	"150"
+	// 	"precache"
+	// 	{
+	// 		"particle"	"particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
+	// 		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
+	// 	}
+	// 	"OnSpellStart"
+	// 	{
+	// 		"FireSound"
+	// 		{
+	// 			"EffectName"	"Hero_DragonKnight.DragonTail.Target"
+	// 			"Target"	"CASTER"
+	// 		}
+	// 		"RunScript"
+	// 		{
+	// 			"ScriptFile"	"scripts/vscripts/abilities/abilityMomiji.lua"
+	// 			"Function"	"OnMomiji03Start"
+	// 			"Target"	"TARGET"
+	// 			"Duration"	"%ability_duration"
+	// 		}
+	// 	}
+	// 	"AbilitySpecial"
+	// 	{
+	// 		"01"
+	// 		{
+	// 			"var_type"	"FIELD_FLOAT"
+	// 			"ability_duration"	"2 2.5 3 3.5"
+	// 		}
+	// 	}
+	// 	"AbilityDamage"	"60 90 120 150"
+	// }
 	"ability_thdots_momiji03"
 	{
-		"BaseClass"	"ability_datadriven"
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityMomiji.lua"
 		"AbilityTextureName"	"custom/ability_thdots_momiji03"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"	"4"
+		// "HasScepterUpgrade"			"1"
 		"AbilityCastPoint"	"0.1"
 		"AbilityCastAnimation"	"ACT_DOTA_CAST_ABILITY_3"
 		"AbilityCooldown"	"11 10 9 8"
@@ -11170,53 +11285,103 @@
 				"var_type"	"FIELD_FLOAT"
 				"ability_duration"	"2 2.5 3 3.5"
 			}
+			"02"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"physical_block"	"40 50 60 70"
+			}
 		}
 		"AbilityDamage"	"60 90 120 150"
 	}
 
+	// "ability_thdots_momiji04"
+	// {
+	// 	"BaseClass"	"ability_datadriven"
+	// 	"AbilityTextureName"	"custom/ability_thdots_momiji04"
+	// 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	// 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	// 	// Stats
+	// 	// ----------------------------------------------------------------
+	// 	"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
+	// 	"precache"
+	// 	{
+	// 	}
+	// 	"Modifiers"
+	// 	{
+	// 		"passive_momiji04_bonus"
+	// 		{
+	// 			"Passive"	"1"
+	// 			"IsHidden"	"1"
+	// 			"Properties"
+	// 			{
+	// 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+	// 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+	// 			}
+
+	// 		}
+	// 		"modifier_aura_momiji04_bonus"
+	// 		{
+	// 			"Passive"	"1"
+	// 			"IsPurgable"	"0"
+	// 			"IsHidden"	"1"
+	// 			"Aura"	"modifier_momiji04_bonus"
+	// 			"Aura_Radius"	"%radius"
+	// 			"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	// 			"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"				
+	// 		}
+	// 		"modifier_momiji04_bonus"
+	// 		{
+	// 			"Properties"
+	// 			{
+	// 				//"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%aura_attack_speed"
+	// 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%aura_move_speed"
+	// 			}
+	// 		}
+	// 	}
+	// 	"AbilitySpecial"
+	// 	{
+	// 		"01"
+	// 		{
+	// 			"var_type"	"FIELD_FLOAT"
+	// 			"move_speed"	"10 15 20"
+	// 		}
+	// 		"02"
+	// 		{
+	// 			"var_type"	"FIELD_FLOAT"
+	// 			"attack_speed"	"10 20 30"
+	// 		}
+	// 		"03"
+	// 		{
+	// 			"var_type"	"FIELD_FLOAT"
+	// 			"aura_move_speed"	"5 10 15"
+	// 		}
+	// 		"04"
+	// 		{
+	// 			"var_type"	"FIELD_FLOAT"
+	// 			"aura_attack_speed"	"10 20 30"
+	// 		}
+	// 		"05"
+	// 		{
+	// 			"var_type"	"FIELD_INTEGER"
+	// 			"radius"	"1000"
+	// 		}
+	// 	}
+	// }
 	"ability_thdots_momiji04"
 	{
-		"BaseClass"	"ability_datadriven"
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityMomiji.lua"
 		"AbilityTextureName"	"custom/ability_thdots_momiji04"
-		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityCooldown"	"110 100 90"
+		"HasScepterUpgrade"			"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityType"	"DOTA_ABILITY_TYPE_ULTIMATE"
 		"precache"
 		{
-		}
-		"Modifiers"
-		{
-			"passive_momiji04_bonus"
-			{
-				"Passive"	"1"
-				"IsHidden"	"1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
-				}
-
-			}
-			"modifier_aura_momiji04_bonus"
-			{
-				"Passive"	"1"
-				"IsPurgable"	"0"
-				"IsHidden"	"1"
-				"Aura"	"modifier_momiji04_bonus"
-				"Aura_Radius"	"%radius"
-				"Aura_Teams"	"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-				"Aura_Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"				
-			}
-			"modifier_momiji04_bonus"
-			{
-				"Properties"
-				{
-					//"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%aura_attack_speed"
-					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%aura_move_speed"
-				}
-			}
+			"soundfile"	"soundevents/game_sounds_heroes/game_sounds_centaur.vsndevts"
 		}
 		"AbilitySpecial"
 		{
@@ -11244,6 +11409,24 @@
 			{
 				"var_type"	"FIELD_INTEGER"
 				"radius"	"1000"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_duration"	"3.5 4 4.5"
+				"RequiresScepter"		"1"
+			}
+			"07"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_movement"	"100"
+				"RequiresScepter"		"1"
+			}
+			"08"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_cooldonw"	"110 100 90"
+				"RequiresScepter"		"1"
 			}
 		}
 	}
@@ -16700,9 +16883,100 @@
 		}
 	}
 
+	// "ability_thdots_minoriko01"
+	// {
+	// 	"BaseClass"	"ability_datadriven"
+	// 	"AbilityTextureName"	"custom/ability_thdots_minoriko01"
+	// 	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET "
+	// 	"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	// 	"AbilityUnitTargetTeam"	"DOTA_UNIT_TARGET_TEAM_BOTH"
+	// 	"AbilityUnitDamageType"	"DAMAGE_TYPE_MAGICAL"
+	// 	"AbilityCastPoint"	"0.4"
+	// 	"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_1"
+	// 	"AbilityCooldown"	"11"
+	// 	"AbilityManaCost"	"105 120 135 150"
+	// 	// Stats
+	// 	// ----------------------------------------------------------------
+	// 	"AbilityCastRange"	"600"
+	// 	"precache"
+	// 	{
+	// 		"particle"	"particles/heroes/minoriko/ability_minoriko_01.vpcf"
+	// 		"soundfile"	"soundevents/thdots_hero_sounds/thdots_minoriko_sounds.vsndevts"
+	// 		"particle"	"particles/units/heroes/hero_ogre_magi/ogre_magi_fireblast.vpcf"
+	// 		"particle"	"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
+	// 	}
+	// 	"OnSpellStart"
+	// 	{
+	// 		"TrackingProjectile"
+	// 		{
+	// 			"Target"				"TARGET"
+	// 			"EffectName"			"particles/heroes/minoriko/ability_minoriko_01.vpcf"
+	// 			"Dodgeable"				"0"
+	// 			"ProvidesVision"		"1"
+	// 			"VisionRadius"			"100"
+	// 			"MoveSpeed"				"1000"
+	// 			"SourceAttachment"		"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+	// 		}
+	// 		"FireSound"
+	// 		{
+	// 			"EffectName"	"Voice_Thdots_Minoriko.AbilityMinoriko01"
+	// 			"Target" 		"CASTER"
+	// 		}
+	// 	}
+	// 	"OnProjectileHitUnit"
+	// 	{
+	// 		"DeleteOnHit"	"true"
+	// 		"FireSound"
+	// 		{
+	// 			"EffectName"				"Minoriko.AbilityMinoriko01"
+	// 			"Target"					"TARGET"
+	// 		}
+	// 		"RunScript"
+	// 	    {
+	// 	      	"ScriptFile"    			"scripts/vscripts/abilities/abilityMinoriko.lua"
+	// 	      	"Function"  				"OnMinoriko01ProjectileHitUnit"
+	// 	      	"Target"        			"TARGET"
+	// 	      	"stun_duration"				"%stun_duration"
+	// 	      	"radius"					"%radius"
+	// 	      	"aoe_damage"				"%aoe_damage"
+	// 	      	"heal_amount"				"%heal_amount"
+	// 	      	"heal_percent"				"%heal_percent"
+	// 	    }
+	// 	}
+	// 	"AbilitySpecial"
+	// 	{
+	// 		"01"
+	// 		{
+	// 			"var_type"	"FIELD_FLOAT"
+	// 			"stun_duration"	"1.5"
+	// 		}
+	// 		"02"
+	// 		{
+	// 			"var_type"	"FIELD_FLOAT"
+	// 			"radius"	"275"
+	// 		}
+	// 		"03"
+	// 		{
+	// 			"var_type"	"FIELD_FLOAT"
+	// 			"aoe_damage"	"50 75 100 125"
+	// 		}
+	// 		"04"
+	// 		{
+	// 			"var_type"	"FIELD_FLOAT"
+	// 			"heal_amount"	"100 150 200 250"
+	// 		}
+	// 		"05"
+	// 		{
+	// 			"var_type"	"FIELD_FLOAT"
+	// 			"heal_percent"	"6 9 12 15"
+	// 		}
+	// 	}
+	// 	"AbilityDamage"	"50 75 100 125"
+	// }
 	"ability_thdots_minoriko01"
 	{
-		"BaseClass"	"ability_datadriven"
+		"BaseClass"	"ability_lua"
+		"ScriptFile"	"scripts/vscripts/abilities/abilityMinoriko.lua"
 		"AbilityTextureName"	"custom/ability_thdots_minoriko01"
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET "
 		"AbilityUnitTargetType"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -16712,6 +16986,7 @@
 		"AbilityCastAnimation"	"Act_DOTA_CAST_ABILITY_1"
 		"AbilityCooldown"	"11"
 		"AbilityManaCost"	"105 120 135 150"
+		"HasScepterUpgrade"	"1"
 		// Stats
 		// ----------------------------------------------------------------
 		"AbilityCastRange"	"600"
@@ -16721,44 +16996,6 @@
 			"soundfile"	"soundevents/thdots_hero_sounds/thdots_minoriko_sounds.vsndevts"
 			"particle"	"particles/units/heroes/hero_ogre_magi/ogre_magi_fireblast.vpcf"
 			"particle"	"particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff.vpcf"
-		}
-		"OnSpellStart"
-		{
-			"TrackingProjectile"
-			{
-				"Target"				"TARGET"
-				"EffectName"			"particles/heroes/minoriko/ability_minoriko_01.vpcf"
-				"Dodgeable"				"0"
-				"ProvidesVision"		"1"
-				"VisionRadius"			"100"
-				"MoveSpeed"				"1000"
-				"SourceAttachment"		"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
-			}
-			"FireSound"
-			{
-				"EffectName"	"Voice_Thdots_Minoriko.AbilityMinoriko01"
-				"Target" 		"CASTER"
-			}
-		}
-		"OnProjectileHitUnit"
-		{
-			"DeleteOnHit"	"true"
-			"FireSound"
-			{
-				"EffectName"				"Minoriko.AbilityMinoriko01"
-				"Target"					"TARGET"
-			}
-			"RunScript"
-		    {
-		      	"ScriptFile"    			"scripts/vscripts/abilities/abilityMinoriko.lua"
-		      	"Function"  				"OnMinoriko01ProjectileHitUnit"
-		      	"Target"        			"TARGET"
-		      	"stun_duration"				"%stun_duration"
-		      	"radius"					"%radius"
-		      	"aoe_damage"				"%aoe_damage"
-		      	"heal_amount"				"%heal_amount"
-		      	"heal_percent"				"%heal_percent"
-		    }
 		}
 		"AbilitySpecial"
 		{
@@ -16786,6 +17023,12 @@
 			{
 				"var_type"	"FIELD_FLOAT"
 				"heal_percent"	"6 9 12 15"
+			}
+			"06"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"wanbaochui_radius"	"400"
+				"RequiresScepter"		"1"
 			}
 		}
 		"AbilityDamage"	"50 75 100 125"
@@ -16908,7 +17151,7 @@
 			"04"
 			{
 				"var_type"			"FIELD_FLOAT"
-				"duration"			"36"
+				"duration"			"24"
 			}
 		}
 	}

@@ -329,6 +329,7 @@ function ForceHorizontal( keys )
 		ability.forced_traveled = ability.forced_traveled + (ability.forced_direction * ability.forced_speed):Length2D()
 	else
 		target:SetContextThink("clear_space",function ()
+			if GameRules:IsGamePaused() then return 0.03 end
 			ResolveNPCPositions(target:GetAbsOrigin(), 128)
 			end,
 			0.03)
@@ -557,6 +558,7 @@ function Item_yukkuri_stick_ModifierTarget(keys)
 		end
 	end
 	Target:EmitSound("Hero_Lion.Voodoo")
+	Target:EmitSound("THD_ITEM.Yukkuri_Target")
 	local yukkuri_stick_particle = ParticleManager:CreateParticle("particles/units/heroes/hero_lion/lion_spell_voodoo.vpcf", PATTACH_CUSTOMORIGIN_FOLLOW,Target)
 	ParticleManager:ReleaseParticleIndex(yukkuri_stick_particle)
 	ItemAbility:ApplyDataDrivenModifier(Caster,Target,keys.ModifierName,{})
@@ -787,6 +789,7 @@ function modifier_item_card_good_man_kill:OnDeath(keys)
 	if keys.unit == self:GetCaster().good_man_target and keys.unit:IsRealHero() then
 		keys.unit:SetContextThink("HasAegis",
 		function()
+			if GameRules:IsGamePaused() then return 0.03 end
 			if keys.unit:GetTimeUntilRespawn() > 5 then
 				local caster = self:GetCaster()
 				local PlayerID = caster:GetPlayerOwnerID()
@@ -984,7 +987,7 @@ function ItemAbility_Verity_OnAttack(keys)
 			--ItemAbility:StartCooldown(ItemAbility:GetCooldown(1))
 			ItemAbility:StartCooldown(GetCurrentCoolDown(ItemAbility,Caster))
 		end
-		Target:EmitSound("Hero_Antimage.ManaBreak")
+		Target:EmitSound("THD_ITEM.Verity_Hit")
 		local RemoveMana = Target:GetMaxMana()*keys.PenetrateRemoveManaPercent*0.01+keys.Basicremovemana
 		RemoveMana=min(RemoveMana,Target:GetMana())
 		Target:ReduceMana(RemoveMana)
@@ -2193,6 +2196,30 @@ function OnZunGlasses_Take_Damage(keys)
 	--		keys.ability:StartCooldown(keys.ability:GetCooldown(keys.ability:GetLevel()))
 	--	end
 	--end
+end
+
+function ItemAbility_item_brother_sharp_created(keys)
+	print("dot is")
+	local caster = keys.caster
+	-- local particle_name = "particles/econ/items/windrunner/windranger_arcana/windranger_arcana_item_cyclone.vpcf"
+	local particle_name = "particles/econ/items/windrunner/windranger_arcana/windranger_arcana_ambient.vpcf"
+	-- local particle_name = "particles/econ/items/windrunner/windranger_arcana/windranger_arcana_debut_ambient_v2.vpcf"
+	caster.brother_sharp_particle = ParticleManager:CreateParticle(particle_name, PATTACH_ABSORIGIN_FOLLOW, caster)
+	-- caster.brother_sharp_particle = ParticleManager:CreateParticle(particle_name, PATTACH_CUSTOMORIGIN_FOLLOW, caster)
+	-- caster.brother_sharp_particle = ParticleManager:CreateParticle(particle_name, PATTACH_POINT_FOLLOW, caster)
+	ParticleManager:SetParticleControlEnt(caster.brother_sharp_particle , 0, caster, 5, "attach_hitloc", Vector(0,0,0), true)
+	ParticleManager:SetParticleControlEnt(caster.brother_sharp_particle , 1, caster, 5, "attach_hitloc", Vector(0,0,0), true)
+	ParticleManager:SetParticleControlEnt(caster.brother_sharp_particle , 2, caster, 5, "attach_hitloc", Vector(0,0,0), true)
+	ParticleManager:SetParticleControlEnt(caster.brother_sharp_particle , 11, caster, 5, "attach_hitloc", Vector(0,0,0), true)
+	ParticleManager:SetParticleControlEnt(caster.brother_sharp_particle , 12, caster, 5, "attach_hitloc", Vector(0,0,0), true)
+	-- ParticleManager:SetParticleControl(caster.brother_sharp_particle, 1, caster:GetAbsOrigin())
+end
+
+function ItemAbility_item_brother_sharp_destory(keys)
+	print("22222222222")
+	local caster = keys.caster
+	ParticleManager:DestroyParticle(caster.brother_sharp_particle, false)
+	-- ParticleManager:ReleaseParticleIndex(target.brother_sharp_particle)
 end
 
 --[[function OnFly_BirdKillSpawn(keys)

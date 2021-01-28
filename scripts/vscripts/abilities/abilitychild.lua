@@ -192,9 +192,9 @@ function AbilityChild:Child03OnLight( keys ) --光效移动，计时器0.03，�
 	end
 	local vec = self.tChild03Light[i].Ball.unit:GetAbsOrigin() 
 	local rad = GetRadBetweenTwoVec2D(vec,target:GetAbsOrigin())
-	self.tChild03Light[i].Ball.t = self.tChild03Light[i].Ball.t + 0.15
+	self.tChild03Light[i].Ball.t = self.tChild03Light[i].Ball.t + 0.15 --时间
 	local t = self.tChild03Light[i].Ball.t
-	if t >= 25 then 
+	if t >= 25 then --超过时间删除dummy
 		destroyUnit[i]:RemoveSelf()
 		-- self.tChild03Light[i].Ball.unit:RemoveSelf()
 		self.tChild03Light[i].Ball.unit = nil
@@ -223,18 +223,18 @@ function AbilityChild:Child03OnLight( keys ) --光效移动，计时器0.03，�
 				if v:GetHealth()/v:GetMaxHealth() <= minHealth then
 					minHealth = v:GetHealth()/v:GetMaxHealth()
 					self.tChild03Light[i].Target = v
-						if FindTelentValue(caster,"special_bonus_unique_luna_2") == 1 then --再根据天赋判定一次是否为英雄
-							local heroes = FindUnitsInRadius(caster:GetTeam(), vec, nil, 500, keys.ability:GetAbilityTargetTeam(), DOTA_UNIT_TARGET_HERO, 0, 0, false)
-							if #heroes > 0 then 
-								local HeroMinHealth = 1
-								for _,h in pairs(heroes) do
-									if h:GetHealth()/h:GetMaxHealth() <= HeroMinHealth then
-										HeroMinHealth = h:GetHealth()/h:GetMaxHealth()
-										self.tChild03Light[i].Target = h
-									end
+					if FindTelentValue(caster,"special_bonus_unique_luna_2") == 1 then --再根据天赋判定一次是否为英雄
+						local heroes = FindUnitsInRadius(caster:GetTeam(), vec, nil, 500, keys.ability:GetAbilityTargetTeam(), DOTA_UNIT_TARGET_HERO, 0, 0, false)
+						if #heroes > 0 then 
+							local HeroMinHealth = 1
+							for _,h in pairs(heroes) do
+								if h:GetHealth()/h:GetMaxHealth() <= HeroMinHealth then
+									HeroMinHealth = h:GetHealth()/h:GetMaxHealth()
+									self.tChild03Light[i].Target = h
 								end
 							end
 						end
+					end
 				end
 			end
 		end

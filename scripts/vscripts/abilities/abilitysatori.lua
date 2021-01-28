@@ -62,6 +62,8 @@ function OnSatori01SpellStart(keys)
 	caster:RemoveModifierByName("modifier_ability_thdots_chen03")
 	caster:RemoveModifierByName("modifier_suwako03_return_mana")
 	caster:RemoveModifierByName("modifier_ability_thdots_keine03_passive")
+	caster:RemoveModifierByName("modifier_ability_thdots_momiji03_passvie")
+	caster:RemoveModifierByName("modifier_ability_thdots_parsee01_passive")
 	----------------------------------------------------下面是DOTA2的BUFF
 	caster:RemoveModifierByName("modifier_medusa_mana_shield")
 	caster:RemoveModifierByName("modifier_leshrac_pulse_nova")
@@ -1097,6 +1099,23 @@ function OnSatori01SpellStart(keys)
 			AbilityStolenName = "ability_thdots_letty02"
 		elseif RandomNumber > 75 and RandomNumber <= 100 then
 			AbilityStolenName = "ability_thdots_letty04"
+			i = 2
+		end
+	end
+	if TargetName == "npc_dota_hero_pugna" then
+		if caster:GetLevel() >= 6 then
+			RandomNumber = RandomInt(1,100)
+		else 
+			RandomNumber = RandomInt(1,75)
+		end
+		if RandomNumber <= 25 then
+			AbilityStolenName = "ability_thdots_parsee01"
+		elseif RandomNumber > 25 and RandomNumber <= 50 then
+			AbilityStolenName = "ability_thdots_parsee02"
+		elseif RandomNumber > 50 and RandomNumber <= 75 then
+			AbilityStolenName = "ability_thdots_parsee03"
+		elseif RandomNumber > 75 and RandomNumber <= 100 then
+			AbilityStolenName = "ability_thdots_parsee04"
 			i = 2
 		end
 	end
