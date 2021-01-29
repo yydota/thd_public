@@ -69,7 +69,7 @@ local IsValidTHD2Match = false
 
 function WebApi:GetPlayerInfo( playerId )
 	local steamId = tostring(PlayerResource:GetSteamID(playerId))
-	if steamId == 0 then return end --invalid player
+	if steamId == nil or #steamId < 7 then return end --invalid player
 --[[
 	if isTesting and PlayerInfos[steamId]~=nil then
 		DeepPrintTable(PlayerInfos[steamId])
@@ -171,7 +171,7 @@ function WebApi:AfterMatch()
 	if winnerTeam < 0 then return end
 	
 	local requestBody = {
-		matchId = isTesting and RandomInt(1, 10000000) or tonumber(tostring(GameRules:GetMatchID())),
+		matchId = isTesting and RandomInt(1, 10000000) or tonumber(tostring(GameRules:Script_GetMatchID())),
 		duration = math.floor(GameRules:GetDOTATime(false, false)),
 		mapName = GetMapName(),
 		winner = winnerTeam,
