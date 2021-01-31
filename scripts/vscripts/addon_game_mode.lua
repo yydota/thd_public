@@ -441,11 +441,14 @@ function THDOTSGameMode:OnPlayerSay( keys )
 			THD2_SetCloneMode(false)
 			Say(plyhd, "Allowsame Mode OFF...",false)
 		elseif text == "-allsame" then  --(同队)全部选择相同少女
-			THD2_SetFCloneMode(true)
-			Say(plyhd, "Allsame Mode ON...",false)
-		elseif text == "-unallsame" then  --不再(同队)全部选择相同少女
-			THD2_SetFCloneMode(false)
-			Say(plyhd, "Allsame Mode OFF...",false)
+			THD2_SetJustForFunMode(plyhd,2)
+			--Say(plyhd, "Allsame Mode...",false)
+		elseif text == "-ordinary" then  --不再(同队)全部选择相同少女
+			THD2_SetJustForFunMode(plyhd,1)
+			--Say(plyhd, "Ordinary Mode...",false)
+		elseif text == "-ayayayaya" then
+			THD2_SetJustForFunMode(plyhd,3)
+			--Say(plyhd, "Ayayayaya Mode...",false)
 		end
 		if GameRules:State_Get() < DOTA_GAMERULES_STATE_STRATEGY_TIME then --只能在决策阶段(所有人选完人)前使用,主要是为了防止恶意使用
 			if text == "-fastrespawn" then  --快速复活
