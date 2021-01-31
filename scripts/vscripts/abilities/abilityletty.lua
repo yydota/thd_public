@@ -595,16 +595,22 @@ function ability_thdots_letty04:GetCastRange()
 	return self:GetSpecialValueFor("radius")
 end
 
+function ability_thdots_letty04:GetCooldown(level)
+	if self:GetCaster():HasModifier("modifier_item_wanbaochui") then
+		return self:GetSpecialValueFor("wanbaochui_cooldown")
+	else
+		return self:GetSpecialValueFor("cooldown")
+	end
+end
+
 function ability_thdots_letty04:OnSpellStart()
 	if not IsServer() then return end
 	local caster 				= self:GetCaster()
 	local duration  			= self:GetSpecialValueFor("duration")
-	if caster:HasModifier("modifier_item_wanbaochui") then
-		duration = self:GetSpecialValueFor("wanbaochui_duration")
-	end
 	self.radius  				= self:GetSpecialValueFor("radius")
 	if self:GetCaster():HasModifier("modifier_item_wanbaochui") then
 		self.radius = self.radius + 30000
+		duration = self:GetSpecialValueFor("wanbaochui_duration")
 	end
 	-- caster:AddNewModifier(caster, self, "modifier_ability_thdots_letty04", {duration = duration})
 	CreateModifierThinker(caster, self, "modifier_ability_thdots_letty04", {duration = duration}, caster:GetOrigin(), caster:GetTeamNumber(), false)
@@ -634,6 +640,7 @@ function modifier_ability_thdots_letty04:OnCreated()
 	--特效音效
 	if self:GetCaster():HasModifier("modifier_item_wanbaochui") then
 		talent_effect_point = Vector(0,0,0)
+		EmitAnnouncerSoundForPlayer("hero_Crystal.freezingField.wind", self:GetCaster():GetPlayerID())
 		EmitGlobalSound("hero_Crystal.freezingField.wind")
 	end
 	-- local particle = "particles/units/heroes/hero_lich/lich_chain_frost.vpcf"
@@ -679,11 +686,13 @@ function modifier_ability_thdots_letty04_debuff:GetEffectAttachType() return PAT
 function modifier_ability_thdots_letty04_debuff:OnCreated()
 	if not IsServer() then return end
 	self.attak_speed = self:GetParent():GetDisplayAttackSpeed() * self:GetAbility():GetSpecialValueFor("decrease_aspeed") / 100
+	-- self:GetParent():EmitSound("hero_Crystal.freezingField.wind")
 	--天赋禁疗
 	if FindTelentValue(self:GetCaster(),"special_bonus_unique_letty_4") ~= 0 then
 		self:SetStackCount(1)
 	end
 	self:StartIntervalThink(1)
+	EmitAnnouncerSoundForPlayer("hero_Crystal.freezingField.wind", self:GetParent():GetPlayerID())
 end
 
 function modifier_ability_thdots_letty04_debuff:OnIntervalThink()

@@ -7874,6 +7874,16 @@
 				"var_type"	"FIELD_FLOAT"
 				"bonus_intellect"	"3"
 			}
+			"09"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"attackLand_damage"	"140"
+			}
+			"10"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"reduce_mana"	"60"
+			}
 		}
 	}
 

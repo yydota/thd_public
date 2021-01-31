@@ -971,6 +971,8 @@ function ItemAbility_Verity_OnAttack(keys)
 	local ItemAbility = keys.ability
 	local Caster = keys.caster
 	local Target = keys.target
+	local attackLand_damage = ItemAbility:GetSpecialValueFor("attackLand_damage")
+	local reduce_mana = ItemAbility:GetSpecialValueFor("reduce_mana")
 	if (Target:IsBuilding()==false and Caster:IsIllusion()==false) then
 		
 		if ItemAbility:IsCooldownReady() then
@@ -978,12 +980,12 @@ function ItemAbility_Verity_OnAttack(keys)
 				ability = ItemAbility,
 				victim = Target,
 				attacker = Caster,
-				damage = 200,
+				damage = attackLand_damage,
 				damage_type = DAMAGE_TYPE_PHYSICAL,
 				damage_flags = 1
 			}
 			UnitDamageTarget(damage_table)
-			Target:ReduceMana(100)
+			Target:ReduceMana(reduce_mana)
 			--ItemAbility:StartCooldown(ItemAbility:GetCooldown(1))
 			ItemAbility:StartCooldown(GetCurrentCoolDown(ItemAbility,Caster))
 		end

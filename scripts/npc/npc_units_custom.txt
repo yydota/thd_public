@@ -10897,7 +10897,7 @@
 		"MovementTurnRate"	"2.0"
 		"ProjectileModel"	"particles/units/heroes/hero_pugna/pugna_base_attack.vpcf"
 		"ProjectileSpeed"	"2000"
-		"StatusHealth"	"1000"
+		"StatusHealth"	"600"
 		"StatusMana"	"100"
 		"VisionDaytimeRange"	"1050"
 		"VisionNighttimeRange"	"750"
