@@ -3,19 +3,21 @@ G_IsAIMode = false
 G_IsFastCDMode = false
 G_IsFastRespawnMode = false
 G_IsCloneMode = false
-G_IsFCloneMode = false
+-- G_IsFCloneMode = false
 local team_hero = {}
 Bot_Mode = false
 -- look at precache, if map == "dota" then enable for default
 
 player_per_team = 5 --default
 cur_bot_dif = 1 -- easy
+cur_jff = 1 -- ordinary
 fast_respawn_val = 20 -- fast respawn mode's respawn time
 G_Bot_Push_All_Time = {40,30,20,10}
 
 G_Bot_List = {}
 G_Bot_Buff_List = {}
 G_Bot_Diff_Text = {"easy","normal","hard","lunatic"}
+G_JFF_Text = {"ordinary","allsame","ayayayaya","fortest"}
 
 G_Bot_Level = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 
@@ -53,13 +55,17 @@ function THD2_SetBotThinking(val)
 end
 function THD2_SetCloneMode(val)
 	G_IsCloneMode = val
-	if val == false then G_IsFCloneMode = false end
+	--if val == false then G_IsFCloneMode = false end
+	if val == false then cur_jff = 1 end
 	GameRules:SetSameHeroSelectionEnabled(val)
 end
+--[[
 function THD2_SetFCloneMode(val)
 	G_IsFCloneMode = val
 	if val == true then THD2_SetCloneMode(true) end
 end
+--]]
+
 
 function THD2_GetBotMode() return Bot_Mode end
 function THD2_GetFCDMode() return G_IsFastCDMode end
@@ -70,7 +76,8 @@ function THD2_GetBotDiffName() return G_Bot_Diff_Text[cur_bot_dif] end
 function THD2_GetBotThinking(val) G_IsAIMode = val end
 function THD2_GetPlayerPerTeam(val) return player_per_team end
 function THD2_GetCloneMode() return G_IsCloneMode end
-function THD2_GetFCloneMode() return G_IsFCloneMode end
+--function THD2_GetFCloneMode() return G_IsFCloneMode end
+function THD2_GetJFFModeName() return G_JFF_Text[cur_jff] end
 
 
 --to ban some girls(which is not work done XD)
@@ -94,7 +101,7 @@ G_BOT_USED =
 	false ,
 	true ,
 	true ,
-	true ,
+	false ,
 	
 	true ,
 	false ,
@@ -181,7 +188,7 @@ G_Bots_Ability_Add = {
 	{2,1,2,3,2,  6,2,3,3,11,  3,6,1,1,13, 1,0,6,0,14,  0,0,0,0,17,  0,0,0,0,0  },
 	{1,2,1,2,1,  6,1,2,2,11,  3,6,3,3,12, 3,0,6,0,15,  0,0,0,0,17,  0,0,0,0,0  },
 	{1,2,1,2,1,  6,1,2,2,10,  3,6,3,3,13, 3,0,6,0,14,  0,0,0,0,17,  0,0,0,0,0  },
-	{1,2,3,2,2,  6,2,3,3,11,  3,6,1,1,13, 1,0,6,0,15,  0,0,0,0,16,  0,0,0,0,0  },
+	{3,2,1,2,2,  6,2,3,3,10,  3,6,1,1,13, 1,0,6,0,14,  0,0,0,0,16,  0,0,0,0,0  },
 	
 	{1,2,1,2,1,  6,1,2,2,11,  3,6,3,3,13, 3,0,6,0,14,  0,0,0,0,16,  0,0,0,0,0  },
 	{1,2,1,2,1,  6,1,2,2,11,  3,6,3,3,13, 3,0,6,0,14,  0,0,0,0,17,  0,0,0,0,0  },
@@ -289,6 +296,27 @@ function THD2_ChangeBotDifficulty( player, dif )
 		v:SetLevel(dif)
 	end
 	]]--
+end
+
+function THD2_SetJustForFunMode( player, jff )
+	if GameRules:State_Get() >= DOTA_GAMERULES_STATE_STRATEGY_TIME then -- can't change difficulty in game
+		Say(player, "Can't set bot's Mode after bot spawned!",false)
+		print("THDOTSGameMode:JustForFunMode: Error: Can't set Mode after bot spawned")
+		return
+	end
+	if jff <= 0 or jff > 4 then --invalid jff mode
+		Say(player, "invalid jff mode!",false)
+		print("THDOTSGameMode:SetJustForFunMode: Error: invalid jff mode")
+		return
+	end
+	cur_jff = jff
+	
+	local text = G_JFF_Text[jff]
+	Say(player, "JustForFun Mode set to " .. text, false)
+	print("JustForFun Mode set to " .. text)
+	
+	if jff ~= 1 then THD2_SetCloneMode(true) end
+	
 end
 
 function get_usable_bot_hero()
@@ -400,6 +428,7 @@ function THD2_AddBot()
 						H_name=team_hero[3]
 					end
 					local H_id = nil
+					--[[
 					if (not G_IsFCloneMode) or (not check_H_name(H_name)) then
 						H_id = get_usable_bot_hero()
 						H_name = G_Bot_Random_Hero[H_id]
@@ -411,6 +440,24 @@ function THD2_AddBot()
 							end
 						end
 					end
+					--]]
+					if cur_jff == 1 then
+						H_id = get_usable_bot_hero()
+						H_name = G_Bot_Random_Hero[H_id]	
+					elseif cur_jff == 2 then
+						if (not check_H_name(H_name)) then
+							H_id = get_usable_bot_hero()
+							H_name = G_Bot_Random_Hero[H_id]
+						end
+						if bot_team then
+							team_hero[2] = H_name
+						else
+							team_hero[3] = H_name
+						end
+					elseif cur_jff == 3 then
+						H_name = "npc_dota_hero_slark"
+					end
+
 					if bot_team == true then
 						goodcnt = goodcnt + 1
 					else 
@@ -543,8 +590,9 @@ end
 
 function THD2_MakePlayerRepick( plyid , heroname, penalty )
 	if penalty == nil then penalty = true end
-    if GameRules:State_Get() == 4 and G_IsFCloneMode then return end --强制克隆时不能在4阶段repick
-    if GameRules:State_Get() >= 5 then return end --显然游戏开始后不能repick
+    --if GameRules:State_Get() == 4 and G_IsFCloneMode then return end --强制克隆时不能在4阶段repick
+    if GameRules:State_Get() == 4 and cur_jff ~= 1 then return end
+	if GameRules:State_Get() >= 5 then return end --显然游戏开始后不能repick
 	local plyhd = PlayerResource:GetPlayer(plyid)
 	if PlayerResource:HasSelectedHero(plyid) == false then return end
 	if penalty then
@@ -576,7 +624,8 @@ end
 function THD2_ForceClone()
 
 	print('!!!')
-	if not G_IsFCloneMode then return end
+	--if not G_IsFCloneMode then return end
+	if (jff ~= 2) then return end
 	print('???')
 	
 	local H_table = {}
