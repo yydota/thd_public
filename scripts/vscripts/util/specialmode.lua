@@ -81,8 +81,8 @@ function THD2_GetJFFModeName() return G_JFF_Text[cur_jff] end
 
 
 --to ban some girls(which is not work done XD)
-cur_bot_heros_size = 15
-tot_bot_heros_size = 35
+cur_bot_heros_size = 19
+tot_bot_heros_size = 39
 G_BOT_USED = 
 {
 	false ,
@@ -126,6 +126,12 @@ G_BOT_USED =
 	false ,
 	true ,
 	false ,
+	
+	false ,
+	false ,
+	false ,
+	false ,
+	true ,
 }
 
 G_Bot_Random_Hero = 
@@ -171,6 +177,12 @@ G_Bot_Random_Hero =
 	"npc_dota_hero_viper",					--毒人偶
 	"npc_dota_hero_batrider",				--正邪
 	"npc_dota_hero_witch_doctor",			--转转
+	
+	"npc_dota_hero_mars",					--星
+	"npc_dota_hero_doom_bringer",			--皮丝
+	"npc_dota_hero_rattletrap",				--桑尼
+	"npc_dota_hero_luna",					--露娜
+	"npc_dota_hero_oracle",					--斯塔
 }
 
 G_Bots_Ability_Add = {
@@ -217,8 +229,15 @@ G_Bots_Ability_Add = {
 	{1,2,1,2,1,  6,1,2,2,11,  3,6,3,3,13, 3,0,6,0,14,  0,0,0,0,16,  0,0,0,0,0  },
 	{1,2,1,2,1,  6,1,2,2,11,  3,6,3,3,13, 3,0,6,0,14,  0,0,0,0,17,  0,0,0,0,0  },
 	{1,2,3,2,2,  6,2,1,1,10,  1,6,3,3,13, 3,0,6,0,15,  0,0,0,0,16,  0,0,0,0,0  }, --medicine
-	{2,3,1,2,2,  6,2,1,1,11,  1,6,3,3,13, 3,0,6,0,15,  0,0,0,0,16,  0,0,0,0,0  }, 
-	{3,1,2,3,3,  6,3,1,1,11,  1,6,2,2,13, 2,0,6,0,15,  0,0,0,0,17,  0,0,0,0,0  }, 
+	{2,3,1,2,2,  6,2,1,1,11,  1,6,3,3,13, 3,0,6,0,15,  0,0,0,0,16,  0,0,0,0,0  }, --seija
+	{3,1,2,3,3,  6,3,1,1,11,  1,6,2,2,13, 2,0,6,0,15,  0,0,0,0,17,  0,0,0,0,0  }, --hina
+	
+	{2,1,3,2,3,  6,2,3,2,11,  3,6,1,1,13, 1,0,6,0,14,  0,0,0,0,17,  0,0,0,0,0  }, --shou
+	{3,2,1,3,2,  6,3,2,3,11,  2,6,1,1,12, 1,0,6,0,15,  0,0,0,0,16,  0,0,0,0,0  }, --clown
+	{2,3,1,2,2,  6,2,3,3,10,  3,6,1,1,12, 1,0,6,0,15,  0,0,0,0,17,  0,0,0,0,0  }, --sunny
+	{3,1,2,3,3,  6,3,1,1,10,  1,6,2,2,12, 2,0,6,0,15,  0,0,0,0,17,  0,0,0,0,0  }, --luna
+	{1,2,1,2,1,  6,1,2,2,11,  3,6,3,3,13, 3,0,6,0,15,  0,0,0,0,17,  0,0,0,0,0  }, --star
+	
 }
 
 function check_H_name(H_name)
